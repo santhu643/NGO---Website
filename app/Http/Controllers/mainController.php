@@ -16,6 +16,7 @@ class mainController extends Controller
         $user = User::where('email',$req->email)->first();
         if($user && $user->password=== $req->pass){
             session([
+                'name'=> $user->name,   
                 'email'=> $user->email,
                 'user_id'=> $user->id
                 

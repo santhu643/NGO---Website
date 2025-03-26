@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +52,7 @@
     </nav>
     <div class="container-fluid page-body-wrapper">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
+        <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link"  href="{{route('vol')}}">
                         <i class="icon-grid menu-icon"></i>
@@ -70,10 +68,10 @@
                     </a>
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Development</a>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Form</a>
                             </li>
                             <li class="nav-item"> <a class="nav-link"
-                            href="{{route('form2')}}">Pond Development</a>
+                            href="{{route('form2')}}">Pond Form</a>
                             </li>
                            
                         </ul>
@@ -205,4 +203,3 @@
 </body>
 
 </html>
->>>>>>> 42fd9f50112e46ffab9da5298cb2b0d7ec67c355
