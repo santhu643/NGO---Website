@@ -37,6 +37,7 @@
                 <div class="modal-body">
                     <form id="landForm">
                         <div id="step1">
+                        <h5>Basic Details</h5>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="farmerName" class="form-label">Name of Farmer</label>
@@ -119,9 +120,9 @@
                         </div>
 
                         <div id="step2" style="display: none;">
+                        <h5>Details of Land Ownership</h5>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label class="form-label">Land Ownership</label>
                                     <div>
                                         <input type="radio" name="type" id="ownerCultivator" class="form-check-input">
                                         <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
@@ -153,6 +154,7 @@
 </div>
 
 <div id="step3" style="display: none;">
+<h5>Land Development Activity</h5>
 <div class="container p-3">
     <div class="row mb-3">
         <div class="col-md-6">
