@@ -7,6 +7,6 @@ Route::get('/', function () {
     return view('login');
 });
 Route::post('/log',[mainController::class,"login"]);
-Route::get('/vol',function(){
-    return view('vol');
-})->name('vol');
+Route::get('/index',function(){
+    return view('index');
+})->name('index');
