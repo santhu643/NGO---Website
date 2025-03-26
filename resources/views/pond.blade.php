@@ -9,13 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- CSS for Bigger Checkboxes & Radios -->
-<style>
-  .large-checkbox, .large-radio {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-  }
-</style>
+
 </head>
 <body>
 
