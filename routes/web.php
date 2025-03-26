@@ -18,3 +18,7 @@ Route::get('/form1',function(){
 Route::get('/form2',function(){
     return view('form2');
 })->name('form2');
+
+Route::get('/form3',function(){
+    return view('form3');
+})->name('form3');
