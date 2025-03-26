@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Loged in as volunteer</h1>
+<h1>Welcome: {{ session('name') }}  </h1>
+<p>Email: {{ session('email') }}</p>
+<p>User ID: {{ session('user_id') }}</p></body> 
+    
 </body>
 </html>
