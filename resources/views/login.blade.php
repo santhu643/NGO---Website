@@ -52,7 +52,7 @@
                 if(response.status==200){
                     if(response.role == "vol"){
                         alert("Volunteer login");
-                        window.location.href = "{{ route('index') }}";
+                        window.location.href = "{{ route('vol') }}";
 
                     }
 
