@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,41 +9,17 @@
         .step {
             display: none;
         }
-
         .step.active {
             display: block;
         }
-
         .step3-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            /* Added spacing */
+            gap: 15px; /* Added spacing */
         }
-
-        .modal-content {
-    padding: 20px; /* Adds padding inside the modal */
-}
-
-.modal-body {
-    padding: 15px; /* Adds padding inside the body of the modal */
-}
-
-.form-label {
-    font-weight: bold; /* Makes labels more readable */
-}
-
-.form-control, .form-check-input {
-    margin-top: 5px; /* Adds some space above inputs */
-}
-
-.d-flex.gap-3 {
-    gap: 15px; /* Ensures proper spacing between radio buttons */
-}
-
+        
     </style>
 </head>
-
 <body>
     <div class="container mt-5">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#landFormModal">
@@ -62,34 +37,34 @@
                 <div class="modal-body">
                     <form id="landForm">
                         <div id="step1">
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="farmerName" class="form-label">Name of Farmer</label>
-                                    <input type="text" class="form-control" id="farmerName" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="mobileNumber" class="form-label">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobileNumber" required>
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="farmerName" class="form-label">Name of Farmer</label>
+                                <input type="text" class="form-control" id="farmerName" required>
                             </div>
+                            <div class="col-md-6">
+                                <label for="mobileNumber" class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobileNumber" required>
+                            </div>
+                        </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Gender</label>
-                                    <div>
-                                        <input type="radio" id="male" name="gender" value="Male" class="form-check-input" required>
-                                        <label for="male" class="form-check-label">Male</label>
-                                        <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-3" required>
-                                        <label for="female" class="form-check-label">Female</label>
-                                        <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-3" required>
-                                        <label for="transgender" class="form-check-label">Transgender</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="fatherSpouse" class="form-label">Father / Spouse</label>
-                                    <input type="text" class="form-control" id="fatherSpouse" required>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <div>
+                                    <input type="radio" id="male" name="gender" value="Male" class="form-check-input" required>
+                                    <label for="male" class="form-check-label">Male</label>
+                                    <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-3" required>
+                                    <label for="female" class="form-check-label">Female</label>
+                                    <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-3" required>
+                                    <label for="transgender" class="form-check-label">Transgender</label>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <label for="fatherSpouse" class="form-label">Father / Spouse</label>
+                                <input type="text" class="form-control" id="fatherSpouse" required>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
@@ -98,48 +73,49 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Identity Card</label>
-                                <div>
-                                    <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input identity-option" required>
-                                    <label for="aadhar" class="form-check-label">Aadhar</label>
-                                    <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-3 identity-option" required>
-                                    <label for="epic" class="form-check-label">EPIC</label>
-                                    <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-3 identity-option" required>
-                                    <label for="drivingLicense" class="form-check-label">Driving License</label>
-                                </div>
+                                    <div>
+                                        <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input" required onclick="updateIdentityTitle()">
+                                        <label for="aadhar" class="form-check-label">Aadhar</label>
+                                        <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-3" required onclick="updateIdentityTitle()">
+                                        <label for="epic" class="form-check-label">EPIC</label>
+                                        <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-3" required onclick="updateIdentityTitle()">
+                                        <label for="drivingLicense" class="form-check-label">Driving License</label>
+                                    </div>
                             </div>
                         </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="idCardNumber" class="form-label">ID Card Number</label>
-                                    <input type="text" class="form-control" id="idCardNumber" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID Proof</label>
-                                    <input type="file" class="form-control" id="fileUpload" required>
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="idCardNumber" class="form-label">ID Card Number</label>
+                                <input type="text" class="form-control" id="idCardNumber" required>
                             </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="hamlet" class="form-label">Hamlet</label>
-                                    <input type="text" class="form-control" id="hamlet" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="panchayat" class="form-label">Panchayat</label>
-                                    <input type="text" class="form-control" id="panchayat" required>
-                                </div>
+                            <div class="col-md-6">
+                                <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID Proof</label>
+                                <input type="file" class="form-control" id="fileUpload" required>
                             </div>
+                        </div>
 
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="block" class="form-label">Block</label>
-                                    <input type="text" class="form-control" id="block" required>
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="hamlet" class="form-label">Hamlet</label>
+                                <input type="text" class="form-control" id="hamlet" required>
                             </div>
+                            <div class="col-md-6">
+                                <label for="panchayat" class="form-label">Panchayat</label>
+                                <input type="text" class="form-control" id="panchayat" required>
+                            </div>
+                        </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="block" class="form-label">Block</label>
+                                <input type="text" class="form-control" id="block" required>
+                            </div>
+                        </div>
 
+                        <div class="d-flex justify-content-end gap-2">
                         <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">Next</button>
+    </div>
                         </div>
 
                         <div id="step2" style="display: none;">
@@ -173,20 +149,21 @@
                             <div class="d-flex justify-content-end gap-2">
                             <button type="button" class="btn btn-secondary" onclick="prevStep(2, 1)">Back</button>
                             <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">Next</button>
+    </div>
 </div>
 
-                            <div id="step3" style="display: none;">
-                            <h5>Land Development Details</h5>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="sf_no" class="form-label">S.F. No. of the land to be developed:</label>
-                                    <input type="text" class="form-control" id="sf_no" name="sf_no">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="land_benefit" class="form-label">Land to benefit (ha):</label>
-                                    <input type="text" class="form-control" id="land_benefit" name="land_benefit">
-                                </div>
-                            </div>
+<div id="step3" style="display: none;">
+<div class="container p-3">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label for="sf_no" class="form-label">S.F. No. of the land to be developed:</label>
+            <input type="text" class="form-control" id="sf_no" name="sf_no">
+        </div>
+        <div class="col-md-6">
+            <label for="land_benefit" class="form-label">Land to benefit (ha):</label>
+            <input type="text" class="form-control" id="land_benefit" name="land_benefit">
+        </div>
+    </div>
 
     <div class="row mb-3">
         <div class="col-md-6">
@@ -278,7 +255,7 @@
         <button type="button" class="btn btn-primary" onclick="nextStep(3, 4)">Next</button>
     </div>
 </div>
-    
+    </div>
 
 
 
@@ -351,18 +328,34 @@
             document.getElementById('step' + current).style.display = 'none';
             document.getElementById('step' + next).style.display = 'block';
         }
-
+        
         function prevStep(current, prev) {
             document.getElementById('step' + current).style.display = 'none';
             document.getElementById('step' + prev).style.display = 'block';
         }
 
-        function updateTitle() {
-        const selectedIdentity = document.querySelector('input[name="identity"]:checked').value;
-        document.getElementById('step1Title').innerText = `You Selected: ${selectedIdentity}`;
-    }
+        
+
+    function updateIdentityTitle() {
+            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+            const fileUploadLabel = document.getElementById("fileUploadLabel");
+            if (selectedIdentity) {
+                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
+            }
+        }
+
+        function nextStep(current, next) {
+    document.getElementById("step" + current).style.display = "none";
+    document.getElementById("step" + next).style.display = "block";
+}
+
+function prevStep(current, previous) {
+    document.getElementById("step" + current).style.display = "none";
+    document.getElementById("step" + previous).style.display = "block";
+}
+
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
