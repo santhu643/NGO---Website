@@ -159,53 +159,21 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Farm Pond v2</h4>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
+                                        <table id="pond_table" class="table table-bordered table-hover table-striped">
                                             <thead class="text-center table-dark">
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Applicant Name</th>
-                                                    <th>Application No.</th>
-                                                    <th>Created Date</th>
+                                                    <th>Farmer Name</th>
+                                                    <th>Panchayat/Block</th>
+                                                    <th>Mobile Number</th>
+                                                    <th>Details</th>
+                                                    <th>Action</th>
                                                     <th>Status</th>
+
+
                                                 </tr>
                                             </thead>
-                                            <tbody class="text-center">
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Jacob</td>
-                                                    <td>53275531</td>
-                                                    <td>12 May 2017</td>
-                                                    <td><label class="badge badge-danger">Pending</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Messsy</td>
-                                                    <td>53275532</td>
-                                                    <td>15 May 2017</td>
-                                                    <td><label class="badge badge-warning">In progress</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>John</td>
-                                                    <td>53275533</td>
-                                                    <td>14 May 2017</td>
-                                                    <td><label class="badge badge-info">Fixed</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>Peter</td>
-                                                    <td>53275534</td>
-                                                    <td>16 May 2017</td>
-                                                    <td><label class="badge badge-success">Completed</label></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>5</td>
-                                                    <td>Dave</td>
-                                                    <td>53275535</td>
-                                                    <td>20 May 2017</td>
-                                                    <td><label class="badge badge-warning">In progress</label></td>
-                                                </tr>
-                                            </tbody>
+                                           
                                         </table>
                                     </div>
                                 </div>
