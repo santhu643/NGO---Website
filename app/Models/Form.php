@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Form
  * 
  * @property int $id
+ * @property string $user_id
  * @property string $form_type
  * @property string $farmer_name
  * @property string $mobile_number
@@ -27,11 +28,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $block
  * @property Carbon $created_at
  * 
- * @property Collection|Approval[] $approvals
  * @property Collection|BankDetail[] $bank_details
- * @property Collection|FarmPond[] $farm_ponds
  * @property Collection|FileUpload[] $file_uploads
- * @property Collection|LandRedevelopment[] $land_redevelopments
  *
  * @package App\Models
  */
@@ -45,6 +43,7 @@ class Form extends Model
 	];
 
 	protected $fillable = [
+		'user_id',
 		'form_type',
 		'farmer_name',
 		'mobile_number',
@@ -58,28 +57,13 @@ class Form extends Model
 		'block'
 	];
 
-	public function approvals()
-	{
-		return $this->hasMany(Approval::class);
-	}
-
 	public function bank_details()
 	{
 		return $this->hasMany(BankDetail::class);
 	}
 
-	public function farm_ponds()
-	{
-		return $this->hasMany(FarmPond::class);
-	}
-
 	public function file_uploads()
 	{
 		return $this->hasMany(FileUpload::class);
-	}
-
-	public function land_redevelopments()
-	{
-		return $this->hasMany(LandRedevelopment::class);
 	}
 }
