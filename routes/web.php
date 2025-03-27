@@ -22,3 +22,7 @@ Route::get('/form2',function(){
 Route::get('/form3',function(){
     return view('form3');
 })->name('form3');
+
+Route::post('/form_land',[mainController::class,"land_form"]);
+
+Route::post('/form_pond',[mainController::class,"pond_form"]);

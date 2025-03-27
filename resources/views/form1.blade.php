@@ -3,24 +3,13 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{csrf_token()}}">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
-    <!-- DataTables CSS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<!-- jQuery (if not already included) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<!-- jQuery (Make sure it's loaded before DataTables) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- DataTables CSS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -48,7 +37,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        
+
         /* Added spacing */
     }
     </style>
@@ -60,8 +49,8 @@
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
                         src="{{asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="index.html"><img
+                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -153,8 +142,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Form</a>
                                 </li>
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{route('form2')}}">Pond Form</a>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
                             </ul>
@@ -186,13 +174,14 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                <button type="button" class="btn btn-dark" value="land" data-bs-toggle="modal" data-bs-target="#land_modal">Add</button><br><br>
+                    <button type="button" class="btn btn-dark" value="land" data-bs-toggle="modal"
+                        data-bs-target="#land_modal">Add</button><br><br>
 
-                <div class="row">
-                    
+                    <div class="row">
+
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
-                                
+
                                 <div class="card-body">
                                     <h4 class="card-title">Farm Pond v2</h4>
                                     <div class="table-responsive">
@@ -210,7 +199,7 @@
 
                                                 </tr>
                                             </thead>
-                                           
+
                                         </table>
                                     </div>
                                 </div>
@@ -233,9 +222,9 @@
         </div>
     </div>
 
-<!-- Modalsss -->
+    <!-- Modalsss -->
 
-<div class="modal fade" id="land_modal" tabindex="-1" aria-labelledby="landFormModalLabel" aria-hidden="true">
+    <div class="modal fade" id="land_modal" tabindex="-1" aria-labelledby="landFormModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -243,17 +232,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="landForm">
+                    <form id="landform">
+                    @csrf
+
                         <div id="step1">
                             <h5>Basic Details</h5>
                             <div class="row mb-3">
                                 <div class="col-md-6">
+                                    <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
                                     <label for="farmerName" class="form-label">Name of Farmer</label>
-                                    <input type="text" class="form-control" id="farmerName" required>
+                                    <input type="text" class="form-control" id="farmerName" name="farmerName" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="mobileNumber" class="form-label">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobileNumber" required>
+                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
                                 </div>
                             </div>
 
@@ -274,14 +266,14 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="fatherSpouse" class="form-label">Father / Spouse</label>
-                                    <input type="text" class="form-control" id="fatherSpouse" required>
+                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="householdMembers" class="form-label">Household Members</label>
-                                    <input type="number" class="form-control" id="householdMembers" required>
+                                    <input type="number" class="form-control" id="householdMembers" name="householdMembers" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Identity Card</label>
@@ -303,30 +295,30 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="idCardNumber" class="form-label">ID Card Number</label>
-                                    <input type="text" class="form-control" id="idCardNumber" required>
+                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID
                                         Proof</label>
-                                    <input type="file" class="form-control" id="fileUpload" required>
+                                    <input type="file" class="form-control" name="file" id="fileUpload" >
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="hamlet" class="form-label">Hamlet</label>
-                                    <input type="text" class="form-control" id="hamlet" required>
+                                    <input type="text" class="form-control" id="hamlet" name="hamlet" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="panchayat" class="form-label">Panchayat</label>
-                                    <input type="text" class="form-control" id="panchayat" required>
+                                    <input type="text" class="form-control" id="panchayat" name="panchayat" required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="block" class="form-label">Block</label>
-                                    <input type="text" class="form-control" id="block" required>
+                                    <input type="text" class="form-control" id="block" name="block" required>
                                 </div>
                             </div>
 
@@ -350,17 +342,17 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Patta Number</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="pattaNumber" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Total Area (ha)</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="totalArea" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Revenue Village</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="revenueVillage" required>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end gap-2">
@@ -536,18 +528,6 @@
 
 
 
-                            <div class="mb-3">
-                                <label class="form-label">Files Submitted:</label>
-                                <div class="d-flex flex-wrap gap-3">
-                                    <div><input type="checkbox" name="files[]" value="Patta"> Patta</div>
-                                    <div><input type="checkbox" name="files[]" value="ID Card"> ID Card</div>
-                                    <div><input type="checkbox" name="files[]" value="FMB"> FMB</div>
-                                    <div><input type="checkbox" name="files[]" value="Photo of Farmer"> Photo of Farmer
-                                    </div>
-                                    <div><input type="checkbox" name="files[]" value="Bank Passbook"> Bank Passbook
-                                    </div>
-                                </div>
-                            </div>
                             <div class="d-flex justify-content-end gap-2">
                                 <button type="button" class="btn btn-secondary" onclick="prevStep(4, 3)">Back</button>
                                 <button type="submit" class="btn btn-success">Submit</button>
@@ -561,16 +541,8 @@
     </div>
 
     <script>
-    $(document).ready(function () {
-        $('#pond_table').DataTable({
-            "processing": true,
-            "serverSide": false,
-            "paging": true,
-            "searching": true,
-            "ordering": true,
-            "info": true
-        });
-    });
+   
+
 
     function nextStep(current, next) {
         document.getElementById('step' + current).style.display = 'none';
@@ -600,9 +572,28 @@
     function prevStep(current, previous) {
         document.getElementById("step" + current).style.display = "none";
         document.getElementById("step" + previous).style.display = "block";
-    }
+    };
 
-</script>
+    $(document).on("submit", "#landform", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: "/form_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("form submitted succesfully");
+                } else {
+                    alert("something went wrong");
+                }
+            }
+        })
+
+    })
+    </script>
 
 
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
