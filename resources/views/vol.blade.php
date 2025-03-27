@@ -158,7 +158,7 @@
                             <div class="row">
                                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                     <h3 class="font-weight-bold">Welcome {{ session('name') }} </h3>
-                                    <h6 class="font-weight-normal mb-0">Volunteer #110001</h6>
+                                    <h6 class="font-weight-normal mb-0">Volunteer #{{ session('user_id')}}</h6>
                                 </div>
                                 <div class="col-12 col-xl-4">
                                     <div class="justify-content-end d-flex">
@@ -175,17 +175,36 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
-                            <div class="card tale-bg">
-                                <div class="card-people mt-auto">
-                                    <div class="d-flex mb-lg-5">
-                                        <h1>Main Dash</h1>
+                            <div class="card tale-bg p-3">
+                                <div class="row"> <!-- Use row to align cards side by side -->
+
+                                    <!-- User Photo Card -->
+                                    <div class="col-md-6">
+                                        <div class="card shadow card-tale text-center">
+                                            <div class="card-body">
+                                                <img src="assets/images/faces/face28.jpg" alt="User Photo" class="img-fluid rounded-circle mt-1" style="width: 175px; height: 175px; object-fit: cover;">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <img src="#" alt="people">
-                                    <div class="weather-info">
+                                    
+                                    <!-- User Info Card -->
+                                    <div class="col-md-6">
+                                        <div class="card shadow card-light-danger">
+                                            <div class="card-body">
+                                                <h5 class="card-title text-dark">User Details</h5>
+                                                <p><strong>Name:</strong> {{session('name')}}</p>
+                                                <p><strong>User ID:</strong> {{session('user_id')}}</p>
+                                                <p><strong>DOB:</strong> Fetch from DB</p>
+                                                <p><strong>Email:</strong> {{session('email')}}</p>
+                                                <p><strong>Phone:</strong> Fetch from DB</p>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6 grid-margin transparent">
                             <div class="row">
                                 <div class="col-md-6 mb-4 stretch-card transparent">
