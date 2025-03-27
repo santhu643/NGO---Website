@@ -26,3 +26,7 @@ Route::get('/form3',function(){
 Route::post('/form_land',[mainController::class,"land_form"]);
 
 Route::post('/form_pond',[mainController::class,"pond_form"]);
+
+Route::get('/fetch_land',[mainController::class,"fetch_land"]);
+Route::get('/fetch_pond',[mainController::class,"fetch_pond"]);
+

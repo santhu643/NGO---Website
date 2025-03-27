@@ -241,6 +241,30 @@ $bankDetail->save();
 return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
 
     }
+
+    public function fetch_land()
+    {
+        $userId = session('user_id');    
+    
+        $forms = Form::where('user_id', $userId)
+            ->where('form_type', 'land')
+            ->with(['landForm', 'bankDetails'])
+            ->get();
+    
+            return response()->json(['status' => 200, 'data' => $forms]);
+        }
+
+        public function fetch_pond()
+        {
+            $userId = session('user_id');    
+        
+            $forms = Form::where('user_id', $userId)
+                ->where('form_type', 'pond')
+                ->with(['pondForm', 'bankDetails'])
+                ->get();
+        
+                return response()->json(['status' => 200, 'data' => $forms]);
+            }
     
 
     

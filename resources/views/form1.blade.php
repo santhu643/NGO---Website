@@ -1,3 +1,8 @@
+<?php
+
+use routes\web;
+use App\Http\Controllers\mainController;
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -183,22 +188,34 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <h4 class="card-title">Farm Pond v2</h4>
+                                    <h4 class="card-title">Farm Land v2</h4>
                                     <div class="table-responsive">
-                                        <table id="pond_table" class="table table-bordered table-hover table-striped">
+                                        <table id="land_table" class="table table-bordered table-hover table-striped">
                                             <thead class="text-center table-dark">
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Farmer Name</th>
-                                                    <th>Panchayat/Block</th>
-                                                    <th>Mobile Number</th>
-                                                    <th>Details</th>
+                                                    <th>Farmer Details</th>
+                                                    <th>Land Details</th>
+                                                    <th>Bank Details</th>
                                                     <th>Action</th>
                                                     <th>Status</th>
 
 
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                            @php $sno = 1; @endphp
+                                            @foreach($forms as $form)
+                                            <tr>
+                                                <td>{{ $sno++ }}</td>
+                                                <td>{{ $form->farmer_name }}</td>
+                                                <td>{{ $form->ownership }}</td>
+                                                <td>{{ $form->account_holder_name }}</td>
+                                                <td>Action</td>
+                                                <td>Status</td>
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
 
                                         </table>
                                     </div>
@@ -233,7 +250,7 @@
                 </div>
                 <div class="modal-body">
                     <form id="landform">
-                    @csrf
+                        @csrf
 
                         <div id="step1">
                             <h5>Basic Details</h5>
@@ -245,7 +262,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="mobileNumber" class="form-label">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
+                                        required>
                                 </div>
                             </div>
 
@@ -266,14 +284,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="fatherSpouse" class="form-label">Father / Spouse</label>
-                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
+                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse"
+                                        required>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="householdMembers" class="form-label">Household Members</label>
-                                    <input type="number" class="form-control" id="householdMembers" name="householdMembers" required>
+                                    <input type="number" class="form-control" id="householdMembers"
+                                        name="householdMembers" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Identity Card</label>
@@ -295,12 +315,13 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <label for="idCardNumber" class="form-label">ID Card Number</label>
-                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
+                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber"
+                                        required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID
                                         Proof</label>
-                                    <input type="file" class="form-control" name="file" id="fileUpload" >
+                                    <input type="file" class="form-control" name="file" id="fileUpload">
                                 </div>
                             </div>
 
@@ -541,9 +562,6 @@
     </div>
 
     <script>
-   
-
-
     function nextStep(current, next) {
         document.getElementById('step' + current).style.display = 'none';
         document.getElementById('step' + next).style.display = 'block';
@@ -592,6 +610,17 @@
             }
         })
 
+    })
+    $(document).ready(function(){
+        $.ajax({
+                type:"GET",
+                url:"/fetch_land",
+                success:function(response){
+                    if(response.status==200){
+                        console.log(response);
+                    }
+                }
+            })
     })
     </script>
 

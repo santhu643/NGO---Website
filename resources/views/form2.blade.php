@@ -175,20 +175,32 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Farm Pond v2</h4>
                                     <div class="table-responsive">
-                                        <table id="pond_table" class="table table-bordered table-hover table-striped">
+                                    <table id="pond_table" class="table table-bordered table-hover table-striped">
                                             <thead class="text-center table-dark">
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Farmer Name</th>
-                                                    <th>Panchayat/Block</th>
-                                                    <th>Mobile Number</th>
-                                                    <th>Details</th>
+                                                    <th>Farmer Details</th>
+                                                    <th>Pond Details</th>
+                                                    <th>Bank Details</th>
                                                     <th>Action</th>
                                                     <th>Status</th>
 
 
                                                 </tr>
                                             </thead>
+                                            <tbody>
+                                            @php $sno = 1; @endphp
+                                            @foreach($forms as $form)
+                                            <tr>
+                                                <td>{{ $sno++ }}</td>
+                                                <td>{{ $form->farmer_name }}</td>
+                                                <td>{{ $form->ownership }}</td>
+                                                <td>{{ $form->account_holder_name }}</td>
+                                                <td>Action</td>
+                                                <td>Status</td>
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
 
                                         </table>
                                     </div>
@@ -577,6 +589,18 @@
           }
         }
       })
+    });
+
+    $(document).ready(function(){
+        $.ajax({
+                type:"GET",
+                url:"/fetch_pond",
+                success:function(response){
+                    if(response.status==200){
+                        console.log(response);
+                    }
+                }
+            })
     })
     </script>
 

@@ -62,8 +62,30 @@ class Form extends Model
 		return $this->hasMany(BankDetail::class);
 	}
 
-	public function file_uploads()
-	{
-		return $this->hasMany(FileUpload::class);
-	}
+	public function fetch_land()
+{
+    // Get the logged-in user ID
+    $userId = auth()->id();
+
+    // Fetch forms for the logged-in user
+    $forms = Form::where('user_id', $userId)->get();
+
+    // Return data as JSON response
+    return response()->json($forms);
+}
+
+public function landForm()
+{
+    return $this->hasOne(LandForm::class, 'form_id', 'id');
+}
+public function pondForm()
+{
+    return $this->hasOne(PondForm::class, 'form_id', 'id');
+}
+public function bankDetails()
+{
+    return $this->hasOne(BankDetail::class, 'form_id', 'id');
+}
+
+
 }

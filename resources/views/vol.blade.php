@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <title>PRADAN - Professional Assistance for Development Action</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('assets/vendors/feather/feather.css') }}">
@@ -122,7 +124,7 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Development</a></li>
+                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Development</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Development</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
                             </ul>
