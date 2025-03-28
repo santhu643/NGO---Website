@@ -1,8 +1,3 @@
-<?php
-
-use routes\web;
-use App\Http\Controllers\mainController;
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -209,8 +204,8 @@ use App\Http\Controllers\mainController;
                                             <tr>
                                                 <td>{{ $sno++ }}</td>
                                                 <td>{{ $form->farmer_name }}</td>
-                                                <td>{{ $form->ownership }}</td>
-                                                <td>{{ $form->account_holder_name }}</td>
+                                                <td>{{ $form->landForm->ownership }}</td>
+                                                <td>{{ $form->bankDetails->account_holder_name }}</td>
                                                 <td>Action</td>
                                                 <td>Status</td>
                                             </tr>
@@ -621,7 +616,7 @@ use App\Http\Controllers\mainController;
                     }
                 }
             })
-    })
+    });
     </script>
 
 

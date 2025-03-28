@@ -11,9 +11,8 @@ Route::get('/vol',function(){
     return view('vol');
 })->name('vol');
 
-Route::get('/form1',function(){
-    return view('form1');
-})->name('form1');
+Route::get('/form1',[mainController::class,"form1"])->name('form1');
+
 
 Route::get('/form2',function(){
     return view('form2');
@@ -27,6 +26,5 @@ Route::post('/form_land',[mainController::class,"land_form"]);
 
 Route::post('/form_pond',[mainController::class,"pond_form"]);
 
-Route::get('/fetch_land',[mainController::class,"fetch_land"]);
 Route::get('/fetch_pond',[mainController::class,"fetch_pond"]);
 

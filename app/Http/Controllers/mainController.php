@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -38,6 +39,21 @@ class mainController extends Controller
             ]);
         }
 
+    }
+    public function form1()
+    {
+        $userId = session('user_id');    
+    
+        $forms = Form::where('user_id', $userId)
+            ->where('form_type', 'land')
+            ->with(['landForm', 'bankDetails'])
+            ->get();
+
+     return view('form1',compact('forms'));
+
+
+
+    
     }
 
     public function land_form(Request $req)
@@ -242,17 +258,7 @@ return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
 
     }
 
-    public function fetch_land()
-    {
-        $userId = session('user_id');    
-    
-        $forms = Form::where('user_id', $userId)
-            ->where('form_type', 'land')
-            ->with(['landForm', 'bankDetails'])
-            ->get();
-    
-            return response()->json(['status' => 200, 'data' => $forms]);
-        }
+   
 
         public function fetch_pond()
         {
