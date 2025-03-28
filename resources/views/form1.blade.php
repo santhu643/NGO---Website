@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 
     <link rel="stylesheet" href="{{ asset('assets/vendors/feather/feather.css') }}">
@@ -25,21 +23,21 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <style>
-    .step {
-        display: none;
-    }
+        .step {
+            display: none;
+        }
 
-    .step.active {
-        display: block;
-    }
+        .step.active {
+            display: block;
+        }
 
-    .step3-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        .step3-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
 
-        /* Added spacing */
-    }
+            /* Added spacing */
+        }
     </style>
 </head>
 
@@ -189,6 +187,7 @@
                                             <thead class="text-center table-dark">
                                                 <tr>
                                                     <th>S.No</th>
+                                                    <th>Application Number</th>
                                                     <th>Farmer Details</th>
                                                     <th>Land Details</th>
                                                     <th>Bank Details</th>
@@ -203,25 +202,29 @@
                                                 @foreach($forms as $form)
                                                 <tr>
                                                     <td>{{ $sno++ }}</td>
+                                                    <td>TN-3202200{{ $sno }}</td>
                                                     <th><button id="farmer_detail" value="{{$form->id}}"
                                                             style="color:white"
-                                                            class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button>
+                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
                                                     </th>
                                                     <th><button id="land_detail" value="{{$form->id}}"
                                                             style="color:white"
-                                                            class="btn btn-success btn-sm"><b>{{ $form->landForm->ownership }}</b></button>
+                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
                                                     </th>
-                                                    <th><button id="bank_detail" value="{{$form->id}}"
-                                                            style="color:white"
-                                                            class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button>
+                                                    <th>
+                                                        <button id="bank_detail" value="{{ $form->id }}" style="color:black" class="btn btn-link">
+                                                            <b>{{ str_repeat('X', strlen($form->bankDetails->account_number) - 4) . substr($form->bankDetails->account_number, -4) }}</b>
+                                                        </button>
                                                     </th>
-                                                    <th><button value="{{$form->id}}" style="color:white"
-                                                            class="btn btn-warning btn-sm"><b>Edit</b></button>
-                                                        &nbsp;<button value="{{$form->id}}" style="color:white"
-                                                            class="btn btn-danger btn-sm"><b>Delete</b></button></th>
-                                                    <td>Status</td>
-
-
+                                                    <th><button value="{{$form->id}}" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                                        &nbsp;<button value="{{$form->id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></th>
+                                                    <td>
+                                                        @if($sno == 2)
+                                                        <button type="button" class="btn btn-inverse-warning btn-fw">Waiting For Approval</button>
+                                                        @else
+                                                        <button type="button" class="btn btn-inverse-danger btn-fw">Application Rejected</button>
+                                                        @endif
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -630,8 +633,8 @@
         </div>
     </div>
 
-        <!-- Bank Detail Modal -->
-        <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Bank Detail Modal -->
+    <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -645,7 +648,7 @@
                     Branch : <span id="b_branch"></span><br><br>
                     IFSC Code : <span id="b_ifsc"></span><br><br>
 
-               
+
 
                 </div>
                 <div class="modal-footer">
@@ -656,141 +659,141 @@
     </div>
 
     <script>
-    function nextStep(current, next) {
-        document.getElementById('step' + current).style.display = 'none';
-        document.getElementById('step' + next).style.display = 'block';
-    }
-
-    function prevStep(current, prev) {
-        document.getElementById('step' + current).style.display = 'none';
-        document.getElementById('step' + prev).style.display = 'block';
-    }
-
-
-
-    function updateIdentityTitle() {
-        const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
-        const fileUploadLabel = document.getElementById("fileUploadLabel");
-        if (selectedIdentity) {
-            fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
+        function nextStep(current, next) {
+            document.getElementById('step' + current).style.display = 'none';
+            document.getElementById('step' + next).style.display = 'block';
         }
-    }
 
-    function nextStep(current, next) {
-        document.getElementById("step" + current).style.display = "none";
-        document.getElementById("step" + next).style.display = "block";
-    }
+        function prevStep(current, prev) {
+            document.getElementById('step' + current).style.display = 'none';
+            document.getElementById('step' + prev).style.display = 'block';
+        }
 
-    function prevStep(current, previous) {
-        document.getElementById("step" + current).style.display = "none";
-        document.getElementById("step" + previous).style.display = "block";
-    };
 
-    $(document).on("submit", "#landform", function(e) {
-        e.preventDefault();
-        var form = new FormData(this);
-        $.ajax({
-            type: "POST",
-            url: "/form_land",
-            data: form,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status == 200) {
-                    alert("form submitted succesfully");
-                } else {
-                    alert("something went wrong");
-                }
+
+        function updateIdentityTitle() {
+            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+            const fileUploadLabel = document.getElementById("fileUploadLabel");
+            if (selectedIdentity) {
+                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
             }
-        })
+        }
 
-    })
+        function nextStep(current, next) {
+            document.getElementById("step" + current).style.display = "none";
+            document.getElementById("step" + next).style.display = "block";
+        }
 
+        function prevStep(current, previous) {
+            document.getElementById("step" + current).style.display = "none";
+            document.getElementById("step" + previous).style.display = "block";
+        };
 
-    $(document).on("click", "#farmer_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_farmer_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-                    console.log(response.data);
-                    $("#f_name").text(response.data.farmer_name);
-                    $("#f_spouse").text(response.data.father_spouse);
-                    $("#f_mobile").text(response.data.mobile_number);
-                    $("#f_gender").text(response.data.gender);
-                    $("#f_card").text(response.data.identity_card_type);
-                    $("#f_member").text(response.data.household_members);
-                    $("#f_number").text(response.data.identity_card_number);
-                    $("#f_hamlet").text(response.data.hamlet);
-                    $("#f_panchayat").text(response.data.panchayat);
-                    $("#f_block").text(response.data.block);
-
-                    $("#farmerdet_modal").modal("show");
+        $(document).on("submit", "#landform", function(e) {
+            e.preventDefault();
+            var form = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "/form_land",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status == 200) {
+                        alert("form submitted succesfully");
+                    } else {
+                        alert("something went wrong");
+                    }
                 }
-
-            }
-
-        })
-    });
-
-    $(document).on("click", "#land_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_land_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-                    $("#l_ownership").text(response.data.ownership);
-                    $("#l_patta").text(response.data.patta);
-                    $("#l_tarea").text(response.data.total_area);
-                    $("#l_revenue").text(response.data.revenue);
-                    $("#l_sf").text(response.data.sf_no);
-                    $("#l_soil").text(response.data.soil_type);
-                    $("#l_benefit").text(response.data.land_benefit);
-                    $("#l_field").text(response.data.field_insp);
-                    $("#l_site").text(response.data.site_app);
-                    $("#l_doi").text(response.data.date_of_ins);
-                    $("#l_doa").text(response.data.date_of_app);
-                    $("#l_type").text(response.data.type_of_work);
-                    $("#l_area").text(response.data.area_benefit);
-                    $("#l_oth").text(response.data.other_works);
-                    $("#l_pradan").text(response.data.pradan_cont);
-                    $("#l_farmer").text(response.data.farmer_cont);
-                    $("#l_total").text(response.data.total_amount);
-                    $("#landdet_modal").modal("show");
-
-                }
-            }
-
-        })
-    });
-
-    $(document).on("click","#bank_detail",function(e){
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_bank_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-                    $("#b_hname").text(response.data.account_holder_name);
-                    $("#b_no").text(response.data.account_number);
-                    $("#b_name").text(response.data.bank_name);
-                    $("#b_branch").text(response.data.branch);
-                    $("#b_ifsc").text(response.data.ifsc_code);
-                    $("#bankdet_modal").modal("show");
-               
-
-                }
-            }
+            })
 
         })
 
 
-    })
+        $(document).on("click", "#farmer_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_farmer_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
+                        console.log(response.data);
+                        $("#f_name").text(response.data.farmer_name);
+                        $("#f_spouse").text(response.data.father_spouse);
+                        $("#f_mobile").text(response.data.mobile_number);
+                        $("#f_gender").text(response.data.gender);
+                        $("#f_card").text(response.data.identity_card_type);
+                        $("#f_member").text(response.data.household_members);
+                        $("#f_number").text(response.data.identity_card_number);
+                        $("#f_hamlet").text(response.data.hamlet);
+                        $("#f_panchayat").text(response.data.panchayat);
+                        $("#f_block").text(response.data.block);
+
+                        $("#farmerdet_modal").modal("show");
+                    }
+
+                }
+
+            })
+        });
+
+        $(document).on("click", "#land_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_land_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
+                        $("#l_ownership").text(response.data.ownership);
+                        $("#l_patta").text(response.data.patta);
+                        $("#l_tarea").text(response.data.total_area);
+                        $("#l_revenue").text(response.data.revenue);
+                        $("#l_sf").text(response.data.sf_no);
+                        $("#l_soil").text(response.data.soil_type);
+                        $("#l_benefit").text(response.data.land_benefit);
+                        $("#l_field").text(response.data.field_insp);
+                        $("#l_site").text(response.data.site_app);
+                        $("#l_doi").text(response.data.date_of_ins);
+                        $("#l_doa").text(response.data.date_of_app);
+                        $("#l_type").text(response.data.type_of_work);
+                        $("#l_area").text(response.data.area_benefit);
+                        $("#l_oth").text(response.data.other_works);
+                        $("#l_pradan").text(response.data.pradan_cont);
+                        $("#l_farmer").text(response.data.farmer_cont);
+                        $("#l_total").text(response.data.total_amount);
+                        $("#landdet_modal").modal("show");
+
+                    }
+                }
+
+            })
+        });
+
+        $(document).on("click", "#bank_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_bank_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
+                        $("#b_hname").text(response.data.account_holder_name);
+                        $("#b_no").text(response.data.account_number);
+                        $("#b_name").text(response.data.bank_name);
+                        $("#b_branch").text(response.data.branch);
+                        $("#b_ifsc").text(response.data.ifsc_code);
+                        $("#bankdet_modal").modal("show");
+
+
+                    }
+                }
+
+            })
+
+
+        })
     </script>
 
 
