@@ -188,16 +188,19 @@
 
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="text-center">
                                             @php $sno = 1; @endphp
                                             @foreach($forms as $form)
                                             <tr>
                                                 <td>{{ $sno++ }}</td>
-                                                <td>{{ $form->farmer_name }}</td>
-                                                <td>{{ $form->ownership }}</td>
-                                                <td>{{ $form->account_holder_name }}</td>
-                                                <td>Action</td>
-                                                <td>Status</td>
+                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button></th>
+                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->pondForm->land_owner }}</b></button></th>
+                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button></th>
+                                                <th><button value="" style="color:white" class="btn btn-warning btn-sm"><b>Edit</b></button>
+                                                &nbsp;<button value="" style="color:white" class="btn btn-danger btn-sm"><b>Delete</b></button></th>                                               
+                                              <td>Status</td>
+
+                                           
                                             </tr>
                                             @endforeach
                                             </tbody>
