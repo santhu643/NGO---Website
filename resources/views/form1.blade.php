@@ -199,20 +199,31 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="text-center">
-                                            @php $sno = 1; @endphp
-                                            @foreach($forms as $form)
-                                            <tr>
-                                                <td>{{ $sno++ }}</td>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button></th>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->landForm->ownership }}</b></button></th>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button></th>
-                                                <th><button value="" style="color:white" class="btn btn-warning btn-sm"><b>Edit</b></button>
-                                                &nbsp;<button value="" style="color:white" class="btn btn-danger btn-sm"><b>Delete</b></button></th>                                               
-                                              <td>Status</td>
+                                                @php $sno = 1; @endphp
+                                                @foreach($forms as $form)
+                                                <tr>
+                                                    <td>{{ $sno++ }}</td>
+                                                    <th><button id="farmer_detail" value="{{$form->id}}"
+                                                            style="color:white"
+                                                            class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button>
+                                                    </th>
+                                                    <th><button id="land_detail" value="{{$form->id}}"
+                                                            style="color:white"
+                                                            class="btn btn-success btn-sm"><b>{{ $form->landForm->ownership }}</b></button>
+                                                    </th>
+                                                    <th><button id="bank_detail" value="{{$form->id}}"
+                                                            style="color:white"
+                                                            class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button>
+                                                    </th>
+                                                    <th><button value="{{$form->id}}" style="color:white"
+                                                            class="btn btn-warning btn-sm"><b>Edit</b></button>
+                                                        &nbsp;<button value="{{$form->id}}" style="color:white"
+                                                            class="btn btn-danger btn-sm"><b>Delete</b></button></th>
+                                                    <td>Status</td>
 
-                                           
-                                            </tr>
-                                            @endforeach
+
+                                                </tr>
+                                                @endforeach
                                             </tbody>
 
                                         </table>
@@ -558,6 +569,91 @@
             </div>
         </div>
     </div>
+    <!--  Farmer Detail Modal -->
+    <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Farmer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Farmer Name : <span id="f_name"></span><br><br>
+                    Father/Spouse : <span id="f_spouse"></span>
+                    Mobile : <span id="f_mobile"></span><br><br>
+                    Gender : <span id="f_gender"></span><br><br>
+                    Id_Card : <span id="f_card"></span><br><br>
+                    Members : <span id="f_member"></span><br><br>
+                    Id_Number : <span id="f_number"></span><br><br>
+                    hamlet : <span id="f_hamlet"></span><br><br>
+                    Panchayat : <span id="f_panchayat"></span><br><br>
+                    Block : <span id="f_block"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Land Detail Modal -->
+    <div class="modal fade" id="landdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Land Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Ownership : <span id="l_ownership"></span><br><br>
+                    Patta_no : <span id="l_patta"></span><br><br>
+                    Total_Area : <span id="l_tarea"> </span><br><br>
+                    Revenue_village : <span id="l_revenue"></span><br><br>
+                    S.F No : <span id="l_sf"></span><br><br>
+                    Soil Type : <span id="l_soil"></span><br><br>
+                    Land_to_Benefit : <span id="l_benefit"></span><br><br>
+                    Field_inspection : <span id="l_field"></span><br><br>
+                    Site_approval : <span id="l_site"></span><br><br>
+                    Date_of_Inspection : <span id="l_doi"></span><br><br>
+                    Date_of_Approval : <span id="l_doa"></span><br><br>
+                    Type_of_Work : <span id="l_type"></span><br><br>
+                    Area_Benefites : <span id="l_area"></span><br><br>
+                    Other_Works : <span id="l_oth"></span><br><br>
+                    Pradan Contribution : <span id="l_pradan"></span><br><br>
+                    Farmer Contribution : <span id="l_farmer"></span><br><br>
+                    Total_amount : <span id="l_total"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Bank Detail Modal -->
+        <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bank Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Holder_Name : <span id="b_hname"></span><br><br>
+                    Account_Number : <span id="b_no"></span><br><br>
+                    Bank Name : <span id="b_name"></span><br><br>
+                    Branch : <span id="b_branch"></span><br><br>
+                    IFSC Code : <span id="b_ifsc"></span><br><br>
+
+               
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
     function nextStep(current, next) {
@@ -609,17 +705,92 @@
         })
 
     })
-    $(document).ready(function(){
+
+
+    $(document).on("click", "#farmer_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
         $.ajax({
-                type:"GET",
-                url:"/fetch_land",
-                success:function(response){
-                    if(response.status==200){
-                        console.log(response);
-                    }
+            type: "GET",
+            url: `/fetch_farmer_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    console.log(response.data);
+                    $("#f_name").text(response.data.farmer_name);
+                    $("#f_spouse").text(response.data.father_spouse);
+                    $("#f_mobile").text(response.data.mobile_number);
+                    $("#f_gender").text(response.data.gender);
+                    $("#f_card").text(response.data.identity_card_type);
+                    $("#f_member").text(response.data.household_members);
+                    $("#f_number").text(response.data.identity_card_number);
+                    $("#f_hamlet").text(response.data.hamlet);
+                    $("#f_panchayat").text(response.data.panchayat);
+                    $("#f_block").text(response.data.block);
+
+                    $("#farmerdet_modal").modal("show");
                 }
-            })
+
+            }
+
+        })
     });
+
+    $(document).on("click", "#land_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_land_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    $("#l_ownership").text(response.data.ownership);
+                    $("#l_patta").text(response.data.patta);
+                    $("#l_tarea").text(response.data.total_area);
+                    $("#l_revenue").text(response.data.revenue);
+                    $("#l_sf").text(response.data.sf_no);
+                    $("#l_soil").text(response.data.soil_type);
+                    $("#l_benefit").text(response.data.land_benefit);
+                    $("#l_field").text(response.data.field_insp);
+                    $("#l_site").text(response.data.site_app);
+                    $("#l_doi").text(response.data.date_of_ins);
+                    $("#l_doa").text(response.data.date_of_app);
+                    $("#l_type").text(response.data.type_of_work);
+                    $("#l_area").text(response.data.area_benefit);
+                    $("#l_oth").text(response.data.other_works);
+                    $("#l_pradan").text(response.data.pradan_cont);
+                    $("#l_farmer").text(response.data.farmer_cont);
+                    $("#l_total").text(response.data.total_amount);
+                    $("#landdet_modal").modal("show");
+
+                }
+            }
+
+        })
+    });
+
+    $(document).on("click","#bank_detail",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_bank_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    $("#b_hname").text(response.data.account_holder_name);
+                    $("#b_no").text(response.data.account_number);
+                    $("#b_name").text(response.data.bank_name);
+                    $("#b_branch").text(response.data.branch);
+                    $("#b_ifsc").text(response.data.ifsc_code);
+                    $("#bankdet_modal").modal("show");
+               
+
+                }
+            }
+
+        })
+
+
+    })
     </script>
 
 

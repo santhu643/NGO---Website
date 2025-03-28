@@ -24,4 +24,12 @@ Route::post('/form_land',[mainController::class,"land_form"]);
 
 Route::post('/form_pond',[mainController::class,"pond_form"]);
 
+Route::get('/fetch_farmer_det/{form_id}',[mainController::class,"fetch_farmer_det"]);
+
+Route::get('/fetch_land_det/{form_id}',[mainController::class,"fetch_land_det"]);
+
+Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
+
+
+
 
