@@ -7,6 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
@@ -219,7 +221,15 @@
                                                             class="btn btn-warning btn-sm"><b>Edit</b></button>
                                                         &nbsp;<button value="{{$form->id}}" style="color:white"
                                                             class="btn btn-danger btn-sm"><b>Delete</b></button></th>
-                                                    <td>Status</td>
+                                                    <td>
+                                                        @if($form->status == 1)
+                                                        Submitted
+                                                        @else
+                                                        Not Submitted
+                                                        @endif
+                                                    </td>
+
+
 
 
                                                 </tr>
@@ -630,8 +640,8 @@
         </div>
     </div>
 
-        <!-- Bank Detail Modal -->
-        <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Bank Detail Modal -->
+    <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -645,7 +655,7 @@
                     Branch : <span id="b_branch"></span><br><br>
                     IFSC Code : <span id="b_ifsc"></span><br><br>
 
-               
+
 
                 </div>
                 <div class="modal-footer">
@@ -697,7 +707,12 @@
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
-                    alert("form submitted succesfully");
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form Submitted Successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                 } else {
                     alert("something went wrong");
                 }
@@ -768,7 +783,7 @@
         })
     });
 
-    $(document).on("click","#bank_detail",function(e){
+    $(document).on("click", "#bank_detail", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         $.ajax({
@@ -776,13 +791,15 @@
             url: `/fetch_bank_det/${form_id}`,
             success: function(response) {
                 if (response.status == 200) {
+
+
                     $("#b_hname").text(response.data.account_holder_name);
                     $("#b_no").text(response.data.account_number);
                     $("#b_name").text(response.data.bank_name);
                     $("#b_branch").text(response.data.branch);
                     $("#b_ifsc").text(response.data.ifsc_code);
                     $("#bankdet_modal").modal("show");
-               
+
 
                 }
             }
@@ -790,7 +807,7 @@
         })
 
 
-    })
+    });
     </script>
 
 
