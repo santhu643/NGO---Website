@@ -9,6 +9,8 @@ use App\Models\Form;
 use App\Models\BankDetail;
 use App\Models\landForm;
 use App\Models\PondForm;
+use App\Models\FileUpload;
+
 
 
 
@@ -132,6 +134,21 @@ class mainController extends Controller
             // Get the auto-generated form_id
     $form_id = $form->id;
 
+     // Handle multiple file uploads
+     if ($req->hasFile('files')) {
+        foreach ($req->file('files') as $file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('documents'), $filename);
+
+            // Save file details to `uploaded_files` table
+            FileUpload::create([
+                'form_id' => $form_id,
+                'file_type' => $file->getClientOriginalExtension(),
+                'file_name' => $filename,
+            ]);
+        }
+    }
+
     // Insert into `land_form` table
     $landForm = new LandForm();
     $landForm->form_id = $form_id; // Foreign key reference
@@ -234,6 +251,21 @@ class mainController extends Controller
 
     $form_id = $form->id;
 
+     // Handle multiple file uploads
+     if ($req->hasFile('files')) {
+        foreach ($req->file('files') as $file) {
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('documents'), $filename);
+
+            // Save file details to `uploaded_files` table
+            FileUpload::create([
+                'form_id' => $form_id,
+                'file_type' => $file->getClientOriginalExtension(),
+                'file_name' => $filename,
+            ]);
+        }
+    }
+
     
 
     // Now insert into PondForm table using the form_id
@@ -287,11 +319,38 @@ return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
         }
     }
 
+    public function fetch_pond_det($id){
+        $form = PondForm::where('form_id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+    }
+
     public function fetch_bank_det($id){
         $form = BankDetail::where('form_id',$id)->first();
         if($form){
             return response()->json(["status"=>200,"data"=>$form]);
         }
+
+    }
+
+    public function land_del($id){
+        Form::where('id',$id)->delete();
+        LandForm::where('form_id',$id)->delete();
+        BankDetail::where('form_id',$id)->delete();
+
+        return response()->json(["status"=>200]);
+
+
+    }
+
+    public function pond_del($id){
+        Form::where('id',$id)->delete();
+        PondForm::where('form_id',$id)->delete();
+        BankDetail::where('form_id',$id)->delete();
+
+        return response()->json(["status"=>200]);
+
 
     }
 

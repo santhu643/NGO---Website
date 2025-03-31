@@ -30,6 +30,14 @@ Route::get('/fetch_land_det/{form_id}',[mainController::class,"fetch_land_det"])
 
 Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
 
+Route::get('/fetch_pond_det/{form_id}',[mainController::class,"fetch_pond_det"]);
+
+Route::post('/land_del/{form_id}',[mainController::class,"land_del"]);
+
+Route::post('/pond_del/{form_id}',[mainController::class,"pond_del"]);
+
+
+
 
 
 

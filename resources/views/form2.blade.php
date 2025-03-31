@@ -194,10 +194,10 @@
                                             <tr>
                                                 <td>{{ $sno++ }}</td>
                                                 <th><button id="farmer_detail" value="{{$form->id}}" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button></th>
-                                                <th><button value="{{$form->id}}" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->pondForm->land_owner }}</b></button></th>
+                                                <th><button id="pond_detail" value="{{$form->id}}" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->pondForm->land_owner }}</b></button></th>
                                                 <th><button value="{{$form->id}}" id="bank_detail" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button></th>
                                                 <th><button value="" style="color:white" class="btn btn-warning btn-sm"><b>Edit</b></button>
-                                                &nbsp;<button value="" style="color:white" class="btn btn-danger btn-sm"><b>Delete</b></button></th>                                               
+                                                &nbsp;<button value="{{$form->id}}" id="pond_del" style="color:white" class="btn btn-danger btn-sm"><b>Delete</b></button></th>                                               
                                               <td>Status</td>
 
                                            
@@ -509,6 +509,28 @@
                                     </div>
                                 </div>
                             </div>
+                            
+<!-- File Upload Section -->
+<div class="row mb-3">
+    <div class="col-md-6">
+        <label for="file1" class="form-label">File 1</label>
+        <input type="file" name="files[]" class="form-control">
+
+        <label for="file2" class="form-label mt-2">File 2</label>
+        <input type="file" name="files[]" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+        <label for="file3" class="form-label">File 3</label>
+        <input type="file" name="files[]" class="form-control">
+
+        <label for="file4" class="form-label mt-2">File 4</label>
+        <input type="file" name="files[]" class="form-control">
+
+        <label for="file5" class="form-label mt-2">File 5</label>
+        <input type="file" name="files[]" class="form-control">
+    </div>
+</div>
 
                             <div class="text-center mt-4">
                                 <button type="button" class="btn btn-secondary" id="prevSection3">Previous</button>
@@ -565,6 +587,46 @@
                     Bank Name : <span id="b_name"></span><br><br>
                     Branch : <span id="b_branch"></span><br><br>
                     IFSC Code : <span id="b_ifsc"></span><br><br>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+           <!-- Pond Detail Modal -->
+           <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pond Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Land_Owner  : <span id="p_owner"></span><br><br>
+                    Patta No : <span id="p_patta"></span><br><br>
+                    Total Area : <span id="p_tarea"></span><br><br>
+                    Revenue : <span id="p_revenue"></span><br><br>
+                    SF No : <span id="p_sf"></span><br><br>
+                    Soil Type : <span id="p_soil"></span><br><br>
+                    Land TO Serve : <span id="p_land"></span><br><br>
+                    Field Inspection : <span id="p_field"></span><br><br>
+                    Site Approval : <span id="p_site"></span><br><br>
+                    Date of Inspection : <span id="p_doi"></span><br><br>
+                    Date of Approval : <span id="p_doa"></span><br><br>
+                    Length : <span id="p_len"></span><br><br>
+                    Depth : <span id="p_dep"></span><br><br>
+                    Volume : <span id="p_vol"></span><br><br>
+                    Pradan Contribution : <span id="p_pcont"></span><br><br>
+                    Farmer Contribution : <span id="p_fcont"></span><br><br>
+                    Total : <span id="total"></span>
+
+
+                  
 
 
 
@@ -643,6 +705,8 @@
         success:function(response){
           if(response.status==200){
             alert("submitted successfully");
+            $("#pond_table").load(location.href + " #pond_table");
+
           }
         }
       })
@@ -703,6 +767,66 @@
 
 
     });
+
+    $(document).on("click", "#pond_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_pond_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    $("#p_owner").text(response.data.land_owner);
+                $("#p_patta").text(response.data.patta);
+                $("#p_tarea").text(response.data.total_area);
+                $("#p_revenue").text(response.data.revenue);
+                $("#p_sf").text(response.data.sf_no);
+                $("#p_soil").text(response.data.soil_type);
+                $("#p_land").text(response.data.land_serve);
+                $("#p_field").text(response.data.field_insp);
+                $("#p_site").text(response.data.site_appr);
+                $("#p_doi").text(response.data.date_of_insp);
+                $("#p_doa").text(response.data.date_of_appr);
+                $("#p_len").text(response.data.length);
+                $("#p_dep").text(response.data.depth);
+                $("#p_vol").text(response.data.volume);
+                $("#p_pcont").text(response.data.pradan_cont);
+                $("#p_fcont").text(response.data.farmer_cont);
+                $("#total").text(response.data.total);
+
+                    $("#ponddet_modal").modal("show");
+
+
+                }
+            }
+
+        })
+
+
+    });
+
+    $(document).on("click","#pond_del",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $.ajax({
+            type:"POST",
+            url:`/pond_del/${form_id}`,
+            headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+        },
+            success:function(response){
+                if(response.status==200){
+                    console.log("deleted succesfully");
+                    $("#pond_table").load(location.href + " #pond_table");
+
+                }
+            }
+        })
+    });
+
+
+    
     </script>
 
 </body>

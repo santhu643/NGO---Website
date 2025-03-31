@@ -219,7 +219,8 @@
                                                     </th>
                                                     <th><button value="{{$form->id}}" style="color:white"
                                                             class="btn btn-warning btn-sm"><b>Edit</b></button>
-                                                        &nbsp;<button value="{{$form->id}}" style="color:white"
+                                                        &nbsp;<button value="{{$form->id}}" id="land_del"
+                                                            style="color:white"
                                                             class="btn btn-danger btn-sm"><b>Delete</b></button></th>
                                                     <td>
                                                         @if($form->status == 1)
@@ -551,20 +552,53 @@
                             </div>
 
                             <div class="row mb-3">
+                                <!-- IFSC Code Input -->
                                 <div class="col-md-6">
                                     <label for="ifsc" class="form-label">IFSC Code:</label>
                                     <input type="text" class="form-control" id="ifsc" name="ifsc">
                                 </div>
+
+                                <!-- Farmer Agreement Section -->
                                 <div class="col-md-6">
-                                    <br>
                                     <label class="form-label">Farmer has agreed for the work, and his
                                         contribution:</label>
                                     <div class="d-flex gap-3">
-                                        <input type="radio" name="farmer_agreement" value="Yes"> Yes
-                                        <input type="radio" name="farmer_agreement" value="No"> No
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="farmer_agreement"
+                                                value="Yes" id="farmer_yes">
+                                            <label class="form-check-label" for="farmer_yes">Yes</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="farmer_agreement"
+                                                value="No" id="farmer_no">
+                                            <label class="form-check-label" for="farmer_no">No</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- File Upload Section -->
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="file1" class="form-label">Patta</label>
+                                    <input type="file" name="files[]" class="form-control">
+
+                                    <label for="file2" class="form-label mt-2">ID Card</label>
+                                    <input type="file" name="files[]" class="form-control">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="file3" class="form-label">FMB</label>
+                                    <input type="file" name="files[]" class="form-control">
+
+                                    <label for="file4" class="form-label mt-2">Photo</label>
+                                    <input type="file" name="files[]" class="form-control">
+
+                                    <label for="file5" class="form-label mt-2">PassBook</label>
+                                    <input type="file" name="files[]" class="form-control">
+                                </div>
+                            </div>
+
 
 
 
@@ -713,6 +747,8 @@
                         icon: "success",
                         confirmButtonText: "OK"
                     });
+                    $("#land_table").load(location.href + " #land_table");
+
                 } else {
                     alert("something went wrong");
                 }
@@ -807,6 +843,26 @@
         })
 
 
+    });
+
+    $(document).on("click", "#land_del", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $.ajax({
+            type: "POST",
+            url: `/land_del/${form_id}`,
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            },
+            success: function(response) {
+                if (response.status == 200) {
+                    console.log("deleted succesfully");
+                    $("#land_table").load(location.href + " #land_table");
+
+                }
+            }
+        })
     });
     </script>
 
