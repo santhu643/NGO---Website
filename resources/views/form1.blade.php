@@ -149,8 +149,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
+                        <a class="nav-link" href="{{route('applications')}}">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -174,65 +173,360 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <button type="button" class="btn btn-dark" value="land" data-bs-toggle="modal"
-                        data-bs-target="#land_modal">Add</button><br><br>
+                    <nav>
+                        <ul class="nav nav-tabs rounded-bottom" style="border-radius: 10px 10px 10px 10px; overflow: hidden;">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="tab1" href="#step1" onclick="showStep(1)">
+                                    <i class="fas fa-user"></i> Basic Details <span id="icon1" class="text-danger">❌</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab2" href="#step2" onclick="showStep(2)">
+                                    <i class="fas fa-landmark"></i> Land Ownership <span id="icon2" class="text-danger">❌</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab3" href="#step3" onclick="showStep(3)">
+                                    <i class="fas fa-tractor"></i> Land Development <span id="icon3" class="text-danger">❌</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab4" href="#step4" onclick="showStep(4)">
+                                    <i class="fas fa-university"></i> Bank Details <span id="icon4" class="text-danger">❌</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <br>
 
                     <div class="row">
 
-                        <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
-
                                 <div class="card-body">
-                                    <h4 class="card-title">Farm Land v2</h4>
-                                    <div class="table-responsive">
-                                        <table id="land_table" class="table table-bordered table-hover table-striped">
-                                            <thead class="text-center table-dark">
-                                                <tr>
-                                                    <th>S.No</th>
-                                                    <th>Application Number</th>
-                                                    <th>Farmer Details</th>
-                                                    <th>Land Details</th>
-                                                    <th>Bank Details</th>
-                                                    <th>Action</th>
-                                                    <th>Status</th>
+                                    <form id="landform">
+                                        @csrf
+                                        <div id="step1">
+                                            <h5 class="card-title">Basic Details</h5>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
+                                                    <label for="farmerName" class="form-label">Name of Farmer <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="farmerName" name="farmerName" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Gender <span class="text-danger">*</span></label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="radio" id="male" name="gender" value="Male" class="form-check-input ms-2" required>
+                                                            <label for="male" class="form-check-label">Male</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-2" required>
+                                                            <label for="female" class="form-check-label">Female</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-2" required>
+                                                            <label for="transgender" class="form-check-label">Transgender</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="fatherSpouse" class="form-label">Father / Spouse <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
+                                                </div>
+                                            </div>
 
 
-                                                </tr>
-                                            </thead>
-                                            <tbody class="text-center">
-                                                @php $sno = 1; @endphp
-                                                @foreach($forms as $form)
-                                                <tr>
-                                                    <td>{{ $sno++ }}</td>
-                                                    <td>TN-3202200{{ $sno }}</td>
-                                                    <th><button id="farmer_detail" value="{{$form->id}}"
-                                                            style="color:white"
-                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                                                    </th>
-                                                    <th><button id="land_detail" value="{{$form->id}}"
-                                                            style="color:white"
-                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                                                    </th>
-                                                    <th>
-                                                        <button id="bank_detail" value="{{ $form->id }}" style="color:black" class="btn btn-link">
-                                                            <b>{{ str_repeat('X', strlen($form->bankDetails->account_number) - 4) . substr($form->bankDetails->account_number, -4) }}</b>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="householdMembers" class="form-label">Household Members <span class="text-danger">*</span></label>
+                                                    <input type="number" class="form-control" id="householdMembers" name="householdMembers" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Identity Card <span class="text-danger">*</span></label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
+                                                            <label for="aadhar" class="form-check-label">Aadhar</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
+                                                            <label for="epic" class="form-check-label">EPIC</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
+                                                            <label for="drivingLicense" class="form-check-label">Driving License</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="idCardNumber" class="form-label">ID Card Number <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID Proof <span class="text-danger">*</span></label>
+                                                    <input type="file" class="form-control" name="file" id="fileUpload" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="hamlet" class="form-label">Hamlet <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="hamlet" name="hamlet" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="panchayat" class="form-label">Panchayat <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="panchayat" name="panchayat" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="block" class="form-label">Block <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="block" name="block" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
+                                                    Next (Step <span id="nextStepNum">2</span>) →
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                        <div id="step2" style="display: none;">
+                                            <h5 class="card-title">Land Ownership Details</h5>
+                                            <h6 class="card-description ms-2 mb-3">Ownership Type</h5>
+                                                <div class="row mb-4 ms-2">
+                                                    <div class="col-md-6">
+                                                        <div>
+                                                            <input type="radio" name="type" id="ownerCultivator" class="form-check-input">
+                                                            <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
+                                                            <input type="radio" name="type" id="leaseHolder" class="form-check-input ms-3">
+                                                            <label for="leaseHolder" class="form-check-label">Lease Holder</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Patta Number <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" name="pattaNumber" required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Total Area (ha) <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" name="totalArea" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Revenue Village <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" name="revenueVillage" required>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-end gap-2">
+                                                    <div class="d-flex justify-content-between">
+                                                        <button type="button" class="btn btn-secondary me-2" onclick="prevStep(2, 1)">
+                                                            ← Previous (Step <span id="prevStepNum">1</span>)
                                                         </button>
-                                                    </th>
-                                                    <th><button value="{{$form->id}}" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                        &nbsp;<button value="{{$form->id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></th>
-                                                    <td>
-                                                        @if($sno == 2)
-                                                        <button type="button" class="btn btn-inverse-warning btn-fw">Waiting For Approval</button>
-                                                        @else
-                                                        <button type="button" class="btn btn-inverse-danger btn-fw">Application Rejected</button>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
 
-                                        </table>
-                                    </div>
+                                                        <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">
+                                                            Next (Step <span id="nextStepNum">3</span>) →
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div id="step3" style="display: none;">
+                                            <h5 class="card-title">Land Development Activity</h5>
+                                            <div class="container p-3">
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="sf_no" class="form-label">S.F. No. of the land to be
+                                                            developed <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="sf_no" name="sf_no" required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="land_benefit" class="form-label">Land to benefit (ha) <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="land_benefit" name="land_benefit" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Soil Type <span class="text-danger">*</span></label>
+                                                        <div class="d-flex gap-3">
+                                                            <input type="radio" name="soil_type" value="Red Soil"> Red Soil
+                                                            <input type="radio" name="soil_type" value="Black Cotton"> Black Cotton
+                                                            <input type="radio" name="soil_type" value="Sandy Loam"> Sandy Loam
+                                                            <input type="radio" name="soil_type" value="Laterite"> Laterite
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Field Inspection done by:</label>
+                                                        <div class="d-flex gap-3">
+                                                            <input type="radio" name="inspection" value="Volunteer"> Volunteer
+                                                            <input type="radio" name="inspection" value="Project Executive"> Project
+                                                            Executive
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Site Approved by:</label>
+                                                        <div class="d-flex gap-3">
+                                                            <input type="radio" name="approved_by" value="Project Executive"> Project
+                                                            Executive
+                                                            <input type="radio" name="approved_by" value="Team Leader"> Team Leader
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="inspection_date" class="form-label">Date of Inspection <span class="text-danger">*</span></label>
+                                                        <input type="date" class="form-control" id="inspection_date"
+                                                            name="inspection_date" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="approval_date" class="form-label">Date of Approval <span class="text-danger">*</span></label>
+                                                        <input type="date" class="form-control" id="approval_date" name="approval_date" required>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="estimateAmount" class="form-label">Total Estimate Amount</label>
+                                                        <input type="text" class="form-control" id="estimateAmount"
+                                                            name="estimateAmount">
+                                                    </div>
+                                                </div>
+
+                                                <!-- Newly added fields -->
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label class="form-label">Type of work proposed <span class="text-danger">*</span></label>
+                                                        <div class="ms-5">
+                                                            <div class="form-check">
+                                                                <input type="radio" class="form-check-input" id="prosopisRemoval"
+                                                                    name="workType[]" value="Prosopis removal">
+                                                                <label class="form-check-label" for="prosopisRemoval">Prosopis
+                                                                    removal</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="radio" class="form-check-input" id="redevelopment"
+                                                                    name="workType[]" value="Redevelopment of eroded lands">
+                                                                <label class="form-check-label" for="redevelopment">Redevelopment of eroded
+                                                                    lands</label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input type="radio" class="form-check-input" id="siltApplication"
+                                                                    name="workType[]" value="Silt application">
+                                                                <label class="form-check-label" for="siltApplication">Silt
+                                                                    application</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="areaBenefited" class="form-label">Area benefited by proposal works
+                                                            (ha)</label>
+                                                        <input type="text" class="form-control" id="areaBenefited" name="areaBenefited">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="otherWorks" class="form-label">Any other works proposed</label>
+                                                        <textarea class="form-control" id="otherWorks" name="otherWorks"
+                                                            rows="2"></textarea>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="pradanContribution" class="form-label">PRADAN Contribution <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="pradanContribution"
+                                                            name="pradanContribution" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6">
+                                                        <label for="farmerContribution" class="form-label">Farmer Contribution <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="farmerContribution"
+                                                            name="farmerContribution" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="d-flex justify-content-end gap-2">
+                                                    <button type="button" class="btn btn-secondary me-2" onclick="prevStep(3, 2)">
+                                                        ← Previous (Step <span id="prevStepNum">2</span>)
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-primary" onclick="nextStep(3, 4)">
+                                                        Next (Step <span id="nextStepNum">4</span>) →
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="step4" style="display: none;">
+                                            <h5 class="card-title">Bank Details</h5>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="account_holder" class="form-label">Name of Account Holder <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="account_holder" name="account_holder" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="account_number" class="form-label">Account Number <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="account_number" name="account_number" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="bank_name" class="form-label">Name of the Bank <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="bank_name" name="bank_name">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="branch" class="form-label">Branch <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="branch" name="branch" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="ifsc" class="form-label">IFSC Code <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="ifsc" name="ifsc" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <br>
+                                                    <label class="form-label">Farmer has agreed for the work, and his
+                                                        contribution:</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="farmer_agreement" value="Yes"> Yes
+                                                        <input type="radio" name="farmer_agreement" value="No"> No
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <button type="button" class="btn btn-secondary me-2" onclick="prevStep(4, 3)">
+                                                    ← Previous (Step <span id="prevStepNum">3</span>)
+                                                </button>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -255,325 +549,6 @@
 
     <!-- Modalsss -->
 
-    <div class="modal fade" id="land_modal" tabindex="-1" aria-labelledby="landFormModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="landFormModalLabel">Land (re)Development Form</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="landform">
-                        @csrf
-
-                        <div id="step1">
-                            <h5>Basic Details</h5>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
-                                    <label for="farmerName" class="form-label">Name of Farmer</label>
-                                    <input type="text" class="form-control" id="farmerName" name="farmerName" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="mobileNumber" class="form-label">Mobile Number</label>
-                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
-                                        required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Gender</label>
-                                    <div>
-                                        <input type="radio" id="male" name="gender" value="Male"
-                                            class="form-check-input" required>
-                                        <label for="male" class="form-check-label">Male</label>
-                                        <input type="radio" id="female" name="gender" value="Female"
-                                            class="form-check-input ms-3" required>
-                                        <label for="female" class="form-check-label">Female</label>
-                                        <input type="radio" id="transgender" name="gender" value="Transgender"
-                                            class="form-check-input ms-3" required>
-                                        <label for="transgender" class="form-check-label">Transgender</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="fatherSpouse" class="form-label">Father / Spouse</label>
-                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse"
-                                        required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="householdMembers" class="form-label">Household Members</label>
-                                    <input type="number" class="form-control" id="householdMembers"
-                                        name="householdMembers" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Identity Card</label>
-                                    <div>
-                                        <input type="radio" id="aadhar" name="identityCard" value="Aadhar"
-                                            class="form-check-input" required onclick="updateIdentityTitle()">
-                                        <label for="aadhar" class="form-check-label">Aadhar</label>
-                                        <input type="radio" id="epic" name="identityCard" value="EPIC"
-                                            class="form-check-input ms-3" required onclick="updateIdentityTitle()">
-                                        <label for="epic" class="form-check-label">EPIC</label>
-                                        <input type="radio" id="drivingLicense" name="identityCard"
-                                            value="Driving License" class="form-check-input ms-3" required
-                                            onclick="updateIdentityTitle()">
-                                        <label for="drivingLicense" class="form-check-label">Driving License</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="idCardNumber" class="form-label">ID Card Number</label>
-                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber"
-                                        required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID
-                                        Proof</label>
-                                    <input type="file" class="form-control" name="file" id="fileUpload">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="hamlet" class="form-label">Hamlet</label>
-                                    <input type="text" class="form-control" id="hamlet" name="hamlet" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="panchayat" class="form-label">Panchayat</label>
-                                    <input type="text" class="form-control" id="panchayat" name="panchayat" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="block" class="form-label">Block</label>
-                                    <input type="text" class="form-control" id="block" name="block" required>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-end gap-2">
-                                <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">Next</button>
-                            </div>
-                        </div>
-
-                        <div id="step2" style="display: none;">
-                            <h5>Details of Land Ownership</h5>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div>
-                                        <input type="radio" name="type" id="ownerCultivator" class="form-check-input">
-                                        <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
-                                        <input type="radio" name="type" id="leaseHolder" class="form-check-input ms-3">
-                                        <label for="leaseHolder" class="form-check-label">Lease Holder</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Patta Number</label>
-                                    <input type="text" class="form-control" name="pattaNumber" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Total Area (ha)</label>
-                                    <input type="text" class="form-control" name="totalArea" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Revenue Village</label>
-                                    <input type="text" class="form-control" name="revenueVillage" required>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end gap-2">
-                                <button type="button" class="btn btn-secondary" onclick="prevStep(2, 1)">Back</button>
-                                <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">Next</button>
-                            </div>
-                        </div>
-
-                        <div id="step3" style="display: none;">
-                            <h5>Land Development Activity</h5>
-                            <div class="container p-3">
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="sf_no" class="form-label">S.F. No. of the land to be
-                                            developed:</label>
-                                        <input type="text" class="form-control" id="sf_no" name="sf_no">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="land_benefit" class="form-label">Land to benefit (ha):</label>
-                                        <input type="text" class="form-control" id="land_benefit" name="land_benefit">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Soil Type:</label>
-                                        <div class="d-flex gap-3">
-                                            <input type="radio" name="soil_type" value="Red Soil"> Red Soil
-                                            <input type="radio" name="soil_type" value="Black Cotton"> Black Cotton
-                                            <input type="radio" name="soil_type" value="Sandy Loam"> Sandy Loam
-                                            <input type="radio" name="soil_type" value="Laterite"> Laterite
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Field Inspection done by:</label>
-                                        <div class="d-flex gap-3">
-                                            <input type="radio" name="inspection" value="Volunteer"> Volunteer
-                                            <input type="radio" name="inspection" value="Project Executive"> Project
-                                            Executive
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Site Approved by:</label>
-                                        <div class="d-flex gap-3">
-                                            <input type="radio" name="approved_by" value="Project Executive"> Project
-                                            Executive
-                                            <input type="radio" name="approved_by" value="Team Leader"> Team Leader
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="inspection_date" class="form-label">Date of Inspection:</label>
-                                        <input type="date" class="form-control" id="inspection_date"
-                                            name="inspection_date">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="approval_date" class="form-label">Date of Approval:</label>
-                                        <input type="date" class="form-control" id="approval_date" name="approval_date">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="estimateAmount" class="form-label">Total Estimate Amount</label>
-                                        <input type="text" class="form-control" id="estimateAmount"
-                                            name="estimateAmount">
-                                    </div>
-                                </div>
-
-                                <!-- Newly added fields -->
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Type of work proposed</label>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="prosopisRemoval"
-                                                name="workType[]" value="Prosopis removal">
-                                            <label class="form-check-label" for="prosopisRemoval">Prosopis
-                                                removal</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="redevelopment"
-                                                name="workType[]" value="Redevelopment of eroded lands">
-                                            <label class="form-check-label" for="redevelopment">Redevelopment of eroded
-                                                lands</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="siltApplication"
-                                                name="workType[]" value="Silt application">
-                                            <label class="form-check-label" for="siltApplication">Silt
-                                                application</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="areaBenefited" class="form-label">Area benefited by proposal works
-                                            (ha)</label>
-                                        <input type="text" class="form-control" id="areaBenefited" name="areaBenefited">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="otherWorks" class="form-label">Any other works proposed</label>
-                                        <textarea class="form-control" id="otherWorks" name="otherWorks"
-                                            rows="2"></textarea>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="pradanContribution" class="form-label">PRADAN Contribution</label>
-                                        <input type="text" class="form-control" id="pradanContribution"
-                                            name="pradanContribution">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="farmerContribution" class="form-label">Farmer Contribution</label>
-                                        <input type="text" class="form-control" id="farmerContribution"
-                                            name="farmerContribution">
-                                    </div>
-                                </div>
-
-                                <div class="d-flex justify-content-end gap-2">
-                                    <button type="button" class="btn btn-secondary"
-                                        onclick="prevStep(3, 2)">Back</button>
-                                    <button type="button" class="btn btn-primary" onclick="nextStep(3, 4)">Next</button>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div id="step4" style="display: none;">
-                            <h5>Bank Details</h5>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="account_holder" class="form-label">Name of Account Holder:</label>
-                                    <input type="text" class="form-control" id="account_holder" name="account_holder">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="account_number" class="form-label">Account Number:</label>
-                                    <input type="text" class="form-control" id="account_number" name="account_number">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="bank_name" class="form-label">Name of the Bank:</label>
-                                    <input type="text" class="form-control" id="bank_name" name="bank_name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="branch" class="form-label">Branch:</label>
-                                    <input type="text" class="form-control" id="branch" name="branch">
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <label for="ifsc" class="form-label">IFSC Code:</label>
-                                    <input type="text" class="form-control" id="ifsc" name="ifsc">
-                                </div>
-                                <div class="col-md-6">
-                                    <br>
-                                    <label class="form-label">Farmer has agreed for the work, and his
-                                        contribution:</label>
-                                    <div class="d-flex gap-3">
-                                        <input type="radio" name="farmer_agreement" value="Yes"> Yes
-                                        <input type="radio" name="farmer_agreement" value="No"> No
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="d-flex justify-content-end gap-2">
-                                <button type="button" class="btn btn-secondary" onclick="prevStep(4, 3)">Back</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -650,8 +625,6 @@
                     Branch : <span id="b_branch"></span><br><br>
                     IFSC Code : <span id="b_ifsc"></span><br><br>
 
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -661,148 +634,137 @@
     </div>
 
     <script>
+        function showStep(stepNumber) {
+            event.preventDefault();
+
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step${i}`).style.display = 'none';
+                document.getElementById(`tab${i}`).classList.remove('active');
+            }
+
+            document.getElementById(`step${stepNumber}`).style.display = 'block';
+            document.getElementById(`tab${stepNumber}`).classList.add('active');
+        }
+
         function nextStep(current, next) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + next).style.display = 'block';
+            document.getElementById(`step${current}`).style.display = 'none';
+            document.getElementById(`step${next}`).style.display = 'block';
+
+            document.getElementById(`tab${current}`).classList.remove('active');
+            document.getElementById(`tab${next}`).classList.add('active');
+
+            validateStep(current); // Validate current step when moving forward
         }
 
         function prevStep(current, prev) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + prev).style.display = 'block';
+            document.getElementById(`step${current}`).style.display = 'none';
+            document.getElementById(`step${prev}`).style.display = 'block';
+
+            document.getElementById(`tab${current}`).classList.remove('active');
+            document.getElementById(`tab${prev}`).classList.add('active');
         }
 
+        // Validate required fields in a step and update the tick mark
+        function validateStep(step) {
+            let currentStep = document.getElementById(`step${step}`);
+            let requiredFields = currentStep.querySelectorAll("[required]");
+            let allValid = true;
 
-
-        function updateIdentityTitle() {
-            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
-            const fileUploadLabel = document.getElementById("fileUploadLabel");
-            if (selectedIdentity) {
-                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
-            }
-        }
-
-        function nextStep(current, next) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + next).style.display = "block";
-        }
-
-        function prevStep(current, previous) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + previous).style.display = "block";
-        };
-
-    $(document).on("submit", "#landform", function(e) {
-        e.preventDefault();
-        var form = new FormData(this);
-        $.ajax({
-            type: "POST",
-            url: "/form_land",
-            data: form,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status == 200) {
-                    Swal.fire({
-                        title: "Success!",
-                        text: "Form Submitted Successfully",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    });
+            requiredFields.forEach((field) => {
+                if (field.type === "radio" || field.type === "checkbox") {
+                    let name = field.name;
+                    let checked = document.querySelector(`input[name="${name}"]:checked`);
+                    if (!checked) {
+                        allValid = false;
+                    }
+                } else if (field.type === "file") {
+                    if (!field.files.length) {
+                        allValid = false;
+                    }
                 } else {
-                    alert("something went wrong");
+                    if (!field.value.trim()) {
+                        allValid = false;
+                        field.classList.add("border", "border-danger");
+                    } else {
+                        field.classList.remove("border", "border-danger");
+                    }
                 }
+            });
+
+            if (allValid) {
+                document.getElementById(`icon${step}`).innerHTML = "✅";
+                document.getElementById(`icon${step}`).classList.remove('text-danger');
+                document.getElementById(`icon${step}`).classList.add('text-success');
+            } else {
+                document.getElementById(`icon${step}`).innerHTML = "❌";
+                document.getElementById(`icon${step}`).classList.remove('text-success');
+                document.getElementById(`icon${step}`).classList.add('text-danger');
             }
-        })
+        }
 
-        })
-
-
-        $(document).on("click", "#farmer_detail", function(e) {
+        // Ensure all fields are filled before submission
+        $(document).on("submit", "#landform", function(e) {
             e.preventDefault();
-            var form_id = $(this).val();
+
+            let allFields = document.querySelectorAll("[required]");
+            let allValid = true;
+
+            allFields.forEach((field) => {
+                if (field.type === "radio" || field.type === "checkbox") {
+                    let name = field.name;
+                    let checked = document.querySelector(`input[name="${name}"]:checked`);
+                    if (!checked) {
+                        allValid = false;
+                    }
+                } else if (field.type === "file") {
+                    if (!field.files.length) {
+                        allValid = false;
+                    }
+                } else {
+                    if (!field.value.trim()) {
+                        allValid = false;
+                        field.classList.add("border", "border-danger");
+                    } else {
+                        field.classList.remove("border", "border-danger");
+                    }
+                }
+            });
+
+            if (!allValid) {
+                alert("Please fill all required fields before submitting.");
+                return;
+            }
+
+            // If all fields are filled, proceed with form submission
+            var form = new FormData(this);
             $.ajax({
-                type: "GET",
-                url: `/fetch_farmer_det/${form_id}`,
+                type: "POST",
+                url: "/form_land",
+                data: form,
+                processData: false,
+                contentType: false,
                 success: function(response) {
                     if (response.status == 200) {
-                        console.log(response.data);
-                        $("#f_name").text(response.data.farmer_name);
-                        $("#f_spouse").text(response.data.father_spouse);
-                        $("#f_mobile").text(response.data.mobile_number);
-                        $("#f_gender").text(response.data.gender);
-                        $("#f_card").text(response.data.identity_card_type);
-                        $("#f_member").text(response.data.household_members);
-                        $("#f_number").text(response.data.identity_card_number);
-                        $("#f_hamlet").text(response.data.hamlet);
-                        $("#f_panchayat").text(response.data.panchayat);
-                        $("#f_block").text(response.data.block);
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Form Submitted Successfully",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
 
-                        $("#farmerdet_modal").modal("show");
+                        document.getElementById(`icon4`).innerHTML = "✅";
+                        document.getElementById(`icon4`).classList.remove('text-danger');
+                        document.getElementById(`icon4`).classList.add('text-success');
+                    } else {
+                        alert("Something went wrong");
                     }
-
                 }
-
-            })
+            });
         });
 
-        $(document).on("click", "#land_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_land_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        $("#l_ownership").text(response.data.ownership);
-                        $("#l_patta").text(response.data.patta);
-                        $("#l_tarea").text(response.data.total_area);
-                        $("#l_revenue").text(response.data.revenue);
-                        $("#l_sf").text(response.data.sf_no);
-                        $("#l_soil").text(response.data.soil_type);
-                        $("#l_benefit").text(response.data.land_benefit);
-                        $("#l_field").text(response.data.field_insp);
-                        $("#l_site").text(response.data.site_app);
-                        $("#l_doi").text(response.data.date_of_ins);
-                        $("#l_doa").text(response.data.date_of_app);
-                        $("#l_type").text(response.data.type_of_work);
-                        $("#l_area").text(response.data.area_benefit);
-                        $("#l_oth").text(response.data.other_works);
-                        $("#l_pradan").text(response.data.pradan_cont);
-                        $("#l_farmer").text(response.data.farmer_cont);
-                        $("#l_total").text(response.data.total_amount);
-                        $("#landdet_modal").modal("show");
-
-                    }
-                }
-
-            })
+        document.addEventListener("DOMContentLoaded", function() {
+            showStep(1);
         });
-
-    $(document).on("click", "#bank_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_bank_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-
-
-                    $("#b_hname").text(response.data.account_holder_name);
-                    $("#b_no").text(response.data.account_number);
-                    $("#b_name").text(response.data.bank_name);
-                    $("#b_branch").text(response.data.branch);
-                    $("#b_ifsc").text(response.data.ifsc_code);
-                    $("#bankdet_modal").modal("show");
-
-
-                    }
-                }
-
-            })
-
-
-    });
     </script>
 
 

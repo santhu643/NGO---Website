@@ -40,7 +40,7 @@ class mainController extends Controller
         }
 
     }
-    public function form1()
+    public function applications()
     {
         $userId = session('user_id');    
     
@@ -49,7 +49,7 @@ class mainController extends Controller
             ->with(['landForm', 'bankDetails'])
             ->get();
 
-     return view('form1',compact('forms'));
+     return view('applications',compact('forms'));
 
 
 
