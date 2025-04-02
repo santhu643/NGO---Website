@@ -7,6 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -689,23 +691,28 @@
             document.getElementById("step" + previous).style.display = "block";
         };
 
-        $(document).on("submit", "#landform", function(e) {
-            e.preventDefault();
-            var form = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "/form_land",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        alert("form submitted succesfully");
-                    } else {
-                        alert("something went wrong");
-                    }
+    $(document).on("submit", "#landform", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: "/form_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form Submitted Successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
+                } else {
+                    alert("something went wrong");
                 }
-            })
+            }
+        })
 
         })
 
@@ -771,20 +778,22 @@
             })
         });
 
-        $(document).on("click", "#bank_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_bank_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        $("#b_hname").text(response.data.account_holder_name);
-                        $("#b_no").text(response.data.account_number);
-                        $("#b_name").text(response.data.bank_name);
-                        $("#b_branch").text(response.data.branch);
-                        $("#b_ifsc").text(response.data.ifsc_code);
-                        $("#bankdet_modal").modal("show");
+    $(document).on("click", "#bank_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_bank_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+
+
+                    $("#b_hname").text(response.data.account_holder_name);
+                    $("#b_no").text(response.data.account_number);
+                    $("#b_name").text(response.data.bank_name);
+                    $("#b_branch").text(response.data.branch);
+                    $("#b_ifsc").text(response.data.ifsc_code);
+                    $("#bankdet_modal").modal("show");
 
 
                     }
@@ -793,7 +802,7 @@
             })
 
 
-        })
+    });
     </script>
 
 

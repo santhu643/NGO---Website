@@ -126,6 +126,7 @@ class mainController extends Controller
         $form->hamlet = $req->hamlet;
         $form->panchayat = $req->panchayat;
         $form->block = $req->block;
+        $form->status = 1;
         $form->save();
 
             // Get the auto-generated form_id
@@ -227,6 +228,8 @@ class mainController extends Controller
     $form->panchayat = $req->panchayat;
     $form->block = $req->block;
     $form->created_at = now(); // Add timestamp manually
+    $form->status = 1;
+
     $form->save();
 
     $form_id = $form->id;

@@ -193,9 +193,9 @@
                                             @foreach($forms as $form)
                                             <tr>
                                                 <td>{{ $sno++ }}</td>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button></th>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->pondForm->land_owner }}</b></button></th>
-                                                <th><button value="" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button></th>
+                                                <th><button id="farmer_detail" value="{{$form->id}}" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->farmer_name }}</b></button></th>
+                                                <th><button value="{{$form->id}}" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->pondForm->land_owner }}</b></button></th>
+                                                <th><button value="{{$form->id}}" id="bank_detail" style="color:white" class="btn btn-success btn-sm"><b>{{ $form->bankDetails->account_holder_name }}</b></button></th>
                                                 <th><button value="" style="color:white" class="btn btn-warning btn-sm"><b>Edit</b></button>
                                                 &nbsp;<button value="" style="color:white" class="btn btn-danger btn-sm"><b>Delete</b></button></th>                                               
                                               <td>Status</td>
@@ -522,6 +522,60 @@
             </div>
         </div>
     </div>
+
+
+        <!--  Farmer Detail Modal -->
+        <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Farmer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Farmer Name : <span id="f_name"></span><br><br>
+                    Father/Spouse : <span id="f_spouse"></span><br><br> 
+                    Mobile : <span id="f_mobile"></span><br><br>
+                    Gender : <span id="f_gender"></span><br><br>
+                    Id_Card : <span id="f_card"></span><br><br>
+                    Members : <span id="f_member"></span><br><br>
+                    Id_Number : <span id="f_number"></span><br><br>
+                    hamlet : <span id="f_hamlet"></span><br><br>
+                    Panchayat : <span id="f_panchayat"></span><br><br>
+                    Block : <span id="f_block"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <!-- Bank Detail Modal -->
+       <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bank Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Holder_Name : <span id="b_hname"></span><br><br>
+                    Account_Number : <span id="b_no"></span><br><br>
+                    Bank Name : <span id="b_name"></span><br><br>
+                    Branch : <span id="b_branch"></span><br><br>
+                    IFSC Code : <span id="b_ifsc"></span><br><br>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
 
     <!-- <script src="{{ asset('assets/vendors/chart.js/chart.umd.js') }}"></script>
@@ -594,17 +648,61 @@
       })
     });
 
-    $(document).ready(function(){
+
+
+    $(document).on("click", "#farmer_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
         $.ajax({
-                type:"GET",
-                url:"/fetch_pond",
-                success:function(response){
-                    if(response.status==200){
-                        console.log(response);
-                    }
+            type: "GET",
+            url: `/fetch_farmer_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    console.log(response.data);
+                    $("#f_name").text(response.data.farmer_name);
+                    $("#f_spouse").text(response.data.father_spouse);
+                    $("#f_mobile").text(response.data.mobile_number);
+                    $("#f_gender").text(response.data.gender);
+                    $("#f_card").text(response.data.identity_card_type);
+                    $("#f_member").text(response.data.household_members);
+                    $("#f_number").text(response.data.identity_card_number);
+                    $("#f_hamlet").text(response.data.hamlet);
+                    $("#f_panchayat").text(response.data.panchayat);
+                    $("#f_block").text(response.data.block);
+
+                    $("#farmerdet_modal").modal("show");
                 }
-            })
-    })
+
+            }
+
+        })
+    });
+
+    $(document).on("click", "#bank_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_bank_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+
+
+                    $("#b_hname").text(response.data.account_holder_name);
+                    $("#b_no").text(response.data.account_number);
+                    $("#b_name").text(response.data.bank_name);
+                    $("#b_branch").text(response.data.branch);
+                    $("#b_ifsc").text(response.data.ifsc_code);
+                    $("#bankdet_modal").modal("show");
+
+
+                }
+            }
+
+        })
+
+
+    });
     </script>
 
 </body>
