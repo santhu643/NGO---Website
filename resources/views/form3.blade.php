@@ -149,8 +149,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >
-                            <i class="icon-columns menu-icon"></i>
+                    <a class="nav-link" href="{{route('application')}}">
+                    <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
@@ -187,7 +187,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="tab3" href="#step3" onclick="showStep(3)">
-                                    <i class="fas fa-tractor"></i> Land Development <span id="icon3" class="text-danger">❌</span>
+                                    <i class="fas fa-tractor"></i> Plantation Development <span id="icon3" class="text-danger">❌</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -429,7 +429,7 @@
     <h5 class="card-title">Land Ownership Details</h5>
 
     <!-- Land Ownership -->
-    <h6 class="card-description ms-2 mb-3">23. Land Ownership</h6>
+    <h6 class="card-description ms-2 mb-3">Land Ownership</h6>
     <div class="row mb-4 ms-2">
         <div class="col-md-6">
             <input type="radio" name="landOwnership" id="ownerCultivator" class="form-check-input">
@@ -440,7 +440,7 @@
     </div>
 
     <!-- Well for Irrigation -->
-    <h6 class="card-description ms-2 mb-3">24. Well for Irrigation</h6>
+    <h6 class="card-description ms-2 mb-3">Well for Irrigation</h6>
     <div class="row mb-3 ms-2">
         <div class="col-md-6">
             <input type="radio" name="wellIrrigation" id="wellYes" class="form-check-input">
@@ -452,7 +452,7 @@
     </div>
 
     <!-- Irrigated Lands -->
-    <h6 class="card-description ms-2 mb-3">25. Irrigated Lands (ha)</h6>
+    <h6 class="card-description ms-2 mb-3">Irrigated Lands (ha)</h6>
     <div class="row mb-4 ms-2">
         <div class="col-md-6">
             <input type="checkbox" name="irrigatedLand" id="rainfed" class="form-check-input">
@@ -467,21 +467,21 @@
     <!-- Patta Number, Total Area, Revenue Village -->
     <div class="row mb-3">
         <div class="col-md-4">
-            <label class="form-label">26. Patta Number <span class="text-danger">*</span></label>
+            <label class="form-label">Patta Number <span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="pattaNumber" required>
         </div>
         <div class="col-md-4">
-            <label class="form-label">27. Total Area (ha) <span class="text-danger">*</span></label>
+            <label class="form-label">Total Area (ha) <span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="totalArea" required>
         </div>
         <div class="col-md-4">
-            <label class="form-label">28. Revenue Village <span class="text-danger">*</span></label>
+            <label class="form-label">Revenue Village <span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="revenueVillage" required>
         </div>
     </div>
 
     <!-- Crop Season -->
-    <h6 class="card-description ms-2 mb-3">29. Crop Season</h6>
+    <h6 class="card-description ms-2 mb-3">Crop Season</h6>
     <div class="row mb-3 ms-2">
         <div class="col-md-6">
             <input type="checkbox" name="cropSeason" id="kharif" class="form-check-input">
@@ -494,7 +494,7 @@
     </div>
 
     <!-- Livestock -->
-    <h6 class="card-description ms-2 mb-3">30. Livestock at Home</h6>
+    <h6 class="card-description ms-2 mb-3">Livestock at Home</h6>
     <div class="row mb-3 ms-2">
         <div class="col-md-6">
             <input type="checkbox" name="livestock" id="ruminants" class="form-check-input">
@@ -537,7 +537,7 @@
 
                                                 <div class="row mb-3">
     <div class="col-md-12">
-        <label class="form-label">22. Type of Plantations proposed</label>
+        <label class="form-label">Type of Plantations proposed</label>
         <div class="ms-4">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="checkbox" id="plantationMango" name="plantationType[]" value="Mango">

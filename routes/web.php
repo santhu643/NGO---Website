@@ -19,11 +19,13 @@ Route::get('/form2',function(){
     return view('form2');
 })->name('form2');
 
-
-
 Route::get('/form3',function(){
     return view('form3');
 })->name('form3');
+
+Route::get('/application',function(){
+    return view('applications');
+})->name('application');
 
 Route::post('/form_land',[mainController::class,"land_form"]);
 

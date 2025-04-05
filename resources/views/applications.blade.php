@@ -149,7 +149,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('applications')}}">
+                        <a class="nav-link" href="{{route('application')}}">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -195,37 +195,7 @@
 
                                                 </tr>
                                             </thead>
-                                            <tbody class="text-center">
-                                                @php $sno = 1; @endphp
-                                                @foreach($forms as $form)
-                                                <tr>
-                                                    <td>{{ $sno++ }}</td>
-                                                    <td>TN-3202200{{ $sno }}</td>
-                                                    <th><button id="farmer_detail" value="{{$form->id}}"
-                                                            style="color:white"
-                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                                                    </th>
-                                                    <th><button id="land_detail" value="{{$form->id}}"
-                                                            style="color:white"
-                                                            class="btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                                                    </th>
-                                                    <th>
-                                                        <button id="bank_detail" value="{{ $form->id }}" style="color:black" class="btn btn-link">
-                                                            <b>{{ str_repeat('X', strlen($form->bankDetails->account_number) - 4) . substr($form->bankDetails->account_number, -4) }}</b>
-                                                        </button>
-                                                    </th>
-                                                    <th><button value="{{$form->id}}" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                        &nbsp;<button value="{{$form->id}}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></th>
-                                                    <td>
-                                                        @if($sno == 2)
-                                                        <button type="button" class="btn btn-inverse-warning btn-fw">Waiting For Approval</button>
-                                                        @else
-                                                        <button type="button" class="btn btn-inverse-danger btn-fw">Application Rejected</button>
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
+                                         
 
                                         </table>
                                     </div>

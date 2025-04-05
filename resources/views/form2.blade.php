@@ -149,8 +149,8 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >
-                            <i class="icon-columns menu-icon"></i>
+                    <a class="nav-link" href="{{route('application')}}">
+                    <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
