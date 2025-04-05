@@ -124,14 +124,15 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Form</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plantation Form</a></li>
+                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Development</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Development</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('applications')}}">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>

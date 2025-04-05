@@ -25,21 +25,21 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <style>
-        .step {
-            display: none;
-        }
+    .step {
+        display: none;
+    }
 
-        .step.active {
-            display: block;
-        }
+    .step.active {
+        display: block;
+    }
 
-        .step3-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+    .step3-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
 
-            /* Added spacing */
-        }
+        /* Added spacing */
+    }
     </style>
 </head>
 
@@ -149,7 +149,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('applications')}}">
+                        <a class="nav-link">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -174,25 +174,30 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <nav>
-                        <ul class="nav nav-tabs rounded-bottom" style="border-radius: 10px 10px 10px 10px; overflow: hidden;">
+                        <ul class="nav nav-tabs rounded-bottom"
+                            style="border-radius: 10px 10px 10px 10px; overflow: hidden;">
                             <li class="nav-item">
                                 <a class="nav-link active" id="tab1" href="#step1" onclick="showStep(1)">
-                                    <i class="fas fa-user"></i> Basic Details <span id="icon1" class="text-danger">❌</span>
+                                    <i class="fas fa-user"></i> Basic Details <span id="icon1"
+                                        class="text-danger">❌</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="tab2" href="#step2" onclick="showStep(2)">
-                                    <i class="fas fa-landmark"></i> Land Ownership <span id="icon2" class="text-danger">❌</span>
+                                    <i class="fas fa-landmark"></i> Land Ownership <span id="icon2"
+                                        class="text-danger">❌</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="tab3" href="#step3" onclick="showStep(3)">
-                                    <i class="fas fa-tractor"></i> Land Development <span id="icon3" class="text-danger">❌</span>
+                                    <i class="fas fa-tractor"></i> Land Development <span id="icon3"
+                                        class="text-danger">❌</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="tab4" href="#step4" onclick="showStep(4)">
-                                    <i class="fas fa-university"></i> Bank Details <span id="icon4" class="text-danger">❌</span>
+                                    <i class="fas fa-university"></i> Bank Details <span id="icon4"
+                                        class="text-danger">❌</span>
                                 </a>
                             </li>
                         </ul>
@@ -204,323 +209,415 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <form id="landform">
+                                        <form id="landform">
                                         @csrf
                                         <div id="step1">
-    <h5 class="card-title">Basic Details</h5>
+                                            <h5 class="card-title">Basic Details</h5>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
-            <label for="farmerName" class="form-label">Name of Farmer <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="farmerName" name="farmerName" required>
-        </div>
-        <div class="col-sm-6">
-            <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="text" name="user_id" value="{{ session('user_id') }}"
+                                                        hidden>
+                                                    <label for="farmerName" class="form-label">Name of Farmer <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="farmerName"
+                                                        name="farmerName" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="mobileNumber" class="form-label">Mobile Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="mobileNumber"
+                                                        name="mobileNumber" required>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label for="hamlet" class="form-label">Hamlet <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="hamlet" name="hamlet" required>
-        </div>
-        <div class="col-md-6">
-            <label for="panchayat" class="form-label">Panchayat <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="panchayat" name="panchayat" required>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="hamlet" class="form-label">Hamlet <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="hamlet" name="hamlet"
+                                                        required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="panchayat" class="form-label">Panchayat <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="panchayat"
+                                                        name="panchayat" required>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label for="block" class="form-label">Block <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="block" name="block" required>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Identity Card <span class="text-danger">*</span></label>
-            <div class="d-flex gap-3">
-                <div class="form-check">
-                    <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input ms-2" required>
-                    <label for="aadhar" class="form-check-label">Aadhar</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-2" required>
-                    <label for="epic" class="form-check-label">EPIC</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-2" required>
-                    <label for="drivingLicense" class="form-check-label">Driving License</label>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="block" class="form-label">Block <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="block" name="block"
+                                                        required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Identity Card <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="radio" id="aadhar" name="identityCard"
+                                                                value="Aadhar" class="form-check-input ms-2" required>
+                                                            <label for="aadhar" class="form-check-label">Aadhar</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="epic" name="identityCard"
+                                                                value="EPIC" class="form-check-input ms-2" required>
+                                                            <label for="epic" class="form-check-label">EPIC</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="drivingLicense" name="identityCard"
+                                                                value="Driving License" class="form-check-input ms-2"
+                                                                required>
+                                                            <label for="drivingLicense" class="form-check-label">Driving
+                                                                License</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label for="idCardNumber" class="form-label">ID Card Number <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Gender <span class="text-danger">*</span></label>
-            <div class="d-flex gap-3">
-                <div class="form-check">
-                    <input type="radio" id="male" name="gender" value="Male" class="form-check-input ms-2" required>
-                    <label for="male" class="form-check-label">Male</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-2" required>
-                    <label for="female" class="form-check-label">Female</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-2" required>
-                    <label for="transgender" class="form-check-label">Transgender</label>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="idCardNumber" class="form-label">ID Card Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="idCardNumber"
+                                                        name="idCardNumber" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Gender <span
+                                                            class="text-danger">*</span></label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="radio" id="male" name="gender" value="Male"
+                                                                class="form-check-input ms-2" required>
+                                                            <label for="male" class="form-check-label">Male</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="female" name="gender" value="Female"
+                                                                class="form-check-input ms-2" required>
+                                                            <label for="female" class="form-check-label">Female</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="transgender" name="gender"
+                                                                value="Transgender" class="form-check-input ms-2"
+                                                                required>
+                                                            <label for="transgender"
+                                                                class="form-check-label">Transgender</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label for="fatherSpouse" class="form-label">Father / Spouse <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Type of Household</label>
-            <div class="d-flex gap-3">
-                <div class="form-check">
-                    <input type="radio" name="householdType" value="Nuclear" id="nuclear" class="form-check-input ms-2">
-                    <label class="form-check-label" for="nuclear">Nuclear</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="householdType" value="Joint" id="joint" class="form-check-input ms-2">
-                    <label class="form-check-label" for="joint">Joint</label>
-                </div>
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="fatherSpouse" class="form-label">Father / Spouse <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="fatherSpouse"
+                                                        name="fatherSpouse" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Type of Household</label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="radio" name="householdType" value="Nuclear"
+                                                                id="nuclear" class="form-check-input ms-2">
+                                                            <label class="form-check-label"
+                                                                for="nuclear">Nuclear</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" name="householdType" value="Joint"
+                                                                id="joint" class="form-check-input ms-2">
+                                                            <label class="form-check-label" for="joint">Joint</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">Household Members</label>
-            <div class="d-flex gap-3">
-                <input type="number" class="form-control" name="adults" placeholder="Adults">
-                <input type="number" class="form-control" name="children" placeholder="Children">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Occupation of HH Members</label>
-            <div class="d-flex gap-3">
-                <input type="number" name="agriculture" placeholder="Agriculture" class="form-control">
-                <input type="number" name="business" placeholder="Business" class="form-control">
-                <input type="number" name="otherOccupation" placeholder="Other" class="form-control">
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Household Members</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="number" class="form-control" name="adults"
+                                                            placeholder="Adults">
+                                                        <input type="number" class="form-control" name="children"
+                                                            placeholder="Children">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Occupation of HH Members</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="number" name="agriculture"
+                                                            placeholder="Agriculture" class="form-control">
+                                                        <input type="number" name="business" placeholder="Business"
+                                                            class="form-control">
+                                                        <input type="number" name="otherOccupation" placeholder="Other"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">Special Category</label>
-            <div class="d-flex gap-3">
-                <div class="form-check">
-                    <input type="checkbox" name="specialCategory[]" value="Disabled" id="disabled" class="form-check-input ms-2">
-                    <label for="disabled" class="form-check-label">Disabled</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" name="specialCategory[]" value="Numbers" id="numbers" class="form-check-input ms-2">
-                    <label for="numbers" class="form-check-label">Numbers</label>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Caste</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="caste" value="OC" class="form-check-input ms-2"> OC
-                <input type="radio" name="caste" value="OBC" class="form-check-input ms-2"> OBC
-                <input type="radio" name="caste" value="SC" class="form-check-input ms-2"> SC
-                <input type="radio" name="caste" value="ST" class="form-check-input ms-2"> ST
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Special Category</label>
+                                                    <div class="d-flex gap-3">
+                                                        <div class="form-check">
+                                                            <input type="checkbox" name="specialCategory[]"
+                                                                value="Disabled" id="disabled"
+                                                                class="form-check-input ms-2">
+                                                            <label for="disabled"
+                                                                class="form-check-label">Disabled</label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input type="checkbox" name="specialCategory[]"
+                                                                value="Numbers" id="numbers"
+                                                                class="form-check-input ms-2">
+                                                            <label for="numbers"
+                                                                class="form-check-label">Numbers</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Caste</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="caste" value="OC"
+                                                            class="form-check-input ms-2"> OC
+                                                        <input type="radio" name="caste" value="OBC"
+                                                            class="form-check-input ms-2"> OBC
+                                                        <input type="radio" name="caste" value="SC"
+                                                            class="form-check-input ms-2"> SC
+                                                        <input type="radio" name="caste" value="ST"
+                                                            class="form-check-input ms-2"> ST
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">House Ownership</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="houseOwnership" value="Rented" class="form-check-input ms-2"> Rented
-                <input type="radio" name="houseOwnership" value="Owned" class="form-check-input ms-2"> Owned
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Type of House</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="houseType" value="Pucca" class="form-check-input ms-2"> Pucca
-                <input type="radio" name="houseType" value="Kutcha" class="form-check-input ms-2"> Kutcha
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">House Ownership</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="houseOwnership" value="Rented"
+                                                            class="form-check-input ms-2"> Rented
+                                                        <input type="radio" name="houseOwnership" value="Owned"
+                                                            class="form-check-input ms-2"> Owned
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Type of House</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="houseType" value="Pucca"
+                                                            class="form-check-input ms-2"> Pucca
+                                                        <input type="radio" name="houseType" value="Kutcha"
+                                                            class="form-check-input ms-2"> Kutcha
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">Drinking Water Source</label>
-            <div class="d-flex gap-3">
-                <input type="checkbox" name="drinkingWater[]" value="Ponds" class="form-check-input ms-2"> Ponds
-                <input type="checkbox" name="drinkingWater[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
-                <input type="checkbox" name="drinkingWater[]" value="Trucks" class="form-check-input ms-2"> Trucks
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Potability</label>
-            <div class="d-flex gap-3">
-                <input type="checkbox" name="potability[]" value="Ponds" class="form-check-input ms-2"> Ponds
-                <input type="checkbox" name="potability[]" value="Tanks" class="form-check-input ms-2"> Tanks
-                <input type="checkbox" name="potability[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Drinking Water Source</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="checkbox" name="drinkingWater[]" value="Ponds"
+                                                            class="form-check-input ms-2"> Ponds
+                                                        <input type="checkbox" name="drinkingWater[]"
+                                                            value="Well & Borewells" class="form-check-input ms-2"> Well
+                                                        & Borewells
+                                                        <input type="checkbox" name="drinkingWater[]" value="Trucks"
+                                                            class="form-check-input ms-2"> Trucks
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Potability</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="checkbox" name="potability[]" value="Ponds"
+                                                            class="form-check-input ms-2"> Ponds
+                                                        <input type="checkbox" name="potability[]" value="Tanks"
+                                                            class="form-check-input ms-2"> Tanks
+                                                        <input type="checkbox" name="potability[]"
+                                                            value="Well & Borewells" class="form-check-input ms-2"> Well
+                                                        & Borewells
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">Domestic Water Source</label>
-            <div class="d-flex gap-3">
-                <input type="checkbox" name="domesticWater[]" value="Ponds" class="form-check-input ms-2"> Ponds
-                <input type="checkbox" name="domesticWater[]" value="Tanks" class="form-check-input ms-2"> Tanks
-                <input type="checkbox" name="domesticWater[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Toilet Availability</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="toilet" value="Yes" class="form-check-input ms-2"> Yes
-                <input type="radio" name="toilet" value="No" class="form-check-input ms-2"> No
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Domestic Water Source</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="checkbox" name="domesticWater[]" value="Ponds"
+                                                            class="form-check-input ms-2"> Ponds
+                                                        <input type="checkbox" name="domesticWater[]" value="Tanks"
+                                                            class="form-check-input ms-2"> Tanks
+                                                        <input type="checkbox" name="domesticWater[]"
+                                                            value="Well & Borewells" class="form-check-input ms-2"> Well
+                                                        & Borewells
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Toilet Availability</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="toilet" value="Yes"
+                                                            class="form-check-input ms-2"> Yes
+                                                        <input type="radio" name="toilet" value="No"
+                                                            class="form-check-input ms-2"> No
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <label class="form-label">Toilet Condition</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="toiletWorking" value="Working" class="form-check-input ms-2"> Working
-                <input type="radio" name="toiletWorking" value="Not Working" class="form-check-input ms-2"> Not Working
-            </div>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Education of Householder</label>
-            <div class="d-flex gap-3">
-                <input type="radio" name="education" value="Illiterate" class="form-check-input ms-2"> Illiterate
-                <input type="radio" name="education" value="Primary" class="form-check-input ms-2"> Primary
-                <input type="radio" name="education" value="Secondary" class="form-check-input ms-2"> Secondary
-                <input type="radio" name="education" value="University" class="form-check-input ms-2"> University
-            </div>
-        </div>
-    </div>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Toilet Condition</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="toiletWorking" value="Working"
+                                                            class="form-check-input ms-2"> Working
+                                                        <input type="radio" name="toiletWorking" value="Not Working"
+                                                            class="form-check-input ms-2"> Not Working
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Education of Householder</label>
+                                                    <div class="d-flex gap-3">
+                                                        <input type="radio" name="education" value="Illiterate"
+                                                            class="form-check-input ms-2"> Illiterate
+                                                        <input type="radio" name="education" value="Primary"
+                                                            class="form-check-input ms-2"> Primary
+                                                        <input type="radio" name="education" value="Secondary"
+                                                            class="form-check-input ms-2"> Secondary
+                                                        <input type="radio" name="education" value="University"
+                                                            class="form-check-input ms-2"> University
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    <div class="d-flex justify-content-end gap-2">
-        <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
-            Next (Step <span id="nextStepNum">2</span>) →
-        </button>
-    </div>
-</div>
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
+                                                    Next (Step <span id="nextStepNum">2</span>) →
+                                                </button>
+                                            </div>
+                                        </div>
 
 
 
-<div id="step2" style="display: none;">
-    <h5 class="card-title">Land Ownership Details</h5>
+                                        <div id="step2" style="display: none;">
+                                            <h5 class="card-title">Land Ownership Details</h5>
 
-    <!-- Land Ownership -->
-    <h6 class="card-description ms-2 mb-3">23. Land Ownership</h6>
-    <div class="row mb-4 ms-2">
-        <div class="col-md-6">
-            <input type="radio" name="landOwnership" id="ownerCultivator" class="form-check-input">
-            <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
-            <input type="radio" name="landOwnership" id="leaseHolder" class="form-check-input ms-3">
-            <label for="leaseHolder" class="form-check-label">Lease Holder</label>
-        </div>
-    </div>
+                                            <!-- Land Ownership -->
+                                            <h6 class="card-description ms-2 mb-3">23. Land Ownership</h6>
+                                            <div class="row mb-4 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="radio" name="landOwnership" id="ownerCultivator"
+                                                        class="form-check-input">
+                                                    <label for="ownerCultivator" class="form-check-label">Owner
+                                                        Cultivator</label>
+                                                    <input type="radio" name="landOwnership" id="leaseHolder"
+                                                        class="form-check-input ms-3">
+                                                    <label for="leaseHolder" class="form-check-label">Lease
+                                                        Holder</label>
+                                                </div>
+                                            </div>
 
-    <!-- Well for Irrigation -->
-    <h6 class="card-description ms-2 mb-3">24. Well for Irrigation</h6>
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <input type="radio" name="wellIrrigation" id="wellYes" class="form-check-input">
-            <label for="wellYes" class="form-check-label">Yes</label>
-            <input type="radio" name="wellIrrigation" id="wellNo" class="form-check-input ms-3">
-            <label for="wellNo" class="form-check-label">No</label>
-        </div>
-        <div class="col-md-6">
-            <label class="form-label">Area Irrigated (ha)</label>
-            <input type="text" class="form-control" name="areaIrrigated">
-        </div>
-    </div>
+                                            <!-- Well for Irrigation -->
+                                            <h6 class="card-description ms-2 mb-3">24. Well for Irrigation</h6>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="radio" name="wellIrrigation" id="wellYes"
+                                                        class="form-check-input">
+                                                    <label for="wellYes" class="form-check-label">Yes</label>
+                                                    <input type="radio" name="wellIrrigation" id="wellNo"
+                                                        class="form-check-input ms-3">
+                                                    <label for="wellNo" class="form-check-label">No</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Area Irrigated (ha)</label>
+                                                    <input type="text" class="form-control" name="areaIrrigated">
+                                                </div>
+                                            </div>
 
-    <!-- Irrigated Lands -->
-    <h6 class="card-description ms-2 mb-3">25. Irrigated Lands (ha)</h6>
-    <div class="row mb-4 ms-2">
-        <div class="col-md-6">
-            <input type="checkbox" name="irrigatedLand" id="rainfed" class="form-check-input">
-            <label for="rainfed" class="form-check-label">Rainfed</label>
-            <input type="checkbox" name="irrigatedLand" id="tankfed" class="form-check-input ms-3">
-            <label for="tankfed" class="form-check-label">Tankfed</label>
-            <input type="checkbox" name="irrigatedLand" id="wellIrrigated" class="form-check-input ms-3">
-            <label for="wellIrrigated" class="form-check-label">Well Irrigated</label>
-        </div>
-    </div>
+                                            <!-- Irrigated Lands -->
+                                            <h6 class="card-description ms-2 mb-3">25. Irrigated Lands (ha)</h6>
+                                            <div class="row mb-4 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" name="irrigatedLand" id="rainfed"
+                                                        class="form-check-input">
+                                                    <label for="rainfed" class="form-check-label">Rainfed</label>
+                                                    <input type="checkbox" name="irrigatedLand" id="tankfed"
+                                                        class="form-check-input ms-3">
+                                                    <label for="tankfed" class="form-check-label">Tankfed</label>
+                                                    <input type="checkbox" name="irrigatedLand" id="wellIrrigated"
+                                                        class="form-check-input ms-3">
+                                                    <label for="wellIrrigated" class="form-check-label">Well
+                                                        Irrigated</label>
+                                                </div>
+                                            </div>
 
-    <!-- Patta Number, Total Area, Revenue Village -->
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <label class="form-label">26. Patta Number <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="pattaNumber" required>
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">27. Total Area (ha) <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="totalArea" required>
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">28. Revenue Village <span class="text-danger">*</span></label>
-            <input type="text" class="form-control" name="revenueVillage" required>
-        </div>
-    </div>
+                                            <!-- Patta Number, Total Area, Revenue Village -->
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <label class="form-label">26. Patta Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="pattaNumber" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label">27. Total Area (ha) <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="totalArea" required>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label">28. Revenue Village <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="revenueVillage"
+                                                        required>
+                                                </div>
+                                            </div>
 
-    <!-- Crop Season -->
-    <h6 class="card-description ms-2 mb-3">29. Crop Season</h6>
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <input type="checkbox" name="cropSeason" id="kharif" class="form-check-input">
-            <label for="kharif" class="form-check-label">Kharif</label>
-            <input type="checkbox" name="cropSeason" id="rabi" class="form-check-input ms-3">
-            <label for="rabi" class="form-check-label">Rabi</label>
-            <input type="checkbox" name="cropSeason" id="otherSeason" class="form-check-input ms-3">
-            <label for="otherSeason" class="form-check-label">Other</label>
-        </div>
-    </div>
+                                            <!-- Crop Season -->
+                                            <h6 class="card-description ms-2 mb-3">29. Crop Season</h6>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" name="cropSeason" id="kharif"
+                                                        class="form-check-input">
+                                                    <label for="kharif" class="form-check-label">Kharif</label>
+                                                    <input type="checkbox" name="cropSeason" id="rabi"
+                                                        class="form-check-input ms-3">
+                                                    <label for="rabi" class="form-check-label">Rabi</label>
+                                                    <input type="checkbox" name="cropSeason" id="otherSeason"
+                                                        class="form-check-input ms-3">
+                                                    <label for="otherSeason" class="form-check-label">Other</label>
+                                                </div>
+                                            </div>
 
-    <!-- Livestock -->
-    <h6 class="card-description ms-2 mb-3">30. Livestock at Home</h6>
-    <div class="row mb-3 ms-2">
-        <div class="col-md-6">
-            <input type="checkbox" name="livestock" id="ruminants" class="form-check-input">
-            <label for="ruminants" class="form-check-label">Ruminants</label>
-            <input type="checkbox" name="livestock" id="milchAnimals" class="form-check-input ms-3">
-            <label for="milchAnimals" class="form-check-label">Milch Animals</label>
-            <input type="checkbox" name="livestock" id="cattle" class="form-check-input ms-3">
-            <label for="cattle" class="form-check-label">Cattle</label>
-            <input type="checkbox" name="livestock" id="poultry" class="form-check-input ms-3">
-            <label for="poultry" class="form-check-label">Poultry</label>
-        </div>
-    </div>
+                                            <!-- Livestock -->
+                                            <h6 class="card-description ms-2 mb-3">30. Livestock at Home</h6>
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <input type="checkbox" name="livestock" id="ruminants"
+                                                        class="form-check-input">
+                                                    <label for="ruminants" class="form-check-label">Ruminants</label>
+                                                    <input type="checkbox" name="livestock" id="milchAnimals"
+                                                        class="form-check-input ms-3">
+                                                    <label for="milchAnimals" class="form-check-label">Milch
+                                                        Animals</label>
+                                                    <input type="checkbox" name="livestock" id="cattle"
+                                                        class="form-check-input ms-3">
+                                                    <label for="cattle" class="form-check-label">Cattle</label>
+                                                    <input type="checkbox" name="livestock" id="poultry"
+                                                        class="form-check-input ms-3">
+                                                    <label for="poultry" class="form-check-label">Poultry</label>
+                                                </div>
+                                            </div>
 
-    <!-- Navigation Buttons -->
-    <div class="d-flex justify-content-end gap-2">
-        <button type="button" class="btn btn-secondary me-2" onclick="prevStep(2, 1)">
-            ← Previous (Step <span id="prevStepNum">1</span>)
-        </button>
-        <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">
-            Next (Step <span id="nextStepNum">3</span>) →
-        </button>
-    </div>
-</div>
+                                            <!-- Navigation Buttons -->
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <button type="button" class="btn btn-secondary me-2"
+                                                    onclick="prevStep(2, 1)">
+                                                    ← Previous (Step <span id="prevStepNum">1</span>)
+                                                </button>
+                                                <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">
+                                                    Next (Step <span id="nextStepNum">3</span>) →
+                                                </button>
+                                            </div>
+                                        </div>
 
 
                                         <div id="step3" style="display: none;">
@@ -530,29 +627,39 @@
                                                     <div class="col-md-6">
                                                         <label for="sf_no" class="form-label">S.F. No. of the land to be
                                                             developed <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="sf_no" name="sf_no" required>
+                                                        <input type="text" class="form-control" id="sf_no" name="sf_no"
+                                                            required>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="land_benefit" class="form-label">Land to benefit (ha) <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" id="land_benefit" name="land_benefit" required>
+                                                        <label for="land_benefit" class="form-label">Land to benefit
+                                                            (ha) <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" id="land_benefit"
+                                                            name="land_benefit" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
-                                                        <label class="form-label">Soil Type <span class="text-danger">*</span></label>
+                                                        <label class="form-label">Soil Type <span
+                                                                class="text-danger">*</span></label>
                                                         <div class="d-flex gap-3">
-                                                            <input type="radio" name="soil_type" value="Red Soil"> Red Soil
-                                                            <input type="radio" name="soil_type" value="Black Cotton"> Black Cotton
-                                                            <input type="radio" name="soil_type" value="Sandy Loam"> Sandy Loam
-                                                            <input type="radio" name="soil_type" value="Laterite"> Laterite
+                                                            <input type="radio" name="soil_type" value="Red Soil"> Red
+                                                            Soil
+                                                            <input type="radio" name="soil_type" value="Black Cotton">
+                                                            Black Cotton
+                                                            <input type="radio" name="soil_type" value="Sandy Loam">
+                                                            Sandy Loam
+                                                            <input type="radio" name="soil_type" value="Laterite">
+                                                            Laterite
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label">Field Inspection done by:</label>
                                                         <div class="d-flex gap-3">
-                                                            <input type="radio" name="inspection" value="Volunteer"> Volunteer
-                                                            <input type="radio" name="inspection" value="Project Executive"> Project
+                                                            <input type="radio" name="inspection" value="Volunteer">
+                                                            Volunteer
+                                                            <input type="radio" name="inspection"
+                                                                value="Project Executive"> Project
                                                             Executive
                                                         </div>
                                                     </div>
@@ -562,13 +669,16 @@
                                                     <div class="col-md-6">
                                                         <label class="form-label">Site Approved by:</label>
                                                         <div class="d-flex gap-3">
-                                                            <input type="radio" name="approved_by" value="Project Executive"> Project
+                                                            <input type="radio" name="approved_by"
+                                                                value="Project Executive"> Project
                                                             Executive
-                                                            <input type="radio" name="approved_by" value="Team Leader"> Team Leader
+                                                            <input type="radio" name="approved_by" value="Team Leader">
+                                                            Team Leader
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="inspection_date" class="form-label">Date of Inspection <span class="text-danger">*</span></label>
+                                                        <label for="inspection_date" class="form-label">Date of
+                                                            Inspection <span class="text-danger">*</span></label>
                                                         <input type="date" class="form-control" id="inspection_date"
                                                             name="inspection_date" required>
                                                     </div>
@@ -576,11 +686,14 @@
 
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
-                                                        <label for="approval_date" class="form-label">Date of Approval <span class="text-danger">*</span></label>
-                                                        <input type="date" class="form-control" id="approval_date" name="approval_date" required>
+                                                        <label for="approval_date" class="form-label">Date of Approval
+                                                            <span class="text-danger">*</span></label>
+                                                        <input type="date" class="form-control" id="approval_date"
+                                                            name="approval_date" required>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="estimateAmount" class="form-label">Total Estimate Amount</label>
+                                                        <label for="estimateAmount" class="form-label">Total Estimate
+                                                            Amount</label>
                                                         <input type="text" class="form-control" id="estimateAmount"
                                                             name="estimateAmount">
                                                     </div>
@@ -589,43 +702,54 @@
                                                 <!-- Newly added fields -->
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
-                                                        <label class="form-label">Type of work proposed <span class="text-danger">*</span></label>
+                                                        <label class="form-label">Type of work proposed <span
+                                                                class="text-danger">*</span></label>
                                                         <div class="ms-5">
                                                             <div class="form-check">
-                                                                <input type="radio" class="form-check-input" id="prosopisRemoval"
-                                                                    name="workType[]" value="Prosopis removal">
-                                                                <label class="form-check-label" for="prosopisRemoval">Prosopis
+                                                                <input type="radio" class="form-check-input"
+                                                                    id="prosopisRemoval" name="workType[]"
+                                                                    value="Prosopis removal">
+                                                                <label class="form-check-label"
+                                                                    for="prosopisRemoval">Prosopis
                                                                     removal</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input type="radio" class="form-check-input" id="redevelopment"
-                                                                    name="workType[]" value="Redevelopment of eroded lands">
-                                                                <label class="form-check-label" for="redevelopment">Redevelopment of eroded
+                                                                <input type="radio" class="form-check-input"
+                                                                    id="redevelopment" name="workType[]"
+                                                                    value="Redevelopment of eroded lands">
+                                                                <label class="form-check-label"
+                                                                    for="redevelopment">Redevelopment of eroded
                                                                     lands</label>
                                                             </div>
                                                             <div class="form-check">
-                                                                <input type="radio" class="form-check-input" id="siltApplication"
-                                                                    name="workType[]" value="Silt application">
-                                                                <label class="form-check-label" for="siltApplication">Silt
+                                                                <input type="radio" class="form-check-input"
+                                                                    id="siltApplication" name="workType[]"
+                                                                    value="Silt application">
+                                                                <label class="form-check-label"
+                                                                    for="siltApplication">Silt
                                                                     application</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="areaBenefited" class="form-label">Area benefited by proposal works
+                                                        <label for="areaBenefited" class="form-label">Area benefited by
+                                                            proposal works
                                                             (ha)</label>
-                                                        <input type="text" class="form-control" id="areaBenefited" name="areaBenefited">
+                                                        <input type="text" class="form-control" id="areaBenefited"
+                                                            name="areaBenefited">
                                                     </div>
                                                 </div>
 
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
-                                                        <label for="otherWorks" class="form-label">Any other works proposed</label>
+                                                        <label for="otherWorks" class="form-label">Any other works
+                                                            proposed</label>
                                                         <textarea class="form-control" id="otherWorks" name="otherWorks"
                                                             rows="2"></textarea>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label for="pradanContribution" class="form-label">PRADAN Contribution <span class="text-danger">*</span></label>
+                                                        <label for="pradanContribution" class="form-label">PRADAN
+                                                            Contribution <span class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="pradanContribution"
                                                             name="pradanContribution" required>
                                                     </div>
@@ -633,18 +757,21 @@
 
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
-                                                        <label for="farmerContribution" class="form-label">Farmer Contribution <span class="text-danger">*</span></label>
+                                                        <label for="farmerContribution" class="form-label">Farmer
+                                                            Contribution <span class="text-danger">*</span></label>
                                                         <input type="text" class="form-control" id="farmerContribution"
                                                             name="farmerContribution" required>
                                                     </div>
                                                 </div>
 
                                                 <div class="d-flex justify-content-end gap-2">
-                                                    <button type="button" class="btn btn-secondary me-2" onclick="prevStep(3, 2)">
+                                                    <button type="button" class="btn btn-secondary me-2"
+                                                        onclick="prevStep(3, 2)">
                                                         ← Previous (Step <span id="prevStepNum">2</span>)
                                                     </button>
 
-                                                    <button type="button" class="btn btn-primary" onclick="nextStep(3, 4)">
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="nextStep(3, 4)">
                                                         Next (Step <span id="nextStepNum">4</span>) →
                                                     </button>
                                                 </div>
@@ -656,30 +783,40 @@
 
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <label for="account_holder" class="form-label">Name of Account Holder <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="account_holder" name="account_holder" required>
+                                                    <label for="account_holder" class="form-label">Name of Account
+                                                        Holder <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="account_holder"
+                                                        name="account_holder" required>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="account_number" class="form-label">Account Number <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="account_number" name="account_number" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="bank_name" class="form-label">Name of the Bank <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="bank_name" name="bank_name">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="branch" class="form-label">Branch <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="branch" name="branch" required>
+                                                    <label for="account_number" class="form-label">Account Number <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="account_number"
+                                                        name="account_number" required>
                                                 </div>
                                             </div>
 
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <label for="ifsc" class="form-label">IFSC Code <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="ifsc" name="ifsc" required>
+                                                    <label for="bank_name" class="form-label">Name of the Bank <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="bank_name"
+                                                        name="bank_name">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="branch" class="form-label">Branch <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="branch" name="branch"
+                                                        required>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="ifsc" class="form-label">IFSC Code <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="ifsc" name="ifsc"
+                                                        required>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <br>
@@ -692,36 +829,41 @@
                                                 </div>
                                             </div>
                                             <hr>
-<h6 class="mt-4">Upload Documents</h6>
-<div class="row mb-3">
-    <div class="col-md-4">
-        <label for="patta" class="form-label">1. Patta</label>
-        <input type="file" class="form-control" id="patta" name="patta">
-    </div>
-    <div class="col-md-4">
-        <label for="id_card" class="form-label">2. ID Card</label>
-        <input type="file" class="form-control" id="id_card" name="id_card">
-    </div>
-    <div class="col-md-4">
-        <label for="fmb" class="form-label">3. FMB</label>
-        <input type="file" class="form-control" id="fmb" name="fmb">
-    </div>
-</div>
+                                            <h6 class="mt-4">Upload Documents</h6>
+                                            <div class="row mb-3">
+                                                <div class="col-md-4">
+                                                    <label for="patta" class="form-label">1. Patta</label>
+                                                    <input type="file" class="form-control" id="patta" name="patta">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="id_card" class="form-label">2. ID Card</label>
+                                                    <input type="file" class="form-control" id="id_card" name="id_card">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="fmb" class="form-label">3. FMB</label>
+                                                    <input type="file" class="form-control" id="fmb" name="fmb">
+                                                </div>
+                                            </div>
 
-<div class="row mb-4">
-    <div class="col-md-6">
-        <label for="photo_farmer" class="form-label">4. Photo of Farmer</label>
-        <input type="file" class="form-control" id="photo_farmer" name="photo_farmer">
-    </div>
-    <div class="col-md-6">
-        <label for="bank_passbook" class="form-label">5. Bank Passbook</label>
-        <input type="file" class="form-control" id="bank_passbook" name="bank_passbook">
-    </div>
-</div>
+                                            <div class="row mb-4">
+                                                <div class="col-md-6">
+                                                    <label for="photo_farmer" class="form-label">4. Photo of
+                                                        Farmer</label>
+                                                    <input type="file" class="form-control" id="photo_farmer"
+                                                        name="photo_farmer">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="bank_passbook" class="form-label">5. Bank
+                                                        Passbook</label>
+                                                    <input type="file" class="form-control" id="bank_passbook"
+                                                        name="bank_passbook">
+                                                </div>
+                                            </div>
 
 
                                             <div class="d-flex justify-content-end gap-2">
-                                                <button type="button" class="btn btn-secondary me-2" onclick="prevStep(4, 3)">
+                                                <button type="button" class="btn btn-secondary me-2"
+                                                    onclick="prevStep(4, 3)">
                                                     ← Previous (Step <span id="prevStepNum">3</span>)
                                                 </button>
                                                 <button type="submit" class="btn btn-success">Submit</button>
@@ -836,136 +978,136 @@
     </div>
 
     <script>
-        function showStep(stepNumber) {
-            event.preventDefault();
+    function showStep(stepNumber) {
+        event.preventDefault();
 
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById(`step${i}`).style.display = 'none';
-                document.getElementById(`tab${i}`).classList.remove('active');
-            }
-
-            document.getElementById(`step${stepNumber}`).style.display = 'block';
-            document.getElementById(`tab${stepNumber}`).classList.add('active');
+        for (let i = 1; i <= 4; i++) {
+            document.getElementById(`step${i}`).style.display = 'none';
+            document.getElementById(`tab${i}`).classList.remove('active');
         }
 
-        function nextStep(current, next) {
-            document.getElementById(`step${current}`).style.display = 'none';
-            document.getElementById(`step${next}`).style.display = 'block';
+        document.getElementById(`step${stepNumber}`).style.display = 'block';
+        document.getElementById(`tab${stepNumber}`).classList.add('active');
+    }
 
-            document.getElementById(`tab${current}`).classList.remove('active');
-            document.getElementById(`tab${next}`).classList.add('active');
+    function nextStep(current, next) {
+        document.getElementById(`step${current}`).style.display = 'none';
+        document.getElementById(`step${next}`).style.display = 'block';
 
-            validateStep(current); // Validate current step when moving forward
-        }
+        document.getElementById(`tab${current}`).classList.remove('active');
+        document.getElementById(`tab${next}`).classList.add('active');
 
-        function prevStep(current, prev) {
-            document.getElementById(`step${current}`).style.display = 'none';
-            document.getElementById(`step${prev}`).style.display = 'block';
+        validateStep(current); // Validate current step when moving forward
+    }
 
-            document.getElementById(`tab${current}`).classList.remove('active');
-            document.getElementById(`tab${prev}`).classList.add('active');
-        }
+    function prevStep(current, prev) {
+        document.getElementById(`step${current}`).style.display = 'none';
+        document.getElementById(`step${prev}`).style.display = 'block';
 
-        // Validate required fields in a step and update the tick mark
-        function validateStep(step) {
-            let currentStep = document.getElementById(`step${step}`);
-            let requiredFields = currentStep.querySelectorAll("[required]");
-            let allValid = true;
+        document.getElementById(`tab${current}`).classList.remove('active');
+        document.getElementById(`tab${prev}`).classList.add('active');
+    }
 
-            requiredFields.forEach((field) => {
-                if (field.type === "radio" || field.type === "checkbox") {
-                    let name = field.name;
-                    let checked = document.querySelector(`input[name="${name}"]:checked`);
-                    if (!checked) {
-                        allValid = false;
-                    }
-                } else if (field.type === "file") {
-                    if (!field.files.length) {
-                        allValid = false;
-                    }
-                } else {
-                    if (!field.value.trim()) {
-                        allValid = false;
-                        field.classList.add("border", "border-danger");
-                    } else {
-                        field.classList.remove("border", "border-danger");
-                    }
+    // Validate required fields in a step and update the tick mark
+    function validateStep(step) {
+        let currentStep = document.getElementById(`step${step}`);
+        let requiredFields = currentStep.querySelectorAll("[required]");
+        let allValid = true;
+
+        requiredFields.forEach((field) => {
+            if (field.type === "radio" || field.type === "checkbox") {
+                let name = field.name;
+                let checked = document.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) {
+                    allValid = false;
                 }
-            });
-
-            if (allValid) {
-                document.getElementById(`icon${step}`).innerHTML = "✅";
-                document.getElementById(`icon${step}`).classList.remove('text-danger');
-                document.getElementById(`icon${step}`).classList.add('text-success');
+            } else if (field.type === "file") {
+                if (!field.files.length) {
+                    allValid = false;
+                }
             } else {
-                document.getElementById(`icon${step}`).innerHTML = "❌";
-                document.getElementById(`icon${step}`).classList.remove('text-success');
-                document.getElementById(`icon${step}`).classList.add('text-danger');
-            }
-        }
-
-        // Ensure all fields are filled before submission
-        $(document).on("submit", "#landform", function(e) {
-            e.preventDefault();
-
-            let allFields = document.querySelectorAll("[required]");
-            let allValid = true;
-
-            allFields.forEach((field) => {
-                if (field.type === "radio" || field.type === "checkbox") {
-                    let name = field.name;
-                    let checked = document.querySelector(`input[name="${name}"]:checked`);
-                    if (!checked) {
-                        allValid = false;
-                    }
-                } else if (field.type === "file") {
-                    if (!field.files.length) {
-                        allValid = false;
-                    }
+                if (!field.value.trim()) {
+                    allValid = false;
+                    field.classList.add("border", "border-danger");
                 } else {
-                    if (!field.value.trim()) {
-                        allValid = false;
-                        field.classList.add("border", "border-danger");
-                    } else {
-                        field.classList.remove("border", "border-danger");
-                    }
+                    field.classList.remove("border", "border-danger");
                 }
-            });
-
-            if (!allValid) {
-                alert("Please fill all required fields before submitting.");
-                return;
             }
-
-            // If all fields are filled, proceed with form submission
-            var form = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "/form_land",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Form Submitted Successfully",
-                            icon: "success",
-                            confirmButtonText: "OK"
-                        });
-
-                        document.getElementById(`icon4`).innerHTML = "✅";
-                        document.getElementById(`icon4`).classList.remove('text-danger');
-                        document.getElementById(`icon4`).classList.add('text-success');
-                    } else {
-                        alert("Something went wrong");
-                    }
-                }
-            });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            showStep(1);
+        if (allValid) {
+            document.getElementById(`icon${step}`).innerHTML = "✅";
+            document.getElementById(`icon${step}`).classList.remove('text-danger');
+            document.getElementById(`icon${step}`).classList.add('text-success');
+        } else {
+            document.getElementById(`icon${step}`).innerHTML = "❌";
+            document.getElementById(`icon${step}`).classList.remove('text-success');
+            document.getElementById(`icon${step}`).classList.add('text-danger');
+        }
+    }
+
+    // Ensure all fields are filled before submission
+    $(document).on("submit", "#landform", function(e) {
+        e.preventDefault();
+
+        let allFields = document.querySelectorAll("[required]");
+        let allValid = true;
+
+        allFields.forEach((field) => {
+            if (field.type === "radio" || field.type === "checkbox") {
+                let name = field.name;
+                let checked = document.querySelector(`input[name="${name}"]:checked`);
+                if (!checked) {
+                    allValid = false;
+                }
+            } else if (field.type === "file") {
+                if (!field.files.length) {
+                    allValid = false;
+                }
+            } else {
+                if (!field.value.trim()) {
+                    allValid = false;
+                    field.classList.add("border", "border-danger");
+                } else {
+                    field.classList.remove("border", "border-danger");
+                }
+            }
+        });
+
+        if (!allValid) {
+            alert("Please fill all required fields before submitting.");
+            return;
+        }
+
+        // If all fields are filled, proceed with form submission
+        var form = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: "/form_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form Submitted Successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
+
+                    document.getElementById(`icon4`).innerHTML = "✅";
+                    document.getElementById(`icon4`).classList.remove('text-danger');
+                    document.getElementById(`icon4`).classList.add('text-success');
+                } else {
+                    alert("Something went wrong");
+                }
+            }
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        showStep(1);
         });
     </script>
 

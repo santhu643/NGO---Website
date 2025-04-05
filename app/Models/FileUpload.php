@@ -6,39 +6,37 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BankDetail
+ * Class FileUpload
  * 
  * @property int $id
  * @property int $form_id
- * @property string $account_holder_name
- * @property string $account_number
- * @property string $bank_name
- * @property string $branch
- * @property string $ifsc_code
+ * @property string|null $file_type
+ * @property string $file_name
+ * @property Carbon $uploaded_at
  * 
  * @property Form $form
  *
  * @package App\Models
  */
-class BankDetail extends Model
+class FileUpload extends Model
 {
-	protected $table = 'bank_details';
+	protected $table = 'file_uploads';
 	public $timestamps = false;
 
 	protected $casts = [
-		'form_id' => 'int'
+		'form_id' => 'int',
+		'uploaded_at' => 'datetime'
 	];
 
 	protected $fillable = [
 		'form_id',
-		'account_holder_name',
-		'account_number',
-		'bank_name',
-		'branch',
-		'ifsc_code'
+		'file_type',
+		'file_name',
+		'uploaded_at'
 	];
 
 	public function form()

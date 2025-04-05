@@ -149,7 +149,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('applications')}}">
+                        <a class="nav-link" >
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -187,7 +187,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="tab3" href="#step3" onclick="showStep(3)">
-                                    <i class="fas fa-tractor"></i> Land Development <span id="icon3" class="text-danger">❌</span>
+                                    <i class="fas fa-tractor"></i> Pond Development <span id="icon3" class="text-danger">❌</span>
                                 </a>
                             </li>
                             <li class="nav-item">
