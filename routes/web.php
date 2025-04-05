@@ -12,25 +12,9 @@ Route::get('/vol',function(){
 })->name('vol');
 
 Route::get('/form1',function(){return view('form1');})->name('form1');
-Route::get('/form2',[mainController::class,"form2"])->name('form2');
+Route::get('/form2',function(){return view('form2');})->name('form2');
+Route::get('/form3',function(){return view('form3');})->name('form3');
 
-
-
-Route::get('/form3',function(){
-    return view('form3');
-})->name('form3');
-
-Route::post('/form_land',[mainController::class,"land_form"]);
-
-Route::post('/form_pond',[mainController::class,"pond_form"]);
-
-Route::get('/fetch_farmer_det/{form_id}',[mainController::class,"fetch_farmer_det"]);
-
-Route::get('/fetch_land_det/{form_id}',[mainController::class,"fetch_land_det"]);
-
-Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
-
-Route::get('/applications',[mainController::class,"applications"])->name('applications');
 
 
 

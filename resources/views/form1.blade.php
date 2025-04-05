@@ -207,147 +207,321 @@
                                     <form id="landform">
                                         @csrf
                                         <div id="step1">
-                                            <h5 class="card-title">Basic Details</h5>
+    <h5 class="card-title">Basic Details</h5>
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
-                                                    <label for="farmerName" class="form-label">Name of Farmer <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="farmerName" name="farmerName" required>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
-                                                </div>
-                                            </div>
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <input type="text" name="user_id" value="{{ session('user_id') }}" hidden>
+            <label for="farmerName" class="form-label">Name of Farmer <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="farmerName" name="farmerName" required>
+        </div>
+        <div class="col-sm-6">
+            <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+        </div>
+    </div>
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <label class="form-label">Gender <span class="text-danger">*</span></label>
-                                                    <div class="d-flex gap-3">
-                                                        <div class="form-check">
-                                                            <input type="radio" id="male" name="gender" value="Male" class="form-check-input ms-2" required>
-                                                            <label for="male" class="form-check-label">Male</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-2" required>
-                                                            <label for="female" class="form-check-label">Female</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-2" required>
-                                                            <label for="transgender" class="form-check-label">Transgender</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="fatherSpouse" class="form-label">Father / Spouse <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
-                                                </div>
-                                            </div>
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label for="hamlet" class="form-label">Hamlet <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="hamlet" name="hamlet" required>
+        </div>
+        <div class="col-md-6">
+            <label for="panchayat" class="form-label">Panchayat <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="panchayat" name="panchayat" required>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label for="block" class="form-label">Block <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="block" name="block" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Identity Card <span class="text-danger">*</span></label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input ms-2" required>
+                    <label for="aadhar" class="form-check-label">Aadhar</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-2" required>
+                    <label for="epic" class="form-check-label">EPIC</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-2" required>
+                    <label for="drivingLicense" class="form-check-label">Driving License</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label for="idCardNumber" class="form-label">ID Card Number <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Gender <span class="text-danger">*</span></label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input type="radio" id="male" name="gender" value="Male" class="form-check-input ms-2" required>
+                    <label for="male" class="form-check-label">Male</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="female" name="gender" value="Female" class="form-check-input ms-2" required>
+                    <label for="female" class="form-check-label">Female</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="transgender" name="gender" value="Transgender" class="form-check-input ms-2" required>
+                    <label for="transgender" class="form-check-label">Transgender</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label for="fatherSpouse" class="form-label">Father / Spouse <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="fatherSpouse" name="fatherSpouse" required>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Type of Household</label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input type="radio" name="householdType" value="Nuclear" id="nuclear" class="form-check-input ms-2">
+                    <label class="form-check-label" for="nuclear">Nuclear</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="householdType" value="Joint" id="joint" class="form-check-input ms-2">
+                    <label class="form-check-label" for="joint">Joint</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">Household Members</label>
+            <div class="d-flex gap-3">
+                <input type="number" class="form-control" name="adults" placeholder="Adults">
+                <input type="number" class="form-control" name="children" placeholder="Children">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Occupation of HH Members</label>
+            <div class="d-flex gap-3">
+                <input type="number" name="agriculture" placeholder="Agriculture" class="form-control">
+                <input type="number" name="business" placeholder="Business" class="form-control">
+                <input type="number" name="otherOccupation" placeholder="Other" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">Special Category</label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input type="checkbox" name="specialCategory[]" value="Disabled" id="disabled" class="form-check-input ms-2">
+                    <label for="disabled" class="form-check-label">Disabled</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" name="specialCategory[]" value="Numbers" id="numbers" class="form-check-input ms-2">
+                    <label for="numbers" class="form-check-label">Numbers</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Caste</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="caste" value="OC" class="form-check-input ms-2"> OC
+                <input type="radio" name="caste" value="OBC" class="form-check-input ms-2"> OBC
+                <input type="radio" name="caste" value="SC" class="form-check-input ms-2"> SC
+                <input type="radio" name="caste" value="ST" class="form-check-input ms-2"> ST
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">House Ownership</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="houseOwnership" value="Rented" class="form-check-input ms-2"> Rented
+                <input type="radio" name="houseOwnership" value="Owned" class="form-check-input ms-2"> Owned
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Type of House</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="houseType" value="Pucca" class="form-check-input ms-2"> Pucca
+                <input type="radio" name="houseType" value="Kutcha" class="form-check-input ms-2"> Kutcha
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">Drinking Water Source</label>
+            <div class="d-flex gap-3">
+                <input type="checkbox" name="drinkingWater[]" value="Ponds" class="form-check-input ms-2"> Ponds
+                <input type="checkbox" name="drinkingWater[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
+                <input type="checkbox" name="drinkingWater[]" value="Trucks" class="form-check-input ms-2"> Trucks
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Potability</label>
+            <div class="d-flex gap-3">
+                <input type="checkbox" name="potability[]" value="Ponds" class="form-check-input ms-2"> Ponds
+                <input type="checkbox" name="potability[]" value="Tanks" class="form-check-input ms-2"> Tanks
+                <input type="checkbox" name="potability[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">Domestic Water Source</label>
+            <div class="d-flex gap-3">
+                <input type="checkbox" name="domesticWater[]" value="Ponds" class="form-check-input ms-2"> Ponds
+                <input type="checkbox" name="domesticWater[]" value="Tanks" class="form-check-input ms-2"> Tanks
+                <input type="checkbox" name="domesticWater[]" value="Well & Borewells" class="form-check-input ms-2"> Well & Borewells
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Toilet Availability</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="toilet" value="Yes" class="form-check-input ms-2"> Yes
+                <input type="radio" name="toilet" value="No" class="form-check-input ms-2"> No
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <label class="form-label">Toilet Condition</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="toiletWorking" value="Working" class="form-check-input ms-2"> Working
+                <input type="radio" name="toiletWorking" value="Not Working" class="form-check-input ms-2"> Not Working
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Education of Householder</label>
+            <div class="d-flex gap-3">
+                <input type="radio" name="education" value="Illiterate" class="form-check-input ms-2"> Illiterate
+                <input type="radio" name="education" value="Primary" class="form-check-input ms-2"> Primary
+                <input type="radio" name="education" value="Secondary" class="form-check-input ms-2"> Secondary
+                <input type="radio" name="education" value="University" class="form-check-input ms-2"> University
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
+            Next (Step <span id="nextStepNum">2</span>) →
+        </button>
+    </div>
+</div>
 
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <label for="householdMembers" class="form-label">Household Members <span class="text-danger">*</span></label>
-                                                    <input type="number" class="form-control" id="householdMembers" name="householdMembers" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label">Identity Card <span class="text-danger">*</span></label>
-                                                    <div class="d-flex gap-3">
-                                                        <div class="form-check">
-                                                            <input type="radio" id="aadhar" name="identityCard" value="Aadhar" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
-                                                            <label for="aadhar" class="form-check-label">Aadhar</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="epic" name="identityCard" value="EPIC" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
-                                                            <label for="epic" class="form-check-label">EPIC</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input type="radio" id="drivingLicense" name="identityCard" value="Driving License" class="form-check-input ms-2" required onclick="updateIdentityTitle()">
-                                                            <label for="drivingLicense" class="form-check-label">Driving License</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <label for="idCardNumber" class="form-label">ID Card Number <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="idCardNumber" name="idCardNumber" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID Proof <span class="text-danger">*</span></label>
-                                                    <input type="file" class="form-control" name="file" id="fileUpload">
-                                                </div>
-                                            </div>
+<div id="step2" style="display: none;">
+    <h5 class="card-title">Land Ownership Details</h5>
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <label for="hamlet" class="form-label">Hamlet <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="hamlet" name="hamlet" required>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="panchayat" class="form-label">Panchayat <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="panchayat" name="panchayat" required>
-                                                </div>
-                                            </div>
+    <!-- Land Ownership -->
+    <h6 class="card-description ms-2 mb-3">23. Land Ownership</h6>
+    <div class="row mb-4 ms-2">
+        <div class="col-md-6">
+            <input type="radio" name="landOwnership" id="ownerCultivator" class="form-check-input">
+            <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
+            <input type="radio" name="landOwnership" id="leaseHolder" class="form-check-input ms-3">
+            <label for="leaseHolder" class="form-check-label">Lease Holder</label>
+        </div>
+    </div>
 
-                                            <div class="row mb-3 ms-2">
-                                                <div class="col-md-6">
-                                                    <label for="block" class="form-label">Block <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" id="block" name="block" required>
-                                                </div>
-                                            </div>
+    <!-- Well for Irrigation -->
+    <h6 class="card-description ms-2 mb-3">24. Well for Irrigation</h6>
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <input type="radio" name="wellIrrigation" id="wellYes" class="form-check-input">
+            <label for="wellYes" class="form-check-label">Yes</label>
+            <input type="radio" name="wellIrrigation" id="wellNo" class="form-check-input ms-3">
+            <label for="wellNo" class="form-check-label">No</label>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Area Irrigated (ha)</label>
+            <input type="text" class="form-control" name="areaIrrigated">
+        </div>
+    </div>
 
-                                            <div class="d-flex justify-content-end gap-2">
-                                                <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
-                                                    Next (Step <span id="nextStepNum">2</span>) →
-                                                </button>
-                                            </div>
-                                        </div>
+    <!-- Irrigated Lands -->
+    <h6 class="card-description ms-2 mb-3">25. Irrigated Lands (ha)</h6>
+    <div class="row mb-4 ms-2">
+        <div class="col-md-6">
+            <input type="checkbox" name="irrigatedLand" id="rainfed" class="form-check-input">
+            <label for="rainfed" class="form-check-label">Rainfed</label>
+            <input type="checkbox" name="irrigatedLand" id="tankfed" class="form-check-input ms-3">
+            <label for="tankfed" class="form-check-label">Tankfed</label>
+            <input type="checkbox" name="irrigatedLand" id="wellIrrigated" class="form-check-input ms-3">
+            <label for="wellIrrigated" class="form-check-label">Well Irrigated</label>
+        </div>
+    </div>
 
+    <!-- Patta Number, Total Area, Revenue Village -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">26. Patta Number <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="pattaNumber" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">27. Total Area (ha) <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="totalArea" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">28. Revenue Village <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="revenueVillage" required>
+        </div>
+    </div>
 
-                                        <div id="step2" style="display: none;">
-                                            <h5 class="card-title">Land Ownership Details</h5>
-                                            <h6 class="card-description ms-2 mb-3">Ownership Type</h5>
-                                                <div class="row mb-4 ms-2">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            <input type="radio" name="type" id="ownerCultivator" class="form-check-input">
-                                                            <label for="ownerCultivator" class="form-check-label">Owner Cultivator</label>
-                                                            <input type="radio" name="type" id="leaseHolder" class="form-check-input ms-3">
-                                                            <label for="leaseHolder" class="form-check-label">Lease Holder</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Patta Number <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" name="pattaNumber" required>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Total Area (ha) <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" name="totalArea" required>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-3">
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Revenue Village <span class="text-danger">*</span></label>
-                                                        <input type="text" class="form-control" name="revenueVillage" required>
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex justify-content-end gap-2">
-                                                    <div class="d-flex justify-content-between">
-                                                        <button type="button" class="btn btn-secondary me-2" onclick="prevStep(2, 1)">
-                                                            ← Previous (Step <span id="prevStepNum">1</span>)
-                                                        </button>
+    <!-- Crop Season -->
+    <h6 class="card-description ms-2 mb-3">29. Crop Season</h6>
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <input type="checkbox" name="cropSeason" id="kharif" class="form-check-input">
+            <label for="kharif" class="form-check-label">Kharif</label>
+            <input type="checkbox" name="cropSeason" id="rabi" class="form-check-input ms-3">
+            <label for="rabi" class="form-check-label">Rabi</label>
+            <input type="checkbox" name="cropSeason" id="otherSeason" class="form-check-input ms-3">
+            <label for="otherSeason" class="form-check-label">Other</label>
+        </div>
+    </div>
 
-                                                        <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">
-                                                            Next (Step <span id="nextStepNum">3</span>) →
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                        </div>
+    <!-- Livestock -->
+    <h6 class="card-description ms-2 mb-3">30. Livestock at Home</h6>
+    <div class="row mb-3 ms-2">
+        <div class="col-md-6">
+            <input type="checkbox" name="livestock" id="ruminants" class="form-check-input">
+            <label for="ruminants" class="form-check-label">Ruminants</label>
+            <input type="checkbox" name="livestock" id="milchAnimals" class="form-check-input ms-3">
+            <label for="milchAnimals" class="form-check-label">Milch Animals</label>
+            <input type="checkbox" name="livestock" id="cattle" class="form-check-input ms-3">
+            <label for="cattle" class="form-check-label">Cattle</label>
+            <input type="checkbox" name="livestock" id="poultry" class="form-check-input ms-3">
+            <label for="poultry" class="form-check-label">Poultry</label>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-secondary me-2" onclick="prevStep(2, 1)">
+            ← Previous (Step <span id="prevStepNum">1</span>)
+        </button>
+        <button type="button" class="btn btn-primary" onclick="nextStep(2, 3)">
+            Next (Step <span id="nextStepNum">3</span>) →
+        </button>
+    </div>
+</div>
+
 
                                         <div id="step3" style="display: none;">
                                             <h5 class="card-title">Land Development Activity</h5>
@@ -517,6 +691,34 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr>
+<h6 class="mt-4">Upload Documents</h6>
+<div class="row mb-3">
+    <div class="col-md-4">
+        <label for="patta" class="form-label">1. Patta</label>
+        <input type="file" class="form-control" id="patta" name="patta">
+    </div>
+    <div class="col-md-4">
+        <label for="id_card" class="form-label">2. ID Card</label>
+        <input type="file" class="form-control" id="id_card" name="id_card">
+    </div>
+    <div class="col-md-4">
+        <label for="fmb" class="form-label">3. FMB</label>
+        <input type="file" class="form-control" id="fmb" name="fmb">
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <label for="photo_farmer" class="form-label">4. Photo of Farmer</label>
+        <input type="file" class="form-control" id="photo_farmer" name="photo_farmer">
+    </div>
+    <div class="col-md-6">
+        <label for="bank_passbook" class="form-label">5. Bank Passbook</label>
+        <input type="file" class="form-control" id="bank_passbook" name="bank_passbook">
+    </div>
+</div>
+
 
                                             <div class="d-flex justify-content-end gap-2">
                                                 <button type="button" class="btn btn-secondary me-2" onclick="prevStep(4, 3)">
