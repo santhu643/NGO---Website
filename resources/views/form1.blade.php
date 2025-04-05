@@ -277,7 +277,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="fileUpload" class="form-label" id="fileUploadLabel">Upload ID Proof <span class="text-danger">*</span></label>
-                                                    <input type="file" class="form-control" name="file" id="fileUpload" required>
+                                                    <input type="file" class="form-control" name="file" id="fileUpload">
                                                 </div>
                                             </div>
 

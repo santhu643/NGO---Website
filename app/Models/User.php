@@ -6,7 +6,7 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,10 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $id
  * @property string $name
- * @property string $email
+ * @property string $username
  * @property string $password
- * @property string $role
- * @property Carbon $created_at
+ * @property string $designation
+ * 
+ * @property Collection|ApprovalDatum[] $approval_data
  *
  * @package App\Models
  */
@@ -32,8 +33,13 @@ class User extends Model
 
 	protected $fillable = [
 		'name',
-		'email',
+		'username',
 		'password',
-		'role'
+		'designation'
 	];
+
+	public function approval_data()
+	{
+		return $this->hasMany(ApprovalDatum::class, 'field_inspector');
+	}
 }

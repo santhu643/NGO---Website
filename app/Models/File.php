@@ -9,40 +9,38 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BankDetail
+ * Class File
  * 
  * @property int $id
  * @property int $applicant_id
- * @property string $acc_holder_name
- * @property string $acc_number
- * @property string $bank_name
- * @property string $branch
- * @property string $ifsc
- * @property string $farmer_ack
+ * @property string $identity
+ * @property string $geotag_photo
+ * @property string $patta
+ * @property string $fmb
+ * @property string $photo
+ * @property string $passbook
  * 
  * @property ApplicantDetail $applicant_detail
  *
  * @package App\Models
  */
-class BankDetail extends Model
+class File extends Model
 {
-	protected $table = 'bank_details';
-	public $incrementing = false;
+	protected $table = 'files';
 	public $timestamps = false;
 
 	protected $casts = [
-		'id' => 'int',
 		'applicant_id' => 'int'
 	];
 
 	protected $fillable = [
 		'applicant_id',
-		'acc_holder_name',
-		'acc_number',
-		'bank_name',
-		'branch',
-		'ifsc',
-		'farmer_ack'
+		'identity',
+		'geotag_photo',
+		'patta',
+		'fmb',
+		'photo',
+		'passbook'
 	];
 
 	public function applicant_detail()
