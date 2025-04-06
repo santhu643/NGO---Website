@@ -9,7 +9,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class LandForm
+ * Class PlantForm
  * 
  * @property int $id
  * @property int $form_id
@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $revenue
  * @property string $crop_season
  * @property string $livestocks
+ * @property string $plantation
  * @property string $sf_no
  * @property string $soil_type
  * @property string $land_benefit
@@ -38,9 +39,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class LandForm extends Model
+class PlantForm extends Model
 {
-	protected $table = 'land_form';
+	protected $table = 'plant_form';
 	public $timestamps = false;
 
 	protected $casts = [
@@ -58,6 +59,7 @@ class LandForm extends Model
 		'revenue',
 		'crop_season',
 		'livestocks',
+		'plantation',
 		'sf_no',
 		'soil_type',
 		'land_benefit',

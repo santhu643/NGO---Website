@@ -20,16 +20,29 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $mobile_number
  * @property string $gender
  * @property string|null $father_spouse
- * @property int|null $household_members
+ * @property string|null $household_members
+ * @property string $type_of_households
+ * @property string $special_catog
+ * @property string $caste
+ * @property string $hh_occupation
+ * @property string $type_of_house
+ * @property string $drinking_water
+ * @property string $potability
+ * @property string $domestic_water
+ * @property string $toilet_availability
+ * @property string $toilet_cond
+ * @property string $house_owner
+ * @property string $household_education
  * @property string $identity_card_type
  * @property string $identity_card_number
  * @property string|null $hamlet
  * @property string|null $panchayat
  * @property string|null $block
+ * @property string|null $mcode
+ * @property string $status
  * @property Carbon $created_at
  * 
  * @property Collection|BankDetail[] $bank_details
- * @property Collection|FileUpload[] $file_uploads
  *
  * @package App\Models
  */
@@ -37,10 +50,6 @@ class Form extends Model
 {
 	protected $table = 'forms';
 	public $timestamps = false;
-
-	protected $casts = [
-		'household_members' => 'int'
-	];
 
 	protected $fillable = [
 		'user_id',
@@ -50,42 +59,29 @@ class Form extends Model
 		'gender',
 		'father_spouse',
 		'household_members',
+		'type_of_households',
+		'special_catog',
+		'caste',
+		'hh_occupation',
+		'type_of_house',
+		'drinking_water',
+		'potability',
+		'domestic_water',
+		'toilet_availability',
+		'toilet_cond',
+		'house_owner',
+		'household_education',
 		'identity_card_type',
 		'identity_card_number',
 		'hamlet',
 		'panchayat',
-		'block'
+		'block',
+		'mcode',
+		'status'
 	];
 
 	public function bank_details()
 	{
 		return $this->hasMany(BankDetail::class);
 	}
-
-	public function fetch_land()
-{
-    // Get the logged-in user ID
-    $userId = auth()->id();
-
-    // Fetch forms for the logged-in user
-    $forms = Form::where('user_id', $userId)->get();
-
-    // Return data as JSON response
-    return response()->json($forms);
-}
-
-public function landForm()
-{
-    return $this->hasOne(LandForm::class, 'form_id', 'id');
-}
-public function pondForm()
-{
-    return $this->hasOne(PondForm::class, 'form_id', 'id');
-}
-public function bankDetails()
-{
-    return $this->hasOne(BankDetail::class, 'form_id', 'id');
-}
-
-
 }
