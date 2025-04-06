@@ -52,18 +52,38 @@ class mainController extends Controller
             'mobileNumber' => 'required',
             'gender' => 'required',
             'fatherSpouse' => 'required',
-            'householdMembers' => 'required',
+            'hh_members' => 'required',
             'identityCard' => 'required',
             'idCardNumber' => 'required',
             'hamlet' => 'required',
             'panchayat' => 'required',
             'block' => 'required',
-        
+            'householdType'=> 'required',
+            'hh_occupation'=>'required',
+            'specialCategory'=>'required',
+            'caste'=>'required',
+            'houseOwnership'=>'required',
+            'houseType'=>'required',
+            'drinkingWater'=>'required',
+            'potability'=>'required',
+            'domesticWater'=>'required',
+            'toilet'=>'required',
+            'toiletWorking'=>'required',
+            'education'=>'required',
+
             // Land Ownership
-            'type' => 'required',
             'pattaNumber' => 'required',
             'totalArea' => 'required',
             'revenueVillage' => 'required',
+            'landOwnership'=> 'required',
+            'wellIrrigation'=> 'required',
+            'irrigatedLand'=> 'required',
+            'cropSeason'=> 'required',
+            'livestock'=> 'required',
+            'areaIrrigated'=> 'required',
+
+
+
         
             // Land Development Activity
             'sf_no' => 'required',
@@ -87,34 +107,55 @@ class mainController extends Controller
             'bank_name' => 'required',
             'branch' => 'required',
             'ifsc' => 'required',
+            'farmer_agreement'=> 'required',
         ]);
         
         $form = new Form();
-        $form->user_id = $req->user_id;
+        $form->user_id = '1';
         $form->form_type = 'land';
         $form->farmer_name = $req->farmerName;
         $form->mobile_number = $req->mobileNumber;
         $form->gender = $req->gender;
         $form->father_spouse = $req->fatherSpouse;
-        $form->household_members = $req->householdMembers;
+        $form->household_members = implode(',', $req->hh_members);//[]
         $form->identity_card_type = $req->identityCard;
         $form->identity_card_number = $req->idCardNumber;
         $form->hamlet = $req->hamlet;
         $form->panchayat = $req->panchayat;
         $form->block = $req->block;
+        $form->type_of_households = $req->householdType;
+        $form->hh_occupation = implode(',', $req->hh_occupation);//[]
+        $form->special_catog =  implode(',', $req->specialCategory);
+        $form->caste = $req->caste;
+        $form->house_owner = $req->houseOwnership;
+        $form->type_of_house = $req->houseType;
+        $form->drinking_water  = implode(',', $req->drinkingWater);
+        $form->potability = implode(',', $req->potability);
+        $form->domestic_water =  implode(',', $req->domesticWater);
+        $form->toilet_availability = $req->toilet;
+        $form->toilet_cond = $req->toiletWorking;
+        $form->household_education = $req->education;
         $form->status = 1;
         $form->save();
 
-            // Get the auto-generated form_id
+// Get the auto-generated form_id
     $form_id = $form->id;
 
     // Insert into `land_form` table
     $landForm = new LandForm();
     $landForm->form_id = $form_id; // Foreign key reference
-    $landForm->ownership = $req->type;
+    $landForm->ownership = $req->landOwnership;
     $landForm->patta = $req->pattaNumber;
     $landForm->total_area = $req->totalArea;
     $landForm->revenue = $req->revenueVillage;
+    $landForm->well_irrigation = $req->wellIrrigation;
+    $landForm->area_irrigated = $req->areaIrrigated;
+    $landForm->irrigated_lands = $req->irrigatedLand;
+    $landForm->crop_season = $req->cropSeason;
+    $landForm->livestocks = implode(',', $req->livestock);
+
+
+
     $landForm->sf_no = $req->sf_no;
     $landForm->soil_type = $req->soil_type;
     $landForm->land_benefit = $req->land_benefit;

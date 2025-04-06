@@ -339,20 +339,20 @@
                                                 <div class="col-md-6">
                                                     <label class="form-label">Household Members</label>
                                                     <div class="d-flex gap-3">
-                                                        <input type="number" class="form-control" name="adults"
+                                                        <input type="number" class="form-control" name="hh_members[]"
                                                             placeholder="Adults">
-                                                        <input type="number" class="form-control" name="children"
+                                                        <input type="number" class="form-control" name="hh_members[]"
                                                             placeholder="Children">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Occupation of HH Members</label>
                                                     <div class="d-flex gap-3">
-                                                        <input type="number" name="agriculture"
+                                                        <input type="number" name="hh_occupation[]"
                                                             placeholder="Agriculture" class="form-control">
-                                                        <input type="number" name="business" placeholder="Business"
+                                                        <input type="number" name="hh_occupation[]" placeholder="Business"
                                                             class="form-control">
-                                                        <input type="number" name="otherOccupation" placeholder="Other"
+                                                        <input type="number" name="hh_occupation[]" placeholder="Other"
                                                             class="form-control">
                                                     </div>
                                                 </div>
@@ -591,17 +591,17 @@
                                             <h6 class="card-description ms-2 mb-3">Livestock at Home</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="livestock" id="ruminants"
+                                                    <input type="checkbox" name="livestock[]" id="ruminants"
                                                         class="form-check-input">
                                                     <label for="ruminants" class="form-check-label">Ruminants</label>
-                                                    <input type="checkbox" name="livestock" id="milchAnimals"
+                                                    <input type="checkbox" name="livestock[]" id="milchAnimals"
                                                         class="form-check-input ms-3">
                                                     <label for="milchAnimals" class="form-check-label">Milch
                                                         Animals</label>
-                                                    <input type="checkbox" name="livestock" id="cattle"
+                                                    <input type="checkbox" name="livestock[]" id="cattle"
                                                         class="form-check-input ms-3">
                                                     <label for="cattle" class="form-check-label">Cattle</label>
-                                                    <input type="checkbox" name="livestock" id="poultry"
+                                                    <input type="checkbox" name="livestock[]" id="poultry"
                                                         class="form-check-input ms-3">
                                                     <label for="poultry" class="form-check-label">Poultry</label>
                                                 </div>
@@ -1089,12 +1089,15 @@
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
+                    $('#landform')[0].reset();
+
                     Swal.fire({
                         title: "Success!",
                         text: "Form Submitted Successfully",
                         icon: "success",
                         confirmButtonText: "OK"
                     });
+
 
                     document.getElementById(`icon4`).innerHTML = "✅";
                     document.getElementById(`icon4`).classList.remove('text-danger');
