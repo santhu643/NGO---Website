@@ -81,22 +81,22 @@ class Form extends Model
 	];
 
 	public function bank_details()
-	{
-		return $this->hasMany(BankDetail::class);
-	}
+{
+    return $this->hasOne(BankDetail::class, 'form_id', 'id');
+}
 
 	public function land_details()
 	{
-		return $this->hasMany(LandForm::class);
+		return $this->hasOne(LandForm::class,'form_id', 'id');
 	}
 
 	public function pond_details()
 	{
-		return $this->hasMany(PondForm::class);
+		return $this->hasOne(PondForm::class,'form_id', 'id');
 	}
 
 	public function plant_details()
 	{
-		return $this->hasMany(PlantForm::class);
+		return $this->hasOne(PlantForm::class,'form_id', 'id');
 	}
 }

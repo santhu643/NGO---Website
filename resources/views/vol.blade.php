@@ -161,7 +161,7 @@
                                 <div class="col-md-6 mb-4 stretch-card transparent">
                                     <div class="card card-tale">
                                         <div class="card-body">
-                                            <p class="mb-4">Applications Today</p>
+                                            <p class="mb-4">Applications Submitted</p>
                                             <p class="fs-30 mb-2 ">4</p>
                                             <p></p>
                                         </div>
@@ -170,7 +170,7 @@
                                 <div class="col-md-6 mb-4 stretch-card transparent">
                                     <div class="card card-dark-blue">
                                         <div class="card-body">
-                                            <p class="mb-4">Total Applications</p>
+                                            <p class="mb-4">Professionals Approved</p>
                                             <p class="fs-30 mb-2">645</p>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                                     <div class="card card-light-blue">
                                         <div class="card-body">
-                                            <p class="mb-4">Pending Applications</p>
+                                            <p class="mb-4">Team Lead Approved</p>
                                             <p class="fs-30 mb-2">340</p>
                                             <p>
                                             <p>
@@ -190,7 +190,7 @@
                                 <div class="col-md-6 stretch-card transparent">
                                     <div class="card card-light-danger">
                                         <div class="card-body">
-                                            <p class="mb-4">Number of Clients</p>
+                                            <p class="mb-4"></p>
                                             <p class="fs-30 mb-2">32</p>
                                             <p></p>
                                         </div>

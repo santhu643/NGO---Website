@@ -598,6 +598,35 @@ $fileUpload->save();
 
     }
 
+    public function fetch_farmer_det($id){
+        $form = Form::where('id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+    }
+
+    public function fetch_land_det($id){
+        $form = LandForm::where('form_id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+    }
+
+    public function fetch_pond_det($id){
+        $form = PondForm::where('form_id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+    }
+
+    public function fetch_bank_det($id){
+        $form = BankDetail::where('form_id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+
+    }
+
     
 
    
