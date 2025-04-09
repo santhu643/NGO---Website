@@ -24,6 +24,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
     <link rel="shortcut icon" href="assets/images/favicon.png" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
+
+
+
     <style>
         .step {
             display: none;
@@ -281,7 +288,7 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
-                                                    <table id="work_table" class="table table-bordered table-hover table-striped">
+                                                    <table id="plant_table" class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -423,6 +430,18 @@
     </div>
 
     <script>
+  $(document).ready(function() {
+    $('#land_table').DataTable();
+    $('#pond_table').DataTable();
+    $('#plant_table').DataTable();
+
+  });
+</script>
+
+    <script>
+
+
+
         function nextStep(current, next) {
             document.getElementById('step' + current).style.display = 'none';
             document.getElementById('step' + next).style.display = 'block';
@@ -576,6 +595,11 @@
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <script src="{{ asset('assets/js/settings.js') }}"></script>
     <script src="{{ asset('assets/js/todolist.js') }}"></script>
+        
+
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <!-- <script src="{{ asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script> -->
