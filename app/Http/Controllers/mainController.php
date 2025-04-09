@@ -9,6 +9,10 @@ use App\Models\Form;
 use App\Models\BankDetail;
 use App\Models\landForm;
 use App\Models\PondForm;
+use App\Models\FileUpload;
+use App\Models\PlantationForm;
+
+
 
 
 
@@ -180,6 +184,36 @@ class mainController extends Controller
         $bankDetail->branch = $req->branch;
         $bankDetail->ifsc_code = $req->ifsc;
         $bankDetail->save();
+        $pattaFile = $req->file('patta');
+        $pattaName = 'patta_' . time() . '.' . $pattaFile->getClientOriginalExtension();
+        $pattaFile->move(public_path('documents'), $pattaName);
+        
+        $identityFile = $req->file('id_card');
+        $identityName = 'id_' . time() . '.' . $identityFile->getClientOriginalExtension();
+        $identityFile->move(public_path('documents'), $identityName);
+        
+        $fmbFile = $req->file('fmb');
+        $fmbName = 'fmb_' . time() . '.' . $fmbFile->getClientOriginalExtension();
+        $fmbFile->move(public_path('documents'), $fmbName);
+        
+        $photoFile = $req->file('photo_farmer');
+        $photoName = 'photo_' . time() . '.' . $photoFile->getClientOriginalExtension();
+        $photoFile->move(public_path('documents'), $photoName);
+        
+        $passbookFile = $req->file('bank_passbook');
+        $passbookName = 'passbook_' . time() . '.' . $passbookFile->getClientOriginalExtension();
+        $passbookFile->move(public_path('documents'), $passbookName);
+        
+        
+        $fileUpload = new FileUpload();
+        $fileUpload->form_id  = $form_id;
+        $fileUpload->patta    = $pattaName;
+        $fileUpload->identity = $identityName;
+        $fileUpload->fmb      = $fmbName;
+        $fileUpload->photo    = $photoName;
+        $fileUpload->passbook = $passbookName;
+        $fileUpload->save();
+        
     
         return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
 
@@ -338,6 +372,37 @@ $bankDetail->branch = $req->branch;
 $bankDetail->ifsc_code = $req->ifsc;
 $bankDetail->save();
 
+$pattaFile = $req->file('patta');
+$pattaName = 'patta_' . time() . '.' . $pattaFile->getClientOriginalExtension();
+$pattaFile->move(public_path('documents'), $pattaName);
+
+$identityFile = $req->file('id_card');
+$identityName = 'id_' . time() . '.' . $identityFile->getClientOriginalExtension();
+$identityFile->move(public_path('documents'), $identityName);
+
+$fmbFile = $req->file('fmb');
+$fmbName = 'fmb_' . time() . '.' . $fmbFile->getClientOriginalExtension();
+$fmbFile->move(public_path('documents'), $fmbName);
+
+$photoFile = $req->file('photo_farmer');
+$photoName = 'photo_' . time() . '.' . $photoFile->getClientOriginalExtension();
+$photoFile->move(public_path('documents'), $photoName);
+
+$passbookFile = $req->file('bank_passbook');
+$passbookName = 'passbook_' . time() . '.' . $passbookFile->getClientOriginalExtension();
+$passbookFile->move(public_path('documents'), $passbookName);
+
+
+$fileUpload = new FileUpload();
+$fileUpload->form_id  = $form_id;
+$fileUpload->patta    = $pattaName;
+$fileUpload->identity = $identityName;
+$fileUpload->fmb      = $fmbName;
+$fileUpload->photo    = $photoName;
+$fileUpload->passbook = $passbookName;
+$fileUpload->save();
+
+
 return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
 
     }
@@ -451,7 +516,7 @@ return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
     $landForm->irrigated_lands = $req->irrigatedLand;
     $landForm->crop_season = $req->cropSeason;
     $landForm->livestocks = implode(',', $req->livestock);
-    $landForm->plantation = implode(',', $req->plantations);
+    $landForm->plantation = implode(',', $req->plantation);
 
 
 
@@ -481,6 +546,38 @@ return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
         $bankDetail->branch = $req->branch;
         $bankDetail->ifsc_code = $req->ifsc;
         $bankDetail->save();
+
+        $pattaFile = $req->file('patta');
+$pattaName = 'patta_' . time() . '.' . $pattaFile->getClientOriginalExtension();
+$pattaFile->move(public_path('documents'), $pattaName);
+
+$identityFile = $req->file('id_card');
+$identityName = 'id_' . time() . '.' . $identityFile->getClientOriginalExtension();
+$identityFile->move(public_path('documents'), $identityName);
+
+$fmbFile = $req->file('fmb');
+$fmbName = 'fmb_' . time() . '.' . $fmbFile->getClientOriginalExtension();
+$fmbFile->move(public_path('documents'), $fmbName);
+
+$photoFile = $req->file('photo_farmer');
+$photoName = 'photo_' . time() . '.' . $photoFile->getClientOriginalExtension();
+$photoFile->move(public_path('documents'), $photoName);
+
+$passbookFile = $req->file('bank_passbook');
+$passbookName = 'passbook_' . time() . '.' . $passbookFile->getClientOriginalExtension();
+$passbookFile->move(public_path('documents'), $passbookName);
+
+
+$fileUpload = new FileUpload();
+$fileUpload->form_id  = $form_id;
+$fileUpload->patta    = $pattaName;
+$fileUpload->identity = $identityName;
+$fileUpload->fmb      = $fmbName;
+$fileUpload->photo    = $photoName;
+$fileUpload->passbook = $passbookName;
+$fileUpload->save();
+
+
     
         return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
 

@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PlantationForm extends Model
 {
-	protected $table = 'plantation_form';
+	protected $table = 'plant_form';
 	public $timestamps = false;
 
 	protected $casts = [

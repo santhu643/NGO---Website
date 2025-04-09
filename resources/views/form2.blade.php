@@ -490,6 +490,8 @@
                                                 </div>
                                             </div>
 
+                                            
+
                                             <div class="d-flex justify-content-end gap-2">
                                                 <button type="button" class="btn btn-primary" onclick="nextStep(1, 2)">
                                                     Next (Step <span id="nextStepNum">2</span>) →
@@ -497,20 +499,24 @@
                                             </div>
                                         </div>
 
+                                        
+
 
 
                                         <div id="step2" style="display: none;">
                                             <h5 class="card-title">Land Ownership Details</h5>
 
+                                            
+
                                             <!-- Land Ownership -->
                                             <h6 class="card-description ms-2 mb-3">Land Ownership</h6>
                                             <div class="row mb-4 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="radio" name="landOwnership" id="ownerCultivator"
+                                                    <input type="radio" name="landOwnership" id="ownerCultivator" value="ownerCultivator"
                                                         class="form-check-input">
                                                     <label for="ownerCultivator" class="form-check-label">Owner
                                                         Cultivator</label>
-                                                    <input type="radio" name="landOwnership" id="leaseHolder"
+                                                    <input type="radio" name="landOwnership" id="leaseHolder" value="leaseHolder"
                                                         class="form-check-input ms-3">
                                                     <label for="leaseHolder" class="form-check-label">Lease
                                                         Holder</label>
@@ -521,10 +527,10 @@
                                             <h6 class="card-description ms-2 mb-3">Well for Irrigation</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="radio" name="wellIrrigation" id="wellYes"
+                                                    <input type="radio" name="wellIrrigation" id="wellYes" value="yes"
                                                         class="form-check-input">
                                                     <label for="wellYes" class="form-check-label">Yes</label>
-                                                    <input type="radio" name="wellIrrigation" id="wellNo"
+                                                    <input type="radio" name="wellIrrigation" id="wellNo" value="No"
                                                         class="form-check-input ms-3">
                                                     <label for="wellNo" class="form-check-label">No</label>
                                                 </div>
@@ -535,13 +541,13 @@
                                             <h6 class="card-description ms-2 mb-3">Irrigated Lands (ha)</h6>
                                             <div class="row mb-4 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="irrigatedLand" id="rainfed"
+                                                    <input type="checkbox" name="irrigatedLand" id="rainfed" value="rainfed"
                                                         class="form-check-input">
                                                     <label for="rainfed" class="form-check-label">Rainfed</label>
-                                                    <input type="checkbox" name="irrigatedLand" id="tankfed"
+                                                    <input type="checkbox" name="irrigatedLand" id="tankfed" value="tankfed"
                                                         class="form-check-input ms-3">
                                                     <label for="tankfed" class="form-check-label">Tankfed</label>
-                                                    <input type="checkbox" name="irrigatedLand" id="wellIrrigated"
+                                                    <input type="checkbox" name="irrigatedLand" id="wellIrrigated" value="wellIrrigated"
                                                         class="form-check-input ms-3">
                                                     <label for="wellIrrigated" class="form-check-label">Well
                                                         Irrigated</label>
@@ -572,13 +578,13 @@
                                             <h6 class="card-description ms-2 mb-3">Crop Season</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="cropSeason" id="kharif"
+                                                    <input type="checkbox" name="cropSeason" id="kharif" value="kharif"
                                                         class="form-check-input">
                                                     <label for="kharif" class="form-check-label">Kharif</label>
-                                                    <input type="checkbox" name="cropSeason" id="rabi"
+                                                    <input type="checkbox" name="cropSeason" id="rabi" value="rabi"
                                                         class="form-check-input ms-3">
                                                     <label for="rabi" class="form-check-label">Rabi</label>
-                                                    <input type="checkbox" name="cropSeason" id="otherSeason"
+                                                    <input type="checkbox" name="cropSeason" id="otherSeason" value="otherSeason"
                                                         class="form-check-input ms-3">
                                                     <label for="otherSeason" class="form-check-label">Other</label>
                                                 </div>
@@ -588,19 +594,35 @@
                                             <h6 class="card-description ms-2 mb-3">Livestock at Home</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="livestock[]" id="ruminants"
+                                                    <input type="checkbox" name="livestock[]" id="ruminants" value="ruminants"
                                                         class="form-check-input">
                                                     <label for="ruminants" class="form-check-label">Ruminants</label>
-                                                    <input type="checkbox" name="livestock[]" id="milchAnimals"
+                                                    <input type="checkbox" name="livestock[]" id="milchAnimals" value="milchAnimals"
                                                         class="form-check-input ms-3">
                                                     <label for="milchAnimals" class="form-check-label">Milch
                                                         Animals</label>
-                                                    <input type="checkbox" name="livestock[]" id="cattle"
+                                                    <input type="checkbox" name="livestock[]" id="cattle" value="cattle"
                                                         class="form-check-input ms-3">
                                                     <label for="cattle" class="form-check-label">Cattle</label>
-                                                    <input type="checkbox" name="livestock[]" id="poultry"
+                                                    <input type="checkbox" name="livestock[]" id="poultry" value="poultry"
                                                         class="form-check-input ms-3">
                                                     <label for="poultry" class="form-check-label">Poultry</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3 ms-2">
+                                                <div class="col-md-6">
+                                                    <label for="lat" class="form-label">Latitude<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="lat"
+                                                        name="lat" required>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <label for="lon" class="form-label">longitude<span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="lon"
+                                                        name="lon" required>
+                                                    
                                                 </div>
                                             </div>
 
