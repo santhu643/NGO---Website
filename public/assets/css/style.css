@@ -10391,7 +10391,7 @@ progress {
 
 .table-dark {
   --bs-table-color: #fff;
-  --bs-table-bg: #212529;
+  --bs-table-bg: #0B8B42;
   --bs-table-border-color: #4d5154;
   --bs-table-striped-bg: #2c3034;
   --bs-table-striped-color: #fff;
@@ -11440,11 +11440,11 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #4B49AC;
-  --bs-btn-border-color: #4B49AC;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #403e92;
-  --bs-btn-hover-border-color: #3c3a8a;
+  --bs-btn-bg: #0B8B42;
+  --bs-btn-border-color: #124E13;
+  --bs-btn-hover-color: #124E13 ;
+  --bs-btn-hover-bg: #A5D6A7;
+  --bs-btn-hover-border-color: #0B8B42;
   --bs-btn-focus-shadow-rgb: 102, 100, 184;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #3c3a8a;
@@ -24128,7 +24128,7 @@ table.dataTable tbody td.select-checkbox:after {
   border-radius: 8px;
 }
 .sidebar .nav .nav-item.active > .nav-link {
-  background: #4B49AC;
+  background: #134E13;
   position: relative;
 }
 .sidebar .nav .nav-item.active > .nav-link i,
@@ -24153,7 +24153,7 @@ table.dataTable tbody td.select-checkbox:after {
   margin-top: 0.2rem;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item:hover > .nav-link, .sidebar .nav:not(.sub-menu) > .nav-item:hover[aria-expanded=true] {
-  background: #4B49AC;
+  background: #134E13;
   color: #fff;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link {
@@ -24161,18 +24161,19 @@ table.dataTable tbody td.select-checkbox:after {
 }
 .sidebar .nav:not(.sub-menu) > .nav-item > .nav-link[aria-expanded=true] {
   border-radius: 8px 8px 0 0;
-  background: #4B49AC;
+  background: #134E13;
   color: #fff;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item.active {
-  background: #4B49AC;
+  background: #134E13;
 }
 .sidebar .nav.sub-menu {
   margin-bottom: 0;
   margin-top: 0;
   list-style: none;
   padding: 0.25rem 0 0 3.07rem;
-  background: #4B49AC;
+  background: #A5D6A7;
+  border-radius:0 0 8px 8px;
   padding-bottom: 12px;
 }
 .sidebar .nav.sub-menu .nav-item {
@@ -24186,23 +24187,23 @@ table.dataTable tbody td.select-checkbox:after {
   position: absolute;
   margin-top: 16px;
   border-radius: 50%;
-  background: #b2b2b2;
+  background: #000000;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: #b9b8ee;
+  color: #333;
   padding: 0.7rem 1rem;
   position: relative;
   font-size: 0.875rem;
   line-height: 1;
   height: auto;
   border-top: 0;
-  font-weight: 400;
+  font-weight: 500;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link:hover {
-  color: #ffffff;
+  color: #0B8B42;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
-  color: #ffffff;
+  color: #000;
   font-weight: 900;
   background: transparent;
 }
