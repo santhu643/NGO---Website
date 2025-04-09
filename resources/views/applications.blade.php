@@ -189,7 +189,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#workform" role="tab" aria-selected="false">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab" aria-selected="false">
                                             <i class="fas fa-tools"></i><b>&nbsp;Work Form</b>
                                         </a>
                                     </li>
@@ -213,6 +213,21 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
+                                                        <tbody>
+                                                            @foreach($form1 as $f)
+                                                            <tr>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+
+                                                            </tr>
+
+                                                            @endforeach
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -236,16 +251,31 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
+                                                        <tbody>
+                                                            @foreach($form2 as $f)
+                                                            <tr>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+
+                                                            </tr>
+
+                                                            @endforeach
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane p-20" id="workform" role="tabpanel">
+                                    <div class="tab-pane p-20" id="plantform" role="tabpanel">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="card-title">Work Form</h4>
+                                                <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="work_table" class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
@@ -259,6 +289,21 @@
                                                                 <th>Status</th>
                                                             </tr>
                                                         </thead>
+                                                        <tbody>
+                                                            @foreach($form3 as $f)
+                                                            <tr>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$f->id}}</td>
+
+                                                            </tr>
+
+                                                            @endforeach
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>

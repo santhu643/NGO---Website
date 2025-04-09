@@ -23,9 +23,8 @@ Route::get('/form3',function(){
     return view('form3');
 })->name('form3');
 
-Route::get('/application',function(){
-    return view('applications');
-})->name('application');
+Route::get('/application',[mainController::class,'fetch_appl'])->name('application');
+
 
 Route::post('/form_land',[mainController::class,"land_form"]);
 

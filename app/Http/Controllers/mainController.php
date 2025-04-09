@@ -587,6 +587,17 @@ $fileUpload->save();
     
     }
 
+
+    public function fetch_appl(){
+        $form1 = Form::Where('form_type','land')->get();
+        $form2 = Form::Where('form_type','pond')->get();
+        $form3 = Form::Where('form_type','plant')->get();
+        if($form1||$form2||$form3){
+            return view('applications',compact('form1','form2','form3'));
+        }
+
+    }
+
     
 
    

@@ -84,4 +84,19 @@ class Form extends Model
 	{
 		return $this->hasMany(BankDetail::class);
 	}
+
+	public function land_details()
+	{
+		return $this->hasMany(LandForm::class);
+	}
+
+	public function pond_details()
+	{
+		return $this->hasMany(PondForm::class);
+	}
+
+	public function plant_details()
+	{
+		return $this->hasMany(PlantForm::class);
+	}
 }
