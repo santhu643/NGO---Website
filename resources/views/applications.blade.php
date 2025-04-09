@@ -32,21 +32,21 @@
 
 
     <style>
-        .step {
-            display: none;
-        }
+    .step {
+        display: none;
+    }
 
-        .step.active {
-            display: block;
-        }
+    .step.active {
+        display: block;
+    }
 
-        .step3-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+    .step3-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
 
-            /* Added spacing */
-        }
+        /* Added spacing */
+    }
     </style>
 </head>
 
@@ -184,20 +184,24 @@
 
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
-                                <ul class="nav nav-tabs mb-3" style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
+                                <ul class="nav nav-tabs mb-3"
+                                    style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#landform" role="tab" aria-selected="true">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#landform" role="tab"
+                                            aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#pondform" role="tab" aria-selected="false">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#pondform" role="tab"
+                                            aria-selected="false">
                                             <i class="fas fa-water"></i><b>&nbsp;Pond Form</b>
                                         </a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab" aria-selected="false">
-                                            <i class="fas fa-tools"></i><b>&nbsp;Work Form</b>
+                                        <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab"
+                                            aria-selected="false">
+                                            <i class="fas fa-tools"></i><b>&nbsp;Plantation Form</b>
                                         </a>
                                     </li>
 
@@ -208,7 +212,8 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
                                                 <div class="table-responsive">
-                                                    <table id="land_table" class="table table-bordered table-hover table-striped">
+                                                    <table id="land_table"
+                                                        class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -221,17 +226,23 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @php $s = 1; @endphp
+                                                            @php $s = 1; @endphp
 
                                                             @foreach($form1 as $f)
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>{{$f->id}}</td>
-                                                                <td>{{$f->id}}</td>
-                                                                <td>{{$f->id}}</td>
-                                                                <td>{{$f->id}}</td>
-                                                                <td>{{$f->id}}</td>
-                                                                <td>{{$f->id}}</td>
+                                                                <td>#121212</td>
+                                                                <td><button type="button"
+                                                                        class="btn btn-success">Success</button>
+                                                                </td>
+                                                                <td><button type="button"
+                                                                        class="btn btn-success">Success</button>
+                                                                </td><td><button type="button"
+                                                                        class="btn btn-success">Success</button>
+                                                                </td>
+                                                                <td><button>Edit</button><button>Delete</button></td>
+                                                                <td>Submitted</td>
+                                                                
 
                                                             </tr>
 
@@ -248,7 +259,8 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Pond Form</h4>
                                                 <div class="table-responsive">
-                                                    <table id="pond_table" class="table table-bordered table-hover table-striped">
+                                                    <table id="pond_table"
+                                                        class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -261,7 +273,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                        @php $s = 1; @endphp
+                                                            @php $s = 1; @endphp
 
                                                             @foreach($form2 as $f)
                                                             <tr>
@@ -288,7 +300,8 @@
                                             <div class="card-body">
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
-                                                    <table id="plant_table" class="table table-bordered table-hover table-striped">
+                                                    <table id="plant_table"
+                                                        class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -430,160 +443,157 @@
     </div>
 
     <script>
-  $(document).ready(function() {
-    $('#land_table').DataTable();
-    $('#pond_table').DataTable();
-    $('#plant_table').DataTable();
+    $(document).ready(function() {
+        $('#land_table').DataTable();
+        $('#pond_table').DataTable();
+        $('#plant_table').DataTable();
 
-  });
-</script>
+    });
+    </script>
 
     <script>
+    function nextStep(current, next) {
+        document.getElementById('step' + current).style.display = 'none';
+        document.getElementById('step' + next).style.display = 'block';
+    }
+
+    function prevStep(current, prev) {
+        document.getElementById('step' + current).style.display = 'none';
+        document.getElementById('step' + prev).style.display = 'block';
+    }
 
 
 
-        function nextStep(current, next) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + next).style.display = 'block';
+    function updateIdentityTitle() {
+        const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+        const fileUploadLabel = document.getElementById("fileUploadLabel");
+        if (selectedIdentity) {
+            fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
         }
+    }
 
-        function prevStep(current, prev) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + prev).style.display = 'block';
-        }
+    function nextStep(current, next) {
+        document.getElementById("step" + current).style.display = "none";
+        document.getElementById("step" + next).style.display = "block";
+    }
 
+    function prevStep(current, previous) {
+        document.getElementById("step" + current).style.display = "none";
+        document.getElementById("step" + previous).style.display = "block";
+    };
 
-
-        function updateIdentityTitle() {
-            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
-            const fileUploadLabel = document.getElementById("fileUploadLabel");
-            if (selectedIdentity) {
-                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
-            }
-        }
-
-        function nextStep(current, next) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + next).style.display = "block";
-        }
-
-        function prevStep(current, previous) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + previous).style.display = "block";
-        };
-
-        $(document).on("submit", "#landform", function(e) {
-            e.preventDefault();
-            var form = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "/form_land",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Form Submitted Successfully",
-                            icon: "success",
-                            confirmButtonText: "OK"
-                        });
-                    } else {
-                        alert("something went wrong");
-                    }
+    $(document).on("submit", "#landform", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: "/form_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form Submitted Successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
+                } else {
+                    alert("something went wrong");
                 }
-            })
+            }
+        })
+
+    })
+
+
+    $(document).on("click", "#farmer_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_farmer_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    console.log(response.data);
+                    $("#f_name").text(response.data.farmer_name);
+                    $("#f_spouse").text(response.data.father_spouse);
+                    $("#f_mobile").text(response.data.mobile_number);
+                    $("#f_gender").text(response.data.gender);
+                    $("#f_card").text(response.data.identity_card_type);
+                    $("#f_member").text(response.data.household_members);
+                    $("#f_number").text(response.data.identity_card_number);
+                    $("#f_hamlet").text(response.data.hamlet);
+                    $("#f_panchayat").text(response.data.panchayat);
+                    $("#f_block").text(response.data.block);
+
+                    $("#farmerdet_modal").modal("show");
+                }
+
+            }
+
+        })
+    });
+
+    $(document).on("click", "#land_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_land_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    $("#l_ownership").text(response.data.ownership);
+                    $("#l_patta").text(response.data.patta);
+                    $("#l_tarea").text(response.data.total_area);
+                    $("#l_revenue").text(response.data.revenue);
+                    $("#l_sf").text(response.data.sf_no);
+                    $("#l_soil").text(response.data.soil_type);
+                    $("#l_benefit").text(response.data.land_benefit);
+                    $("#l_field").text(response.data.field_insp);
+                    $("#l_site").text(response.data.site_app);
+                    $("#l_doi").text(response.data.date_of_ins);
+                    $("#l_doa").text(response.data.date_of_app);
+                    $("#l_type").text(response.data.type_of_work);
+                    $("#l_area").text(response.data.area_benefit);
+                    $("#l_oth").text(response.data.other_works);
+                    $("#l_pradan").text(response.data.pradan_cont);
+                    $("#l_farmer").text(response.data.farmer_cont);
+                    $("#l_total").text(response.data.total_amount);
+                    $("#landdet_modal").modal("show");
+
+                }
+            }
+
+        })
+    });
+
+    $(document).on("click", "#bank_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_bank_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+
+
+                    $("#b_hname").text(response.data.account_holder_name);
+                    $("#b_no").text(response.data.account_number);
+                    $("#b_name").text(response.data.bank_name);
+                    $("#b_branch").text(response.data.branch);
+                    $("#b_ifsc").text(response.data.ifsc_code);
+                    $("#bankdet_modal").modal("show");
+
+
+                }
+            }
 
         })
 
 
-        $(document).on("click", "#farmer_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_farmer_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        console.log(response.data);
-                        $("#f_name").text(response.data.farmer_name);
-                        $("#f_spouse").text(response.data.father_spouse);
-                        $("#f_mobile").text(response.data.mobile_number);
-                        $("#f_gender").text(response.data.gender);
-                        $("#f_card").text(response.data.identity_card_type);
-                        $("#f_member").text(response.data.household_members);
-                        $("#f_number").text(response.data.identity_card_number);
-                        $("#f_hamlet").text(response.data.hamlet);
-                        $("#f_panchayat").text(response.data.panchayat);
-                        $("#f_block").text(response.data.block);
-
-                        $("#farmerdet_modal").modal("show");
-                    }
-
-                }
-
-            })
-        });
-
-        $(document).on("click", "#land_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_land_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        $("#l_ownership").text(response.data.ownership);
-                        $("#l_patta").text(response.data.patta);
-                        $("#l_tarea").text(response.data.total_area);
-                        $("#l_revenue").text(response.data.revenue);
-                        $("#l_sf").text(response.data.sf_no);
-                        $("#l_soil").text(response.data.soil_type);
-                        $("#l_benefit").text(response.data.land_benefit);
-                        $("#l_field").text(response.data.field_insp);
-                        $("#l_site").text(response.data.site_app);
-                        $("#l_doi").text(response.data.date_of_ins);
-                        $("#l_doa").text(response.data.date_of_app);
-                        $("#l_type").text(response.data.type_of_work);
-                        $("#l_area").text(response.data.area_benefit);
-                        $("#l_oth").text(response.data.other_works);
-                        $("#l_pradan").text(response.data.pradan_cont);
-                        $("#l_farmer").text(response.data.farmer_cont);
-                        $("#l_total").text(response.data.total_amount);
-                        $("#landdet_modal").modal("show");
-
-                    }
-                }
-
-            })
-        });
-
-        $(document).on("click", "#bank_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_bank_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-
-
-                        $("#b_hname").text(response.data.account_holder_name);
-                        $("#b_no").text(response.data.account_number);
-                        $("#b_name").text(response.data.bank_name);
-                        $("#b_branch").text(response.data.branch);
-                        $("#b_ifsc").text(response.data.ifsc_code);
-                        $("#bankdet_modal").modal("show");
-
-
-                    }
-                }
-
-            })
-
-
-        });
+    });
     </script>
 
 
@@ -595,11 +605,11 @@
     <script src="{{ asset('assets/js/template.js') }}"></script>
     <script src="{{ asset('assets/js/settings.js') }}"></script>
     <script src="{{ asset('assets/js/todolist.js') }}"></script>
-        
 
 
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 
     <!-- <script src="{{ asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script> -->
