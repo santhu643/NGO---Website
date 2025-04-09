@@ -177,27 +177,92 @@
 
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
+                                <ul class="nav nav-tabs mb-3" style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#landform" role="tab" aria-selected="true">
+                                            <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#pondform" role="tab" aria-selected="false">
+                                            <i class="fas fa-water"></i><b>&nbsp;Pond Form</b>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#workform" role="tab" aria-selected="false">
+                                            <i class="fas fa-tools"></i><b>&nbsp;Work Form</b>
+                                        </a>
+                                    </li>
 
-                                <div class="card-body">
-                                    <h4 class="card-title">Farm Land v2</h4>
-                                    <div class="table-responsive">
-                                        <table id="land_table" class="table table-bordered table-hover table-striped">
-                                            <thead class="text-center table-dark">
-                                                <tr>
-                                                    <th>S.No</th>
-                                                    <th>Application Number</th>
-                                                    <th>Farmer Details</th>
-                                                    <th>Land Details</th>
-                                                    <th>Bank Details</th>
-                                                    <th>Action</th>
-                                                    <th>Status</th>
+                                </ul>
+                                <div class="tab-content tabcontent-border">
+                                    <div class="tab-pane p-20 active show" id="landform" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Land Form</h4>
+                                                <div class="table-responsive">
+                                                    <table id="land_table" class="table table-bordered table-hover table-striped">
+                                                        <thead class="text-center table-dark">
+                                                            <tr>
+                                                                <th>S.No</th>
+                                                                <th>Application Number</th>
+                                                                <th>Farmer Details</th>
+                                                                <th>Land Details</th>
+                                                                <th>Bank Details</th>
+                                                                <th>Action</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
+                                    <div class="tab-pane p-20" id="pondform" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Pond Form</h4>
+                                                <div class="table-responsive">
+                                                    <table id="pond_table" class="table table-bordered table-hover table-striped">
+                                                        <thead class="text-center table-dark">
+                                                            <tr>
+                                                                <th>S.No</th>
+                                                                <th>Application Number</th>
+                                                                <th>Farmer Details</th>
+                                                                <th>Land Details</th>
+                                                                <th>Bank Details</th>
+                                                                <th>Action</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                                </tr>
-                                            </thead>
-                                         
-
-                                        </table>
+                                    <div class="tab-pane p-20" id="workform" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Work Form</h4>
+                                                <div class="table-responsive">
+                                                    <table id="work_table" class="table table-bordered table-hover table-striped">
+                                                        <thead class="text-center table-dark">
+                                                            <tr>
+                                                                <th>S.No</th>
+                                                                <th>Application Number</th>
+                                                                <th>Farmer Details</th>
+                                                                <th>Land Details</th>
+                                                                <th>Bank Details</th>
+                                                                <th>Action</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

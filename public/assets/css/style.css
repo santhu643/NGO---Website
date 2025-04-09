@@ -12204,8 +12204,8 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   --bs-nav-link-padding-x: 1rem;
   --bs-nav-link-padding-y: 0.5rem;
   --bs-nav-link-font-weight: ;
-  --bs-nav-link-color: var(--bs-link-color);
-  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-color: #0B8B42;
+  --bs-nav-link-hover-color: #07a84c;
   --bs-nav-link-disabled-color: var(--bs-secondary-color);
   display: flex;
   flex-wrap: wrap;
@@ -12265,8 +12265,8 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: var(--bs-nav-tabs-link-active-color);
-  background-color: var(--bs-nav-tabs-link-active-bg);
+  color: #fff;
+  background-color: #134E13;
   border-color: var(--bs-nav-tabs-link-active-border-color);
 }
 .nav-tabs .dropdown-menu {
@@ -22265,32 +22265,32 @@ code {
   font-size: 0.75rem;
 }
 .card.card-tale {
-  background: #7DA0FA;
-  color: #ffffff;
+  background: #2E8B57;
+  color: #000;
 }
 .card.card-tale:hover {
   background: #96b2fb;
 }
 .card.card-dark-blue {
-  background: #4747A1;
-  color: #ffffff;
+  background: #6da96b;
+  color: #000;
 }
 .card.card-dark-blue:hover {
   background: #5050b2;
 }
 .card.card-light-blue {
-  background: #7978E9;
-  color: #ffffff;
+  background: #80cf80;
+  color: #000;
 }
 .card.card-light-blue:hover {
   background: #8f8eed;
 }
 .card.card-light-danger {
-  background: #F3797E;
-  color: #ffffff;
+  background: #A5D6A7;
+  color: #000;
 }
 .card.card-light-danger:hover {
-  background: #f59095;
+  background: #A8DDAA;
 }
 
 .card-columns .card {
