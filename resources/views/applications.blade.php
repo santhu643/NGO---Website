@@ -214,9 +214,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        @php $s = 1; @endphp
+
                                                             @foreach($form1 as $f)
                                                             <tr>
-                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$s++}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
@@ -252,9 +254,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        @php $s = 1; @endphp
+
                                                             @foreach($form2 as $f)
                                                             <tr>
-                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$s++}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
@@ -290,9 +294,10 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
                                                             <tr>
-                                                                <td>{{$f->id}}</td>
+                                                                <td>{{$s++}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
                                                                 <td>{{$f->id}}</td>
