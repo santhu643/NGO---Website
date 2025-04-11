@@ -232,19 +232,24 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button"
-                                                                        class="btn btn-success" id="farmer_detail" value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="farmer_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="land_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="bank_detail"
+                                                                        value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button"
-                                                                        class="btn btn-success" id="land_detail" value="{{$f->id}}">View</button>
-                                                                </td><td><button type="button"
-                                                                        class="btn btn-success" id="bank_detail" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button"
-                                                                class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button type="button"
-                                                                class="btn btn-danger" value="{{$f->id}}">Delete</button></td>
+                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button
+                                                                        type="button" class="btn btn-danger"
+                                                                        value="{{$f->id}}">Delete</button></td>
                                                                 <td>Submitted</td>
-                                                                
+
 
                                                             </tr>
 
@@ -268,7 +273,7 @@
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
                                                                 <th>Farmer Details</th>
-                                                                <th>Land Details</th>
+                                                                <th>Pond Details</th>
                                                                 <th>Bank Details</th>
                                                                 <th>Action</th>
                                                                 <th>Status</th>
@@ -281,19 +286,24 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button"
-                                                                        class="btn btn-success" id="farmer_detail" value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="farmer_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="pond_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="bank_detail"
+                                                                        value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button"
-                                                                        class="btn btn-success" id="pond_detail" value="{{$f->id}}">View</button>
-                                                                </td><td><button type="button"
-                                                                        class="btn btn-success" id="bank_detail" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button"
-                                                                class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button type="button"
-                                                                class="btn btn-danger" value="{{$f->id}}">Delete</button></td>
+                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button
+                                                                        type="button" class="btn btn-danger"
+                                                                        value="{{$f->id}}">Delete</button></td>
                                                                 <td>Submitted</td>
-                                                                
+
 
                                                             </tr>
                                                             @endforeach
@@ -328,19 +338,24 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button"
-                                                                        class="btn btn-success" id="farmer_detail" value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="farmer_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="plant_detail"
+                                                                        value="{{$f->id}}">View</button>
+                                                                </td>
+                                                                <td><button type="button" class="btn btn-success"
+                                                                        id="bank_detail"
+                                                                        value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button"
-                                                                        class="btn btn-success" id="" value="{{$f->id}}">View</button>
-                                                                </td><td><button type="button"
-                                                                        class="btn btn-success" id="bank_detail" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button"
-                                                                class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button type="button"
-                                                                class="btn btn-danger" value="{{$f->id}}">Delete</button></td>
+                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;<button
+                                                                        type="button" class="btn btn-danger"
+                                                                        value="{{$f->id}}">Delete</button></td>
                                                                 <td>Submitted</td>
-                                                                
+
 
                                                             </tr>
 
@@ -391,7 +406,22 @@
                     Id_Number : <span id="f_number"></span><br><br>
                     hamlet : <span id="f_hamlet"></span><br><br>
                     Panchayat : <span id="f_panchayat"></span><br><br>
-                    Block : <span id="f_block"></span>
+                    Block : <span id="f_block"></span><br><br>
+                    Type of Household : <span id="f_household_type"></span><br><br>
+                    Special Category : <span id="f_special_category"></span><br><br>
+                    Caste : <span id="f_caste"></span><br><br>
+                    Occupation : <span id="f_occupation"></span><br><br>
+                    Type of House : <span id="f_house_type"></span><br><br>
+                    Drinking Water Source : <span id="f_drinking_water"></span><br><br>
+                    Potability : <span id="f_potability"></span><br><br>
+                    Domestic Water Source : <span id="f_domestic_water"></span><br><br>
+                    Toilet Availability : <span id="f_toilet_availability"></span><br><br>
+                    Toilet Condition : <span id="f_toilet_condition"></span><br><br>
+                    House Owner : <span id="f_house_owner"></span><br><br>
+                    Household Education : <span id="f_household_education"></span><br><br>
+                    Latitude : <span id="f_latitude"></span><br><br>
+                    Longitude : <span id="f_longitude"></span><br><br>
+                    MCode : <span id="f_mcode"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -410,6 +440,9 @@
                 </div>
                 <div class="modal-body">
                     Ownership : <span id="l_ownership"></span><br><br>
+                    Well Irrigation : <span id="l_well_irrigation"></span><br><br>
+                    Area Irrigated : <span id="l_area_irrigated"></span><br><br>
+                    Irrigated Lands : <span id="l_irrigated_lands"></span><br><br>
                     Patta_no : <span id="l_patta"></span><br><br>
                     Total_Area : <span id="l_tarea"> </span><br><br>
                     Revenue_village : <span id="l_revenue"></span><br><br>
@@ -434,9 +467,49 @@
         </div>
     </div>
 
+    <!-- Land Detail Modal -->
+    <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Plantation Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                Ownership : <span id="plant_ownership"></span><br><br>
+                Well Irrigation : <span id="plant_well_irrigation"></span><br><br>
+                Area Irrigated : <span id="plant_area_irrigated"></span><br><br>
+                Irrigated Lands : <span id="plant_irrigated_lands"></span><br><br>
+                Patta No : <span id="plant_patta"></span><br><br>
+                Total Area : <span id="plant_total_area"></span><br><br>
+                Revenue Village : <span id="plant_revenue"></span><br><br>
+                Crop Season : <span id="plant_crop_season"></span><br><br>
+                Livestock : <span id="plant_livestock"></span><br><br>
+                Plantation Type : <span id="plant_type"></span><br><br>
+                SF No : <span id="plant_sf_no"></span><br><br>
+                Soil Type : <span id="plant_soil_type"></span><br><br>
+                Land to Benefit : <span id="plant_land_benefit"></span><br><br>
+                Field Inspection : <span id="plant_field_inspection"></span><br><br>
+                Site Approval : <span id="plant_site_approval"></span><br><br>
+                Date of Inspection : <span id="plant_date_of_inspection"></span><br><br>
+                Date of Approval : <span id="plant_date_of_approval"></span><br><br>
+                Type of Work : <span id="plant_type_of_work"></span><br><br>
+                Area Benefit : <span id="plant_area_benefit"></span><br><br>
+                Other Works : <span id="plant_other_works"></span><br><br>
+                Pradan Contribution : <span id="plant_pradan_contribution"></span><br><br>
+                Farmer Contribution : <span id="plant_farmer_contribution"></span><br><br>
+                Total Amount : <span id="plant_total_amount"></span><br><br>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-     <!-- Pond Detail Modal -->
-     <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- Pond Detail Modal -->
+    <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -444,23 +517,29 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                     Land_Owner  : <span id="p_owner"></span><br><br>
-                     Patta No : <span id="p_patta"></span><br><br>
-                     Total Area : <span id="p_tarea"></span><br><br>
-                     Revenue : <span id="p_revenue"></span><br><br>
-                     SF No : <span id="p_sf"></span><br><br>
-                     Soil Type : <span id="p_soil"></span><br><br>
-                     Land TO Serve : <span id="p_land"></span><br><br>
-                     Field Inspection : <span id="p_field"></span><br><br>
-                     Site Approval : <span id="p_site"></span><br><br>
-                     Date of Inspection : <span id="p_doi"></span><br><br>
-                     Date of Approval : <span id="p_doa"></span><br><br>
-                     Length : <span id="p_len"></span><br><br>
-                     Depth : <span id="p_dep"></span><br><br>
-                     Volume : <span id="p_vol"></span><br><br>
-                     Pradan Contribution : <span id="p_pcont"></span><br><br>
-                     Farmer Contribution : <span id="p_fcont"></span><br><br>
-                     Total : <span id="total"></span>
+                    Land_Owner : <span id="p_owner"></span><br><br>
+                    Patta No : <span id="p_patta"></span><br><br>
+                    Total Area : <span id="p_tarea"></span><br><br>
+                    Irrigated Lands : <span id="p_irrigated_lands"></span><br><br>
+                    Revenue : <span id="p_revenue"></span><br><br>
+                    Livestock : <span id="p_livestock"></span><br><br>
+                    Crop Season : <span id="p_crop_season"></span><br><br>
+                    Well Irrigation : <span id="p_well_irrigation"></span><br><br>
+                    SF No : <span id="p_sf"></span><br><br>
+                    Soil Type : <span id="p_soil"></span><br><br>
+                    Land TO Serve : <span id="p_land"></span><br><br>
+                    Field Inspection : <span id="p_field"></span><br><br>
+                    Site Approval : <span id="p_site"></span><br><br>
+                    Type of Work : <span id="p_type_of_work"></span><br><br>
+                    Date of Inspection : <span id="p_doi"></span><br><br>
+                    Date of Approval : <span id="p_doa"></span><br><br>
+                    Length : <span id="p_len"></span><br><br>
+                    Depth : <span id="p_dep"></span><br><br>
+                    Breadth : <span id="p_breadth"></span><br><br>
+                    Volume : <span id="p_vol"></span><br><br>
+                    Pradan Contribution : <span id="p_pcont"></span><br><br>
+                    Farmer Contribution : <span id="p_fcont"></span><br><br>
+                    Total : <span id="total"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -579,6 +658,21 @@
                     $("#f_hamlet").text(response.data.hamlet);
                     $("#f_panchayat").text(response.data.panchayat);
                     $("#f_block").text(response.data.block);
+                    $("#f_household_type").text(response.data.type_of_households);
+                    $("#f_special_category").text(response.data.special_catog);
+                    $("#f_caste").text(response.data.caste);
+                    $("#f_occupation").text(response.data.hh_occupation);
+                    $("#f_house_type").text(response.data.type_of_house);
+                    $("#f_drinking_water").text(response.data.drinking_water);
+                    $("#f_potability").text(response.data.potability);
+                    $("#f_domestic_water").text(response.data.domestic_water);
+                    $("#f_toilet_availability").text(response.data.toilet_availability);
+                    $("#f_toilet_condition").text(response.data.toilet_cond);
+                    $("#f_house_owner").text(response.data.house_owner);
+                    $("#f_household_education").text(response.data.household_education);
+                    $("#f_latitude").text(response.data.lat);
+                    $("#f_longitude").text(response.data.lon);
+                    $("#f_mcode").text(response.data.mcode);
 
                     $("#farmerdet_modal").modal("show");
                 }
@@ -597,6 +691,9 @@
             success: function(response) {
                 if (response.status == 200) {
                     $("#l_ownership").text(response.data.ownership);
+                    $("#l_well_irrigation").text(response.data.well_irrigation); // Newly added
+                    $("#l_area_irrigated").text(response.data.area_irrigated); // Newly added
+                    $("#l_irrigated_lands").text(response.data.irrigated_lands); // Newly added
                     $("#l_patta").text(response.data.patta);
                     $("#l_tarea").text(response.data.total_area);
                     $("#l_revenue").text(response.data.revenue);
@@ -613,6 +710,7 @@
                     $("#l_pradan").text(response.data.pradan_cont);
                     $("#l_farmer").text(response.data.farmer_cont);
                     $("#l_total").text(response.data.total_amount);
+
                     $("#landdet_modal").modal("show");
 
                 }
@@ -648,41 +746,91 @@
     });
 
     $(document).on("click", "#pond_detail", function(e) {
-         e.preventDefault();
-         var form_id = $(this).val();
-         $.ajax({
-             type: "GET",
-             url: `/fetch_pond_det/${form_id}`,
-             success: function(response) {
-                 if (response.status == 200) {
-                     $("#p_owner").text(response.data.land_owner);
-                 $("#p_patta").text(response.data.patta);
-                 $("#p_tarea").text(response.data.total_area);
-                 $("#p_revenue").text(response.data.revenue);
-                 $("#p_sf").text(response.data.sf_no);
-                 $("#p_soil").text(response.data.soil_type);
-                 $("#p_land").text(response.data.land_serve);
-                 $("#p_field").text(response.data.field_insp);
-                 $("#p_site").text(response.data.site_appr);
-                 $("#p_doi").text(response.data.date_of_insp);
-                 $("#p_doa").text(response.data.date_of_appr);
-                 $("#p_len").text(response.data.length);
-                 $("#p_dep").text(response.data.depth);
-                 $("#p_vol").text(response.data.volume);
-                 $("#p_pcont").text(response.data.pradan_cont);
-                 $("#p_fcont").text(response.data.farmer_cont);
-                 $("#total").text(response.data.total);
- 
-                     $("#ponddet_modal").modal("show");
- 
- 
-                 }
-             }
- 
-         })
- 
- 
-     });
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log("deiiii")
+        $.ajax({
+            type: "GET",
+            url: `/fetch_pond_det/${form_id}`,
+            success: function(response) {
+                console.log(response);
+                if (response.status == 200) {
+                    $("#p_owner").text(response.data.land_owner);
+                    $("#p_patta").text(response.data.patta);
+                    $("#p_tarea").text(response.data.total_area);
+                    $("#p_irrigated_lands").text(response.data.irrigated_lands); // Newly added
+                    $("#p_revenue").text(response.data.revenue);
+                    $("#p_livestock").text(response.data.livestocks); // Newly added
+                    $("#p_crop_season").text(response.data.crop_season); // Newly added
+                    $("#p_well_irrigation").text(response.data.well_irrigation); // Newly added
+                    $("#p_sf").text(response.data.sf_no);
+                    $("#p_soil").text(response.data.soil_type);
+                    $("#p_land").text(response.data.land_serve);
+                    $("#p_field").text(response.data.field_insp);
+                    $("#p_site").text(response.data.site_appr);
+                    $("#p_type_of_work").text(response.data.type_of_work); // Newly added
+                    $("#p_doi").text(response.data.date_of_insp);
+                    $("#p_doa").text(response.data.date_of_appr);
+                    $("#p_len").text(response.data.length);
+                    $("#p_dep").text(response.data.depth);
+                    $("#p_breadth").text(response.data.breadth); // Newly added
+                    $("#p_vol").text(response.data.volume);
+                    $("#p_pcont").text(response.data.pradan_cont);
+                    $("#p_fcont").text(response.data.farmer_cont);
+                    $("#total").text(response.data.total);
+
+                    $("#ponddet_modal").modal("show");
+
+
+                }
+            }
+
+        })
+
+
+    });
+
+
+    $(document).on("click", "#plant_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log("deiiii")
+        $.ajax({
+            type: "GET",
+            url: `/fetch_plant_det/${form_id}`,
+            success: function(response) {
+                console.log(response);
+                $("#plant_ownership").text(response.data.ownership);
+    $("#plant_well_irrigation").text(response.data.well_irrigation);
+    $("#plant_area_irrigated").text(response.data.area_irrigated);
+    $("#plant_irrigated_lands").text(response.data.irrigated_lands);
+    $("#plant_patta").text(response.data.patta);
+    $("#plant_total_area").text(response.data.total_area);
+    $("#plant_revenue").text(response.data.revenue);
+    $("#plant_crop_season").text(response.data.crop_season);
+    $("#plant_livestock").text(response.data.livestocks);
+    $("#plant_type").text(response.data.plantation);
+    $("#plant_sf_no").text(response.data.sf_no);
+    $("#plant_soil_type").text(response.data.soil_type);
+    $("#plant_land_benefit").text(response.data.land_benefit);
+    $("#plant_field_inspection").text(response.data.field_insp);
+    $("#plant_site_approval").text(response.data.site_app);
+    $("#plant_date_of_inspection").text(response.data.date_of_ins);
+    $("#plant_date_of_approval").text(response.data.date_of_app);
+    $("#plant_type_of_work").text(response.data.type_of_work);
+    $("#plant_area_benefit").text(response.data.area_benefit);
+    $("#plant_other_works").text(response.data.other_works);
+    $("#plant_pradan_contribution").text(response.data.pradan_cont);
+    $("#plant_farmer_contribution").text(response.data.farmer_cont);
+    $("#plant_total_amount").text(response.data.total_amount);
+
+    $("#plantdet_modal").modal("show");
+            }
+
+        })
+
+
+    });
     </script>
 
 

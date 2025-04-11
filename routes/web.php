@@ -39,6 +39,9 @@ Route::get('/fetch_land_det/{form_id}',[mainController::class,"fetch_land_det"])
 
 Route::get('/fetch_pond_det/{form_id}',[mainController::class,"fetch_pond_det"]);
 
+Route::get('/fetch_plant_det/{form_id}',[mainController::class,"fetch_plant_det"]);
+
+
 
 Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
 

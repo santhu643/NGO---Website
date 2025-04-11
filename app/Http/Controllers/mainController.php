@@ -10,7 +10,7 @@ use App\Models\BankDetail;
 use App\Models\landForm;
 use App\Models\PondForm;
 use App\Models\FileUpload;
-use App\Models\PlantationForm;
+use App\Models\PlantForm;
 
 
 
@@ -621,6 +621,14 @@ $fileUpload->save();
 
     public function fetch_bank_det($id){
         $form = BankDetail::where('form_id',$id)->first();
+        if($form){
+            return response()->json(["status"=>200,"data"=>$form]);
+        }
+
+    }
+
+    public function fetch_plant_det($id){
+        $form = PlantForm::where('form_id',$id)->first();
         if($form){
             return response()->json(["status"=>200,"data"=>$form]);
         }
