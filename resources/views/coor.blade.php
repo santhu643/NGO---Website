@@ -133,47 +133,10 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('vol')}}">
+                        <a class="nav-link active" href="{{route('coor')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Coordinator</span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('application')}}">
-                            <i class="icon-columns menu-icon"></i>
-                            <span class="menu-title">Applications</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
-                            aria-controls="charts">
-                            <i class="icon-bar-graph menu-icon"></i>
-                            <span class="menu-title">Data Collection</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="charts">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Excel</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </nav>
@@ -187,7 +150,13 @@
                                 <ul class="nav nav-tabs mb-3"
                                     style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#landform" role="tab"
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#coor_dash" role="tab"
+                                            aria-selected="true">
+                                            <i class="fas fa-seedling"></i><b>&nbsp;Dashboard</b>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link " data-bs-toggle="tab" href="#landform" role="tab"
                                             aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
@@ -207,7 +176,18 @@
 
                                 </ul>
                                 <div class="tab-content tabcontent-border">
-                                    <div class="tab-pane p-20 active show" id="landform" role="tabpanel">
+
+                                <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Dashboard</h4>
+                                                <div class="table-responsive">
+                                                    DashBoard
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-20" id="landform" role="tabpanel">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
