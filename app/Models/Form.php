@@ -37,6 +37,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $identity_card_number
  * @property string|null $hamlet
  * @property string|null $panchayat
+ * @property string|null $lat
+ * @property string|null $lon
  * @property string|null $block
  * @property string|null $mcode
  * @property string $status
@@ -75,28 +77,15 @@ class Form extends Model
 		'identity_card_number',
 		'hamlet',
 		'panchayat',
+		'lat',
+		'lon',
 		'block',
 		'mcode',
 		'status'
 	];
 
 	public function bank_details()
-{
-    return $this->hasOne(BankDetail::class, 'form_id', 'id');
-}
-
-	public function land_details()
 	{
-		return $this->hasOne(LandForm::class,'form_id', 'id');
-	}
-
-	public function pond_details()
-	{
-		return $this->hasOne(PondForm::class,'form_id', 'id');
-	}
-
-	public function plant_details()
-	{
-		return $this->hasOne(PlantForm::class,'form_id', 'id');
+		return $this->hasMany(BankDetail::class);
 	}
 }

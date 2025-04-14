@@ -11,6 +11,10 @@ Route::get('/vol',function(){
     return view('vol');
 })->name('vol');
 
+Route::get('/coor',function(){
+    return view('coor');
+})->name('coor');
+
 Route::get('/form1',function(){
     return view('form1');
 })->name('form1');
@@ -24,6 +28,9 @@ Route::get('/form3',function(){
 })->name('form3');
 
 Route::get('/application',[mainController::class,'fetch_appl'])->name('application');
+
+Route::get('/coor',[mainController::class,'fetch_appl_coor'])->name('coor');
+
 
 
 Route::post('/form_land',[mainController::class,"land_form"]);
@@ -44,6 +51,10 @@ Route::get('/fetch_plant_det/{form_id}',[mainController::class,"fetch_plant_det"
 
 
 Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
+
+Route::post('/coor_appr1/{form_id}',[mainController::class,"coor_appr"]);
+
+Route::post('/measure_submit',[mainController::class,"measure_submit"]);
 
 
 

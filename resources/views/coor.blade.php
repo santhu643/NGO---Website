@@ -218,6 +218,7 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
+                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
@@ -232,6 +233,7 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
+                                                                <td>{{$f->user_id}}</td>
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}">View</button>
@@ -247,19 +249,20 @@
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button type="button"
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button type="button"
+                                                                        class="btn btn-danger coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp; <button type="button"
                                                                         class="btn btn-primary meas"
                                                                         value="{{ $f->id }}">Measurement</button>
                                                                     @elseif($f->status == 3)
-                                                                    <button type="button"
-                                                                        class="btn btn-primary"
-                                                                        >Measurement Details</button>
+                                                                    <button type="button" class="btn btn-info"
+                                                                        value="{{ $f->id }}" id="measurement_details">
+                                                                        Measurement Details
+                                                                    </button>
                                                                     @endif
                                                                 </td>
+
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button class="btn btn-secondary"
@@ -296,6 +299,7 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
+                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Pond Details</th>
                                                                 <th>Bank Details</th>
@@ -310,6 +314,8 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
+                                                                <td>{{$f->user_id}}</td>
+
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}">View</button>
@@ -325,19 +331,20 @@
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button type="button"
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button type="button"
+                                                                        class="btn btn-danger coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp; <button type="button"
                                                                         class="btn btn-primary meas"
                                                                         value="{{ $f->id }}">Measurement</button>
                                                                     @elseif($f->status == 3)
-                                                                    <button type="button"
-                                                                        class="btn btn-primary"
-                                                                        >Measurement Details</button>
+                                                                    <button type="button" class="btn btn-info"
+                                                                        value="{{ $f->id }}" id="measurement_details">
+                                                                        Measurement Details
+                                                                    </button>
                                                                     @endif
                                                                 </td>
+
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button class="btn btn-secondary"
@@ -374,6 +381,7 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
+                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
@@ -387,6 +395,8 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
+                                                                <td>{{$f->user_id}}</td>
+
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}">View</button>
@@ -402,19 +412,20 @@
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button type="button"
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button type="button"
+                                                                        class="btn btn-danger coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp; <button type="button"
                                                                         class="btn btn-primary meas"
                                                                         value="{{ $f->id }}">Measurement</button>
                                                                     @elseif($f->status == 3)
-                                                                    <button type="button"
-                                                                        class="btn btn-primary"
-                                                                        >Measurement Details</button>
+                                                                    <button type="button" class="btn btn-info"
+                                                                        value="{{ $f->id }}" id="measurement_details">
+                                                                        Measurement Details
+                                                                    </button>
                                                                     @endif
                                                                 </td>
+
                                                                 <td>
                                                                     @if($f->status == 1)
                                                                     <button class="btn btn-secondary"
@@ -647,8 +658,7 @@
         </div>
     </div>
 
-
-<!-- Measurement Modal -->
+    <!-- Measurement Modal -->
 <div class="modal fade" id="measure_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <form id="measurement_form">
@@ -689,16 +699,12 @@
     </div>
 </div>
 
-
-
-
     <script>
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-}); 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(document).ready(function() {
         $('#land_table').DataTable();
         $('#pond_table').DataTable();
@@ -717,7 +723,6 @@ $.ajaxSetup({
 
 
 });
-
     </script>
 
     <script>
@@ -970,6 +975,31 @@ $.ajaxSetup({
 
     });
 
+    $(document).on("click", ".coor_appr1", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $.ajax({
+            type: "POST",
+            url: `/coor_appr1/${form_id}`,
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("form approved for measurement");
+                } else {
+                    alert("something went wrong");
+
+                }
+            }
+
+
+        })
+    });
+
+
+
     $(document).on("click",".meas",function(e){
         e.preventDefault();
         var form_id = $(this).val();
@@ -1001,7 +1031,6 @@ $.ajaxSetup({
         }
     });
 });
-
     </script>
 
 

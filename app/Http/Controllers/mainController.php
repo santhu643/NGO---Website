@@ -11,6 +11,8 @@ use App\Models\landForm;
 use App\Models\PondForm;
 use App\Models\FileUpload;
 use App\Models\PlantForm;
+use App\Models\Measurement;
+
 
 
 
@@ -589,14 +591,16 @@ $fileUpload->save();
 
 
     public function fetch_appl(){
-        $form1 = Form::Where('form_type','land')->where('status',1)->where('user_id',session('user_id'))->get();
-        $form2 = Form::Where('form_type','pond')->where('status',1)->where('user_id',session('user_id'))->get();
-        $form3 = Form::Where('form_type','plant')->where('status',1)->where('user_id',session('user_id'))->get();
+        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->get();
+        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->get();
+        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->get();
         if($form1||$form2||$form3){
             return view('applications',compact('form1','form2','form3'));
         }
 
     }
+
+    
 
     public function fetch_farmer_det($id){
         $form = Form::where('id',$id)->first();
@@ -634,6 +638,49 @@ $fileUpload->save();
         }
 
     }
+
+    public function fetch_appl_coor(){
+        $form1 = Form::Where('form_type','land')->get();
+        $form2 = Form::Where('form_type','pond')->get();
+        $form3 = Form::Where('form_type','plant')->get();
+        if($form1||$form2||$form3){
+            return view('coor',compact('form1','form2','form3'));
+        }
+
+    }
+
+    public function coor_appr($id)
+{
+    Form::where('id', $id)->update(['status' => 2]);
+
+    return response()->json(["status"=>200,"message"=>"done"]);
+}
+
+public function measure_submit(Request $req){
+    $req->validate([
+        'meas_id' => 'required',
+        'length' => 'required',
+        'breadth' => 'required',
+        'depth' => 'required',
+        'volume' => 'required',
+    ]);
+
+    // Create a new Measurement entry
+    $measurement = new Measurement();
+    $measurement->form_id = $req->meas_id;
+    $measurement->len = $req->length;
+    $measurement->bre = $req->breadth;
+    $measurement->dep = $req->depth;
+    $measurement->vol = $req->volume;
+    $measurement->save();
+
+    Form::where('id', $req->meas_id)->update(['status' => 3]);
+
+
+    return response()->json(["status"=>200,"message"=>"done"]);
+
+
+}
 
     
 

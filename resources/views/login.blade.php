@@ -55,6 +55,10 @@
                         window.location.href = "{{ route('vol') }}";
 
                     }
+                    if(response.role == "coor"){
+                        alert("coordinator login");
+                        window.location.href = "{{route('coor')}}";
+                    }
 
 
                 }

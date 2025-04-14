@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property string $form_id
  * @property string $identity
- * @property string $geotag
+ * @property string|null $geotag
  * @property string $patta
  * @property string $fmb
  * @property string $photo
