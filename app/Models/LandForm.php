@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pradan_cont
  * @property string $farmer_cont
  * @property string $total_amount
+ * @property string $area_pf
  *
  * @package App\Models
  */
@@ -70,6 +71,7 @@ class LandForm extends Model
 		'other_works',
 		'pradan_cont',
 		'farmer_cont',
-		'total_amount'
+		'total_amount',
+		'area_pf'
 	];
 }

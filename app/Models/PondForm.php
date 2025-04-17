@@ -26,7 +26,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $land_serve
  * @property string $field_insp
  * @property string $site_appr
- * @property string $type_of_work
  * @property string $date_of_insp
  * @property string $date_of_appr
  * @property string $length
@@ -36,6 +35,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pradan_cont
  * @property string $farmer_cont
  * @property string $total
+ * @property string $area_irrigated
+ * @property string $area_benefitted
+ * @property string $len_pf
+ * @property string $bre_pf
+ * @property string $dep_pf
+ * @property string $vol_pf
+ * @property string $area_pf
  *
  * @package App\Models
  */
@@ -59,7 +65,6 @@ class PondForm extends Model
 		'land_serve',
 		'field_insp',
 		'site_appr',
-		'type_of_work',
 		'date_of_insp',
 		'date_of_appr',
 		'length',
@@ -68,6 +73,13 @@ class PondForm extends Model
 		'volume',
 		'pradan_cont',
 		'farmer_cont',
-		'total'
+		'total',
+		'area_irrigated',
+		'area_benefitted',
+		'len_pf',
+		'bre_pf',
+		'dep_pf',
+		'vol_pf',
+		'area_pf'
 	];
 }

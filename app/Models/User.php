@@ -17,6 +17,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $email
  * @property string $password
  * @property string $role
+ * @property string $mobile
+ * @property string $date_of_joining
+ * @property string $location
+ * @property string $photo
  * @property Carbon $created_at
  *
  * @package App\Models
@@ -34,6 +38,10 @@ class User extends Model
 		'name',
 		'email',
 		'password',
-		'role'
+		'role',
+		'mobile',
+		'date_of_joining',
+		'location',
+		'photo'
 	];
 }

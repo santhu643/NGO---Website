@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $bank_name
  * @property string $branch
  * @property string $ifsc_code
+ * @property string $farmer_ack
  * 
  * @property Form $form
  *
@@ -38,7 +39,8 @@ class BankDetail extends Model
 		'account_number',
 		'bank_name',
 		'branch',
-		'ifsc_code'
+		'ifsc_code',
+		'farmer_ack'
 	];
 
 	public function form()

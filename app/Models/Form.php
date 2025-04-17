@@ -17,8 +17,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $user_id
  * @property string $form_type
  * @property string $farmer_name
+ * @property string $age
+ * @property string $district
  * @property string $mobile_number
  * @property string $gender
+ * @property string $taluk
+ * @property string $firca
  * @property string|null $father_spouse
  * @property string|null $household_members
  * @property string $type_of_households
@@ -42,7 +46,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $block
  * @property string|null $mcode
  * @property string $status
+ * @property string $verified_by
  * @property Carbon $created_at
+ * @property string $remarks
  * 
  * @property Collection|BankDetail[] $bank_details
  *
@@ -57,8 +63,12 @@ class Form extends Model
 		'user_id',
 		'form_type',
 		'farmer_name',
+		'age',
+		'district',
 		'mobile_number',
 		'gender',
+		'taluk',
+		'firca',
 		'father_spouse',
 		'household_members',
 		'type_of_households',
@@ -81,7 +91,9 @@ class Form extends Model
 		'lon',
 		'block',
 		'mcode',
-		'status'
+		'status',
+		'verified_by',
+		'remarks'
 	];
 
 	public function bank_details()

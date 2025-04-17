@@ -36,6 +36,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pradan_cont
  * @property string $farmer_cont
  * @property string $total_amount
+ * @property string $nos
+ * @property string $price
+ * @property string $other_exp
+ * @property string $total_nos
+ * @property string $total_price
  *
  * @package App\Models
  */
@@ -72,6 +77,11 @@ class PlantForm extends Model
 		'other_works',
 		'pradan_cont',
 		'farmer_cont',
-		'total_amount'
+		'total_amount',
+		'nos',
+		'price',
+		'other_exp',
+		'total_nos',
+		'total_price'
 	];
 }
