@@ -32,7 +32,8 @@ class mainController extends Controller
             session([
                 'name'=> $user->name,   
                 'email'=> $user->email,
-                'user_id'=> $user->id
+                'user_id'=> $user->id,
+                'role'=>$user->role
                 
             ]);
 
@@ -702,7 +703,25 @@ public function measure_submit(Request $req){
 
 
 }
+public function getDocument(Request $request)
+{
+    $form_id = $request->form_id;
+    $type = $request->type;
 
+    $file = FileUpload::where('form_id', $form_id)->first();
+
+    if ($file && isset($file->$type)) {
+        $fileName = $file->$type;
+        $filePath = public_path("documents/{$fileName}");
+
+        if (file_exists($filePath)) {
+            $url = asset("documents/{$fileName}");
+            return response()->json(['file_url' => $url]);
+        }
+    }
+
+    return response()->json(['file_url' => null]);
+}
     
 
    

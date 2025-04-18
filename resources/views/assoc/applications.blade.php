@@ -221,6 +221,7 @@
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
+                                                                <th>Documents</th>
                                                                 <th>Action</th>
                                                                 <th>Status</th>
                                                             </tr>
@@ -244,6 +245,9 @@
                                                                         id="bank_detail"
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="doc_view"
+                                                                        value="{{$f->id}}">View</button></td>
 
                                                                 <td>
                                                                     @if($f->status == 1 || $f->status == 2 || $f->status == 5)
@@ -310,6 +314,7 @@
                                                                 <th>Farmer Details</th>
                                                                 <th>Pond Details</th>
                                                                 <th>Bank Details</th>
+                                                                <th>Documents</th>
                                                                 <th>Action</th>
                                                                 <th>Status</th>
                                                             </tr>
@@ -333,6 +338,11 @@
                                                                         id="bank_detail"
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="doc_view"
+                                                                        value="{{$f->id}}">View</button></td>
+
+                                            
                                                                 <td>
                                                                     @if($f->status == 1 || $f->status == 2 || $f->status == 5)
                                                                     <button
@@ -399,6 +409,7 @@
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
+                                                                <th>Documents</th>
                                                                 <th>Action</th>
                                                                 <th>Status</th>
                                                             </tr>
@@ -421,7 +432,12 @@
                                                                         id="bank_detail"
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="doc_view"
+                                                                        value="{{$f->id}}">View</button></td>
+
                                                                 <td>
+                                                                
                                                                     @if($f->status == 1 || $f->status == 2 || $f->status == 5)
                                                                     <button
                                                                         class="btn btn-warning">Edit</button>&nbsp;&nbsp;
@@ -734,6 +750,40 @@
             </div>
         </div>
     </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Submitted Documents</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center" id="document-buttons">
+        <!-- Buttons will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+</div>  
+
+<!-- File Viewer Modal -->
+<div class="modal fade" id="fileViewerModal" tabindex="-1" aria-labelledby="fileViewerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content p-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Document Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center">
+        <iframe id="docPreview" src="" width="80%" height="400px" style="border: none;"></iframe>
+        <br>
+        <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -1071,6 +1121,59 @@
         }
     });
 });
+
+
+$(document).on("click","#doc_view",function(e){
+    e.preventDefault();
+    let formId = $(this).val();
+
+    // Clear previous buttons
+    $('#document-buttons').html('');
+
+    // List of document labels
+    let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+
+    labels.forEach(function(label) {
+        let button = `
+            <button class="btn btn-outline-primary m-2 doc-file-btn" 
+                    value="${formId}">
+                ${label}
+            </button>`;
+        $('#document-buttons').append(button);
+    });
+
+    // Open the modal
+    $('#documentModal').modal('show');
+});
+
+$(document).on("click", ".doc-file-btn", function () {
+    let form_id = $(this).val();
+    let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
+
+    $.ajax({
+        url: "/get-document",
+        type: "POST",
+        data: {
+            _token: '{{ csrf_token() }}',
+            form_id: form_id,
+            type: type
+        },
+        success: function (response) {
+            if (response.file_url) {
+                $('#docPreview').attr('src', response.file_url);
+                $('#docDownload').attr('href', response.file_url);
+                $('#fileViewerModal').modal('show');
+            } else {
+                alert('File not found.');
+            }
+        },
+        error: function () {
+            alert('Something went wrong.');
+        }
+    });
+});
+</script>
+
 
     </script>
 

@@ -124,12 +124,19 @@
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
+            <ul class="nav">
         <!-- Coordinator Link -->
         <li class="nav-item">
             <a class="nav-link" href="{{ route('coor') }}">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Coordinator</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('coor1') }}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Applications</span>
             </a>
         </li>
 

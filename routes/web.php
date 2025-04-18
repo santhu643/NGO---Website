@@ -9,7 +9,7 @@ use App\Http\Controllers\fmController;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 Route::post('/log',[mainController::class,"login"]);
 
 Route::get('/fetch_farmer_det/{form_id}',[mainController::class,"fetch_farmer_det"]);
@@ -23,6 +23,9 @@ Route::get('/fetch_plant_det/{form_id}',[mainController::class,"fetch_plant_det"
 
 
 Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
+
+Route::post('/get-document', [mainController::class, 'getDocument']);
+
 
 // routes for associates
 
@@ -68,6 +71,9 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
+Route::get('/coor/appl',[coorController::class,'fetch_appl_coor1'])->name('coor1');
+
+
 Route::post('/coor/rem',[coorController::class,'coor_rem']);
 
 Route::get('/get-remarks/{id}', [CoorController::class, 'getRemarks']);
@@ -84,11 +90,11 @@ Route::get('/cform1',function(){
     return view('coor/cform1');
 })->name('cform1');
 
-Route::get('/form2',function(){
+Route::get('/cform2',function(){
     return view('coor/cform2');
 })->name('cform2');
 
-Route::get('/form3',function(){
+Route::get('/cform3',function(){
     return view('coor/cform3');
 })->name('cform3');
 

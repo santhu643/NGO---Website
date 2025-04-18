@@ -16,11 +16,21 @@ use App\Models\PlantForm;
 class coorController extends Controller
 {
     public function fetch_appl_coor(){
-        $form1 = Form::Where('form_type','land')->get();
-        $form2 = Form::Where('form_type','pond')->get();
-        $form3 = Form::Where('form_type','plant')->get();
+        $form1 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
+        $form2 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
+        $form3 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
         if($form1||$form2||$form3){
             return view('coor/coor',compact('form1','form2','form3'));
+        }
+
+    }
+
+    public function fetch_appl_coor1(){
+        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->get();
+        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->get();
+        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->get();
+        if($form1||$form2||$form3){
+            return view('coor/cappl',compact('form1','form2','form3'));
         }
 
     }
