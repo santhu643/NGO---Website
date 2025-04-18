@@ -46,9 +46,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $block
  * @property string|null $mcode
  * @property string $status
- * @property string $verified_by
+ * @property string|null $verified_by
  * @property Carbon $created_at
- * @property string $remarks
+ * @property string|null $remarks
  * 
  * @property Collection|BankDetail[] $bank_details
  *

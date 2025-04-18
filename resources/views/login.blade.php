@@ -59,6 +59,15 @@
                         alert("coordinator login");
                         window.location.href = "{{route('coor')}}";
                     }
+                    if(response.role == "tl"){
+                        alert("tl login");
+                        window.location.href = "{{route('tl')}}";
+                    }
+                    if(response.role=="fm"){
+                        alert("finance manager login");
+                        window.location.href = "{{route('fm')}}";
+
+                    }
 
 
                 }

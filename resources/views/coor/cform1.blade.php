@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
 
+    
     <link rel="stylesheet" href="{{ asset('assets/vendors/ti-icons/css/themify-icons.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -124,52 +125,33 @@
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('vol')}}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                            aria-controls="ui-basic">
-                            <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="ui-basic">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('application')}}">
-                            <i class="icon-columns menu-icon"></i>
-                            <span class="menu-title">Applications</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
-                            aria-controls="charts">
-                            <i class="icon-bar-graph menu-icon"></i>
-                            <span class="menu-title">Data Collection</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="charts">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Excel</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+    <ul class="nav">
+        <!-- Coordinator Link -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('coor') }}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Coordinator</span>
+            </a>
+        </li>
+
+        <!-- Forms Collapsible Menu -->
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false" aria-controls="formsMenu">
+                <i class="icon-layout menu-icon"></i>
+                <span class="menu-title">Forms</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="formsMenu">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform1') }}">Land Form</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform2') }}">Pond Form</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plant Form</a></li>
                 </ul>
-            </nav>
+            </div>
+        </li>
+    </ul>
+</nav>
+
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -209,7 +191,7 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                        <form id="plantform">
+                                        <form id="landform">
                                         @csrf
                                         <div id="step1">
                                             <h5 class="card-title">Basic Details</h5>
@@ -228,6 +210,30 @@
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="mobileNumber"
                                                         name="mobileNumber" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="age" class="form-label">Age <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="age"
+                                                        name="age" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="district" class="form-label">District <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="district"
+                                                        name="district" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="taluk" class="form-label">Taluk <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="taluk"
+                                                        name="taluk" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <label for="firca" class="form-label">Firca <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="firca"
+                                                        name="firca" required>
                                                 </div>
                                             </div>
 
@@ -506,11 +512,11 @@
                                             <h6 class="card-description ms-2 mb-3">Land Ownership</h6>
                                             <div class="row mb-4 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="radio" name="landOwnership" id="ownerCultivator" value="ownerCultivator"
+                                                    <input type="radio" name="landOwnership" value="ownerCultivator" id="ownerCultivator"
                                                         class="form-check-input">
                                                     <label for="ownerCultivator" class="form-check-label">Owner
                                                         Cultivator</label>
-                                                    <input type="radio" name="landOwnership" id="leaseHolder" value="leaseHolder"
+                                                    <input type="radio" name="landOwnership" value="leaseHolder" id="leaseHolder"
                                                         class="form-check-input ms-3">
                                                     <label for="leaseHolder" class="form-check-label">Lease
                                                         Holder</label>
@@ -521,10 +527,10 @@
                                             <h6 class="card-description ms-2 mb-3">Well for Irrigation</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="radio" name="wellIrrigation" id="wellYes" value="Yes"
+                                                    <input type="radio" name="wellIrrigation" id="wellYes"
                                                         class="form-check-input">
                                                     <label for="wellYes" class="form-check-label">Yes</label>
-                                                    <input type="radio" name="wellIrrigation" id="wellNo" value="No"
+                                                    <input type="radio" name="wellIrrigation" id="wellNo"
                                                         class="form-check-input ms-3">
                                                     <label for="wellNo" class="form-check-label">No</label>
                                                 </div>
@@ -538,13 +544,13 @@
                                             <h6 class="card-description ms-2 mb-3">Irrigated Lands (ha)</h6>
                                             <div class="row mb-4 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="irrigatedLand" id="rainfed" value="rainfed"
+                                                    <input type="checkbox" name="irrigatedLand" value="rainfed" id="rainfed"
                                                         class="form-check-input">
                                                     <label for="rainfed" class="form-check-label">Rainfed</label>
-                                                    <input type="checkbox" name="irrigatedLand" id="tankfed" value="tankfed"
+                                                    <input type="checkbox" name="irrigatedLand" value="tankfed" id="tankfed"
                                                         class="form-check-input ms-3">
                                                     <label for="tankfed" class="form-check-label">Tankfed</label>
-                                                    <input type="checkbox" name="irrigatedLand" id="wellIrrigated" value="wellIrrigated"
+                                                    <input type="checkbox" name="irrigatedLand"  value="wellIrrigated" id="wellIrrigated"
                                                         class="form-check-input ms-3">
                                                     <label for="wellIrrigated" class="form-check-label">Well
                                                         Irrigated</label>
@@ -575,13 +581,13 @@
                                             <h6 class="card-description ms-2 mb-3">Crop Season</h6>
                                             <div class="row mb-3 ms-2">
                                                 <div class="col-md-6">
-                                                    <input type="checkbox" name="cropSeason" id="kharif" value="kharif"
+                                                    <input type="checkbox" name="cropSeason" value="kharif" id="kharif"
                                                         class="form-check-input">
                                                     <label for="kharif" class="form-check-label">Kharif</label>
                                                     <input type="checkbox" name="cropSeason" id="rabi" value="rabi"
                                                         class="form-check-input ms-3">
                                                     <label for="rabi" class="form-check-label">Rabi</label>
-                                                    <input type="checkbox" name="cropSeason" id="otherSeason" value="otherSeason"
+                                                    <input type="checkbox" name="cropSeason" value="otherSeason" id="otherSeason"
                                                         class="form-check-input ms-3">
                                                     <label for="otherSeason" class="form-check-label">Other</label>
                                                 </div>
@@ -612,13 +618,13 @@
                                                     <label for="lat" class="form-label">Latitude<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="lat"
-                                                        name="lat" required>
+                                                        name="lat" >
                                                 </div>
                                                 <div class="col-md-6">
                                                 <label for="lon" class="form-label">longitude<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="lon"
-                                                        name="lon" required>
+                                                        name="lon" >
                                                     
                                                 </div>
                                             </div>
@@ -757,34 +763,6 @@
                                                 </div>
 
                                                 <div class="row mb-3">
-    <div class="col-md-12">
-        <label class="form-label">Type of Plantations proposed</label>
-        <div class="ms-4">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationMango" name="plantation[]" value="Mango">
-                <label class="form-check-label" for="plantationMango">Mango</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationGuava" name="plantation[]" value="Guava">
-                <label class="form-check-label" for="plantationGuava">Guava</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationLemon" name="plantation[]" value="Lemon">
-                <label class="form-check-label" for="plantationLemon">Lemon</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationMoringa" name="plantation[]" value="Moringa">
-                <label class="form-check-label" for="plantationMoringa">Moringa</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="plantationOther">Other</label>
-                <input type="text" class="form-control d-inline-block ms-2" style="width: 200px;" name="plantation[]" placeholder="Specify if other">
-            </div>
-        </div>
-    </div>
-</div>
-
-                                                <div class="row mb-3">
                                                     <div class="col-md-6">
                                                         <label for="otherWorks" class="form-label">Any other works
                                                             proposed</label>
@@ -807,8 +785,6 @@
                                                             name="farmerContribution" required>
                                                     </div>
                                                 </div>
-
-                                                
 
                                                 <div class="d-flex justify-content-end gap-2">
                                                     <button type="button" class="btn btn-secondary me-2"
@@ -1093,7 +1069,7 @@
     }
 
     // Ensure all fields are filled before submission
-    $(document).on("submit", "#plantform", function(e) {
+    $(document).on("submit", "#landform", function(e) {
         e.preventDefault();
 
         let allFields = document.querySelectorAll("[required]");
@@ -1129,13 +1105,13 @@
         var form = new FormData(this);
         $.ajax({
             type: "POST",
-            url: "/form_plant",
+            url: "/cform_land",
             data: form,
             processData: false,
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
-                    $('#plantform')[0].reset();
+                    $('#landform')[0].reset();
 
                     Swal.fire({
                         title: "Success!",

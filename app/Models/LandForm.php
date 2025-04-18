@@ -35,7 +35,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $pradan_cont
  * @property string $farmer_cont
  * @property string $total_amount
- * @property string $area_pf
+ * @property string|null $area_pf
  *
  * @package App\Models
  */

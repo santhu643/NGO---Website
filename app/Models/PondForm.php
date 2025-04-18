@@ -37,11 +37,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $total
  * @property string $area_irrigated
  * @property string $area_benefitted
- * @property string $len_pf
- * @property string $bre_pf
- * @property string $dep_pf
- * @property string $vol_pf
- * @property string $area_pf
+ * @property string|null $len_pf
+ * @property string|null $bre_pf
+ * @property string|null $dep_pf
+ * @property string|null $vol_pf
+ * @property string|null $area_pf
  *
  * @package App\Models
  */

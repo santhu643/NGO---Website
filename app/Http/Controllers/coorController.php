@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -14,42 +13,65 @@ use App\Models\PlantForm;
 
 
 
-
-
-
-
-
-class mainController extends Controller
+class coorController extends Controller
 {
-    public function login(Request $req){
-        $req->validate([
-            'email' => 'required',
-            'pass' => 'required',
-        ]);
-        
-        $user = User::where('email',$req->email)->first();
-        if($user && $user->password=== $req->pass){
-            session([
-                'name'=> $user->name,   
-                'email'=> $user->email,
-                'user_id'=> $user->id
-                
-            ]);
-
-            // Return JSON success response for AJAX
-            return response()->json([
-                'status' => 200,
-                'message' => 'Login successful!',
-                'role'=>$user->role,
-            ]);
+    public function fetch_appl_coor(){
+        $form1 = Form::Where('form_type','land')->get();
+        $form2 = Form::Where('form_type','pond')->get();
+        $form3 = Form::Where('form_type','plant')->get();
+        if($form1||$form2||$form3){
+            return view('coor/coor',compact('form1','form2','form3'));
         }
 
     }
-   
 
+    public function coor_appr($id)
+{
+    Form::where('id', $id)->update(['status' => 4]);
 
+    return response()->json(["status"=>200,"message"=>"done"]);
+}
+public function coor_rem(Request $req)
+{
+  
+    // Find the form and update
+    $form = Form::find($req->form_id);
 
-    public function land_form(Request $req)
+    if ($form) {
+        $form->remarks = $req->remarks;
+        $form->status = 2; // 2 = Request Change
+        $form->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Remarks updated successfully. Form sent back to associate.'
+        ]);
+    }
+
+    return response()->json([
+        'status' => 500,
+        'message' => 'Form not found.'
+    ], 404);
+}
+
+public function getRemarks($id)
+{
+    $form = Form::find($id);
+
+    if ($form) {
+        return response()->json([
+            'success' => 200,
+            'remarks' => $form->remarks
+        ]);
+    }
+
+    return response()->json([
+        'success' => 404,
+        'message' => 'Form not found'
+    ]);
+}
+
+public function land_form(Request $req)
     {
         $req->validate([
             // Basic Details
@@ -116,7 +138,7 @@ class mainController extends Controller
         ]);
         
         $form = new Form();
-        $form->user_id = '1';
+        $form->user_id = $req->user_id;
         $form->form_type = 'land';
         $form->farmer_name = $req->farmerName;
         $form->mobile_number = $req->mobileNumber;
@@ -146,7 +168,7 @@ class mainController extends Controller
         $form->firca = $req->firca;
         $form->lat = $req->lat;
         $form->lon = $req->lon;
-        $form->status = 1;
+        $form->status = 4;
         $form->save();
 
 // Get the auto-generated form_id
@@ -490,7 +512,7 @@ return response()->json(['status' => 200, 'message' => 'inserted succesfully']);
         ]);
         
         $form = new Form();
-        $form->user_id = '1';
+        $form->user_id = $req->user_id;
         $form->form_type = 'plant';
         $form->farmer_name = $req->farmerName;
         $form->mobile_number = $req->mobileNumber;
@@ -611,104 +633,7 @@ $fileUpload->save();
     }
 
 
-    public function fetch_appl(){
-        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->get();
-        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->get();
-        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->get();
-        if($form1||$form2||$form3){
-            return view('assoc/applications',compact('form1','form2','form3'));
-        }
-
-    }
-
-    
-
-    public function fetch_farmer_det($id){
-        $form = Form::where('id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
-        }
-    }
-
-    public function fetch_land_det($id){
-        $form = LandForm::where('form_id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
-        }
-    }
-
-    public function fetch_pond_det($id){
-        $form = PondForm::where('form_id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
-        }
-    }
-
-    public function fetch_bank_det($id){
-        $form = BankDetail::where('form_id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
-        }
-
-    }
-
-    public function fetch_plant_det($id){
-        $form = PlantForm::where('form_id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
-        }
-
-    }
-
-    public function fetch_appl_coor(){
-        $form1 = Form::Where('form_type','land')->get();
-        $form2 = Form::Where('form_type','pond')->get();
-        $form3 = Form::Where('form_type','plant')->get();
-        if($form1||$form2||$form3){
-            return view('coor',compact('form1','form2','form3'));
-        }
-
-    }
-
-    public function coor_appr($id)
-{
-    Form::where('id', $id)->update(['status' => 2]);
-
-    return response()->json(["status"=>200,"message"=>"done"]);
-}
-
-public function measure_submit(Request $req){
-    $req->validate([
-        'meas_id' => 'required',
-        'length' => 'required',
-        'breadth' => 'required',
-        'depth' => 'required',
-        'volume' => 'required',
-    ]);
-
-    // Create a new Measurement entry
-    $measurement = new Measurement();
-    $measurement->form_id = $req->meas_id;
-    $measurement->len = $req->length;
-    $measurement->bre = $req->breadth;
-    $measurement->dep = $req->depth;
-    $measurement->vol = $req->volume;
-    $measurement->save();
-
-    Form::where('id', $req->meas_id)->update(['status' => 3]);
 
 
-    return response()->json(["status"=>200,"message"=>"done"]);
 
-
-}
-
-    
-
-   
-
-        
-    
-
-    
 }

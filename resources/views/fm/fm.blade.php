@@ -135,7 +135,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('coor')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Coordinator</span>
+                            <span class="menu-title">Finance manager</span>
                         </a>
                     </li>
                 </ul>
@@ -177,7 +177,7 @@
                                 </ul>
                                 <div class="tab-content tabcontent-border">
 
-                                <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
+                                    <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Dashboard</h4>
@@ -227,35 +227,45 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td>
-                                                                    @if($f->status == 1)
+                                                                    @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-danger coor_appr1"
+                                                                        class="btn btn-success fin_approve"
                                                                         value="{{ $f->id }}">
                                                                         Approve
-                                                                    </button>&nbsp;&nbsp; <button type="button"
-                                                                        class="btn btn-primary meas"
-                                                                        value="{{ $f->id }}">Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button type="button" class="btn btn-info"
-                                                                        value="{{ $f->id }}" id="measurement_details">
-                                                                        Measurement Details
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
                                                                     </button>
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
                                                                 <td>
-                                                                    @if($f->status == 1)
-                                                                    <button class="btn btn-secondary"
-                                                                        >Submitted</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button class="btn btn-success">Approved
-                                                                        for Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button class="btn btn-success">Forwarded to TL</button>
-                                                                    @else
+                                                                    @switch($f->status)
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Approved by TL/Coordinator</button>
+                                                                    @break
+
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
+                                                                    </button>
+                                                                    @break
+
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
+
+                                                                    @default
                                                                     <button class="btn btn-light">Status
                                                                         Unknown</button>
-                                                                    @endif
+                                                                    @endswitch
                                                                 </td>
 
                                                             </tr>
@@ -309,36 +319,49 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td>
-                                                                    @if($f->status == 1)
+                                                                    @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-danger coor_appr1"
+                                                                        class="btn btn-success fin_approve"
                                                                         value="{{ $f->id }}">
                                                                         Approve
-                                                                    </button>&nbsp;&nbsp; <button type="button"
-                                                                        class="btn btn-primary meas"
-                                                                        value="{{ $f->id }}">Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button type="button" class="btn btn-info"
-                                                                        value="{{ $f->id }}" id="measurement_details">
-                                                                        Measurement Details
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_request_change"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
                                                                     </button>
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
                                                                 <td>
-                                                                    @if($f->status == 1)
-                                                                    <button class="btn btn-secondary"
-                                                                        >Submitted</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button class="btn btn-success">Approved
-                                                                        for Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button class="btn btn-success">Forwarded to TL</button>
-                                                                    @else
+                                                                    @switch($f->status)
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
+
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
+                                                                    </button>
+                                                                    @break
+
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
+
+                                                                    @default
                                                                     <button class="btn btn-light">Status
                                                                         Unknown</button>
-                                                                    @endif
+                                                                    @endswitch
                                                                 </td>
+
+
 
 
                                                             </tr>
@@ -390,36 +413,48 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td>
-                                                                    @if($f->status == 1)
+                                                                    @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-danger coor_appr1"
+                                                                        class="btn btn-success fin_approve"
                                                                         value="{{ $f->id }}">
                                                                         Approve
-                                                                    </button>&nbsp;&nbsp; <button type="button"
-                                                                        class="btn btn-primary meas"
-                                                                        value="{{ $f->id }}">Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button type="button" class="btn btn-info"
-                                                                        value="{{ $f->id }}" id="measurement_details">
-                                                                        Measurement Details
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_request_change"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
                                                                     </button>
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
                                                                 <td>
-                                                                    @if($f->status == 1)
-                                                                    <button class="btn btn-secondary"
-                                                                        >Submitted</button>
-                                                                    @elseif($f->status == 2)
-                                                                    <button class="btn btn-success">Approved
-                                                                        for Measurement</button>
-                                                                    @elseif($f->status == 3)
-                                                                    <button class="btn btn-success">Forwarded to TL</button>
-                                                                    @else
+                                                                    @switch($f->status)
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
+
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
+                                                                    </button>
+                                                                    @break
+
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
+
+                                                                    @default
                                                                     <button class="btn btn-light">Status
                                                                         Unknown</button>
-                                                                    @endif
+                                                                    @endswitch
                                                                 </td>
+
 
 
                                                             </tr>
@@ -638,46 +673,51 @@
         </div>
     </div>
 
-    <!-- Measurement Modal -->
-<div class="modal fade" id="measure_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="measurement_form">
-        @csrf
-
+    <!-- Remarks Modal -->
+    <div class="modal fade" id="rem_modal" tabindex="-1" aria-labelledby="remarksModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Measurements</h5>
+                    <h5 class="modal-title" id="remarksModalLabel">Request Change - Remarks</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
-                <div class="modal-body">
-                    <input type="text" id="meas_id" name="meas_id" hidden>
-                    <div class="mb-3">
-                        <label for="length" class="form-label">Length (m)</label>
-                        <input type="number" step="0.01" class="form-control" id="length" name="length" required>
+
+                <form id="remarks_form">
+                    @csrf
+                    <div class="modal-body">
+                        <!-- Hidden input for form ID -->
+                        <input type="hidden" id="rem_form_id" name="form_id">
+
+                        <!-- Remarks input -->
+                        <label for="remarks" class="form-label">Please specify what changes are required:</label>
+                        <textarea class="form-control" name="remarks" id="remarks" rows="4"
+                            placeholder="Enter detailed remarks..." required></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="breadth" class="form-label">Breadth (m)</label>
-                        <input type="number" step="0.01" class="form-control" id="breadth" name="breadth" required>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Submit Remarks</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
-                    <div class="mb-3">
-                        <label for="depth" class="form-label">Depth (m)</label>
-                        <input type="number" step="0.01" class="form-control" id="depth" name="depth" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="volume" class="form-label">Volume (m³)</label>
-                        <input type="text" class="form-control" id="volume" name="volume" readonly>
-                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="view_rem_modal" tabindex="-1" aria-labelledby="remarksLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remarks from TL/Coordinator</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="modal-body">
+                    <p id="view_remark_text" class="text-dark"></p>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
     <script>
     $.ajaxSetup({
@@ -692,17 +732,17 @@
 
     });
 
-    $(document).ready(function () {
-    $('#length, #breadth, #depth').on('input', function () {
-        let length = parseFloat($('#length').val()) || 0;
-        let breadth = parseFloat($('#breadth').val()) || 0;
-        let depth = parseFloat($('#depth').val()) || 0;
-        let volume = length * breadth * depth;
-        $('#volume').val(volume.toFixed(2));
+    $(document).ready(function() {
+        $('#length, #breadth, #depth').on('input', function() {
+            let length = parseFloat($('#length').val()) || 0;
+            let breadth = parseFloat($('#breadth').val()) || 0;
+            let depth = parseFloat($('#depth').val()) || 0;
+            let volume = length * breadth * depth;
+            $('#volume').val(volume.toFixed(2));
+        });
+
+
     });
-
-
-});
     </script>
 
     <script>
@@ -955,7 +995,7 @@
 
     });
 
-    $(document).on("click", ".coor_appr1", function(e) {
+   /*  $(document).on("click", ".coor_appr1", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
@@ -967,7 +1007,7 @@
             },
             success: function(response) {
                 if (response.status == 200) {
-                    alert("form approved for measurement");
+                    alert("Forwarded to finance manager");
                 } else {
                     alert("something went wrong");
 
@@ -976,41 +1016,62 @@
 
 
         })
-    });
+    }); */
 
 
 
-    $(document).on("click",".meas",function(e){
+    $(document).on("click", ".fin_update", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
-        $("#meas_id").val(form_id);
-        $("#measure_modal").modal('show');
-
-
+        $("#rem_form_id").val(form_id);
+        $("#rem_modal").modal("show");
     });
 
-    $(document).on("submit", "#measurement_form", function(e) {
-    e.preventDefault();
-
-    var form = new FormData(this); // collect all form fields including CSRF token if it's inside the form
-
-    $.ajax({
-        type: "POST",
-        url: "/measure_submit",
-        data: form,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-            if (response.status == 200) {
-                alert("Measurement submitted and forwarded to TL");
-                $('#measure_modal').modal('hide');
-                location.reload();
-            } else {
-                alert("Something went wrong");
+    $(document).on("submit", "#remarks_form", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type: "POST",
+            url: "/fm/rem",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("Request for change updated");
+                    $('#rem_modal').modal('hide');
+                } else {
+                    alert("Something went wrong");
+                }
             }
-        }
+        });
+
+    })
+
+    $(document).on("click", ".showrem", function(e) {
+        e.preventDefault();
+
+        var formId = $(this).val(); // get form ID from button value
+
+        // Fetch the remarks using AJAX
+        $.ajax({
+            type: "GET",
+            url: "/getfm-remarks/" + formId,
+            success: function(response) {
+                if (response.success == 200) {
+                    $('#view_remark_text').text(response.remarks); // Set the remarks
+                    $('#view_rem_modal').modal('show'); // Show modal
+                } else {
+                    alert("Remarks not found.");
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert("Server error.");
+            }
+        });
     });
-});
     </script>
 
 

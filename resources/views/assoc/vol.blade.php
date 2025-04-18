@@ -80,9 +80,9 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Development</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Development</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
+                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plant Form</a></li>
                             </ul>
                         </div>
                     </li>
@@ -93,18 +93,7 @@
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                            <i class="icon-bar-graph menu-icon"></i>
-                            <span class="menu-title">Data Collection</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="charts">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">Excel</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                
 
                 </ul>
             </nav>
