@@ -246,20 +246,24 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
 
                                                                 <td>
-                                                                    @if($f->status == 1 || $f->status == 2 || $f->status == 5)
-                                                                    <button
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
+                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
+                                                                    @if(in_array($f->status, [1, 2, 5]))
+                                                                    <button class="btn btn-warning edit-btn"
+                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
                                                                     @endif
 
+                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger"
+                                                                    <button type="button"
+                                                                        class="btn btn-danger delete-btn"
                                                                         value="{{ $f->id }}">Delete</button>
                                                                     @endif
-                                                                    </td>
+                                                                </td>
+
 
 
                                                                 <td>
@@ -267,27 +271,36 @@
                                                                     @case(1)
                                                                     <button class="btn btn-secondary">Submitted</button>
                                                                     @break
+
                                                                     @case(2)
-                                                                    <button  value="{{ $f->id }}" class="btn btn-warning showrem">Change
-                                                                        Requested</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        by Reviewer</button>
                                                                     @break
+
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    <button class="btn btn-danger">Rejected by
+                                                                        Reviewer</button>
                                                                     @break
+
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
+                                                                    <button class="btn btn-info">Pending
+                                                                        Finance</button>
                                                                     @break
+
                                                                     @case(5)
-                                                                    <button  value="{{ $f->id }}" class="btn btn-warning showrem">Finance Requested
-                                                                        Change</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Finance
+                                                                        Requested Change</button>
                                                                     @break
+
                                                                     @case(6)
                                                                     <button class="btn btn-success">Final
                                                                         Approved</button>
                                                                     @break
                                                                     @endswitch
                                                                 </td>
+
 
 
                                                             </tr>
@@ -339,21 +352,25 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
 
-                                            
+
                                                                 <td>
-                                                                    @if($f->status == 1 || $f->status == 2 || $f->status == 5)
-                                                                    <button
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
+                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
+                                                                    @if(in_array($f->status, [1, 2, 5]))
+                                                                    <button class="btn btn-warning edit-btn"
+                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
                                                                     @endif
 
+                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger"
+                                                                    <button type="button"
+                                                                        class="btn btn-danger delete-btn"
                                                                         value="{{ $f->id }}">Delete</button>
                                                                     @endif
-                                                                    </td>
+                                                                </td>
+
 
 
                                                                 <td>
@@ -361,27 +378,36 @@
                                                                     @case(1)
                                                                     <button class="btn btn-secondary">Submitted</button>
                                                                     @break
+
                                                                     @case(2)
-                                                                    <button  value="{{ $f->id }}" class="btn btn-warning showrem">Change
-                                                                        Requested</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        by Reviewer</button>
                                                                     @break
+
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    <button class="btn btn-danger">Rejected by
+                                                                        Reviewer</button>
                                                                     @break
+
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
+                                                                    <button class="btn btn-info">Pending
+                                                                        Finance</button>
                                                                     @break
+
                                                                     @case(5)
-                                                                    <button class="btn btn-warning showrem">Finance Requested
-                                                                        Change</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Finance
+                                                                        Requested Change</button>
                                                                     @break
+
                                                                     @case(6)
                                                                     <button class="btn btn-success">Final
                                                                         Approved</button>
                                                                     @break
                                                                     @endswitch
                                                                 </td>
+
 
 
 
@@ -433,21 +459,24 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
 
                                                                 <td>
-                                                                
-                                                                    @if($f->status == 1 || $f->status == 2 || $f->status == 5)
-                                                                    <button
-                                                                        class="btn btn-warning">Edit</button>&nbsp;&nbsp;
+                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
+                                                                    @if(in_array($f->status, [1, 2, 5]))
+                                                                    <button class="btn btn-warning edit-btn"
+                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
                                                                     @endif
 
+                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger"
+                                                                    <button type="button"
+                                                                        class="btn btn-danger delete-btn"
                                                                         value="{{ $f->id }}">Delete</button>
                                                                     @endif
-                                                                    </td>
+                                                                </td>
+
 
 
                                                                 <td>
@@ -455,21 +484,29 @@
                                                                     @case(1)
                                                                     <button class="btn btn-secondary">Submitted</button>
                                                                     @break
+
                                                                     @case(2)
-                                                                    <button  value="{{ $f->id }}" class="btn btn-warning showrem">Change
-                                                                        Requested</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        by Reviewer</button>
                                                                     @break
+
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    <button class="btn btn-danger">Rejected by
+                                                                        Reviewer</button>
                                                                     @break
+
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
+                                                                    <button class="btn btn-info">Pending
+                                                                        Finance</button>
                                                                     @break
+
                                                                     @case(5)
-                                                                    <button class="btn btn-warning showrem">Finance Requested
-                                                                        Change</button>
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-warning showrem">Finance
+                                                                        Requested Change</button>
                                                                     @break
+
                                                                     @case(6)
                                                                     <button class="btn btn-success">Final
                                                                         Approved</button>
@@ -739,52 +776,53 @@
     </div>
 
     <div class="modal fade" id="view_rem_modal" tabindex="-1" aria-labelledby="remarksLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Remarks from TL/Coordinator</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p id="view_remark_text" class="text-dark"></p>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remarks from TL/Coordinator</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="view_remark_text" class="text-dark"></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header">
-        <h5 class="modal-title">Submitted Documents</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center" id="document-buttons">
-        <!-- Buttons will be added here dynamically -->
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submitted Documents</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center" id="document-buttons">
+                    <!-- Buttons will be added here dynamically -->
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>  
 
-<!-- File Viewer Modal -->
-<div class="modal fade" id="fileViewerModal" tabindex="-1" aria-labelledby="fileViewerModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header">
-        <h5 class="modal-title">Document Preview</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center">
-        <iframe id="docPreview" src="" width="80%" height="400px" style="border: none;"></iframe>
-        <br>
-        <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
-      </div>
+    <!-- File Viewer Modal -->
+    <div class="modal fade" id="fileViewerModal" tabindex="-1" aria-labelledby="fileViewerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Document Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <iframe id="docPreview" src="" width="80%" height="400px" style="border: none;"></iframe>
+                    <br>
+                    <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
 
@@ -1099,80 +1137,80 @@
     });
 
     $(document).on("click", ".showrem", function(e) {
-    e.preventDefault();
-    
-    var formId = $(this).val(); // get form ID from button value
+        e.preventDefault();
 
-    // Fetch the remarks using AJAX
-    $.ajax({
-        type: "GET",
-        url: "/getfm-remarks/" + formId,
-        success: function(response) {
-            if (response.success == 200) {
-                $('#view_remark_text').text(response.remarks); // Set the remarks
-                $('#view_rem_modal').modal('show'); // Show modal
-            } else {
-                alert("Remarks not found.");
+        var formId = $(this).val(); // get form ID from button value
+
+        // Fetch the remarks using AJAX
+        $.ajax({
+            type: "GET",
+            url: "/getfm-remarks/" + formId,
+            success: function(response) {
+                if (response.success == 200) {
+                    $('#view_remark_text').text(response.remarks); // Set the remarks
+                    $('#view_rem_modal').modal('show'); // Show modal
+                } else {
+                    alert("Remarks not found.");
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert("Server error.");
             }
-        },
-        error: function(xhr) {
-            console.log(xhr.responseText);
-            alert("Server error.");
-        }
+        });
     });
-});
 
 
-$(document).on("click","#doc_view",function(e){
-    e.preventDefault();
-    let formId = $(this).val();
+    $(document).on("click", "#doc_view", function(e) {
+        e.preventDefault();
+        let formId = $(this).val();
 
-    // Clear previous buttons
-    $('#document-buttons').html('');
+        // Clear previous buttons
+        $('#document-buttons').html('');
 
-    // List of document labels
-    let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+        // List of document labels
+        let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
 
-    labels.forEach(function(label) {
-        let button = `
+        labels.forEach(function(label) {
+            let button = `
             <button class="btn btn-outline-primary m-2 doc-file-btn" 
                     value="${formId}">
                 ${label}
             </button>`;
-        $('#document-buttons').append(button);
+            $('#document-buttons').append(button);
+        });
+
+        // Open the modal
+        $('#documentModal').modal('show');
     });
 
-    // Open the modal
-    $('#documentModal').modal('show');
-});
+    $(document).on("click", ".doc-file-btn", function() {
+        let form_id = $(this).val();
+        let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
 
-$(document).on("click", ".doc-file-btn", function () {
-    let form_id = $(this).val();
-    let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
-
-    $.ajax({
-        url: "/get-document",
-        type: "POST",
-        data: {
-            _token: '{{ csrf_token() }}',
-            form_id: form_id,
-            type: type
-        },
-        success: function (response) {
-            if (response.file_url) {
-                $('#docPreview').attr('src', response.file_url);
-                $('#docDownload').attr('href', response.file_url);
-                $('#fileViewerModal').modal('show');
-            } else {
-                alert('File not found.');
+        $.ajax({
+            url: "/get-document",
+            type: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id,
+                type: type
+            },
+            success: function(response) {
+                if (response.file_url) {
+                    $('#docPreview').attr('src', response.file_url);
+                    $('#docDownload').attr('href', response.file_url);
+                    $('#fileViewerModal').modal('show');
+                } else {
+                    alert('File not found.');
+                }
+            },
+            error: function() {
+                alert('Something went wrong.');
             }
-        },
-        error: function () {
-            alert('Something went wrong.');
-        }
+        });
     });
-});
-</script>
+    </script>
 
 
     </script>

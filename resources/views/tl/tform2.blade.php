@@ -133,6 +133,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('tl1') }}">
+                <i class="icon-grid menu-icon"></i>
+                <span class="menu-title">Application</span>
+            </a>
+        </li>
+
         <!-- Forms Collapsible Menu -->
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false" aria-controls="formsMenu">

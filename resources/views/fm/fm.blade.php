@@ -133,7 +133,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('coor')}}">
+                        <a class="nav-link active" href="{{route('fm')}}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Finance manager</span>
                         </a>
@@ -229,8 +229,8 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
@@ -249,10 +249,12 @@
                                                                     @endif
                                                                 </td>
 
+
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by TL/Coordinator</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
@@ -272,6 +274,7 @@
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
+
 
                                                             </tr>
 
@@ -325,8 +328,8 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
@@ -336,7 +339,7 @@
                                                                     </button>&nbsp;&nbsp;
 
                                                                     <button type="button"
-                                                                        class="btn btn-warning fin_request_change"
+                                                                        class="btn btn-warning fin_update"
                                                                         value="{{ $f->id }}">
                                                                         Request Change
                                                                     </button>
@@ -345,11 +348,12 @@
                                                                     @endif
                                                                 </td>
 
+
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Forwarded to Finance
-                                                                        Manager</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
@@ -423,8 +427,8 @@
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view"
-                                                                        value="{{$f->id}}">View</button></td>
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+                                                                </td>
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
@@ -434,7 +438,7 @@
                                                                     </button>&nbsp;&nbsp;
 
                                                                     <button type="button"
-                                                                        class="btn btn-warning fin_request_change"
+                                                                        class="btn btn-warning fin_update"
                                                                         value="{{ $f->id }}">
                                                                         Request Change
                                                                     </button>
@@ -443,11 +447,12 @@
                                                                     @endif
                                                                 </td>
 
+
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Forwarded to Finance
-                                                                        Manager</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
@@ -467,7 +472,6 @@
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
-
 
 
                                                             </tr>
@@ -731,37 +735,38 @@
             </div>
         </div>
     </div>
-<!-- Modal -->
-<div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header">
-        <h5 class="modal-title">Submitted Documents</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center" id="document-buttons">
-        <!-- Buttons will be added here dynamically -->
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Submitted Documents</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center" id="document-buttons">
+                    <!-- Buttons will be added here dynamically -->
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>  
 
-<!-- File Viewer Modal -->
-<div class="modal fade" id="fileViewerModal" tabindex="-1" aria-labelledby="fileViewerModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content p-4">
-      <div class="modal-header">
-        <h5 class="modal-title">Document Preview</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center">
-        <iframe id="docPreview" src="" width="80%" height="400px" style="border: none;"></iframe>
-        <br>
-        <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
-      </div>
+    <!-- File Viewer Modal -->
+    <div class="modal fade" id="fileViewerModal" tabindex="-1" aria-labelledby="fileViewerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content p-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Document Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <iframe id="docPreview" src="" width="80%" height="400px" style="border: none;"></iframe>
+                    <br>
+                    <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <script>
     $.ajaxSetup({
@@ -1039,28 +1044,28 @@
 
     });
 
-   /*  $(document).on("click", ".coor_appr1", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $.ajax({
-            type: "POST",
-            url: `/coor_appr1/${form_id}`,
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.status == 200) {
-                    alert("Forwarded to finance manager");
-                } else {
-                    alert("something went wrong");
+    /*  $(document).on("click", ".coor_appr1", function(e) {
+         e.preventDefault();
+         var form_id = $(this).val();
+         console.log(form_id);
+         $.ajax({
+             type: "POST",
+             url: `/coor_appr1/${form_id}`,
+             data: {
+                 _token: $('meta[name="csrf-token"]').attr('content')
+             },
+             success: function(response) {
+                 if (response.status == 200) {
+                     alert("Forwarded to finance manager");
+                 } else {
+                     alert("something went wrong");
 
-                }
-            }
+                 }
+             }
 
 
-        })
-    }); */
+         })
+     }); */
 
 
 
@@ -1117,60 +1122,55 @@
         });
     });
 
-    $(document).on("click","#doc_view",function(e){
-    e.preventDefault();
-    let formId = $(this).val();
+    $(document).on("click", "#doc_view", function(e) {
+        e.preventDefault();
+        let formId = $(this).val();
 
-    // Clear previous buttons
-    $('#document-buttons').html('');
+        // Clear previous buttons
+        $('#document-buttons').html('');
 
-    // List of document labels
-    let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+        // List of document labels
+        let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
 
-    labels.forEach(function(label) {
-        let button = `
+        labels.forEach(function(label) {
+            let button = `
             <button class="btn btn-outline-primary m-2 doc-file-btn" 
                     value="${formId}">
                 ${label}
             </button>`;
-        $('#document-buttons').append(button);
+            $('#document-buttons').append(button);
+        });
+
+        // Open the modal
+        $('#documentModal').modal('show');
     });
 
-    // Open the modal
-    $('#documentModal').modal('show');
-});
+    $(document).on("click", ".doc-file-btn", function() {
+        let form_id = $(this).val();
+        let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
 
-$(document).on("click", ".doc-file-btn", function () {
-    let form_id = $(this).val();
-    let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
-
-    $.ajax({
-        url: "/get-document",
-        type: "POST",
-        data: {
-            _token: '{{ csrf_token() }}',
-            form_id: form_id,
-            type: type
-        },
-        success: function (response) {
-            if (response.file_url) {
-                $('#docPreview').attr('src', response.file_url);
-                $('#docDownload').attr('href', response.file_url);
-                $('#fileViewerModal').modal('show');
-            } else {
-                alert('File not found.');
+        $.ajax({
+            url: "/get-document",
+            type: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id,
+                type: type
+            },
+            success: function(response) {
+                if (response.file_url) {
+                    $('#docPreview').attr('src', response.file_url);
+                    $('#docDownload').attr('href', response.file_url);
+                    $('#fileViewerModal').modal('show');
+                } else {
+                    alert('File not found.');
+                }
+            },
+            error: function() {
+                alert('Something went wrong.');
             }
-        },
-        error: function () {
-            alert('Something went wrong.');
-        }
+        });
     });
-});
-
-
-
-
-    
     </script>
 
 

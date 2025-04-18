@@ -128,6 +128,9 @@ Route::get('/tform3',function(){
     return view('tl/tform3');
 })->name('tform3');
 
+Route::get('/tl/appl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
+
+
 //end routes for tl
 
 

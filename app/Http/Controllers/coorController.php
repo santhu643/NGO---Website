@@ -17,8 +17,8 @@ class coorController extends Controller
 {
     public function fetch_appl_coor(){
         $form1 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
-        $form2 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
-        $form3 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
+        $form2 = Form::Where('form_type','pond')->where('user_id', '!=', session('user_id'))->get();
+        $form3 = Form::Where('form_type','plant')->where('user_id', '!=', session('user_id'))->get();
         if($form1||$form2||$form3){
             return view('coor/coor',compact('form1','form2','form3'));
         }

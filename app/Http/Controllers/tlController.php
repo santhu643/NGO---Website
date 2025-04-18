@@ -23,6 +23,16 @@ class tlController extends Controller
 
     }
 
+    public function fetch_appl_tl1(){
+        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->get();
+        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->get();
+        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->get();
+        if($form1||$form2||$form3){
+            return view('tl/tappl',compact('form1','form2','form3'));
+        }
+
+    }
+
     public function land_form(Request $req)
     {
         $req->validate([
