@@ -55,6 +55,15 @@ Route::post('/form_plant',[mainController::class,"plant_form"]);
 
 Route::get('/application',[mainController::class,'fetch_appl'])->name('application');
 
+Route::get('/post_appl',[mainController::class,'fetch_appl_post'])->name('post_appl');
+
+Route::post('/submit/pf_land',[mainController::class,'submit_pf_land']);
+Route::post('/submit/pf_pond',[mainController::class,'submit_pf_pond']);
+Route::post('/submit/pf_plant',[mainController::class,'submit_pf_plant']);
+
+
+
+
 //end routes for assoc
 
 

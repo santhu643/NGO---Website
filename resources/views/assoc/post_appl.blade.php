@@ -242,55 +242,16 @@
                                                                 </td>
 
                                                                 <td>
-                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
-                                                                    @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
-                                                                    @endif
-
-                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
-                                                                    @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @endif
+                                                                <button type="button" class="btn btn-primary"
+                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
+                                                                    
                                                                 </td>
 
 
 
                                                                 <td>
-                                                                    @switch($f->status)
-                                                                    @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
-                                                                    @break
-
-                                                                    @case(2)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
-                                                                        by Reviewer</button>
-                                                                    @break
-
-                                                                    @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
-                                                                        Reviewer</button>
-                                                                    @break
-
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Pending
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
-                                                                        Requested Change</button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-                                                                    @endswitch
+                                                                    <button>Waiting for Post Fund Details</button>
+                                                                   
                                                                 </td>
 
 
@@ -349,61 +310,17 @@
 
 
                                                                 <td>
-                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
-                                                                    @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
-                                                                    @endif
-
-                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
-                                                                    @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @endif
+                                                                <button type="button" class="btn btn-primary"
+                                                                id="pf_pond" value="{{$f->id}}">Post Fund</button>
+                                                                    
                                                                 </td>
 
 
 
                                                                 <td>
-                                                                    @switch($f->status)
-                                                                    @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
-                                                                    @break
-
-                                                                    @case(2)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
-                                                                        by Reviewer</button>
-                                                                    @break
-
-                                                                    @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
-                                                                        Reviewer</button>
-                                                                    @break
-
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Pending
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
-                                                                        Requested Change</button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-                                                                    @endswitch
+                                                                    <button>Waiting for Post Fund Details</button>
+                                                                   
                                                                 </td>
-
-
-
-
-
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -455,57 +372,17 @@
                                                                 </td>
 
                                                                 <td>
-                                                                    {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
-                                                                    @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
-                                                                    @endif
-
-                                                                    {{-- Show Delete only if status is 1 (Submitted) --}}
-                                                                    @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
-                                                                    @endif
+                                                                <button type="button" class="btn btn-primary"
+                                                                id="pf_plant" value="{{$f->id}}">Post Fund</button>
+                                                                    
                                                                 </td>
 
 
 
                                                                 <td>
-                                                                    @switch($f->status)
-                                                                    @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
-                                                                    @break
-
-                                                                    @case(2)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
-                                                                        by Reviewer</button>
-                                                                    @break
-
-                                                                    @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
-                                                                        Reviewer</button>
-                                                                    @break
-
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Pending
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
-                                                                        Requested Change</button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-                                                                    @endswitch
+                                                                    <button>Waiting for Post Fund Details</button>
+                                                                   
                                                                 </td>
-
 
 
 
@@ -726,46 +603,7 @@
     </div>
 
 
-    <!-- Measurement Modal -->
-    <div class="modal fade" id="measure_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form id="measurement_form">
-                @csrf
-
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Enter Measurements</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <input type="text" id="meas_id" name="meas_id" hidden>
-                        <div class="mb-3">
-                            <label for="length" class="form-label">Length (m)</label>
-                            <input type="number" step="0.01" class="form-control" id="length" name="length" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="breadth" class="form-label">Breadth (m)</label>
-                            <input type="number" step="0.01" class="form-control" id="breadth" name="breadth" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="depth" class="form-label">Depth (m)</label>
-                            <input type="number" step="0.01" class="form-control" id="depth" name="depth" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="volume" class="form-label">Volume (m³)</label>
-                            <input type="text" class="form-control" id="volume" name="volume" readonly>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+   
 
     <div class="modal fade" id="view_rem_modal" tabindex="-1" aria-labelledby="remarksLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -815,6 +653,148 @@
             </div>
         </div>
     </div>
+
+     <!-- Post Funding Land -->
+     <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="pf_land_form">
+                @csrf
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" id="pf_land_id" name="pf_land_id" >
+                        <div class="mb-3">
+                            <label for="area_land" class="form-label">Area Benefiited</label>
+                            <input type="number"  class="form-control" id="area_land" name="area_land" required>
+                        </div>
+                       
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pf_pond_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="pf_pond_form">
+            @csrf
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" id="pf_pond_id" name="pf_pond_id" >
+
+                    <div class="mb-3">
+                        <label for="length" class="form-label">Length (m)</label>
+                        <input type="number" step="any" class="form-control" id="length" name="length" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="breadth" class="form-label">Breadth (m)</label>
+                        <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="depth" class="form-label">Depth (m)</label>
+                        <input type="number" step="any" class="form-control" id="depth" name="depth" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="volume" class="form-label">Volume (m³)</label>
+                        <input type="number" class="form-control" id="volume" name="volume" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
+                        <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="pf_plant_form">
+            @csrf
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" id="pf_plant_id" name="pf_plant_id">
+
+                    <div class="mb-3">
+                        <label for="nos" class="form-label">No. of Plants</label>
+                        <input type="number" class="form-control" id="nos" name="nos" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price per Plant</label>
+                        <input type="number" step="any" class="form-control" id="price" name="price" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="other_expenses" class="form-label">Other Expenses</label>
+                        <input type="number" step="any" class="form-control" id="other_expenses" name="other_expenses" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="total_nos" class="form-label">Total Plants</label>
+                        <input type="number" class="form-control" id="total_nos" name="total_nos" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="total_price" class="form-label">Total Price</label>
+                        <input type="number" step="any" class="form-control" id="total_price" name="total_price" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    // Dynamically calculate volume
+    document.addEventListener('input', function () {
+        const length = parseFloat(document.getElementById('length').value) || 0;
+        const breadth = parseFloat(document.getElementById('breadth').value) || 0;
+        const depth = parseFloat(document.getElementById('depth').value) || 0;
+
+        const volume = length * breadth * depth;
+        document.getElementById('volume').value = volume.toFixed(2);
+    });
+</script>
+
 
 
 
@@ -1201,6 +1181,82 @@
                 alert('Something went wrong.');
             }
         });
+    });
+
+    $(document).on("click","#pf_land",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_land_id").val(form_id);
+        $("#pf_land_modal").modal('show');
+
+    })
+    $(document).on("click","#pf_pond",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_pond_id").val(form_id);
+        $("#pf_pond_modal").modal('show');
+
+    })
+    $(document).on("click","#pf_plant",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_plant_id").val(form_id);
+        $("#pf_plant_modal").modal('show');
+
+    });
+    $(document).on("submit","#pf_land_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/pf_land",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
+    });
+    $(document).on("submit","#pf_pond_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/pf_pond",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
+    });    
+    $(document).on("submit","#pf_plant_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/pf_plant",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
     });
     </script>
 

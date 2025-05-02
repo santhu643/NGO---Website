@@ -621,6 +621,15 @@ $fileUpload->save();
         }
 
     }
+    public function fetch_appl_post(){
+        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->where('status',6)->get();
+        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->where('status',6)->get();
+        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->where('status',6)->get();
+        if($form1||$form2||$form3){
+            return view('assoc/post_appl',compact('form1','form2','form3'));
+        }
+
+    }
 
     
 
@@ -722,7 +731,79 @@ public function getDocument(Request $request)
 
     return response()->json(['file_url' => null]);
 }
-    
+
+public function submit_pf_land(Request $request)
+{
+    $request->validate([
+        'pf_land_id' => 'required',
+        'area_land' => 'required|numeric',
+    ]);
+
+    landForm::where('form_id', $request->pf_land_id)
+        ->update([
+            'area_pf' => $request->area_land
+        ]);
+        Form::where('id', $request->pf_land_id)
+        ->update([
+            'status' => 7 // 7 = PF Submitted by Associate
+        ]);
+
+    return response()->json(['status' => 200, 'message' => 'Land Post-Funding details updated.']);
+}
+
+public function submit_pf_pond(Request $request)
+{
+    $request->validate([
+        'pf_pond_id' => 'required',
+        'length' => 'required',
+        'breadth' => 'required',
+        'depth' => 'required',
+        'volume' => 'required',
+        'area_benefited' => 'required',
+    ]);
+
+    PondForm::where('id', $request->pf_pond_id)
+        ->update([
+            'len_pf' => $request->length,
+            'bre_pf' => $request->breadth,
+            'dep_pf' => $request->depth,
+            'vol_pf' => $request->volume,
+            'area_pf' => $request->area_benefited
+        ]);
+        Form::where('id', $request->pf_pond_id)
+        ->update([
+            'status' => 7 // 7 = PF Submitted by Associate
+        ]);
+
+    return response()->json(['status' => 200, 'message' => 'Pond Post-Funding details updated.']);
+}
+
+public function submit_pf_plant(Request $request)
+{
+    $request->validate([
+        'pf_plant_id' => 'required',
+        'nos' => 'required',
+        'price' => 'required',
+        'other_expenses' => 'required',
+        'total_nos' => 'required',
+        'total_price' => 'required',
+    ]);
+
+    PlantForm::where('id', $request->pf_plant_id)
+        ->update([
+            'nos' => $request->nos,
+            'price' => $request->price,
+            'other_exp' => $request->other_expenses,
+            'total_nos' => $request->total_nos,
+            'total_price' => $request->total_price
+        ]);
+        Form::where('id', $request->pf_plant_id)
+        ->update([
+            'status' => 7 // 7 = PF Submitted by Associate
+        ]);
+
+    return response()->json(['status' => 200, 'message' => 'Plantation Post-Funding details updated.']);
+}
 
    
 
