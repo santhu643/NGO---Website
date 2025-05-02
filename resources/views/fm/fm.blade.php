@@ -1171,6 +1171,29 @@
             }
         });
     });
+
+    $(document).on("click",".fin_approve",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $.ajax({
+            url:`/fin-approve`,
+            type:"POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id
+            },
+            success: function(response) {
+                if (response.status==200) {
+                    alert("form accepted");
+             
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
+    })
     </script>
 
 

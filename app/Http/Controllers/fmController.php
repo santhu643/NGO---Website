@@ -63,4 +63,18 @@ public function getRemarks($id)
     ]);
 }
 
+public function fm_app(Request $req)
+{
+    $form = Form::find($req->form_id);
+
+    if ($form) {
+        $form->status = 6;
+        $form->save();
+
+        return response()->json(['status' => 200, 'message' => 'Status updated to 6.']);
+    }
+
+    return response()->json(['status' => 500, 'message' => 'Form not found.'], 404);
+}
+
 }

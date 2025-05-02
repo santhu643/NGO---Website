@@ -143,6 +143,7 @@ Route::get('/tl/appl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
 Route::get('/fm',[fmController::class,'fetch_appl_fm'])->name('fm');
 Route::post('/fm/rem',[fmController::class,'fm_rem']);
 Route::get('/getfm-remarks/{id}', [fmController::class, 'getRemarks']);
+Route::post('/fin-approve',[fmController::class,'fm_app']);
 
 
 //end routes for fm
