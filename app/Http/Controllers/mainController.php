@@ -762,7 +762,7 @@ public function submit_pf_pond(Request $request)
         'area_benefited' => 'required',
     ]);
 
-    PondForm::where('id', $request->pf_pond_id)
+    PondForm::where('form_id', $request->pf_pond_id)
         ->update([
             'len_pf' => $request->length,
             'bre_pf' => $request->breadth,
@@ -789,7 +789,7 @@ public function submit_pf_plant(Request $request)
         'total_price' => 'required',
     ]);
 
-    PlantForm::where('id', $request->pf_plant_id)
+    PlantForm::where('form_id', $request->pf_plant_id)
         ->update([
             'nos' => $request->nos,
             'price' => $request->price,
@@ -799,7 +799,7 @@ public function submit_pf_plant(Request $request)
         ]);
         Form::where('id', $request->pf_plant_id)
         ->update([
-            'status' => 7 // 7 = PF Submitted by Associate
+            'status' => 7
         ]);
 
     return response()->json(['status' => 200, 'message' => 'Plantation Post-Funding details updated.']);

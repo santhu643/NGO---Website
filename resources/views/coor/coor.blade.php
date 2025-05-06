@@ -141,7 +141,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor1') }}">
+                        <a class="nav-link" href="{{ route('coor') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
