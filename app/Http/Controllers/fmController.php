@@ -65,9 +65,11 @@ public function getRemarks($id)
 
 public function fm_app(Request $req)
 {
-    $form = Form::find($req->form_id);
+    $form = Form::find($req->mcode_form_id);
 
     if ($form) {
+
+        $form->mcode = $req->mcode;
         $form->status = 6;
         $form->save();
 
