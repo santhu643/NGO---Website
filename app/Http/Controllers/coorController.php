@@ -641,7 +641,35 @@ $fileUpload->save();
 
     
     }
+    public function approvePF($id)
+    {
+        $form = Form::findOrFail($id);
+        
+        if ($form->status == 7) {
+            $form->status = 9;
+            $form->save();
+    
+            return response()->json(['success' => true]);
+        }
+    
+        return response()->json(['error' => 'Invalid status'], 400);
+    }
+    
+    public function requestEditPF(Request $request, $id)
+{
+    $form = Form::findOrFail($id);
 
+    // Only allow if current status is 7 (PF submitted by associate)
+    if ($form->status == 7) {
+        $form->status = 8; // Status: Change Requested
+        $form->remarks = $request->input('reason');
+        $form->save();
+
+        return response()->json(['success' => true]);
+    }
+
+    return response()->json(['error' => 'Invalid status or action not allowed.'], 400);
+}
 
 
 

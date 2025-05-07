@@ -234,7 +234,7 @@
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-success fin_approve"
+                                                                        class="btn btn-success fin_approve_modal"
                                                                         value="{{ $f->id }}">
                                                                         Approve
                                                                     </button>&nbsp;&nbsp;
@@ -333,7 +333,7 @@
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-success fin_approve"
+                                                                        class="btn btn-success fin_approve_modal"
                                                                         value="{{ $f->id }}">
                                                                         Approve
                                                                     </button>&nbsp;&nbsp;
@@ -432,7 +432,7 @@
                                                                 <td>
                                                                     @if($f->status == 4)
                                                                     <button type="button"
-                                                                        class="btn btn-success fin_approve"
+                                                                        class="btn btn-success fin_approve_modal"
                                                                         value="{{ $f->id }}">
                                                                         Approve
                                                                     </button>&nbsp;&nbsp;
@@ -765,6 +765,35 @@
                     <a id="docDownload" class="btn btn-success mt-3" href="#" download target="_blank">Download</a>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- Post Funding Land -->
+    <div class="modal fade" id="mcode_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="mcode_form">
+                @csrf
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pre Funding Approval</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" id="mcode_form_id" name="mcode_form_id" hidden>
+                        <div class="mb-3">
+                            <label for="area_land" class="form-label">Enter MCODE</label>
+                            <input type="number"  class="form-control" id="mcode" name="mcode" required>
+                        </div>
+                       
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1193,6 +1222,41 @@
             },
 
         })
+    });
+
+    $(document).on("click",".fin_approve_modal",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#mcode_form_id").val(form_id);
+        $("#mcode_modal").modal("show");
+    });
+
+    $(document).on("submit","#mcode_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            url:`/fin-approve`,
+            type:"POST",
+            data: form,
+            processData:false,
+            contentType:false,
+            success: function(response) {
+                if (response.status==200) {
+                    alert("mcode submitted forwarded to post funding");
+                    $("#mcode_modal").modal("hide");
+                    $('#mcode_form')[0].reset();
+
+
+             
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
+
     })
     </script>
 

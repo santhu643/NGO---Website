@@ -107,6 +107,11 @@ Route::get('/cform3',function(){
     return view('coor/cform3');
 })->name('cform3');
 
+Route::get('/coordinator/approve-pf/{id}', [coorController::class, 'approvePF']);
+Route::post('/coordinator/request-edit-pf/{id}', [coorController::class, 'requestEditPF']);
+
+
+
 //end routes for coordinator
 
 
