@@ -61,6 +61,15 @@ Route::post('/submit/pf_land',[mainController::class,'submit_pf_land']);
 Route::post('/submit/pf_pond',[mainController::class,'submit_pf_pond']);
 Route::post('/submit/pf_plant',[mainController::class,'submit_pf_plant']);
 
+Route::get('/get-land-pf-details/{id}', [mainController::class, 'getLandPostFund']);
+Route::post('/update-land-pf', [mainController::class, 'updateLandPostFund'])->name('update.land.pf');
+Route::get('/edit-pf-pond/{id}', [mainController::class, 'editPondPostFund']);
+Route::post('/update-pf-pond', [mainController::class, 'updatePondPostFund']);
+Route::get('/getPlantPostFund/{id}', [mainController::class, 'getPlantPostFund']);
+Route::post('/updatePlantPostFund', [mainController::class, 'updatePlantPostFund']);
+
+
+
 
 
 
