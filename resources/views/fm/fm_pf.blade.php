@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
@@ -133,12 +135,17 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('fm')}}">
+                        <a class="nav-link" href="{{route('fm')}}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Finance manager</span>
                         </a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('pf_fm')}}">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Post Funding</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->
@@ -150,14 +157,9 @@
                             <div class="card">
                                 <ul class="nav nav-tabs mb-3"
                                     style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#coor_dash" role="tab"
-                                            aria-selected="true">
-                                            <i class="fas fa-seedling"></i><b>&nbsp;Dashboard</b>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link " data-bs-toggle="tab" href="#landform" role="tab"
+
+                                    <li class="nav-item " role="presentation">
+                                        <a class="nav-link active " data-bs-toggle="tab" href="#landform" role="tab"
                                             aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
@@ -178,17 +180,10 @@
                                 </ul>
                                 <div class="tab-content tabcontent-border">
 
-                                    <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Dashboard</h4>
-                                                <div class="table-responsive">
-                                                    DashBoard
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane p-20" id="landform" role="tabpanel">
+
+                                    <div class="tab-pane p-20 active" id="landform" role="tabpanel">
+                                    <button class="btn btn-primary mb-3" onclick="downloadLandTable()">Download Excel</button>
+
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
@@ -197,90 +192,43 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Land Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents
-                                                                </th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @php $s = 1; @endphp
-
-                                                            @foreach($form1 as $f)
                                                             <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td>
-                                                                    @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button class="btn btn-warning showrem"
-                                                                        value="{{ $f->id }}">
-                                                                        Finance Requested Change
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
+                                                                <td>#TN0123</td>
+                                                                <td>123456789012</td>
+                                                                <td>15000</td>
+                                                                <td>Ravi Kumar</td>
+                                                                <td>State Bank of India</td>
+                                                                <td>Green Hamlet</td>
+                                                                <td>Kaveripattinam</td>
+                                                                <td>Krishnagiri</td>
+                                                                <td>987654321012</td>
+                                                                <td>SBIN0001234</td>
+                                                                <td>Land Development</td>
+                                                                <td>Post Funding</td>
+                                                                <td>MGNREGA</td>
                                                             </tr>
 
-                                                            @endforeach
+
                                                         </tbody>
+
                                                     </table>
                                                 </div>
                                             </div>
@@ -296,91 +244,24 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Pond Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents</th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            @php $s = 1; @endphp
-
-                                                            @foreach($form2 as $f)
-                                                            <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="pond_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td>
-                                                                    @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button class="btn btn-warning showrem"
-                                                                        value="{{ $f->id }}">
-                                                                        Finance Requested Change
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
-
-
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -396,94 +277,33 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Land Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents</th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            @php $s = 1; @endphp
-                                                            @foreach($form3 as $f)
-                                                            <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="plant_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td>
-                                                                    @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Approved by
-                                                                        TL/Coordinator</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button class="btn btn-warning showrem"
-                                                                        value="{{ $f->id }}">
-                                                                        Finance Requested Change
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
-                                                            </tr>
-
-                                                            @endforeach
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -784,9 +604,9 @@
                         <input type="text" id="mcode_form_id" name="mcode_form_id" hidden>
                         <div class="mb-3">
                             <label for="area_land" class="form-label">Enter MCODE</label>
-                            <input type="number"  class="form-control" id="mcode" name="mcode" required>
+                            <input type="number" class="form-control" id="mcode" name="mcode" required>
                         </div>
-                       
+
                     </div>
 
                     <div class="modal-footer">
@@ -1202,21 +1022,21 @@
         });
     });
 
-    $(document).on("click",".fin_approve",function(e){
+    $(document).on("click", ".fin_approve", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
         $.ajax({
-            url:`/fin-approve`,
-            type:"POST",
+            url: `/fin-approve`,
+            type: "POST",
             data: {
                 _token: '{{ csrf_token() }}',
                 form_id: form_id
             },
             success: function(response) {
-                if (response.status==200) {
+                if (response.status == 200) {
                     alert("form accepted");
-             
+
                 } else {
                     alert('form not accepted');
                 }
@@ -1225,7 +1045,7 @@
         })
     });
 
-    $(document).on("click",".fin_approve_modal",function(e){
+    $(document).on("click", ".fin_approve_modal", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
@@ -1233,24 +1053,24 @@
         $("#mcode_modal").modal("show");
     });
 
-    $(document).on("submit","#mcode_form",function(e){
+    $(document).on("submit", "#mcode_form", function(e) {
         e.preventDefault();
         var form = new FormData(this);
         console.log(form);
         $.ajax({
-            url:`/fin-approve`,
-            type:"POST",
+            url: `/fin-approve`,
+            type: "POST",
             data: form,
-            processData:false,
-            contentType:false,
+            processData: false,
+            contentType: false,
             success: function(response) {
-                if (response.status==200) {
+                if (response.status == 200) {
                     alert("mcode submitted forwarded to post funding");
                     $("#mcode_modal").modal("hide");
                     $('#mcode_form')[0].reset();
 
 
-             
+
                 } else {
                     alert('form not accepted');
                 }
@@ -1258,7 +1078,42 @@
 
         })
 
-    })
+    });
+    function downloadLandTable() {
+        const table = document.getElementById("land_table");
+        const ws_data = [];
+
+        // Extract headers
+        const headers = [];
+        table.querySelectorAll("thead th").forEach(th => {
+            headers.push({ v: th.innerText.trim(), t: 's', s: {
+                font: { bold: true, color: { rgb: "000000" } }, // bold black text
+                fill: { fgColor: { rgb: "FFFF00" } },           // yellow background
+                alignment: { horizontal: "center", vertical: "center" }
+            }});
+        });
+        ws_data.push(headers);
+
+        // Extract rows
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const rowData = [];
+            row.querySelectorAll("td").forEach(cell => {
+                let cellText = cell.innerText.trim();
+                rowData.push({ v: cellText, t: 's' }); // Treat as text
+            });
+            ws_data.push(rowData);
+        });
+
+        // Create worksheet and apply data
+        const ws = XLSX.utils.aoa_to_sheet([]);
+        XLSX.utils.sheet_add_aoa(ws, ws_data, { origin: "A1" });
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Land Form");
+
+        XLSX.writeFile(wb, "Land_Form_Data.xlsx");
+    }
+
     </script>
 
 

@@ -431,9 +431,10 @@
                                                                         id="pf_pond" value="{{$f->id}}">Post Fund</button>
 
                                                                 </td>
+                                                                <td>
 
                                                                 <button value="{{ $f->id }}"
-                                                                    class="btn btn-inverse-warning btn-fw showrem">Waiting for Post Fund Details</button>
+                                                                    class="btn btn-inverse-warning btn-fw showrem">Waiting for Post Fund Details</button></td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -492,9 +493,9 @@
                                                                     <button type="button" class="btn btn-primary"
                                                                         id="pf_plant" value="{{$f->id}}">Post Fund</button>
 
-                                                                </td>
+                                                                </td><td>
                                                                 <button value="{{ $f->id }}"
-                                                                    class="btn btn-inverse-warning btn-fw showrem">Waiting for Post Fund Details</button>
+                                                                    class="btn btn-inverse-warning btn-fw showrem">Waiting for Post Fund Details</button></td>
                                                             </tr>
 
                                                             @endforeach

@@ -561,7 +561,7 @@
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
-                                                                        id="land_detail"
+                                                                        id="plant_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
                                                                 <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
@@ -1071,7 +1071,45 @@
         </div>
     </div>
 
-
+ <!-- Land Detail Modal -->
+ <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Plantation Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Ownership : <span id="plant_ownership"></span><br><br>
+                    Well Irrigation : <span id="plant_well_irrigation"></span><br><br>
+                    Area Irrigated : <span id="plant_area_irrigated"></span><br><br>
+                    Irrigated Lands : <span id="plant_irrigated_lands"></span><br><br>
+                    Patta No : <span id="plant_patta"></span><br><br>
+                    Total Area : <span id="plant_total_area"></span><br><br>
+                    Revenue Village : <span id="plant_revenue"></span><br><br>
+                    Crop Season : <span id="plant_crop_season"></span><br><br>
+                    Livestock : <span id="plant_livestock"></span><br><br>
+                    Plantation Type : <span id="plant_type"></span><br><br>
+                    SF No : <span id="plant_sf_no"></span><br><br>
+                    Soil Type : <span id="plant_soil_type"></span><br><br>
+                    Land to Benefit : <span id="plant_land_benefit"></span><br><br>
+                    Field Inspection : <span id="plant_field_inspection"></span><br><br>
+                    Site Approval : <span id="plant_site_approval"></span><br><br>
+                    Date of Inspection : <span id="plant_date_of_inspection"></span><br><br>
+                    Date of Approval : <span id="plant_date_of_approval"></span><br><br>
+                    Type of Work : <span id="plant_type_of_work"></span><br><br>
+                    Area Benefit : <span id="plant_area_benefit"></span><br><br>
+                    Other Works : <span id="plant_other_works"></span><br><br>
+                    Pradan Contribution : <span id="plant_pradan_contribution"></span><br><br>
+                    Farmer Contribution : <span id="plant_farmer_contribution"></span><br><br>
+                    Total Amount : <span id="plant_total_amount"></span><br><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Measurement Modal -->
     <div class="modal fade" id="measure_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
