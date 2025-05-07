@@ -80,7 +80,7 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
-Route::get('/coor/appl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
+Route::get('/cappl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
 
 
 Route::post('/coor/rem',[coorController::class,'coor_rem']);
@@ -153,7 +153,11 @@ Route::get('/tform3',function(){
     return view('tl/tform3');
 })->name('tform3');
 
-Route::get('/tl/appl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
+Route::get('/tappl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
+Route::get('/mem',[tlController::class,'fetch_tl_mem'])->name('tl_mem');
+Route::delete('/tl/delete-user/{id}', [tlController::class, 'deleteUser']);
+
+
 
 
 //end routes for tl

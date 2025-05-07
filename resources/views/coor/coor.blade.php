@@ -134,7 +134,7 @@
                 <ul class="nav">
                     <!-- Coordinator Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor') }}">
+                        <a class="nav-link active" href="{{ route('coor') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Coordinator</span>
                         </a>
