@@ -132,49 +132,15 @@
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <!-- Coordinator Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl') }}">
+                        <a class="nav-link active" href="{{route('fm')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Team Leader</span>
+                            <span class="menu-title">Finance manager</span>
                         </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl1') }}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Applications</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl_mem') }}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Manage Members</span>
-                        </a>
-                    </li>
-
-                    <!-- Forms Collapsible Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
-                            aria-controls="formsMenu">
-                            <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="formsMenu">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform1') }}">Land Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform2') }}">Pond Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform3') }}">Plant Form</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    
                 </ul>
             </nav>
-
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -237,7 +203,8 @@
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
-                                                                <th>Documents</th>
+                                                                <th>Documents
+                                                                </th>
                                                                 <th>Action</th>
                                                                 <th>Status</th>
                                                             </tr>
@@ -265,38 +232,42 @@
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
-
-
                                                                 <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
+                                                                    @if($f->status == 4)
+                                                                    <button type="button"
+                                                                        class="btn btn-success fin_approve_modal"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
-                                                                    
                                                                 </td>
 
 
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
                                                                     @break
 
                                                                     @default
@@ -361,35 +332,41 @@
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
+                                                                    @if($f->status == 4)
+                                                                    <button type="button"
+                                                                        class="btn btn-success fin_approve_modal"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
-                                                                    
                                                                 </td>
 
 
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
                                                                     @break
 
                                                                     @default
@@ -397,6 +374,7 @@
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
+
 
 
 
@@ -453,35 +431,41 @@
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
                                                                 <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
+                                                                    @if($f->status == 4)
+                                                                    <button type="button"
+                                                                        class="btn btn-success fin_approve_modal"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+
+                                                                    <button type="button"
+                                                                        class="btn btn-warning fin_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
-                                                                    
                                                                 </td>
 
 
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
+                                                                    <button class="btn btn-info">Approved by
+                                                                        TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
+                                                                    <button class="btn btn-warning showrem"
+                                                                        value="{{ $f->id }}">
+                                                                        Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
                                                                     @break
 
                                                                     @default
@@ -489,7 +473,6 @@
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
-
 
 
                                                             </tr>
@@ -785,24 +768,23 @@
             </div>
         </div>
     </div>
-
-         <!-- Post Funding Land -->
-         <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Post Funding Land -->
+    <div class="modal fade" id="mcode_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="pf_land_form">
+            <form id="mcode_form">
                 @csrf
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Pre Funding Approval</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
-                        <input type="text" id="pf_land_id" name="pf_land_id" >
+                        <input type="text" id="mcode_form_id" name="mcode_form_id" hidden>
                         <div class="mb-3">
-                            <label for="area_land" class="form-label">Area Benefiited</label>
-                            <input type="number"  class="form-control" id="area_land" name="area_land" required>
+                            <label for="area_land" class="form-label">Enter MCODE</label>
+                            <input type="number"  class="form-control" id="mcode" name="mcode" required>
                         </div>
                        
                     </div>
@@ -815,104 +797,6 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="pf_pond_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_pond_form">
-            @csrf
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" id="pf_pond_id" name="pf_pond_id" >
-
-                    <div class="mb-3">
-                        <label for="length" class="form-label">Length (m)</label>
-                        <input type="number" step="any" class="form-control" id="length" name="length" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="breadth" class="form-label">Breadth (m)</label>
-                        <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="depth" class="form-label">Depth (m)</label>
-                        <input type="number" step="any" class="form-control" id="depth" name="depth" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="volume" class="form-label">Volume (m³)</label>
-                        <input type="number" class="form-control" id="volume" name="volume" readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
-                        <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_plant_form">
-            @csrf
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" id="pf_plant_id" name="pf_plant_id">
-
-                    <div class="mb-3">
-                        <label for="nos" class="form-label">No. of Plants</label>
-                        <input type="number" class="form-control" id="nos" name="nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price per Plant</label>
-                        <input type="number" step="any" class="form-control" id="price" name="price" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="other_expenses" class="form-label">Other Expenses</label>
-                        <input type="number" step="any" class="form-control" id="other_expenses" name="other_expenses" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_nos" class="form-label">Total Plants</label>
-                        <input type="number" class="form-control" id="total_nos" name="total_nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_price" class="form-label">Total Price</label>
-                        <input type="number" step="any" class="form-control" id="total_price" name="total_price" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
 
     <script>
     $.ajaxSetup({
@@ -1190,32 +1074,32 @@
 
     });
 
-    $(document).on("click", ".coor_appr1", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $.ajax({
-            type: "POST",
-            url: `/coor_appr1/${form_id}`,
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.status == 200) {
-                    alert("Forwarded to finance manager");
-                } else {
-                    alert("something went wrong");
+    /*  $(document).on("click", ".coor_appr1", function(e) {
+         e.preventDefault();
+         var form_id = $(this).val();
+         console.log(form_id);
+         $.ajax({
+             type: "POST",
+             url: `/coor_appr1/${form_id}`,
+             data: {
+                 _token: $('meta[name="csrf-token"]').attr('content')
+             },
+             success: function(response) {
+                 if (response.status == 200) {
+                     alert("Forwarded to finance manager");
+                 } else {
+                     alert("something went wrong");
 
-                }
-            }
-
-
-        })
-    });
+                 }
+             }
 
 
+         })
+     }); */
 
-    $(document).on("click", ".coor_update", function(e) {
+
+
+    $(document).on("click", ".fin_update", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         $("#rem_form_id").val(form_id);
@@ -1228,7 +1112,7 @@
         console.log(form);
         $.ajax({
             type: "POST",
-            url: "/coor/rem",
+            url: "/fm/rem",
             data: form,
             processData: false,
             contentType: false,
@@ -1252,7 +1136,7 @@
         // Fetch the remarks using AJAX
         $.ajax({
             type: "GET",
-            url: "/get-remarks/" + formId,
+            url: "/getfm-remarks/" + formId,
             success: function(response) {
                 if (response.success == 200) {
                     $('#view_remark_text').text(response.remarks); // Set the remarks
@@ -1318,81 +1202,63 @@
         });
     });
 
-    $(document).on("click","#pf_land",function(e){
+    $(document).on("click",".fin_approve",function(e){
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
-        $("#pf_land_id").val(form_id);
-        $("#pf_land_modal").modal('show');
+        $.ajax({
+            url:`/fin-approve`,
+            type:"POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id
+            },
+            success: function(response) {
+                if (response.status==200) {
+                    alert("form accepted");
+             
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
+    });
+
+    $(document).on("click",".fin_approve_modal",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#mcode_form_id").val(form_id);
+        $("#mcode_modal").modal("show");
+    });
+
+    $(document).on("submit","#mcode_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            url:`/fin-approve`,
+            type:"POST",
+            data: form,
+            processData:false,
+            contentType:false,
+            success: function(response) {
+                if (response.status==200) {
+                    alert("mcode submitted forwarded to post funding");
+                    $("#mcode_modal").modal("hide");
+                    $('#mcode_form')[0].reset();
+
+
+             
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
 
     })
-    $(document).on("click","#pf_pond",function(e){
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $("#pf_pond_id").val(form_id);
-        $("#pf_pond_modal").modal('show');
-
-    })
-    $(document).on("click","#pf_plant",function(e){
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $("#pf_plant_id").val(form_id);
-        $("#pf_plant_modal").modal('show');
-
-    });
-    $(document).on("submit","#pf_land_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_land",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });
-    $(document).on("submit","#pf_pond_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_pond",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });    
-    $(document).on("submit","#pf_plant_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_plant",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });
     </script>
 
 

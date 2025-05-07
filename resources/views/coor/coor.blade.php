@@ -134,14 +134,14 @@
                 <ul class="nav">
                     <!-- Coordinator Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor') }}">
+                        <a class="nav-link active" href="{{ route('coor') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Coordinator</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor') }}">
+                        <a class="nav-link" href="{{ route('cappl') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -256,82 +256,110 @@
                                                                         id="bank_detail"
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-primary"
+                                                                <td>
+                                                                    <button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
+
+                                                                    @if($f->status == 7)
+                                                                    <button type="button"
+                                                                        class="btn btn-info btn-view-pf"
+                                                                        value="{{ $f->id }}">
+                                                                        View PF Details
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
 
-<td>
-    @if($f->status == 1)
-        {{-- Pre-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_appr1" value="{{ $f->id }}">
-            Approve
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_update" value="{{ $f->id }}">
-            Request Change
-        </button>
+                                                                <td>
+                                                                    @if($f->status == 1)
+                                                                    {{-- Pre-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
 
-    @elseif($f->status == 7)
-        {{-- Post-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_pf_appr" value="{{ $f->id }}">
-            Approve PF
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_pf_update" value="{{ $f->id }}">
-            Request Edit PF
-        </button>
+                                                                    @elseif($f->status == 7)
+                                                                    {{-- Post-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_pf_appr"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve PF
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_pf_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Edit PF
+                                                                    </button>
 
-    @elseif($f->status == 2 || $f->status == 8)
-        {{-- Show View Reason button for edit requests --}}
-        <button class="btn btn-outline-info view-reason-btn" data-reason="{{ $f->reason }}">
-            View Reason
-        </button>
+                                                                    @elseif($f->status == 2 || $f->status == 8)
+                                                                    {{-- Show View Reason button for edit requests --}}
+                                                                    <button class="btn btn-outline-info view-reason-btn"
+                                                                        data-id="{{ $f->id }}">
+                                                                        View Reason
+                                                                    </button>
 
-    @else
-        <span class="text-muted">No actions</span>
-    @endif
-</td>
 
-<td>
-    @switch($f->status)
-        @case(1)
-            <button class="btn btn-secondary">Submitted by Associate</button>
-            @break
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
+                                                                    @endif
+                                                                </td>
 
-        @case(2)
-            <button class="btn btn-warning">Change Requested by You</button>
-            @break
+                                                                <td>
+                                                                    @switch($f->status)
+                                                                    @case(1)
+                                                                    <button class="btn btn-secondary">Submitted by
+                                                                        Associate</button>
+                                                                    @break
 
-        @case(3)
-            <button class="btn btn-danger">Rejected</button>
-            @break
+                                                                    @case(2)
+                                                                    <button class="btn btn-warning">Change Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @case(4)
-            <button class="btn btn-info">Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(3)
+                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    @break
 
-        @case(5)
-            <button class="btn btn-warning">Finance Requested Change</button>
-            @break
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
 
-        @case(6)
-            <button class="btn btn-success">Final Approved</button>
-            @break
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning">Finance Requested
+                                                                        Change</button>
+                                                                    @break
 
-        @case(7)
-            <button class="btn btn-secondary">Post-Funding Submitted by Associate</button>
-            @break
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
 
-        @case(8)
-            <button class="btn btn-warning">PF Edit Requested by You</button>
-            @break
+                                                                    @case(7)
+                                                                    <button class="btn btn-secondary">Post-Funding
+                                                                        Submitted by Associate</button>
+                                                                    @break
 
-        @case(9)
-            <button class="btn btn-info">PF Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(8)
+                                                                    <button class="btn btn-warning">PF Edit Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @default
-            <button class="btn btn-light">Status Unknown</button>
-    @endswitch
-</td>
+                                                                    @case(9)
+                                                                    <button class="btn btn-info">PF Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
+
+                                                                    @default
+                                                                    <button class="btn btn-light">Status
+                                                                        Unknown</button>
+                                                                    @endswitch
+                                                                </td>
 
 
 
@@ -382,84 +410,112 @@
                                                                         id="pond_detail"
                                                                         value="{{$f->id}}">View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        id="doc_view" value="{{$f->id}}">View</button>
+
+                                                                    @if($f->status == 7)
+                                                                    <button type="button"
+                                                                        class="btn btn-info btn-view-pf-pond"
+                                                                        value="{{ $f->id }}">
+                                                                        View PF Details
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td><td>
-    @if($f->status == 1)
-        {{-- Pre-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_appr1" value="{{ $f->id }}">
-            Approve
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_update" value="{{ $f->id }}">
-            Request Change
-        </button>
+                                                                </td>
+                                                                <td>
+                                                                    @if($f->status == 1)
+                                                                    {{-- Pre-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
 
-    @elseif($f->status == 7)
-        {{-- Post-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_pf_appr" value="{{ $f->id }}">
-            Approve PF
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_pf_update" value="{{ $f->id }}">
-            Request Edit PF
-        </button>
+                                                                    @elseif($f->status == 7)
+                                                                    {{-- Post-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_pf_appr"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve PF
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_pf_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Edit PF
+                                                                    </button>
 
-    @elseif($f->status == 2 || $f->status == 8)
-        {{-- Show View Reason button for edit requests --}}
-        <button class="btn btn-outline-info view-reason-btn" data-reason="{{ $f->reason }}">
-            View Reason
-        </button>
+                                                                    @elseif($f->status == 2 || $f->status == 8)
+                                                                    {{-- Show View Reason button for edit requests --}}
+                                                                    <button class="btn btn-outline-info view-reason-btn"
+                                                                        data-id="{{ $f->id }}">
+                                                                        View Reason
+                                                                    </button>
 
-    @else
-        <span class="text-muted">No actions</span>
-    @endif
-</td>
 
-<td>
-    @switch($f->status)
-        @case(1)
-            <button class="btn btn-secondary">Submitted by Associate</button>
-            @break
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
+                                                                    @endif
+                                                                </td>
 
-        @case(2)
-            <button class="btn btn-warning">Change Requested by You</button>
-            @break
+                                                                <td>
+                                                                    @switch($f->status)
+                                                                    @case(1)
+                                                                    <button class="btn btn-secondary">Submitted by
+                                                                        Associate</button>
+                                                                    @break
 
-        @case(3)
-            <button class="btn btn-danger">Rejected</button>
-            @break
+                                                                    @case(2)
+                                                                    <button class="btn btn-warning">Change Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @case(4)
-            <button class="btn btn-info">Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(3)
+                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    @break
 
-        @case(5)
-            <button class="btn btn-warning">Finance Requested Change</button>
-            @break
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
 
-        @case(6)
-            <button class="btn btn-success">Final Approved</button>
-            @break
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning">Finance Requested
+                                                                        Change</button>
+                                                                    @break
 
-        @case(7)
-            <button class="btn btn-secondary">Post-Funding Submitted by Associate</button>
-            @break
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
 
-        @case(8)
-            <button class="btn btn-warning">PF Edit Requested by You</button>
-            @break
+                                                                    @case(7)
+                                                                    <button class="btn btn-secondary">Post-Funding
+                                                                        Submitted by Associate</button>
+                                                                    @break
 
-        @case(9)
-            <button class="btn btn-info">PF Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(8)
+                                                                    <button class="btn btn-warning">PF Edit Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @default
-            <button class="btn btn-light">Status Unknown</button>
-    @endswitch
-</td>
+                                                                    @case(9)
+                                                                    <button class="btn btn-info">PF Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
+
+                                                                    @default
+                                                                    <button class="btn btn-light">Status
+                                                                        Unknown</button>
+                                                                    @endswitch
+                                                                </td>
 
 
 
@@ -513,81 +569,108 @@
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="bank_detail"
                                                                         value="{{$f->id}}">View</button>
+                                                                    @if($f->status == 7)
+                                                                    <button type="button"
+                                                                        class="btn btn-info btn-view-pf-plant"
+                                                                        value="{{ $f->id }}">
+                                                                        View PF Details
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td><td>
-    @if($f->status == 1)
-        {{-- Pre-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_appr1" value="{{ $f->id }}">
-            Approve
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_update" value="{{ $f->id }}">
-            Request Change
-        </button>
+                                                                </td>
+                                                                <td>
+                                                                    @if($f->status == 1)
+                                                                    {{-- Pre-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_appr1"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Change
+                                                                    </button>
 
-    @elseif($f->status == 7)
-        {{-- Post-Funding Submitted by Associate --}}
-        <button type="button" class="btn btn-success coor_pf_appr" value="{{ $f->id }}">
-            Approve PF
-        </button>&nbsp;&nbsp;
-        <button type="button" class="btn btn-warning coor_pf_update" value="{{ $f->id }}">
-            Request Edit PF
-        </button>
+                                                                    @elseif($f->status == 7)
+                                                                    {{-- Post-Funding Submitted by Associate --}}
+                                                                    <button type="button"
+                                                                        class="btn btn-success coor_pf_appr"
+                                                                        value="{{ $f->id }}">
+                                                                        Approve PF
+                                                                    </button>&nbsp;&nbsp;
+                                                                    <button type="button"
+                                                                        class="btn btn-warning coor_pf_update"
+                                                                        value="{{ $f->id }}">
+                                                                        Request Edit PF
+                                                                    </button>
 
-    @elseif($f->status == 2 || $f->status == 8)
-        {{-- Show View Reason button for edit requests --}}
-        <button class="btn btn-outline-info view-reason-btn" data-reason="{{ $f->reason }}">
-            View Reason
-        </button>
+                                                                    @elseif($f->status == 2 || $f->status == 8)
+                                                                    {{-- Show View Reason button for edit requests --}}
+                                                                    <button class="btn btn-outline-info view-reason-btn"
+                                                                        data-id="{{ $f->id }}">
+                                                                        View Reason
+                                                                    </button>
 
-    @else
-        <span class="text-muted">No actions</span>
-    @endif
-</td>
 
-<td>
-    @switch($f->status)
-        @case(1)
-            <button class="btn btn-secondary">Submitted by Associate</button>
-            @break
+                                                                    @else
+                                                                    <span class="text-muted">No actions</span>
+                                                                    @endif
+                                                                </td>
 
-        @case(2)
-            <button class="btn btn-warning">Change Requested by You</button>
-            @break
+                                                                <td>
+                                                                    @switch($f->status)
+                                                                    @case(1)
+                                                                    <button class="btn btn-secondary">Submitted by
+                                                                        Associate</button>
+                                                                    @break
 
-        @case(3)
-            <button class="btn btn-danger">Rejected</button>
-            @break
+                                                                    @case(2)
+                                                                    <button class="btn btn-warning">Change Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @case(4)
-            <button class="btn btn-info">Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(3)
+                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    @break
 
-        @case(5)
-            <button class="btn btn-warning">Finance Requested Change</button>
-            @break
+                                                                    @case(4)
+                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
 
-        @case(6)
-            <button class="btn btn-success">Final Approved</button>
-            @break
+                                                                    @case(5)
+                                                                    <button class="btn btn-warning">Finance Requested
+                                                                        Change</button>
+                                                                    @break
 
-        @case(7)
-            <button class="btn btn-secondary">Post-Funding Submitted by Associate</button>
-            @break
+                                                                    @case(6)
+                                                                    <button class="btn btn-success">Final
+                                                                        Approved</button>
+                                                                    @break
 
-        @case(8)
-            <button class="btn btn-warning">PF Edit Requested by You</button>
-            @break
+                                                                    @case(7)
+                                                                    <button class="btn btn-secondary">Post-Funding
+                                                                        Submitted by Associate</button>
+                                                                    @break
 
-        @case(9)
-            <button class="btn btn-info">PF Forwarded to Finance Manager</button>
-            @break
+                                                                    @case(8)
+                                                                    <button class="btn btn-warning">PF Edit Requested by
+                                                                        You</button>
+                                                                    @break
 
-        @default
-            <button class="btn btn-light">Status Unknown</button>
-    @endswitch
-</td>
+                                                                    @case(9)
+                                                                    <button class="btn btn-info">PF Forwarded to Finance
+                                                                        Manager</button>
+                                                                    @break
+
+                                                                    @default
+                                                                    <button class="btn btn-light">Status
+                                                                        Unknown</button>
+                                                                    @endswitch
+                                                                </td>
 
 
 
@@ -840,7 +923,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="modal fade" id="view_rem_modal" tabindex="-1" aria-labelledby="remarksLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -855,6 +938,57 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="view_pf_pond_modal" tabindex="-1" aria-labelledby="pfPondLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Post-Funding Details (Pond Form)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-dark" id="pf_pond_body">
+                    <p><strong>Length:</strong> <span id="len_pf_text"></span></p>
+                    <p><strong>Breadth:</strong> <span id="bre_pf_text"></span></p>
+                    <p><strong>Depth:</strong> <span id="dep_pf_text"></span></p>
+                    <p><strong>Volume of Excavation:</strong> <span id="vol_pf_text"></span></p>
+                    <p><strong>Area Benefited:</strong> <span id="area_pf_text"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="view_pf_land_modal" tabindex="-1" aria-labelledby="pfLandLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Post-Funding Details (Land Form)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-dark" id="pf_land_body">
+                    <p><strong>Area Benefited:</strong> <span id="area_pf_land_text"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="view_pf_plant_modal" tabindex="-1" aria-labelledby="pfPlantLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Post-Funding Details (Plant Form)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-dark" id="pf_plant_body">
+                    <p><strong>No. of Saplings:</strong> <span id="nos_pf_text"></span></p>
+                    <p><strong>Price per Sapling:</strong> ₹<span id="price_pf_text"></span></p>
+                    <p><strong>Other Expenses:</strong> ₹<span id="other_exp_pf_text"></span></p>
+                    <p><strong>Total Saplings:</strong> <span id="total_no_pf_text"></span></p>
+                    <p><strong>Total Price:</strong> ₹<span id="total_price_pf_text"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -887,31 +1021,47 @@
             </div>
         </div>
     </div>
-<!-- PF Edit Request Modal -->
-<div class="modal fade" id="pfEditModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_edit_form">
-            @csrf
+    <!-- PF Edit Request Modal -->
+    <div class="modal fade" id="pfEditModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="pf_edit_form">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Request Edit - Reason</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="edit_form_id" name="form_id">
+                        <div class="mb-3">
+                            <label class="form-label">Reason for Edit</label>
+                            <textarea class="form-control" name="reason" id="reason" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-warning">Submit</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Reason Modal -->
+    <div class="modal fade" id="viewReasonModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Request Edit - Reason</h5>
+                    <h5 class="modal-title">Edit Request Reason</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" id="edit_form_id" name="form_id">
-                    <div class="mb-3">
-                        <label class="form-label">Reason for Edit</label>
-                        <textarea class="form-control" name="reason" id="reason" required></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-warning">Submit</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <p class="text-dark" id="reason_text"></p>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+
 
 
     <script>
@@ -939,9 +1089,9 @@
 
     });
 
-   
 
-   
+
+
 
     function nextStep(current, next) {
         document.getElementById('step' + current).style.display = 'none';
@@ -1320,61 +1470,157 @@
         });
     });
     $(document).on('click', '.coor_pf_appr', function() {
-    let formId = $(this).val();
+        let formId = $(this).val();
 
-    if (confirm("Are you sure you want to approve this post-funding form?")) {
-        $.ajax({
-            url: '/coordinator/approve-pf/' + formId,
-            type: 'GET',
-            success: function(response) {
-                alert('Post-Funding approved successfully!');
-                location.reload();
-            },
-            error: function(xhr) {
-                alert('Something went wrong!');
-            }
-        });
-    }
-});
-// Open modal and set form ID
-$(document).on('click', '.coor_pf_update', function () {
-    const formId = $(this).val();
-    $('#edit_form_id').val(formId);
-    $('#reason').val('');
-    $('#pfEditModal').modal('show'); // ✅ your preferred method
-});
-
-// Submit the modal form
-$('#pf_edit_form').submit(function (e) {
-    e.preventDefault();
-
-    const formId = $('#edit_form_id').val();
-    const reason = $('#reason').val();
-
-    $.ajax({
-        url: '/coordinator/request-edit-pf/' + formId,
-        type: 'POST',
-        data: {
-            _token: '{{ csrf_token() }}',
-            reason: reason
-        },
-        success: function (response) {
-            alert('Edit requested successfully!');
-            $('#pfEditModal').modal('hide');
-            location.reload();
-        },
-        error: function () {
-            alert('Something went wrong!');
+        if (confirm("Are you sure you want to approve this post-funding form?")) {
+            $.ajax({
+                url: '/coordinator/approve-pf/' + formId,
+                type: 'GET',
+                success: function(response) {
+                    alert('Post-Funding approved successfully!');
+                    location.reload();
+                },
+                error: function(xhr) {
+                    alert('Something went wrong!');
+                }
+            });
         }
     });
-});
+
+    $(document).on('click', '.coor_pf_update', function() {
+        const formId = $(this).val();
+        $('#edit_form_id').val(formId);
+        $('#reason').val('');
+        $('#pfEditModal').modal('show'); // ✅ your preferred method
+    });
 
 
+    $(document).on("click", ".btn-view-pf", function(e) {
+        e.preventDefault();
+
+        var formId = $(this).val();
+
+        $.ajax({
+            type: "GET",
+            url: "/get-pf_pond/" + formId,
+            success: function(response) {
+                if (response.success == 200) {
+                    $('#view_rem_modal').modal('show');
+                } else {
+                    alert("Remarks not found.");
+                }
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert("Server error.");
+            }
+        });
+    });
+    $(document).on('click', '.btn-view-pf-land', function() {
+        let formId = $(this).val();
+
+        $.ajax({
+            url: '/coor/view-pf-land/' + formId,
+            method: 'GET',
+            success: function(response) {
+                $('#area_pf_land_text').text(response.area_pf || 'N/A');
+                $('#view_pf_land_modal').modal('show');
+            },
+            error: function() {
+                $('#pf_land_body').html(
+                    '<p class="text-danger">Error fetching land PF details.</p>');
+                $('#view_pf_land_modal').modal('show');
+            }
+        });
+    });
 
 
+    $(document).on('click', '.btn-view-pf-pond', function() {
+        let formId = $(this).val();
 
+        $.ajax({
+            url: '/coor/view-pf-pond/' + formId,
+            method: 'GET',
+            success: function(response) {
+                $('#len_pf_text').text(response.len_pf || 'N/A');
+                $('#bre_pf_text').text(response.bre_pf || 'N/A');
+                $('#dep_pf_text').text(response.dep_pf || 'N/A');
+                $('#vol_pf_text').text(response.vol_pf || 'N/A');
+                $('#area_pf_text').text(response.area_pf || 'N/A');
 
+                $('#view_pf_pond_modal').modal('show');
+            },
+            error: function() {
+                $('#pf_pond_body').html(
+                    '<p class="text-danger">Error fetching pond PF details.</p>');
+                $('#view_pf_pond_modal').modal('show');
+            }
+        });
+    });
 
+    $(document).on('click', '.btn-view-pf-plant', function() {
+        let formId = $(this).val();
+
+        $.ajax({
+            url: '/coor/view-pf-plant/' + formId,
+            method: 'GET',
+            success: function(response) {
+                $('#nos_pf_text').text(response.nos || 'N/A');
+                $('#price_pf_text').text(response.price || 'N/A');
+                $('#other_exp_pf_text').text(response.other_exp || 'N/A');
+                $('#total_no_pf_text').text(response.total_no || 'N/A');
+                $('#total_price_pf_text').text(response.total_price || 'N/A');
+                $('#view_pf_plant_modal').modal('show');
+            },
+            error: function() {
+                $('#pf_plant_body').html(
+                    '<p class="text-danger">Error fetching plant PF details.</p>');
+                $('#view_pf_plant_modal').modal('show');
+            }
+        });
+    });
+
+    $('#pf_edit_form').on('submit', function(e) {
+        e.preventDefault();
+
+        const formData = {
+            _token: $('input[name="_token"]').val(),
+            form_id: $('#edit_form_id').val(),
+            reason: $('#reason').val(),
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/coor/pf-edit-request',
+            data: formData,
+            success: function(response) {
+                alert('Edit request submitted successfully!');
+                $('#pfEditModal').modal('hide');
+                $('#pf_edit_form')[0].reset();
+                location.reload(); // Optional: refresh the table
+            },
+            error: function() {
+                alert('Something went wrong. Please try again.');
+            }
+        });
+    });
+
+    $(document).on('click', '.view-reason-btn', function() {
+        let formId = $(this).data('id');
+
+        $.ajax({
+            url: '/coor/view-reason/' + formId,
+            type: 'GET',
+            success: function(response) {
+                $('#reason_text').text(response.reason || 'No remarks found.');
+                $('#viewReasonModal').modal('show');
+            },
+            error: function() {
+                $('#reason_text').text('Error fetching reason.');
+                $('#viewReasonModal').modal('show');
+            }
+        });
+    });
     </script>
 
 

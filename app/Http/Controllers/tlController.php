@@ -30,6 +30,13 @@ class tlController extends Controller
         if($form1||$form2||$form3){
             return view('tl/tappl',compact('form1','form2','form3'));
         }
+    }
+        public function fetch_tl_mem(){
+            $user = User::all();
+          
+            if($user){
+                return view('tl/tl_mem',compact('user'));
+            }
 
     }
 
@@ -593,4 +600,15 @@ $fileUpload->save();
 
     
     }
+    public function deleteUser($id)
+{
+    $user = User::find($id);
+
+    if ($user) {
+        $user->delete();
+        return response()->json(['message' => 'User deleted successfully.']);
+    }
+
+    return response()->json(['message' => 'User not found.'], 404);
+}
 }

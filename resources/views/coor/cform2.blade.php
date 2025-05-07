@@ -134,11 +134,11 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('coor1') }}">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Applications</span>
-            </a>
-        </li>
+                        <a class="nav-link" href="{{ route('cappl') }}">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Applications</span>
+                        </a>
+                    </li>
 
         <!-- Forms Collapsible Menu -->
         <li class="nav-item">
