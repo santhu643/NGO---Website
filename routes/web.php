@@ -80,7 +80,7 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
-Route::get('/coor/appl',[coorController::class,'fetch_appl_coor1'])->name('coor1');
+Route::get('/coor/appl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
 
 
 Route::post('/coor/rem',[coorController::class,'coor_rem']);
@@ -113,6 +113,10 @@ Route::get('/coor/view-pf-pond/{id}', [coorController::class, 'viewPFPond']);
 Route::get('/coor/view-pf-plant/{id}', [coorController::class, 'viewPFPlant']);
 Route::post('/coor/pf-edit-request', [coorController::class, 'pfEditRequest']);
 Route::get('/coor/view-reason/{id}', [coorController::class, 'viewReason']);
+
+Route::post('/submit/coor/pf_land',[coorController::class,'submit_pf_land']);
+Route::post('/submit/coor/pf_pond',[coorController::class,'submit_pf_pond']);
+Route::post('/submit/coor/pf_plant',[coorController::class,'submit_pf_plant']);
 
 
 
