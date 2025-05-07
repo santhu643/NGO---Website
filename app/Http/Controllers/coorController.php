@@ -673,5 +673,74 @@ $fileUpload->save();
 
 
 
+public function viewPFLand($id)
+{
+    $land = LandForm::where('form_id', $id)->first();
+
+    if ($land) {
+        return response()->json([
+            'area_pf' => $land->area_pf,
+        ]);
+    } else {
+        return response()->json([], 404);
+    }
+}
+public function viewPFPond($id)
+{
+    $pond = PondForm::where('form_id', $id)->first();
+
+    if ($pond) {
+        return response()->json([
+            'len_pf' => $pond->len_pf,
+            'bre_pf' => $pond->bre_pf,
+            'dep_pf' => $pond->dep_pf,
+            'vol_pf' => $pond->vol_pf,
+            'area_pf' => $pond->area_pf,
+        ]);
+    } else {
+        return response()->json([], 404);
+    }
+}
+
+public function viewPFPlant($id)
+{
+    $plant = PlantForm::where('form_id', $id)->first();
+
+    if ($plant) {
+        return response()->json([
+            'nos' => $plant->nos,
+            'price' => $plant->price,
+            'other_exp' => $plant->other_exp,
+            'total_no' => $plant->total_no,
+            'total_price' => $plant->total_price,
+        ]);
+    } else {
+        return response()->json([], 404);
+    }
+}
+public function pfEditRequest(Request $request)
+{
+    $request->validate([
+        'form_id' => 'required|integer|exists:forms,id',
+        'reason' => 'required|string|max:1000',
+    ]);
+
+    $form = Form::find($request->form_id);
+    $form->remarks = $request->reason;
+    $form->status = 8; // Assuming 8 = PF Edit Requested by Coordinator
+    $form->save();
+
+    return response()->json(['message' => 'Edit request submitted']);
+}
+public function viewReason($id)
+{
+    $form = Form::find($id);
+
+    if (!$form) {
+        return response()->json(['reason' => 'Form not found'], 404);
+    }
+
+    return response()->json(['reason' => $form->remarks]);
+}
 
 }

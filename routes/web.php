@@ -108,7 +108,14 @@ Route::get('/cform3',function(){
 })->name('cform3');
 
 Route::get('/coordinator/approve-pf/{id}', [coorController::class, 'approvePF']);
-Route::post('/coordinator/request-edit-pf/{id}', [coorController::class, 'requestEditPF']);
+Route::get('/coor/view-pf-land/{id}', [coorController::class, 'viewPFLand']);
+Route::get('/coor/view-pf-pond/{id}', [coorController::class, 'viewPFPond']);
+Route::get('/coor/view-pf-plant/{id}', [coorController::class, 'viewPFPlant']);
+Route::post('/coor/pf-edit-request', [coorController::class, 'pfEditRequest']);
+Route::get('/coor/view-reason/{id}', [coorController::class, 'viewReason']);
+
+
+
 
 
 
