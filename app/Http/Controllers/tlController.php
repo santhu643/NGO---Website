@@ -611,4 +611,73 @@ $fileUpload->save();
 
     return response()->json(['message' => 'User not found.'], 404);
 }
+public function storeUser(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'password' => 'required',
+        'role' => 'required',
+        'mobile' => 'required',
+        'date_of_joining' => 'required',
+        'location' => 'required',
+        'photo' => 'required|image|max:2048',
+    ]);
+
+    // Store file manually to public/user_images
+    $photoName = time() . '_' . $request->file('photo')->getClientOriginalName();
+    $request->file('photo')->move(public_path('user_images'), $photoName);
+
+    // Save path in database (relative to public)
+    User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
+        'role' => $request->role,
+        'mobile' => $request->mobile,
+        'date_of_joining' => $request->date_of_joining,
+        'location' => $request->location,
+        'photo' => 'user_images/' . $photoName, // relative path
+    ]);
+
+    return response()->json(['message' => 'User created successfully']);
+}
+public function get_user($id)
+{
+    $user = User::find($id);
+
+    if ($user) {
+        return response()->json($user);
+    }
+
+    return response()->json(['error' => 'User not found'], 404);
+}
+public function update_user(Request $request)
+{
+    $request->validate([
+        'id' => 'required|exists:users,id',
+        'name' => 'required',
+        'email' => 'required|email',
+        'password' => 'required',
+        'role' => 'required',
+        'mobile' => 'required',
+        'date_of_joining' => 'required',
+        'location' => 'required',
+    ]);
+
+    $user = User::find($request->id);
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = $request->password; // Encrypt if needed
+    $user->role = $request->role;
+    $user->mobile = $request->mobile;
+    $user->date_of_joining = $request->date_of_joining;
+    $user->location = $request->location;
+    $user->save();
+
+    return response()->json(['success' => true]);
+}
+
+
+
 }

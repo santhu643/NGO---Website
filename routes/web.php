@@ -156,6 +156,11 @@ Route::get('/tform3',function(){
 Route::get('/tappl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
 Route::get('/mem',[tlController::class,'fetch_tl_mem'])->name('tl_mem');
 Route::delete('/tl/delete-user/{id}', [tlController::class, 'deleteUser']);
+Route::post('/tl/store-user', [tlController::class, 'storeUser'])->name('tl.store_user');
+Route::get('/tl/get_user/{id}', [tlController::class, 'get_user']);
+Route::post('/tl/update_user', [tlController::class, 'update_user']);
+
+
 
 
 
