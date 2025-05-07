@@ -157,7 +157,7 @@
                         </a>
                         <div class="collapse" id="formsMenu">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('ftorm1') }}">Land Form</a>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform1') }}">Land Form</a>
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('tform2') }}">Pond Form</a>
                                 </li>
