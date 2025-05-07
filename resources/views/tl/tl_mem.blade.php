@@ -195,6 +195,8 @@
 
                                 </ul>
                                 <div class="tab-content tabcontent-border">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">Add Member</button>
+
 
                                     
                                     <div class="tab-pane p-20 active" id="landform" role="tabpanel">
@@ -238,7 +240,7 @@
                                                                 <td>
                                                                 {{$f->location}}
                                                                 </td>
-                                                                <td><button class="btn btn-warning" value="{{$f->id}}">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger del" value="{{$f->id}}">Delete</button></td>
+                                                                <td><button class="btn btn-warning edit-btn" value="{{$f->id}}">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger del" value="{{$f->id}}">Delete</button></td>
                                                             </tr>
 
                                                             @endforeach
@@ -271,6 +273,124 @@
             </div>
         </div>
     </div>
+
+    <!-- Add Member Button -->
+
+<!-- Modal -->
+<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="addMemberForm" enctype="multipart/form-data">
+      @csrf
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMemberModalLabel">Add Member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="mb-3">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+            <label>Role</label>
+            <select name="role" class="form-control" required>
+              <option value="">Select Role</option>
+              <option value="vol">Associate</option>
+              <option value="coor">Coordinator</option>
+              <option value="tl">Team Leader</option>
+              <option value="fin">Finance Manager</option>
+            </select>
+          </div>
+            <div class="mb-3">
+                <label>Mobile</label>
+                <input type="text" name="mobile" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Date of Joining</label>
+                <input type="date" name="date_of_joining" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Location</label>
+                <input type="text" name="location" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Photo</label>
+                <input type="file" name="photo" class="form-control" accept="image/*" required>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="editUserForm">
+      @csrf
+      <input type="hidden" id="edit_id" name="id">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit User</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-2">
+            <label>Name</label>
+            <input type="text" id="edit_name" name="name" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Email</label>
+            <input type="email" id="edit_email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Password</label>
+            <input type="text" id="edit_password" name="password" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Role</label>
+            <select id="edit_role" name="role" class="form-control" required>
+              <option value="vol">Associate</option>
+              <option value="coor">Coordinator</option>
+              <option value="tl">Team Leader</option>
+              <option value="fm">Finance Manager</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label>Mobile</label>
+            <input type="text" id="edit_mobile" name="mobile" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Date of Joining</label>
+            <input type="text" id="edit_date_of_joining" name="date_of_joining" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label>Location</label>
+            <input type="text" id="edit_location" name="location" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
 
     
 
@@ -310,6 +430,77 @@
             }
         });
     });
+    $('#addMemberForm').on('submit', function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: '{{ route("tl.store_user") }}',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                alert('Member added successfully.');
+                $('#addMemberModal').modal('hide');
+                location.reload();
+            },
+            error: function (err) {
+                alert('Failed to add member.');
+            }
+        });
+    });
+
+    $('.edit-btn').click(function () {
+        var userId = $(this).val();
+
+        $.ajax({
+            url: '/tl/get_user/' + userId,
+            type: 'GET',
+            success: function (user) {
+                console.log(user);
+                // Fill modal inputs
+                $('#edit_id').val(user.id);
+                $('#edit_name').val(user.name);
+                $('#edit_email').val(user.email);
+                $('#edit_password').val(user.password);
+                $('#edit_role').val(user.role);
+                $('#edit_mobile').val(user.mobile);
+                $('#edit_date_of_joining').val(user.date_of_joining);
+                $('#edit_location').val(user.location);
+
+                // Show modal
+                $('#editUserModal').modal('show');
+            },
+            error: function () {
+                alert('User data could not be fetched.');
+            }
+        });
+    });
+
+$('#editUserForm').on('submit', function (e) {
+    e.preventDefault();
+
+    var formData = $(this).serialize();
+
+    $.ajax({
+        url: '/tl/update_user',
+        type: 'POST',
+        data: formData,
+        success: function (res) {
+            alert('User updated successfully');
+            $('#editUserModal').modal('hide');
+            location.reload(); // Refresh to reflect changes
+        },
+        error: function () {
+            alert('Failed to update user');
+        }
+    });
+});
+
+
+
 </script>
 
 
