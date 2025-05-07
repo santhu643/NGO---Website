@@ -80,6 +80,8 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
+Route::get('/dash',function(){return view('coor/coordash');})->name('dash');
+
 Route::get('/cappl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
 
 
