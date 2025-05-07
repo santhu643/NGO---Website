@@ -32,21 +32,21 @@
 
 
     <style>
-    .step {
-        display: none;
-    }
+        .step {
+            display: none;
+        }
 
-    .step.active {
-        display: block;
-    }
+        .step.active {
+            display: block;
+        }
 
-    .step3-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        .step3-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
 
-        /* Added spacing */
-    }
+            /* Added spacing */
+        }
     </style>
 </head>
 
@@ -54,10 +54,10 @@
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
+                        alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -65,59 +65,16 @@
                 </button>
 
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-bs-toggle="dropdown">
-                            <i class="icon-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                        <i class="ti-info-alt mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Just now </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Private message </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="ti-user mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> 2 days ago </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                            <img src="assets/images/faces/face28.jpg" alt="profile" />
+                            <img src="assets/images/faces/face15.jpg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
-                                <i class="ti-settings text-primary"></i> Settings </a>
-                            <a class="dropdown-item">
+                                <i class="ti-user text-primary"></i> Profile </a>
+                            <a class="dropdown-item" href="{{ route('login') }}">
                                 <i class="ti-power-off text-primary"></i> Logout </a>
                         </div>
                     </li>
@@ -151,7 +108,7 @@
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
                                 </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plantation Form</a></li>
                             </ul>
                         </div>
                     </li>
@@ -162,8 +119,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{route('post_appl')}}">
-                            <i class="icon-columns menu-icon"></i>
+                        <a class="nav-link" href="{{route('post_appl')}}">
+                            <i class="ti-wallet menu-icon"></i>
                             <span class="menu-title">Post Funding</span>
                         </a>
                     </li>
@@ -193,7 +150,7 @@
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab"
                                             aria-selected="false">
-                                            <i class="fas fa-tools"></i><b>&nbsp;Plantation Form</b>
+                                            <i class="fas fa-tree"></i><b>&nbsp;Plantation Form</b>
                                         </a>
                                     </li>
 
@@ -205,8 +162,8 @@
                                                 <h4 class="card-title">Land Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="land_table"
-                                                        class="table table-bordered table-hover table-striped">
-                                                        <thead class="text-center table-dark">
+                                                        class="table table-bordered table-hover table-striped align-middle text-center">
+                                                        <thead class="table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
@@ -225,13 +182,13 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary rounded-pill px-4"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary rounded-pill px-4"
                                                                         id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="bank_detail"
@@ -821,387 +778,387 @@
 
 
     <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).ready(function() {
-        $('#land_table').DataTable();
-        $('#pond_table').DataTable();
-        $('#plant_table').DataTable();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#land_table').DataTable();
+            $('#pond_table').DataTable();
+            $('#plant_table').DataTable();
 
-    });
-
-    $(document).ready(function() {
-        $('#length, #breadth, #depth').on('input', function() {
-            let length = parseFloat($('#length').val()) || 0;
-            let breadth = parseFloat($('#breadth').val()) || 0;
-            let depth = parseFloat($('#depth').val()) || 0;
-            let volume = length * breadth * depth;
-            $('#volume').val(volume.toFixed(2));
         });
 
+        $(document).ready(function() {
+            $('#length, #breadth, #depth').on('input', function() {
+                let length = parseFloat($('#length').val()) || 0;
+                let breadth = parseFloat($('#breadth').val()) || 0;
+                let depth = parseFloat($('#depth').val()) || 0;
+                let volume = length * breadth * depth;
+                $('#volume').val(volume.toFixed(2));
+            });
 
-    });
+
+        });
     </script>
 
     <script>
-    function nextStep(current, next) {
-        document.getElementById('step' + current).style.display = 'none';
-        document.getElementById('step' + next).style.display = 'block';
-    }
-
-    function prevStep(current, prev) {
-        document.getElementById('step' + current).style.display = 'none';
-        document.getElementById('step' + prev).style.display = 'block';
-    }
-
-
-
-    function updateIdentityTitle() {
-        const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
-        const fileUploadLabel = document.getElementById("fileUploadLabel");
-        if (selectedIdentity) {
-            fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
+        function nextStep(current, next) {
+            document.getElementById('step' + current).style.display = 'none';
+            document.getElementById('step' + next).style.display = 'block';
         }
-    }
 
-    function nextStep(current, next) {
-        document.getElementById("step" + current).style.display = "none";
-        document.getElementById("step" + next).style.display = "block";
-    }
+        function prevStep(current, prev) {
+            document.getElementById('step' + current).style.display = 'none';
+            document.getElementById('step' + prev).style.display = 'block';
+        }
 
-    function prevStep(current, previous) {
-        document.getElementById("step" + current).style.display = "none";
-        document.getElementById("step" + previous).style.display = "block";
-    };
 
-    $(document).on("submit", "#landform", function(e) {
-        e.preventDefault();
-        var form = new FormData(this);
-        $.ajax({
-            type: "POST",
-            url: "/form_land",
-            data: form,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status == 200) {
-                    Swal.fire({
-                        title: "Success!",
-                        text: "Form Submitted Successfully",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    });
-                } else {
-                    alert("something went wrong");
-                }
+
+        function updateIdentityTitle() {
+            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+            const fileUploadLabel = document.getElementById("fileUploadLabel");
+            if (selectedIdentity) {
+                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
             }
-        })
+        }
 
-    })
+        function nextStep(current, next) {
+            document.getElementById("step" + current).style.display = "none";
+            document.getElementById("step" + next).style.display = "block";
+        }
 
+        function prevStep(current, previous) {
+            document.getElementById("step" + current).style.display = "none";
+            document.getElementById("step" + previous).style.display = "block";
+        };
 
-    $(document).on("click", "#farmer_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_farmer_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-                    console.log(response.data);
-                    $("#f_name").text(response.data.farmer_name);
-                    $("#f_spouse").text(response.data.father_spouse);
-                    $("#f_mobile").text(response.data.mobile_number);
-                    $("#f_gender").text(response.data.gender);
-                    $("#f_card").text(response.data.identity_card_type);
-                    $("#f_member").text(response.data.household_members);
-                    $("#f_number").text(response.data.identity_card_number);
-                    $("#f_hamlet").text(response.data.hamlet);
-                    $("#f_panchayat").text(response.data.panchayat);
-                    $("#f_block").text(response.data.block);
-                    $("#f_household_type").text(response.data.type_of_households);
-                    $("#f_special_category").text(response.data.special_catog);
-                    $("#f_caste").text(response.data.caste);
-                    $("#f_occupation").text(response.data.hh_occupation);
-                    $("#f_house_type").text(response.data.type_of_house);
-                    $("#f_drinking_water").text(response.data.drinking_water);
-                    $("#f_potability").text(response.data.potability);
-                    $("#f_domestic_water").text(response.data.domestic_water);
-                    $("#f_toilet_availability").text(response.data.toilet_availability);
-                    $("#f_toilet_condition").text(response.data.toilet_cond);
-                    $("#f_house_owner").text(response.data.house_owner);
-                    $("#f_household_education").text(response.data.household_education);
-                    $("#f_latitude").text(response.data.lat);
-                    $("#f_longitude").text(response.data.lon);
-                    $("#f_mcode").text(response.data.mcode);
-
-                    $("#farmerdet_modal").modal("show");
+        $(document).on("submit", "#landform", function(e) {
+            e.preventDefault();
+            var form = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "/form_land",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status == 200) {
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Form Submitted Successfully",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
+                    } else {
+                        alert("something went wrong");
+                    }
                 }
-
-            }
-
-        })
-    });
-
-    $(document).on("click", "#land_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_land_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-                    $("#l_ownership").text(response.data.ownership);
-                    $("#l_well_irrigation").text(response.data.well_irrigation); // Newly added
-                    $("#l_area_irrigated").text(response.data.area_irrigated); // Newly added
-                    $("#l_irrigated_lands").text(response.data.irrigated_lands); // Newly added
-                    $("#l_patta").text(response.data.patta);
-                    $("#l_tarea").text(response.data.total_area);
-                    $("#l_revenue").text(response.data.revenue);
-                    $("#l_sf").text(response.data.sf_no);
-                    $("#l_soil").text(response.data.soil_type);
-                    $("#l_benefit").text(response.data.land_benefit);
-                    $("#l_field").text(response.data.field_insp);
-                    $("#l_site").text(response.data.site_app);
-                    $("#l_doi").text(response.data.date_of_ins);
-                    $("#l_doa").text(response.data.date_of_app);
-                    $("#l_type").text(response.data.type_of_work);
-                    $("#l_area").text(response.data.area_benefit);
-                    $("#l_oth").text(response.data.other_works);
-                    $("#l_pradan").text(response.data.pradan_cont);
-                    $("#l_farmer").text(response.data.farmer_cont);
-                    $("#l_total").text(response.data.total_amount);
-
-                    $("#landdet_modal").modal("show");
-
-                }
-            }
-
-        })
-    });
-
-    $(document).on("click", "#bank_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: `/fetch_bank_det/${form_id}`,
-            success: function(response) {
-                if (response.status == 200) {
-
-
-                    $("#b_hname").text(response.data.account_holder_name);
-                    $("#b_no").text(response.data.account_number);
-                    $("#b_name").text(response.data.bank_name);
-                    $("#b_branch").text(response.data.branch);
-                    $("#b_ifsc").text(response.data.ifsc_code);
-                    $("#bankdet_modal").modal("show");
-
-
-                }
-            }
+            })
 
         })
 
 
-    });
+        $(document).on("click", "#farmer_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_farmer_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
+                        console.log(response.data);
+                        $("#f_name").text(response.data.farmer_name);
+                        $("#f_spouse").text(response.data.father_spouse);
+                        $("#f_mobile").text(response.data.mobile_number);
+                        $("#f_gender").text(response.data.gender);
+                        $("#f_card").text(response.data.identity_card_type);
+                        $("#f_member").text(response.data.household_members);
+                        $("#f_number").text(response.data.identity_card_number);
+                        $("#f_hamlet").text(response.data.hamlet);
+                        $("#f_panchayat").text(response.data.panchayat);
+                        $("#f_block").text(response.data.block);
+                        $("#f_household_type").text(response.data.type_of_households);
+                        $("#f_special_category").text(response.data.special_catog);
+                        $("#f_caste").text(response.data.caste);
+                        $("#f_occupation").text(response.data.hh_occupation);
+                        $("#f_house_type").text(response.data.type_of_house);
+                        $("#f_drinking_water").text(response.data.drinking_water);
+                        $("#f_potability").text(response.data.potability);
+                        $("#f_domestic_water").text(response.data.domestic_water);
+                        $("#f_toilet_availability").text(response.data.toilet_availability);
+                        $("#f_toilet_condition").text(response.data.toilet_cond);
+                        $("#f_house_owner").text(response.data.house_owner);
+                        $("#f_household_education").text(response.data.household_education);
+                        $("#f_latitude").text(response.data.lat);
+                        $("#f_longitude").text(response.data.lon);
+                        $("#f_mcode").text(response.data.mcode);
 
-    $(document).on("click", "#pond_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log("deiiii")
-        $.ajax({
-            type: "GET",
-            url: `/fetch_pond_det/${form_id}`,
-            success: function(response) {
-                console.log(response);
-                if (response.status == 200) {
-                    $("#p_owner").text(response.data.land_owner);
-                    $("#p_patta").text(response.data.patta);
-                    $("#p_tarea").text(response.data.total_area);
-                    $("#p_irrigated_lands").text(response.data.irrigated_lands); // Newly added
-                    $("#p_revenue").text(response.data.revenue);
-                    $("#p_livestock").text(response.data.livestocks); // Newly added
-                    $("#p_crop_season").text(response.data.crop_season); // Newly added
-                    $("#p_well_irrigation").text(response.data.well_irrigation); // Newly added
-                    $("#p_sf").text(response.data.sf_no);
-                    $("#p_soil").text(response.data.soil_type);
-                    $("#p_land").text(response.data.land_serve);
-                    $("#p_field").text(response.data.field_insp);
-                    $("#p_site").text(response.data.site_appr);
-                    $("#p_type_of_work").text(response.data.type_of_work); // Newly added
-                    $("#p_doi").text(response.data.date_of_insp);
-                    $("#p_doa").text(response.data.date_of_appr);
-                    $("#p_len").text(response.data.length);
-                    $("#p_dep").text(response.data.depth);
-                    $("#p_breadth").text(response.data.breadth); // Newly added
-                    $("#p_vol").text(response.data.volume);
-                    $("#p_pcont").text(response.data.pradan_cont);
-                    $("#p_fcont").text(response.data.farmer_cont);
-                    $("#total").text(response.data.total);
-
-                    $("#ponddet_modal").modal("show");
-
+                        $("#farmerdet_modal").modal("show");
+                    }
 
                 }
-            }
 
-        })
-
-
-    });
-
-
-    $(document).on("click", "#plant_detail", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log("deiiii")
-        $.ajax({
-            type: "GET",
-            url: `/fetch_plant_det/${form_id}`,
-            success: function(response) {
-                console.log(response);
-                $("#plant_ownership").text(response.data.ownership);
-                $("#plant_well_irrigation").text(response.data.well_irrigation);
-                $("#plant_area_irrigated").text(response.data.area_irrigated);
-                $("#plant_irrigated_lands").text(response.data.irrigated_lands);
-                $("#plant_patta").text(response.data.patta);
-                $("#plant_total_area").text(response.data.total_area);
-                $("#plant_revenue").text(response.data.revenue);
-                $("#plant_crop_season").text(response.data.crop_season);
-                $("#plant_livestock").text(response.data.livestocks);
-                $("#plant_type").text(response.data.plantation);
-                $("#plant_sf_no").text(response.data.sf_no);
-                $("#plant_soil_type").text(response.data.soil_type);
-                $("#plant_land_benefit").text(response.data.land_benefit);
-                $("#plant_field_inspection").text(response.data.field_insp);
-                $("#plant_site_approval").text(response.data.site_app);
-                $("#plant_date_of_inspection").text(response.data.date_of_ins);
-                $("#plant_date_of_approval").text(response.data.date_of_app);
-                $("#plant_type_of_work").text(response.data.type_of_work);
-                $("#plant_area_benefit").text(response.data.area_benefit);
-                $("#plant_other_works").text(response.data.other_works);
-                $("#plant_pradan_contribution").text(response.data.pradan_cont);
-                $("#plant_farmer_contribution").text(response.data.farmer_cont);
-                $("#plant_total_amount").text(response.data.total_amount);
-
-                $("#plantdet_modal").modal("show");
-            }
-
-        })
-
-
-    });
-
-    $(document).on("click", ".meas", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $("#meas_id").val(form_id);
-        $("#measure_modal").modal('show');
-
-
-    });
-
-    $(document).on("submit", "#measurement_form", function(e) {
-        e.preventDefault();
-
-        var form = new FormData(this); // collect all form fields including CSRF token if it's inside the form
-
-        $.ajax({
-            type: "POST",
-            url: "/measure_submit",
-            data: form,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status == 200) {
-                    alert("Measurement submitted and forwarded to TL");
-                    $('#measure_modal').modal('hide');
-                    location.reload();
-                } else {
-                    alert("Something went wrong");
-                }
-            }
+            })
         });
-    });
 
-    $(document).on("click", ".showrem", function(e) {
-        e.preventDefault();
+        $(document).on("click", "#land_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_land_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
+                        $("#l_ownership").text(response.data.ownership);
+                        $("#l_well_irrigation").text(response.data.well_irrigation); // Newly added
+                        $("#l_area_irrigated").text(response.data.area_irrigated); // Newly added
+                        $("#l_irrigated_lands").text(response.data.irrigated_lands); // Newly added
+                        $("#l_patta").text(response.data.patta);
+                        $("#l_tarea").text(response.data.total_area);
+                        $("#l_revenue").text(response.data.revenue);
+                        $("#l_sf").text(response.data.sf_no);
+                        $("#l_soil").text(response.data.soil_type);
+                        $("#l_benefit").text(response.data.land_benefit);
+                        $("#l_field").text(response.data.field_insp);
+                        $("#l_site").text(response.data.site_app);
+                        $("#l_doi").text(response.data.date_of_ins);
+                        $("#l_doa").text(response.data.date_of_app);
+                        $("#l_type").text(response.data.type_of_work);
+                        $("#l_area").text(response.data.area_benefit);
+                        $("#l_oth").text(response.data.other_works);
+                        $("#l_pradan").text(response.data.pradan_cont);
+                        $("#l_farmer").text(response.data.farmer_cont);
+                        $("#l_total").text(response.data.total_amount);
 
-        var formId = $(this).val(); // get form ID from button value
+                        $("#landdet_modal").modal("show");
 
-        // Fetch the remarks using AJAX
-        $.ajax({
-            type: "GET",
-            url: "/getfm-remarks/" + formId,
-            success: function(response) {
-                if (response.success == 200) {
-                    $('#view_remark_text').text(response.remarks); // Set the remarks
-                    $('#view_rem_modal').modal('show'); // Show modal
-                } else {
-                    alert("Remarks not found.");
+                    }
                 }
-            },
-            error: function(xhr) {
-                console.log(xhr.responseText);
-                alert("Server error.");
-            }
+
+            })
         });
-    });
+
+        $(document).on("click", "#bank_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: `/fetch_bank_det/${form_id}`,
+                success: function(response) {
+                    if (response.status == 200) {
 
 
-    $(document).on("click", "#doc_view", function(e) {
-        e.preventDefault();
-        let formId = $(this).val();
+                        $("#b_hname").text(response.data.account_holder_name);
+                        $("#b_no").text(response.data.account_number);
+                        $("#b_name").text(response.data.bank_name);
+                        $("#b_branch").text(response.data.branch);
+                        $("#b_ifsc").text(response.data.ifsc_code);
+                        $("#bankdet_modal").modal("show");
 
-        // Clear previous buttons
-        $('#document-buttons').html('');
 
-        // List of document labels
-        let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+                    }
+                }
 
-        labels.forEach(function(label) {
-            let button = `
+            })
+
+
+        });
+
+        $(document).on("click", "#pond_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            console.log("deiiii")
+            $.ajax({
+                type: "GET",
+                url: `/fetch_pond_det/${form_id}`,
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 200) {
+                        $("#p_owner").text(response.data.land_owner);
+                        $("#p_patta").text(response.data.patta);
+                        $("#p_tarea").text(response.data.total_area);
+                        $("#p_irrigated_lands").text(response.data.irrigated_lands); // Newly added
+                        $("#p_revenue").text(response.data.revenue);
+                        $("#p_livestock").text(response.data.livestocks); // Newly added
+                        $("#p_crop_season").text(response.data.crop_season); // Newly added
+                        $("#p_well_irrigation").text(response.data.well_irrigation); // Newly added
+                        $("#p_sf").text(response.data.sf_no);
+                        $("#p_soil").text(response.data.soil_type);
+                        $("#p_land").text(response.data.land_serve);
+                        $("#p_field").text(response.data.field_insp);
+                        $("#p_site").text(response.data.site_appr);
+                        $("#p_type_of_work").text(response.data.type_of_work); // Newly added
+                        $("#p_doi").text(response.data.date_of_insp);
+                        $("#p_doa").text(response.data.date_of_appr);
+                        $("#p_len").text(response.data.length);
+                        $("#p_dep").text(response.data.depth);
+                        $("#p_breadth").text(response.data.breadth); // Newly added
+                        $("#p_vol").text(response.data.volume);
+                        $("#p_pcont").text(response.data.pradan_cont);
+                        $("#p_fcont").text(response.data.farmer_cont);
+                        $("#total").text(response.data.total);
+
+                        $("#ponddet_modal").modal("show");
+
+
+                    }
+                }
+
+            })
+
+
+        });
+
+
+        $(document).on("click", "#plant_detail", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            console.log("deiiii")
+            $.ajax({
+                type: "GET",
+                url: `/fetch_plant_det/${form_id}`,
+                success: function(response) {
+                    console.log(response);
+                    $("#plant_ownership").text(response.data.ownership);
+                    $("#plant_well_irrigation").text(response.data.well_irrigation);
+                    $("#plant_area_irrigated").text(response.data.area_irrigated);
+                    $("#plant_irrigated_lands").text(response.data.irrigated_lands);
+                    $("#plant_patta").text(response.data.patta);
+                    $("#plant_total_area").text(response.data.total_area);
+                    $("#plant_revenue").text(response.data.revenue);
+                    $("#plant_crop_season").text(response.data.crop_season);
+                    $("#plant_livestock").text(response.data.livestocks);
+                    $("#plant_type").text(response.data.plantation);
+                    $("#plant_sf_no").text(response.data.sf_no);
+                    $("#plant_soil_type").text(response.data.soil_type);
+                    $("#plant_land_benefit").text(response.data.land_benefit);
+                    $("#plant_field_inspection").text(response.data.field_insp);
+                    $("#plant_site_approval").text(response.data.site_app);
+                    $("#plant_date_of_inspection").text(response.data.date_of_ins);
+                    $("#plant_date_of_approval").text(response.data.date_of_app);
+                    $("#plant_type_of_work").text(response.data.type_of_work);
+                    $("#plant_area_benefit").text(response.data.area_benefit);
+                    $("#plant_other_works").text(response.data.other_works);
+                    $("#plant_pradan_contribution").text(response.data.pradan_cont);
+                    $("#plant_farmer_contribution").text(response.data.farmer_cont);
+                    $("#plant_total_amount").text(response.data.total_amount);
+
+                    $("#plantdet_modal").modal("show");
+                }
+
+            })
+
+
+        });
+
+        $(document).on("click", ".meas", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            $("#meas_id").val(form_id);
+            $("#measure_modal").modal('show');
+
+
+        });
+
+        $(document).on("submit", "#measurement_form", function(e) {
+            e.preventDefault();
+
+            var form = new FormData(this); // collect all form fields including CSRF token if it's inside the form
+
+            $.ajax({
+                type: "POST",
+                url: "/measure_submit",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status == 200) {
+                        alert("Measurement submitted and forwarded to TL");
+                        $('#measure_modal').modal('hide');
+                        location.reload();
+                    } else {
+                        alert("Something went wrong");
+                    }
+                }
+            });
+        });
+
+        $(document).on("click", ".showrem", function(e) {
+            e.preventDefault();
+
+            var formId = $(this).val(); // get form ID from button value
+
+            // Fetch the remarks using AJAX
+            $.ajax({
+                type: "GET",
+                url: "/getfm-remarks/" + formId,
+                success: function(response) {
+                    if (response.success == 200) {
+                        $('#view_remark_text').text(response.remarks); // Set the remarks
+                        $('#view_rem_modal').modal('show'); // Show modal
+                    } else {
+                        alert("Remarks not found.");
+                    }
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                    alert("Server error.");
+                }
+            });
+        });
+
+
+        $(document).on("click", "#doc_view", function(e) {
+            e.preventDefault();
+            let formId = $(this).val();
+
+            // Clear previous buttons
+            $('#document-buttons').html('');
+
+            // List of document labels
+            let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+
+            labels.forEach(function(label) {
+                let button = `
             <button class="btn btn-outline-primary m-2 doc-file-btn" 
                     value="${formId}">
                 ${label}
             </button>`;
-            $('#document-buttons').append(button);
+                $('#document-buttons').append(button);
+            });
+
+            // Open the modal
+            $('#documentModal').modal('show');
         });
 
-        // Open the modal
-        $('#documentModal').modal('show');
-    });
+        $(document).on("click", ".doc-file-btn", function() {
+            let form_id = $(this).val();
+            let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
 
-    $(document).on("click", ".doc-file-btn", function() {
-        let form_id = $(this).val();
-        let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
-
-        $.ajax({
-            url: "/get-document",
-            type: "POST",
-            data: {
-                _token: '{{ csrf_token() }}',
-                form_id: form_id,
-                type: type
-            },
-            success: function(response) {
-                if (response.file_url) {
-                    $('#docPreview').attr('src', response.file_url);
-                    $('#docDownload').attr('href', response.file_url);
-                    $('#fileViewerModal').modal('show');
-                } else {
-                    alert('File not found.');
+            $.ajax({
+                url: "/get-document",
+                type: "POST",
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    form_id: form_id,
+                    type: type
+                },
+                success: function(response) {
+                    if (response.file_url) {
+                        $('#docPreview').attr('src', response.file_url);
+                        $('#docDownload').attr('href', response.file_url);
+                        $('#fileViewerModal').modal('show');
+                    } else {
+                        alert('File not found.');
+                    }
+                },
+                error: function() {
+                    alert('Something went wrong.');
                 }
-            },
-            error: function() {
-                alert('Something went wrong.');
-            }
+            });
         });
-    });
     </script>
 
 

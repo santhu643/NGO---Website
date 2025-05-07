@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +42,7 @@
                 </button>
 
                 <ul class="navbar-nav navbar-nav-right">
-                   
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
                             <img src="assets/images/faces/face15.jpg" alt="profile" />
@@ -69,6 +68,12 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="{{route('vol')}}">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
@@ -77,21 +82,26 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item" id="land_click"> <a class="nav-link" href="{{route('form1')}}">Land Form</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plant Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form1')}}">Land Form</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Work Form</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('application') }}" aria-expanded="false"
-                            aria-controls="form-elements">
+                        <a class="nav-link" href="{{route('application')}}">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
-                
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('post_appl')}}">
+                            <i class="ti-wallet menu-icon"></i>
+                            <span class="menu-title">Post Funding</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->
@@ -120,16 +130,26 @@
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card card-light-blue p-3">
-                                <div class="row"> <!-- Use row to align cards side by side -->
-                                    <!-- User Info Card -->
-                                    <div class="col-md-12">
-                                        <div class="card shadow card-light-danger">
+                                <div class="row g-1"> <!-- Tight spacing with Bootstrap's gap utility -->
+
+                                    <!-- Profile Picture Card (6 columns) -->
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <div class="card shadow card-tale text-center rounded-circle">
+                                            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                                                <img src="assets/images/faces/face15.jpg" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 140px; height: 140px; object-fit: cover;">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- User Info Card (6 columns) -->
+                                    <div class="col-md-8">
+                                        <div class="card shadow card-light-danger h-100 w-100">
                                             <div class="card-body">
                                                 <h5 class="card-title text-dark">User Details</h5>
-                                                <p><strong>Name:</strong> {{session('name')}}</p>
-                                                <p><strong>User ID:</strong> {{session('user_id')}}</p>
+                                                <p><strong>Name:</strong> {{ session('name') }}</p>
+                                                <p><strong>User ID:</strong> {{ session('user_id') }}</p>
                                                 <p><strong>DOB:</strong> Fetch from DB</p>
-                                                <p><strong>Email:</strong> {{session('email')}}</p>
+                                                <p><strong>Email:</strong> {{ session('email') }}</p>
                                                 <p><strong>Phone:</strong> Fetch from DB</p>
                                             </div>
                                         </div>
@@ -138,6 +158,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="col-md-6 grid-margin transparent">
                             <div class="row">
@@ -183,7 +205,7 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
                 <footer class="footer">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
