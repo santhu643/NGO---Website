@@ -47,6 +47,164 @@
 
             /* Added spacing */
         }
+
+        #land_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #land_table td,
+        #land_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #land_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #pond_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #pond_table td,
+        #pond_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #pond_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #plant_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #plant_table td,
+        #plant_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #plant_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 0.5rem;
+            padding: 5px 10px;
+        }
+
+        /* General Table Styling */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 0.25rem;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #4b49ac;
+            box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
+        }
+
+        /* Pagination Buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #4b49ac;
+            color: #fff !important;
+            border-color: #4b49ac;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: #134E13;
+            color: white !important;
+            border-color: #fff;
+        }
+
+        /* Table Info Text */
+        .dataTables_wrapper .dataTables_info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Search Label */
+        .dataTables_wrapper .dataTables_filter label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Hide the default 'Search:' label text */
+        .dataTables_wrapper .dataTables_filter label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0;
+            /* Hides text but keeps layout */
+        }
+
+        /* Search input styling */
+        .dataTables_wrapper .dataTables_filter input {
+            margin-top: 5px;
+            margin-right: 3px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 8px 12px 8px 35px;
+            /* left space for icon */
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            width: 250px;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 16px 16px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #134E13;
+            box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
+            outline: none;
+        }
+
+        /* Responsive Wrapping Fix */
+        @media (max-width: 768px) {
+
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_wrapper .dataTables_paginate {
+                text-align: center;
+                float: none !important;
+            }
+        }
+    </style>
+
     </style>
 </head>
 
@@ -162,7 +320,7 @@
                                                 <h4 class="card-title">Land Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="land_table"
-                                                        class="table table-bordered table-hover table-striped align-middle text-center">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -179,20 +337,24 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form1 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-primary rounded-pill px-4"
+                                                                <td>#TN-00{{$f->id}}</td>
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-primary rounded-pill px-4"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="land_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -201,59 +363,54 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                    <button class="btn btn-warning edit-btn" value="{{ $f->id }}" title="Edit">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </button>
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
+                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
                                                                     @endif
                                                                 </td>
-
-
 
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
+                                                                    <button class="btn btn-inverse-info btn-fw">Submitted</button>
                                                                     @break
 
                                                                     @case(2)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Change Requested
                                                                         by Reviewer</button>
                                                                     @break
 
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
+                                                                    <button class="btn btn-inverse-danger btn-fw">Rejected by
                                                                         Reviewer</button>
                                                                     @break
 
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Pending
+                                                                    <button class="btn btn-inverse-info btn-fw">Pending
                                                                         Finance</button>
                                                                     @break
 
                                                                     @case(5)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Finance
                                                                         Requested Change</button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success btn-fw">Final
                                                                         Approved</button>
                                                                     @break
                                                                     @endswitch
                                                                 </td>
-
-
-
                                                             </tr>
-
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -268,8 +425,8 @@
                                                 <h4 class="card-title">Pond Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="pond_table"
-                                                        class="table table-bordered table-hover table-striped">
-                                                        <thead class="text-center table-dark">
+                                                        class="table table-bordered table-hover table-striped text-center">
+                                                        <thead class="table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
@@ -285,20 +442,25 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form2 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
+
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td>#TN-00{{$f->id}}</td>
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="pond_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -308,15 +470,16 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                    <button class="btn btn-warning edit-btn" value="{{ $f->id }}" title="Edit">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </button>
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
+                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
                                                                     @endif
                                                                 </td>
 
@@ -325,42 +488,37 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
+                                                                    <button class="btn btn-inverse-info btn-fw">Submitted</button>
                                                                     @break
 
                                                                     @case(2)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Change Requested
                                                                         by Reviewer</button>
                                                                     @break
 
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
+                                                                    <button class="btn btn-inverse-danger btn-fw">Rejected by
                                                                         Reviewer</button>
                                                                     @break
 
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Pending
+                                                                    <button class="btn btn-inverse-info btn-fw">Pending
                                                                         Finance</button>
                                                                     @break
 
                                                                     @case(5)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Finance
                                                                         Requested Change</button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success btn-fw">Final
                                                                         Approved</button>
                                                                     @break
                                                                     @endswitch
                                                                 </td>
-
-
-
-
-
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -376,8 +534,8 @@
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="plant_table"
-                                                        class="table table-bordered table-hover table-striped">
-                                                        <thead class="text-center table-dark">
+                                                        class="table table-bordered table-hover table-striped text-center">
+                                                        <thead class="table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
@@ -392,20 +550,24 @@
                                                         <tbody>
                                                             @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td>#TN-00{{$f->id}}</td>
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="plant_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="land_detail"
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -414,15 +576,16 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                    <button class="btn btn-warning edit-btn" value="{{ $f->id }}" title="Edit">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </button>
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button"
-                                                                        class="btn btn-danger delete-btn"
-                                                                        value="{{ $f->id }}">Delete</button>
+                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
                                                                     @endif
                                                                 </td>
 
@@ -431,43 +594,38 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(1)
-                                                                    <button class="btn btn-secondary">Submitted</button>
+                                                                    <button class="btn btn-inverse-info btn-fw">Submitted</button>
                                                                     @break
 
                                                                     @case(2)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Change Requested
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Change Requested
                                                                         by Reviewer</button>
                                                                     @break
 
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected by
+                                                                    <button class="btn btn-inverse-danger btn-fw">Rejected by
                                                                         Reviewer</button>
                                                                     @break
 
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Pending
+                                                                    <button class="btn btn-inverse-info btn-fw">Pending
                                                                         Finance</button>
                                                                     @break
 
                                                                     @case(5)
                                                                     <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">Finance
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Finance
                                                                         Requested Change</button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success btn-fw">Final
                                                                         Approved</button>
                                                                     @break
                                                                     @endswitch
                                                                 </td>
-
-
-
-
                                                             </tr>
-
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -773,10 +931,6 @@
         </div>
     </div>
 
-
-
-
-
     <script>
         $.ajaxSetup({
             headers: {
@@ -784,9 +938,13 @@
             }
         });
         $(document).ready(function() {
-            $('#land_table').DataTable();
+            $('#land_table').DataTable({
+                lengthChange: false
+            });
             $('#pond_table').DataTable();
             $('#plant_table').DataTable();
+            $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
+
 
         });
 
