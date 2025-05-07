@@ -186,9 +186,9 @@
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary rounded-pill px-4"
                                                                         id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-success"
                                                                         id="bank_detail"
