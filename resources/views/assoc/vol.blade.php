@@ -32,9 +32,9 @@
         <!-- partial:partials/_navbar.html -->
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="index.html"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
+                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
                         alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
+                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
                         alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -46,11 +46,13 @@
                    
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                            <img src="" alt="profile" />
+                            <img src="assets/images/faces/face15.jpg" alt="profile" />
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                           
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
+                            aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
+                                <i class="ti-user text-primary"></i> Profile </a>
+                            <a class="dropdown-item" href="{{ route('login') }}">
                                 <i class="ti-power-off text-primary"></i> Logout </a>
                         </div>
                     </li>
@@ -67,12 +69,6 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('vol')}}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
                             <i class="icon-layout menu-icon"></i>
@@ -88,7 +84,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
+                        <a class="nav-link" data-bs-toggle="collapse" href="{{ route('application') }}" aria-expanded="false"
                             aria-controls="form-elements">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
@@ -123,11 +119,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
-                            <div class="card tale-bg p-3">
+                            <div class="card card-light-blue p-3">
                                 <div class="row"> <!-- Use row to align cards side by side -->
-
-                                 
-                                    
                                     <!-- User Info Card -->
                                     <div class="col-md-12">
                                         <div class="card shadow card-light-danger">
