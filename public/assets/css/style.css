@@ -20932,7 +20932,7 @@ code {
 }
 
 .text-primary, .list-wrapper .completed .remove {
-  color: #4B49AC !important;
+  color: #134E13 !important;
 }
 
 .text-secondary, .list-wrapper .remove {
@@ -22269,28 +22269,28 @@ code {
   color: #000;
 }
 .card.card-tale:hover {
-  background: #96b2fb;
+  background: #6da96b;
 }
 .card.card-dark-blue {
   background: #6da96b;
   color: #000;
 }
 .card.card-dark-blue:hover {
-  background: #5050b2;
+  background: #80cf80;
 }
 .card.card-light-blue {
   background: #80cf80;
   color: #000;
 }
 .card.card-light-blue:hover {
-  background: #8f8eed;
+  background: #A5D6A7;
 }
 .card.card-light-danger {
   background: #A5D6A7;
   color: #000;
 }
 .card.card-light-danger:hover {
-  background: #A8DDAA;
+  background: 	#D0F0C0;
 }
 
 .card-columns .card {
