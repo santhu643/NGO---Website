@@ -47,28 +47,6 @@
 
             /* Added spacing */
         }
-<<<<<<< HEAD
-/*        
-.list-group-item {
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-.list-group-item:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-
-.modal-header {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-} */
-=======
 
         #land_table tbody tr {
             height: 80px;
@@ -226,7 +204,6 @@
             }
         }
     </style>
->>>>>>> b2dd36a423e476c9f93df831f17b50a2ba43bd62
 
     </style>
 </head>
@@ -517,7 +494,6 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-<<<<<<< HEAD
                                                                     <button class="btn btn-warning edit-btn" 
                                                                         value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
                                                                          <!-- Modal
@@ -543,11 +519,6 @@
                                                                             </div>
                                                                         </div>
                                                                         </div> -->
-=======
-                                                                    <button class="btn btn-warning edit-btn" value="{{ $f->id }}" title="Edit">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </button>
->>>>>>> b2dd36a423e476c9f93df831f17b50a2ba43bd62
                                                                     @endif
 
                                                                     
@@ -733,7 +704,6 @@
 
     <!-- Modals -->
 
-<<<<<<< HEAD
    <!-- Pond Detail Modal
 <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="ponddet_modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -763,9 +733,6 @@
 
 
     <!--  Farmer Detail Modal -->
-=======
-    <!-- Farmer Detail Modal -->
->>>>>>> b2dd36a423e476c9f93df831f17b50a2ba43bd62
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
@@ -1311,7 +1278,6 @@
         </div>
     </div>
 
-<<<<<<< HEAD
 
     <!-- Edit Farmer Modal llllllllllllllllllll
 <div class="modal fade" id="editFarmerModal" tabindex="-1" aria-labelledby="editFarmerModalLabel" aria-hidden="true">
@@ -1398,8 +1364,6 @@
 
 
 
-=======
->>>>>>> b2dd36a423e476c9f93df831f17b50a2ba43bd62
     <script>
         $.ajaxSetup({
             headers: {
