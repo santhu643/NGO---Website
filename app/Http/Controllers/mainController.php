@@ -633,12 +633,18 @@ $fileUpload->save();
 
     
 
-    public function fetch_farmer_det($id){
-        $form = Form::where('id',$id)->first();
-        if($form){
-            return response()->json(["status"=>200,"data"=>$form]);
+    public function fetch_farmer_det($id)
+    {
+        $form = Form::where('id', $id)->first();
+    
+        if ($form) {
+            // Assuming the Form model has the necessary details of the farmer
+            return response()->json(["status" => 200, "data" => $form]);
+        } else {
+            return response()->json(["status" => 404, "message" => "Farmer not found"]);
         }
     }
+    
 
     public function fetch_land_det($id){
         $form = LandForm::where('form_id',$id)->first();

@@ -47,6 +47,27 @@
 
             /* Added spacing */
         }
+/*        
+.list-group-item {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+} */
+
     </style>
 </head>
 
@@ -201,8 +222,33 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
+                                                                    <!-- Button to open modal -->
+                                                                    <button class="btn btn-warning edit-btn" 
                                                                         value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                         <!-- Modal -->
+                                                                         <!-- <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="detailsModalLabel">Edit Details</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="list-group">
+                                                                                    <a href="#" class="list-group-item list-group-item-action editFarmerBtn" data-form-id="">Farmer's Details</a>
+                                                                                <a href="#" class="list-group-item list-group-item-action" id="landDetails"  data-form-id="">Land Details</a>
+                                                                                <a href="#" class="list-group-item list-group-item-action" id="bankDetails"  data-form-id="">Bank Details</a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div> -->
+                                                                &nbsp;&nbsp;
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
@@ -308,9 +354,35 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-                                                                    <button class="btn btn-warning edit-btn"
+                                                                    <button class="btn btn-warning edit-btn" 
                                                                         value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                         <!-- Modal
+                                                                         <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="detailsModalLabel">Edit Details</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <div class="list-group">
+                                                                                    <a href="#" class="list-group-item list-group-item-action editFarmerBtn" data-form-id="{{ $f->id }}">Farmer's Details</a>
+                                                                                <a href="#" class="list-group-item list-group-item-action" id="landDetails"  data-form-id="{{ $f->id }}">Land Details</a>
+                                                                                <a href="#" class="list-group-item list-group-item-action" id="bankDetails"  data-form-id="{{ $f->id }}">Bank Details</a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        </div> -->
                                                                     @endif
+
+                                                                    
+
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
@@ -496,6 +568,34 @@
     </div>
 
     <!-- Modalsss -->
+
+   <!-- Pond Detail Modal
+<div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="ponddet_modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="ponddet_modalLabel">Pond Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Pond Name: <span id="p_name"></span><br><br>
+        Area: <span id="p_area"></span><br><br>
+        Type: <span id="p_type"></span><br><br>
+        Water Source: <span id="p_water_source"></span><br><br>
+        Depth: <span id="p_depth"></span><br><br>
+        Excavation Date: <span id="p_date"></span><br><br>
+        Location: <span id="p_location"></span><br><br>
+        Latitude: <span id="p_latitude"></span><br><br>
+        Longitude: <span id="p_longitude"></span><br><br>
+        Notes: <span id="p_notes"></span><br><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -774,6 +874,88 @@
     </div>
 
 
+    <!-- Edit Farmer Modal llllllllllllllllllll
+<div class="modal fade" id="editFarmerModal" tabindex="-1" aria-labelledby="editFarmerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="editFarmerModalLabel">Edit Farmer Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <form id="edit_farmer_form">
+          <div class="row">
+            <div class="col-md-6">
+            
+              <input type="hidden" id="form-id">
+              <label>Farmer Name</label>
+              <input type="text" class="form-control" id="edit_farmer_name">
+              <label>Father/Spouse</label>
+              <input type="text" class="form-control" id="edit_father_spouse">
+              <label>Mobile</label>
+              <input type="text" class="form-control" id="edit_mobile_number">
+              <label>Gender</label>
+              <input type="text" class="form-control" id="edit_gender">
+              <label>Identity Card</label>
+              <input type="text" class="form-control" id="edit_identity_card_type">
+              <label>Household Members</label>
+              <input type="number" class="form-control" id="edit_household_members">
+              <label>Identity Number</label>
+              <input type="text" class="form-control" id="edit_identity_card_number">
+              <label>Hamlet</label>
+              <input type="text" class="form-control" id="edit_hamlet">
+              <label>Panchayat</label>
+              <input type="text" class="form-control" id="edit_panchayat">
+              <label>Block</label>
+              <input type="text" class="form-control" id="edit_block">
+              <label>Latitude</label>
+              <input type="text" class="form-control" id="edit_lat">
+              <label>Longitude</label>
+              <input type="text" class="form-control" id="edit_lon">
+            </div>
+            
+            <div class="col-md-6">
+              <label>Type of Households</label>
+              <input type="text" class="form-control" id="edit_type_of_households">
+              <label>Special Category</label>
+              <input type="text" class="form-control" id="edit_special_catog">
+              <label>Caste</label>
+              <input type="text" class="form-control" id="edit_caste">
+              <label>Occupation</label>
+              <input type="text" class="form-control" id="edit_hh_occupation">
+              <label>Type of House</label>
+              <input type="text" class="form-control" id="edit_type_of_house">
+              <label>Drinking Water</label>
+              <input type="text" class="form-control" id="edit_drinking_water">
+              <label>Potability</label>
+              <input type="text" class="form-control" id="edit_potability">
+              <label>Domestic Water</label>
+              <input type="text" class="form-control" id="edit_domestic_water">
+              <label>Toilet Availability</label>
+              <input type="text" class="form-control" id="edit_toilet_availability">
+              <label>Toilet Condition</label>
+              <input type="text" class="form-control" id="edit_toilet_cond">
+              <label>House Owner</label>
+              <input type="text" class="form-control" id="edit_house_owner">
+              <label>Household Education</label>
+              <input type="text" class="form-control" id="edit_household_education">
+              <label><b>MCode (readonly)</b></label>
+              <input type="text" class="form-control" id="edit_mcode" readonly>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="update_farmer_btn">Update</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+      
+    </div>
+  </div>
+</div> -->
 
 
 
@@ -1159,6 +1341,64 @@
                 }
             });
         });
+
+        /* $(document).on("click", ".editFarmerBtn", function() {
+            var form_id = $(this).data("form-id");  // Retrieve the form_id from the data-form-id attribute
+            console.log(form_id);  // Print the form_id in the console
+            
+            // Set the form_id into the hidden input field
+            $("#form-id").val(form_id);  // Assuming the hidden input in the second modal has id="form-id"
+            
+            $.ajax({
+        url: '/fetch_farmer_det/' + form_id, // Use the appropriate route
+        type: 'GET',
+        success: function(response) {
+                    if (response.status == 200) {
+                        console.log(response.data);
+                        $("#f_name").val(response.data.farmer_name);
+                        $("#f_spouse").val(response.data.father_spouse);
+                        $("#f_mobile").val(response.data.mobile_number);
+                        $("#f_gender").val(response.data.gender);
+                        $("#f_card").val(response.data.identity_card_type);
+                        $("#f_member").val(response.data.household_members);
+                        $("#f_number").val(response.data.identity_card_number);
+                        $("#f_hamlet").val(response.data.hamlet);
+                        $("#f_panchayat").val(response.data.panchayat);
+                        $("#f_block").val(response.data.block);
+                        $("#f_household_type").val(response.data.type_of_households);
+                        $("#f_special_category").val(response.data.special_catog);
+                        $("#f_caste").val(response.data.caste);
+                        $("#f_occupation").val(response.data.hh_occupation);
+                        $("#f_house_type").val(response.data.type_of_house);
+                        $("#f_drinking_water").val(response.data.drinking_water);
+                        $("#f_potability").val(response.data.potability);
+                        $("#f_domestic_water").val(response.data.domestic_water);
+                        $("#f_toilet_availability").val(response.data.toilet_availability);
+                        $("#f_toilet_condition").val(response.data.toilet_cond);
+                        $("#f_house_owner").val(response.data.house_owner);
+                        $("#f_household_education").val(response.data.household_education);
+                        $("#f_latitude").val(response.data.lat);
+                        $("#f_longitude").val(response.data.lon);
+
+                // Disable the mcode field as it's read-only
+                $('#edit_mcode').val(farmer.mcode).prop('disabled', true);
+
+                // Open modal
+                $('#editFarmerModal').modal('show');
+            } else {
+                alert("Farmer not found.");
+            }
+        },
+        error: function () {
+            alert("Error fetching data.");
+        }
+    });
+            
+
+        }) */
+        
+
+
     </script>
 
 
@@ -1181,6 +1421,114 @@
 
     <!-- <script src="{{ asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script> -->
+
+    <!-- <script>
+  $(document).ready(function() {
+    $('#pondDetails').on('click', function(e) {
+      e.preventDefault();
+
+      var formId = $(this).data('form-id');
+
+      $.ajax({
+        url: '/fetch_pond_det/' + formId,
+        method: 'GET',
+        success: function(data) {
+          // Fill modal with pond data
+          $('#p_name').text(data.pond_name || '-');
+          $('#p_area').text(data.area || '-');
+          $('#p_type').text(data.type || '-');
+          $('#p_water_source').text(data.water_source || '-');
+          $('#p_depth').text(data.depth || '-');
+          $('#p_date').text(data.excavation_date || '-');
+          $('#p_location').text(data.location || '-');
+          $('#p_latitude').text(data.latitude || '-');
+          $('#p_longitude').text(data.longitude || '-');
+          $('#p_notes').text(data.notes || '-');
+
+          // Show the modal
+          $('#ponddet_modal').modal('show');
+        },
+        error: function(err) {
+          console.error(err);
+          alert('Unable to fetch pond details.');
+        }
+      });
+    });
+  }); 
+
+
+/*   $(document).on('click', '.editFarmerBtn', function (e) {
+    e.preventDefault();
+    
+    let formId = $(this).data('form-id');
+
+    // Store form ID on modal for use in update
+    $('#editFarmerModal').data('form-id', formId);
+
+    // Fetch data from backend using the updated controller
+    $.ajax({
+        url: '/fetch_farmer_det/' + formId, // Use the appropriate route
+        type: 'GET',
+        success: function (response) {
+            if (response.status === 200) {
+                let farmer = response.data;
+
+                // Populate modal fields with fetched farmer details
+                $('#edit_farmer_name').val(farmer.farmer_name);
+                $('#edit_father_spouse').val(farmer.father_spouse);
+                $('#edit_mobile_number').val(farmer.mobile_number);
+                $('#edit_gender').val(farmer.gender);
+                $('#edit_identity_card_type').val(farmer.identity_card_type);
+                $('#edit_household_members').val(farmer.household_members);
+                $('#edit_identity_card_number').val(farmer.identity_card_number);
+                $('#edit_hamlet').val(farmer.hamlet);
+                $('#edit_panchayat').val(farmer.panchayat);
+                $('#edit_block').val(farmer.block);
+                $('#edit_lat').val(farmer.lat);
+                $('#edit_lon').val(farmer.lon);
+                $('#edit_type_of_households').val(farmer.type_of_households);
+                $('#edit_special_catog').val(farmer.special_catog);
+                $('#edit_caste').val(farmer.caste);
+                $('#edit_hh_occupation').val(farmer.hh_occupation);
+                $('#edit_type_of_house').val(farmer.type_of_house);
+                $('#edit_drinking_water').val(farmer.drinking_water);
+                $('#edit_potability').val(farmer.potability);
+                $('#edit_domestic_water').val(farmer.domestic_water);
+                $('#edit_toilet_availability').val(farmer.toilet_availability);
+                $('#edit_toilet_cond').val(farmer.toilet_cond);
+                $('#edit_house_owner').val(farmer.house_owner);
+                $('#edit_household_education').val(farmer.household_education);
+
+                // Disable the mcode field as it's read-only
+                $('#edit_mcode').val(farmer.mcode).prop('disabled', true);
+
+                // Open modal
+                $('#editFarmerModal').modal('show');
+            } else {
+                alert("Farmer not found.");
+            }
+        },
+        error: function () {
+            alert("Error fetching data.");
+        }
+    });
+}); */
+
+// When the Edit button is clicked
+$(document).on("click", ".edit-btn", function() {
+    var form_id = $(this).val();  // Retrieve the form_id from the data-form-id attribute
+    console.log(form_id);  // Print the form_id in the console
+    
+    // Set the form_id into the hidden input field
+    $("data-form-id").val(form_id);
+    // Open the modal
+    $('#detailsModal').modal('show');
+});
+
+
+</script>-->
+
+    
 
 </body>
 
