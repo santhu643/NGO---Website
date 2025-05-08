@@ -107,9 +107,9 @@
                     if(response.status==200){
                         alert(response.role + " login");
                         if(response.role == "vol") window.location.href = "{{ route('vol') }}";
-                        if(response.role == "coor") window.location.href = "{{ route('coordash') }}";
+                        if(response.role == "coor") window.location.href = "{{ route('coor') }}";
                         if(response.role == "tl") window.location.href = "{{ route('tl') }}";
-                        if(response.role == "fm") window.location.href = "{{ route('fmdash') }}";
+                        if(response.role == "fm") window.location.href = "{{ route('fm') }}";
                     }
                 }
             });
