@@ -73,43 +73,18 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-
-                    <!-- Forms Collapsible Menu -->
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
-                            aria-controls="formsMenu">
-                            <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="formsMenu">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform1') }}">Land Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform2') }}">Pond Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plant Form</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Coordinator Link -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor') }}">
+                        <a class="nav-link" href="{{ route('fm') }}">
                             <i class="mdi mdi-check"></i>&nbsp;
                             <span class="menu-title ms-3">Approvals</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cappl') }}">
-                            <i class="icon-columns menu-icon"></i>
-                            <span class="menu-title">Applications</span>
+                        <a class="nav-link" href="{{route('pf_fm')}}">
+                            <i class="ti-wallet menu-icon"></i>
+                            <span class="menu-title">Post Funding</span>
                         </a>
                     </li>
-
-
                 </ul>
             </nav>
             <!-- partial -->

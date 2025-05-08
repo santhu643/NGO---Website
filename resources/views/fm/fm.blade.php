@@ -47,6 +47,161 @@
 
             /* Added spacing */
         }
+        #land_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #land_table td,
+        #land_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #land_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #pond_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #pond_table td,
+        #pond_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #pond_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #plant_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #plant_table td,
+        #plant_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #plant_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 0.5rem;
+            padding: 5px 10px;
+        }
+
+        /* General Table Styling */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 0.25rem;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #4b49ac;
+            box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
+        }
+
+        /* Pagination Buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #4b49ac;
+            color: #fff !important;
+            border-color: #4b49ac;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: #134E13;
+            color: white !important;
+            border-color: #fff;
+        }
+
+        /* Table Info Text */
+        .dataTables_wrapper .dataTables_info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Search Label */
+        .dataTables_wrapper .dataTables_filter label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Hide the default 'Search:' label text */
+        .dataTables_wrapper .dataTables_filter label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0;
+            /* Hides text but keeps layout */
+        }
+
+        /* Search input styling */
+        .dataTables_wrapper .dataTables_filter input {
+            margin-top: 5px;
+            margin-right: 3px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 8px 12px 8px 35px;
+            /* left space for icon */
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            width: 250px;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 16px 16px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #134E13;
+            box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
+            outline: none;
+        }
+
+        /* Responsive Wrapping Fix */
+        @media (max-width: 768px) {
+
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_wrapper .dataTables_paginate {
+                text-align: center;
+                float: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -103,7 +258,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pf_fm')}}">
-                            <i class="icon-grid menu-icon"></i>
+                            <i class="ti-wallet menu-icon"></i>
                             <span class="menu-title">Post Funding</span>
                         </a>
                     </li>
@@ -119,13 +274,7 @@
                                 <ul class="nav nav-tabs mb-3"
                                     style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#coor_dash" role="tab"
-                                            aria-selected="true">
-                                            <i class="fas fa-seedling"></i><b>&nbsp;Dashboard</b>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link " data-bs-toggle="tab" href="#landform" role="tab"
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#landform" role="tab"
                                             aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
@@ -139,30 +288,20 @@
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab"
                                             aria-selected="false">
-                                            <i class="fas fa-tools"></i><b>&nbsp;Plantation Form</b>
+                                            <i class="fas fa-tree"></i><b>&nbsp;Plantation Form</b>
                                         </a>
                                     </li>
 
                                 </ul>
                                 <div class="tab-content tabcontent-border">
 
-                                    <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Dashboard</h4>
-                                                <div class="table-responsive">
-                                                    DashBoard
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane p-20" id="landform" role="tabpanel">
+                                    <div class="tab-pane p-20 active show" id="landform" role="tabpanel">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="land_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -181,21 +320,25 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form1 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
+                                                                <td>#TN-00{{$f->id}}</td>
                                                                 <td>{{$f->user_id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -222,24 +365,24 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
+                                                                    <button class="btn btn-inverse-info btn-fw">Approved by
                                                                         TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button class="btn btn-warning showrem"
+                                                                    <button class="btn btn-inverse-warning showrem"
                                                                         value="{{ $f->id }}">
                                                                         Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success">Final
                                                                         Approved</button>
                                                                     @break
 
                                                                     @default
-                                                                    <button class="btn btn-light">Status
+                                                                    <button class="btn btn-inverse-dark">Status
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
@@ -261,7 +404,7 @@
                                                 <h4 class="card-title">Pond Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="pond_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -279,22 +422,26 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form2 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
+                                                                <td>#TN-00{{$f->id}}</td>
                                                                 <td>{{$f->user_id}}</td>
 
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="pond_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="land_detail"
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -321,31 +468,27 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
+                                                                    <button class="btn btn-inverse-info">Approved by
                                                                         TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button class="btn btn-warning showrem"
+                                                                    <button class="btn btn-inverse-warning showrem"
                                                                         value="{{ $f->id }}">
                                                                         Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success">Final
                                                                         Approved</button>
                                                                     @break
 
                                                                     @default
-                                                                    <button class="btn btn-light">Status
+                                                                    <button class="btn btn-inverse-dark">Status
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
-
-
-
-
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -361,7 +504,7 @@
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="plant_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -378,22 +521,26 @@
                                                         <tbody>
                                                             @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
                                                                 <td>{{$f->user_id}}</td>
 
-                                                                <td><button type="button" class="btn btn-success"
+                                                                <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="plant_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="land_detail"
+                                                                        value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}" class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
@@ -420,29 +567,27 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Approved by
+                                                                    <button class="btn btn-inverse-info">Approved by
                                                                         TL/Coordinator</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button class="btn btn-warning showrem"
+                                                                    <button class="btn btn-inverse-warning showrem"
                                                                         value="{{ $f->id }}">
                                                                         Finance Requested Change
                                                                     </button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success">Final
                                                                         Approved</button>
                                                                     @break
 
                                                                     @default
-                                                                    <button class="btn btn-light">Status
+                                                                    <button class="btn btn-inverse-dark">Status
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
-
-
                                                             </tr>
 
                                                             @endforeach
@@ -476,159 +621,407 @@
 
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Farmer Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Farmer Name : <span id="f_name"></span><br><br>
-                    Father/Spouse : <span id="f_spouse"></span>
-                    Mobile : <span id="f_mobile"></span><br><br>
-                    Gender : <span id="f_gender"></span><br><br>
-                    Id_Card : <span id="f_card"></span><br><br>
-                    Members : <span id="f_member"></span><br><br>
-                    Id_Number : <span id="f_number"></span><br><br>
-                    hamlet : <span id="f_hamlet"></span><br><br>
-                    Panchayat : <span id="f_panchayat"></span><br><br>
-                    Block : <span id="f_block"></span><br><br>
-                    Type of Household : <span id="f_household_type"></span><br><br>
-                    Special Category : <span id="f_special_category"></span><br><br>
-                    Caste : <span id="f_caste"></span><br><br>
-                    Occupation : <span id="f_occupation"></span><br><br>
-                    Type of House : <span id="f_house_type"></span><br><br>
-                    Drinking Water Source : <span id="f_drinking_water"></span><br><br>
-                    Potability : <span id="f_potability"></span><br><br>
-                    Domestic Water Source : <span id="f_domestic_water"></span><br><br>
-                    Toilet Availability : <span id="f_toilet_availability"></span><br><br>
-                    Toilet Condition : <span id="f_toilet_condition"></span><br><br>
-                    House Owner : <span id="f_house_owner"></span><br><br>
-                    Household Education : <span id="f_household_education"></span><br><br>
-                    Latitude : <span id="f_latitude"></span><br><br>
-                    Longitude : <span id="f_longitude"></span><br><br>
-                    MCode : <span id="f_mcode"></span>
+                    <!-- Row 1 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Name:</strong> <span id="f_name"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Father/Spouse:</strong> <span id="f_spouse"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Mobile:</strong> <span id="f_mobile"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Gender:</strong> <span id="f_gender"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Card:</strong> <span id="f_card"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Members:</strong> <span id="f_member"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Number:</strong> <span id="f_number"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Hamlet:</strong> <span id="f_hamlet"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Panchayat:</strong> <span id="f_panchayat"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Block:</strong> <span id="f_block"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Household:</strong> <span id="f_household_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Special Category:</strong> <span id="f_special_category"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 7 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Caste:</strong> <span id="f_caste"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Occupation:</strong> <span id="f_occupation"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 8 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of House:</strong> <span id="f_house_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Drinking Water Source:</strong> <span id="f_drinking_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 9 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Potability:</strong> <span id="f_potability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Domestic Water Source:</strong> <span id="f_domestic_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 10 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Availability:</strong> <span id="f_toilet_availability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Condition:</strong> <span id="f_toilet_condition"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 11 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>House Owner:</strong> <span id="f_house_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Household Education:</strong> <span id="f_household_education"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 12 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Latitude:</strong> <span id="f_latitude"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Longitude:</strong> <span id="f_longitude"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 13 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>MCode:</strong> <span id="f_mcode"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Land Detail Modal -->
-    <div class="modal fade" id="landdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Land Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Ownership : <span id="l_ownership"></span><br><br>
-                    Well Irrigation : <span id="l_well_irrigation"></span><br><br>
-                    Area Irrigated : <span id="l_area_irrigated"></span><br><br>
-                    Irrigated Lands : <span id="l_irrigated_lands"></span><br><br>
-                    Patta_no : <span id="l_patta"></span><br><br>
-                    Total_Area : <span id="l_tarea"> </span><br><br>
-                    Revenue_village : <span id="l_revenue"></span><br><br>
-                    S.F No : <span id="l_sf"></span><br><br>
-                    Soil Type : <span id="l_soil"></span><br><br>
-                    Land_to_Benefit : <span id="l_benefit"></span><br><br>
-                    Field_inspection : <span id="l_field"></span><br><br>
-                    Site_approval : <span id="l_site"></span><br><br>
-                    Date_of_Inspection : <span id="l_doi"></span><br><br>
-                    Date_of_Approval : <span id="l_doa"></span><br><br>
-                    Type_of_Work : <span id="l_type"></span><br><br>
-                    Area_Benefites : <span id="l_area"></span><br><br>
-                    Other_Works : <span id="l_oth"></span><br><br>
-                    Pradan Contribution : <span id="l_pradan"></span><br><br>
-                    Farmer Contribution : <span id="l_farmer"></span><br><br>
-                    Total_amount : <span id="l_total"></span>
+                    <!-- Row 1 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Name:</strong> <span id="f_name"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Father/Spouse:</strong> <span id="f_spouse"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Mobile:</strong> <span id="f_mobile"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Gender:</strong> <span id="f_gender"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Card:</strong> <span id="f_card"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Members:</strong> <span id="f_member"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Number:</strong> <span id="f_number"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Hamlet:</strong> <span id="f_hamlet"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Panchayat:</strong> <span id="f_panchayat"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Block:</strong> <span id="f_block"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Household:</strong> <span id="f_household_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Special Category:</strong> <span id="f_special_category"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 7 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Caste:</strong> <span id="f_caste"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Occupation:</strong> <span id="f_occupation"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 8 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of House:</strong> <span id="f_house_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Drinking Water Source:</strong> <span id="f_drinking_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 9 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Potability:</strong> <span id="f_potability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Domestic Water Source:</strong> <span id="f_domestic_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 10 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Availability:</strong> <span id="f_toilet_availability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Condition:</strong> <span id="f_toilet_condition"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 11 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>House Owner:</strong> <span id="f_house_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Household Education:</strong> <span id="f_household_education"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 12 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Latitude:</strong> <span id="f_latitude"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Longitude:</strong> <span id="f_longitude"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 13 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>MCode:</strong> <span id="f_mcode"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Land Detail Modal -->
-    <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Plantation Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Ownership : <span id="plant_ownership"></span><br><br>
-                    Well Irrigation : <span id="plant_well_irrigation"></span><br><br>
-                    Area Irrigated : <span id="plant_area_irrigated"></span><br><br>
-                    Irrigated Lands : <span id="plant_irrigated_lands"></span><br><br>
-                    Patta No : <span id="plant_patta"></span><br><br>
-                    Total Area : <span id="plant_total_area"></span><br><br>
-                    Revenue Village : <span id="plant_revenue"></span><br><br>
-                    Crop Season : <span id="plant_crop_season"></span><br><br>
-                    Livestock : <span id="plant_livestock"></span><br><br>
-                    Plantation Type : <span id="plant_type"></span><br><br>
-                    SF No : <span id="plant_sf_no"></span><br><br>
-                    Soil Type : <span id="plant_soil_type"></span><br><br>
-                    Land to Benefit : <span id="plant_land_benefit"></span><br><br>
-                    Field Inspection : <span id="plant_field_inspection"></span><br><br>
-                    Site Approval : <span id="plant_site_approval"></span><br><br>
-                    Date of Inspection : <span id="plant_date_of_inspection"></span><br><br>
-                    Date of Approval : <span id="plant_date_of_approval"></span><br><br>
-                    Type of Work : <span id="plant_type_of_work"></span><br><br>
-                    Area Benefit : <span id="plant_area_benefit"></span><br><br>
-                    Other Works : <span id="plant_other_works"></span><br><br>
-                    Pradan Contribution : <span id="plant_pradan_contribution"></span><br><br>
-                    Farmer Contribution : <span id="plant_farmer_contribution"></span><br><br>
-                    Total Amount : <span id="plant_total_amount"></span><br><br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Pond Detail Modal -->
     <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pond Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Pond Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Land_Owner : <span id="p_owner"></span><br><br>
-                    Patta No : <span id="p_patta"></span><br><br>
-                    Total Area : <span id="p_tarea"></span><br><br>
-                    Irrigated Lands : <span id="p_irrigated_lands"></span><br><br>
-                    Revenue : <span id="p_revenue"></span><br><br>
-                    Livestock : <span id="p_livestock"></span><br><br>
-                    Crop Season : <span id="p_crop_season"></span><br><br>
-                    Well Irrigation : <span id="p_well_irrigation"></span><br><br>
-                    SF No : <span id="p_sf"></span><br><br>
-                    Soil Type : <span id="p_soil"></span><br><br>
-                    Land TO Serve : <span id="p_land"></span><br><br>
-                    Field Inspection : <span id="p_field"></span><br><br>
-                    Site Approval : <span id="p_site"></span><br><br>
-                    Type of Work : <span id="p_type_of_work"></span><br><br>
-                    Date of Inspection : <span id="p_doi"></span><br><br>
-                    Date of Approval : <span id="p_doa"></span><br><br>
-                    Length : <span id="p_len"></span><br><br>
-                    Depth : <span id="p_dep"></span><br><br>
-                    Breadth : <span id="p_breadth"></span><br><br>
-                    Volume : <span id="p_vol"></span><br><br>
-                    Pradan Contribution : <span id="p_pcont"></span><br><br>
-                    Farmer Contribution : <span id="p_fcont"></span><br><br>
-                    Total : <span id="total"></span>
+                    <!-- Rows for Pond Details -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Land Owner:</strong> <span id="p_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Patta No:</strong> <span id="p_patta"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Area:</strong> <span id="p_tarea"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Irrigated Lands:</strong> <span id="p_irrigated_lands"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Revenue:</strong> <span id="p_revenue"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Livestock:</strong> <span id="p_livestock"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Crop Season:</strong> <span id="p_crop_season"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Well Irrigation:</strong> <span id="p_well_irrigation"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>SF No:</strong> <span id="p_sf"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Soil Type:</strong> <span id="p_soil"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Land to Serve:</strong> <span id="p_land"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Field Inspection:</strong> <span id="p_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Site Approval:</strong> <span id="p_site"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Work:</strong> <span id="p_type_of_work"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Inspection:</strong> <span id="p_doi"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Approval:</strong> <span id="p_doa"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Length:</strong> <span id="p_len"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Depth:</strong> <span id="p_dep"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Breadth:</strong> <span id="p_breadth"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Volume:</strong> <span id="p_vol"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Pradan Contribution:</strong> <span id="p_pcont"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Contribution:</strong> <span id="p_fcont"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Total:</strong> <span id="total"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -636,24 +1029,41 @@
 
     <!-- Bank Detail Modal -->
     <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bank Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 600px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="background-color: #134E13; border-bottom: 2px solid #dee2e6;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Bank Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Holder_Name : <span id="b_hname"></span><br><br>
-                    Account_Number : <span id="b_no"></span><br><br>
-                    Bank Name : <span id="b_name"></span><br><br>
-                    Branch : <span id="b_branch"></span><br><br>
-                    IFSC Code : <span id="b_ifsc"></span><br><br>
-
-
-
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Holder Name:</strong> <span id="b_hname"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Account Number:</strong> <span id="b_no"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Bank Name:</strong> <span id="b_name"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Branch:</strong> <span id="b_branch"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>IFSC Code:</strong> <span id="b_ifsc"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -773,9 +1183,18 @@
             }
         });
         $(document).ready(function() {
-            $('#land_table').DataTable();
-            $('#pond_table').DataTable();
-            $('#plant_table').DataTable();
+            $('#land_table').DataTable({
+                lengthChange: false
+            });
+            $('#pond_table').DataTable({
+                lengthChange: false
+            });
+            $('#plant_table').DataTable({
+                lengthChange: false
+            });
+            $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
+            $('#pond_table_filter input[type="search"]').attr('placeholder', 'Search...');
+            $('#plant_table_filter input[type="search"]').attr('placeholder', 'Search...');
 
         });
 
