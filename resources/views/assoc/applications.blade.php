@@ -32,6 +32,26 @@
 
 
     <style>
+        /*        
+.list-group-item {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+} */
         .step {
             display: none;
         }
