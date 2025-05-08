@@ -67,6 +67,16 @@ Route::get('/edit-pf-pond/{id}', [mainController::class, 'editPondPostFund']);
 Route::post('/update-pf-pond', [mainController::class, 'updatePondPostFund']);
 Route::get('/getPlantPostFund/{id}', [mainController::class, 'getPlantPostFund']);
 Route::post('/updatePlantPostFund', [mainController::class, 'updatePlantPostFund']);
+Route::get('/get-bank-details/{form_id}', [MainController::class, 'getBankDetails']);
+Route::post('/update-bank-details', [MainController::class, 'updateBankDetails']);
+Route::get('/get-farmer-details/{id}', [MainController::class, 'getFarmerDetails']);
+Route::post('/update-farmer-details', [MainController::class, 'updateFarmerDetails']);
+Route::get('/get-pond-details/{id}', [MainController::class, 'getPondDetails']);
+Route::post('/postfunding/pond/update', [MainController::class, 'updatePond'])->name('postfunding.pond.update');
+Route::get('/get-plant-form', [MainController::class, 'getPlantForm']);
+Route::post('/update-plant-form', [MainController::class, 'updatePlantForm']);
+
+
 
 
 
