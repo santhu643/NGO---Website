@@ -411,9 +411,9 @@
 
     <!-- Positioned absolutely inside relative parent -->
     <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
-        <button class="dropdown-item detail-btn" id="farmer-{{ $f->id }}">Farmer Details</button>
-        <button class="dropdown-item detail-btn" id="land-{{ $f->id }}">Land Details</button>
-        <button class="dropdown-item detail-btn" id="bank-{{ $f->id }}">Bank Details</button>
+        <button class="dropdown-item detail-btn"  value="{{ $f->id }}" id="ed_farmer">Farmer Details</button>
+        <button class="dropdown-item detail-btn" value="{{ $f->id }}" id="ed-land">Land Details</button>
+        <button class="dropdown-item detail-btn" value="{{ $f->id }}" id="ed-bank">Bank Details</button>
     </div>
 </div>
 &nbsp;&nbsp;
