@@ -25,32 +25,32 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <style>
-    .step {
-        display: none;
-    }
+        .step {
+            display: none;
+        }
 
-    .step.active {
-        display: block;
-    }
+        .step.active {
+            display: block;
+        }
 
-    .step3-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        .step3-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
 
-        /* Added spacing */
-    }
+            /* Added spacing */
+        }
     </style>
 </head>
 
 <body>
     <div class="container-scroller">
-        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
+                        alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -58,59 +58,16 @@
                 </button>
 
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-bs-toggle="dropdown">
-                            <i class="icon-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                        <i class="ti-info-alt mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Just now </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Private message </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="ti-user mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> 2 days ago </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                            <img src="assets/images/faces/face28.jpg" alt="profile" />
+                            <img src="assets/images/faces/face15.jpg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
-                                <i class="ti-settings text-primary"></i> Settings </a>
-                            <a class="dropdown-item">
+                                <i class="ti-user text-primary"></i> Profile </a>
+                            <a class="dropdown-item" href="{{ route('login') }}">
                                 <i class="ti-power-off text-primary"></i> Logout </a>
                         </div>
                     </li>
@@ -124,39 +81,52 @@
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
-        <!-- Coordinator Link -->
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('coor') }}">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Coordinator</span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cappl') }}">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('dash')}}">
                             <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Forms Collapsible Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
+                            aria-controls="formsMenu">
+                            <i class="icon-layout menu-icon"></i>
+                            <span class="menu-title">Forms</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="formsMenu">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform1') }}">Land Form</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform2') }}">Pond Form</a>
+                                </li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plantation Form</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Coordinator Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('coor') }}">
+                            <i class="mdi mdi-check"></i>&nbsp;
+                            <span class="menu-title ms-3">Approvals</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cappl') }}">
+                            <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
 
-        <!-- Forms Collapsible Menu -->
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false" aria-controls="formsMenu">
-                <i class="icon-layout menu-icon"></i>
-                <span class="menu-title">Forms</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="formsMenu">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform1') }}">Land Form</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform2') }}">Pond Form</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plant Form</a></li>
+
                 </ul>
-            </div>
-        </li>
-    </ul>
-</nav>
+            </nav>
 
             <!-- partial -->
             <div class="main-panel">
@@ -197,7 +167,7 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                        <form id="plantform">
+                                    <form id="plantform">
                                         @csrf
                                         <div id="step1">
                                             <h5 class="card-title">Basic Details</h5>
@@ -627,11 +597,11 @@
                                                         name="lat" required>
                                                 </div>
                                                 <div class="col-md-6">
-                                                <label for="lon" class="form-label">longitude<span
+                                                    <label for="lon" class="form-label">longitude<span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" id="lon"
                                                         name="lon" required>
-                                                    
+
                                                 </div>
                                             </div>
 
@@ -769,32 +739,32 @@
                                                 </div>
 
                                                 <div class="row mb-3">
-    <div class="col-md-12">
-        <label class="form-label">Type of Plantations proposed</label>
-        <div class="ms-4">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationMango" name="plantation[]" value="Mango">
-                <label class="form-check-label" for="plantationMango">Mango</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationGuava" name="plantation[]" value="Guava">
-                <label class="form-check-label" for="plantationGuava">Guava</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationLemon" name="plantation[]" value="Lemon">
-                <label class="form-check-label" for="plantationLemon">Lemon</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="plantationMoringa" name="plantation[]" value="Moringa">
-                <label class="form-check-label" for="plantationMoringa">Moringa</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="plantationOther">Other</label>
-                <input type="text" class="form-control d-inline-block ms-2" style="width: 200px;" name="plantation[]" placeholder="Specify if other">
-            </div>
-        </div>
-    </div>
-</div>
+                                                    <div class="col-md-12">
+                                                        <label class="form-label">Type of Plantations proposed</label>
+                                                        <div class="ms-4">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" id="plantationMango" name="plantation[]" value="Mango">
+                                                                <label class="form-check-label" for="plantationMango">Mango</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" id="plantationGuava" name="plantation[]" value="Guava">
+                                                                <label class="form-check-label" for="plantationGuava">Guava</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" id="plantationLemon" name="plantation[]" value="Lemon">
+                                                                <label class="form-check-label" for="plantationLemon">Lemon</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" id="plantationMoringa" name="plantation[]" value="Moringa">
+                                                                <label class="form-check-label" for="plantationMoringa">Moringa</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <label class="form-check-label" for="plantationOther">Other</label>
+                                                                <input type="text" class="form-control d-inline-block ms-2" style="width: 200px;" name="plantation[]" placeholder="Specify if other">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <div class="row mb-3">
                                                     <div class="col-md-6">
@@ -820,7 +790,7 @@
                                                     </div>
                                                 </div>
 
-                                                
+
 
                                                 <div class="d-flex justify-content-end gap-2">
                                                     <button type="button" class="btn btn-secondary me-2"
@@ -1036,139 +1006,139 @@
     </div>
 
     <script>
-    function showStep(stepNumber) {
-        event.preventDefault();
+        function showStep(stepNumber) {
+            event.preventDefault();
 
-        for (let i = 1; i <= 4; i++) {
-            document.getElementById(`step${i}`).style.display = 'none';
-            document.getElementById(`tab${i}`).classList.remove('active');
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`step${i}`).style.display = 'none';
+                document.getElementById(`tab${i}`).classList.remove('active');
+            }
+
+            document.getElementById(`step${stepNumber}`).style.display = 'block';
+            document.getElementById(`tab${stepNumber}`).classList.add('active');
         }
 
-        document.getElementById(`step${stepNumber}`).style.display = 'block';
-        document.getElementById(`tab${stepNumber}`).classList.add('active');
-    }
+        function nextStep(current, next) {
+            document.getElementById(`step${current}`).style.display = 'none';
+            document.getElementById(`step${next}`).style.display = 'block';
 
-    function nextStep(current, next) {
-        document.getElementById(`step${current}`).style.display = 'none';
-        document.getElementById(`step${next}`).style.display = 'block';
+            document.getElementById(`tab${current}`).classList.remove('active');
+            document.getElementById(`tab${next}`).classList.add('active');
 
-        document.getElementById(`tab${current}`).classList.remove('active');
-        document.getElementById(`tab${next}`).classList.add('active');
+            validateStep(current); // Validate current step when moving forward
+        }
 
-        validateStep(current); // Validate current step when moving forward
-    }
+        function prevStep(current, prev) {
+            document.getElementById(`step${current}`).style.display = 'none';
+            document.getElementById(`step${prev}`).style.display = 'block';
 
-    function prevStep(current, prev) {
-        document.getElementById(`step${current}`).style.display = 'none';
-        document.getElementById(`step${prev}`).style.display = 'block';
+            document.getElementById(`tab${current}`).classList.remove('active');
+            document.getElementById(`tab${prev}`).classList.add('active');
+        }
 
-        document.getElementById(`tab${current}`).classList.remove('active');
-        document.getElementById(`tab${prev}`).classList.add('active');
-    }
+        // Validate required fields in a step and update the tick mark
+        function validateStep(step) {
+            let currentStep = document.getElementById(`step${step}`);
+            let requiredFields = currentStep.querySelectorAll("[required]");
+            let allValid = true;
 
-    // Validate required fields in a step and update the tick mark
-    function validateStep(step) {
-        let currentStep = document.getElementById(`step${step}`);
-        let requiredFields = currentStep.querySelectorAll("[required]");
-        let allValid = true;
-
-        requiredFields.forEach((field) => {
-            if (field.type === "radio" || field.type === "checkbox") {
-                let name = field.name;
-                let checked = document.querySelector(`input[name="${name}"]:checked`);
-                if (!checked) {
-                    allValid = false;
+            requiredFields.forEach((field) => {
+                if (field.type === "radio" || field.type === "checkbox") {
+                    let name = field.name;
+                    let checked = document.querySelector(`input[name="${name}"]:checked`);
+                    if (!checked) {
+                        allValid = false;
+                    }
+                } else if (field.type === "file") {
+                    if (!field.files.length) {
+                        allValid = false;
+                    }
+                } else {
+                    if (!field.value.trim()) {
+                        allValid = false;
+                        field.classList.add("border", "border-danger");
+                    } else {
+                        field.classList.remove("border", "border-danger");
+                    }
                 }
-            } else if (field.type === "file") {
-                if (!field.files.length) {
-                    allValid = false;
-                }
+            });
+
+            if (allValid) {
+                document.getElementById(`icon${step}`).innerHTML = "✅";
+                document.getElementById(`icon${step}`).classList.remove('text-danger');
+                document.getElementById(`icon${step}`).classList.add('text-success');
             } else {
-                if (!field.value.trim()) {
-                    allValid = false;
-                    field.classList.add("border", "border-danger");
-                } else {
-                    field.classList.remove("border", "border-danger");
-                }
+                document.getElementById(`icon${step}`).innerHTML = "❌";
+                document.getElementById(`icon${step}`).classList.remove('text-success');
+                document.getElementById(`icon${step}`).classList.add('text-danger');
             }
-        });
-
-        if (allValid) {
-            document.getElementById(`icon${step}`).innerHTML = "✅";
-            document.getElementById(`icon${step}`).classList.remove('text-danger');
-            document.getElementById(`icon${step}`).classList.add('text-success');
-        } else {
-            document.getElementById(`icon${step}`).innerHTML = "❌";
-            document.getElementById(`icon${step}`).classList.remove('text-success');
-            document.getElementById(`icon${step}`).classList.add('text-danger');
-        }
-    }
-
-    // Ensure all fields are filled before submission
-    $(document).on("submit", "#plantform", function(e) {
-        e.preventDefault();
-
-        let allFields = document.querySelectorAll("[required]");
-        let allValid = true;
-
-        allFields.forEach((field) => {
-            if (field.type === "radio" || field.type === "checkbox") {
-                let name = field.name;
-                let checked = document.querySelector(`input[name="${name}"]:checked`);
-                if (!checked) {
-                    allValid = false;
-                }
-            } else if (field.type === "file") {
-                if (!field.files.length) {
-                    allValid = false;
-                }
-            } else {
-                if (!field.value.trim()) {
-                    allValid = false;
-                    field.classList.add("border", "border-danger");
-                } else {
-                    field.classList.remove("border", "border-danger");
-                }
-            }
-        });
-
-        if (!allValid) {
-            alert("Please fill all required fields before submitting.");
-            return;
         }
 
-        // If all fields are filled, proceed with form submission
-        var form = new FormData(this);
-        $.ajax({
-            type: "POST",
-            url: "/cform_plant",
-            data: form,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status == 200) {
-                    $('#plantform')[0].reset();
+        // Ensure all fields are filled before submission
+        $(document).on("submit", "#plantform", function(e) {
+            e.preventDefault();
 
-                    Swal.fire({
-                        title: "Success!",
-                        text: "Form Submitted Successfully",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    });
+            let allFields = document.querySelectorAll("[required]");
+            let allValid = true;
 
-
-                    document.getElementById(`icon4`).innerHTML = "✅";
-                    document.getElementById(`icon4`).classList.remove('text-danger');
-                    document.getElementById(`icon4`).classList.add('text-success');
+            allFields.forEach((field) => {
+                if (field.type === "radio" || field.type === "checkbox") {
+                    let name = field.name;
+                    let checked = document.querySelector(`input[name="${name}"]:checked`);
+                    if (!checked) {
+                        allValid = false;
+                    }
+                } else if (field.type === "file") {
+                    if (!field.files.length) {
+                        allValid = false;
+                    }
                 } else {
-                    alert("Something went wrong");
+                    if (!field.value.trim()) {
+                        allValid = false;
+                        field.classList.add("border", "border-danger");
+                    } else {
+                        field.classList.remove("border", "border-danger");
+                    }
                 }
-            }
-        });
-    });
+            });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        showStep(1);
+            if (!allValid) {
+                alert("Please fill all required fields before submitting.");
+                return;
+            }
+
+            // If all fields are filled, proceed with form submission
+            var form = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "/cform_plant",
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if (response.status == 200) {
+                        $('#plantform')[0].reset();
+
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Form Submitted Successfully",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
+
+
+                        document.getElementById(`icon4`).innerHTML = "✅";
+                        document.getElementById(`icon4`).classList.remove('text-danger');
+                        document.getElementById(`icon4`).classList.add('text-success');
+                    } else {
+                        alert("Something went wrong");
+                    }
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            showStep(1);
         });
     </script>
 

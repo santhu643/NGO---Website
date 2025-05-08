@@ -185,6 +185,7 @@ Route::post('/tl/update_user', [tlController::class, 'update_user']);
 
 //routes for fm
 
+Route::get('/dash',function(){return view('fm/fmdash');})->name('dash');
 Route::get('/fm',[fmController::class,'fetch_appl_fm'])->name('fm');
 Route::get('/finance_pf',[fmController::class,'fetch_appl_pf'])->name('pf_fm');
 

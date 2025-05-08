@@ -283,7 +283,7 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cappl') }}">
-                            <i class="icon-grid menu-icon"></i>
+                            <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
@@ -352,7 +352,7 @@
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
+                                                                <td>#TN-00{{$f->id}}</td>
                                                                 <td>{{$f->user_id}}</td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
@@ -535,7 +535,7 @@
                                                                         View PF Details
                                                                     </button>
                                                                     @endif
-                                                                </td>                 
+                                                                </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
@@ -543,7 +543,7 @@
                                                                     @if($f->status == 1)
                                                                     {{-- Pre-Funding Submitted by Associate --}}
                                                                     <button type="button"
-                                                                        class="btn btn-success coor_appr1"
+                                                                        class="btn btn-primary coor_appr1"
                                                                         value="{{ $f->id }}">
                                                                         Approve
                                                                     </button>&nbsp;&nbsp;
@@ -582,51 +582,51 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(1)
-                                                                    <button class="btn btn-secondary">Submitted by
+                                                                    <button class="btn btn-inverse-info">Submitted by
                                                                         Associate</button>
                                                                     @break
 
                                                                     @case(2)
-                                                                    <button class="btn btn-warning">Change Requested by
+                                                                    <button class="btn btn-inverse-warning">Change Requested by
                                                                         You</button>
                                                                     @break
 
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    <button class="btn btn-inverse-danger">Rejected</button>
                                                                     @break
 
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                    <button class="btn btn-inverse-info">Forwarded to Finance
                                                                         Manager</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button class="btn btn-warning">Finance Requested
+                                                                    <button class="btn btn-inverse-warning">Finance Requested
                                                                         Change</button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success">Final
                                                                         Approved</button>
                                                                     @break
 
                                                                     @case(7)
-                                                                    <button class="btn btn-secondary">Post-Funding
+                                                                    <button class="btn btn-inverse-info">Post-Funding
                                                                         Submitted by Associate</button>
                                                                     @break
 
                                                                     @case(8)
-                                                                    <button class="btn btn-warning">PF Edit Requested by
+                                                                    <button class="btn btn-inverse-warning">PF Edit Requested by
                                                                         You</button>
                                                                     @break
 
                                                                     @case(9)
-                                                                    <button class="btn btn-info">PF Forwarded to Finance
+                                                                    <button class="btn btn-inverse-info">PF Forwarded to Finance
                                                                         Manager</button>
                                                                     @break
 
                                                                     @default
-                                                                    <button class="btn btn-light">Status
+                                                                    <button class="btn btn-inverse-dark">Status
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
@@ -666,8 +666,8 @@
                                                             $account = $f->bank_details->first();
                                                             @endphp
                                                             <tr>
-                                                            <td>{{$s++}}</td>
-                                                            <td>#TN-00{{$f->id}}</td>
+                                                                <td>{{$s++}}</td>
+                                                                <td>#TN-00{{$f->id}}</td>
                                                                 <td>{{$f->user_id}}</td>
 
                                                                 <td><button type="button" class="btn btn-primary"
@@ -737,51 +737,51 @@
                                                                 <td>
                                                                     @switch($f->status)
                                                                     @case(1)
-                                                                    <button class="btn btn-secondary">Submitted by
+                                                                    <button class="btn btn-inverse-info">Submitted by
                                                                         Associate</button>
                                                                     @break
 
                                                                     @case(2)
-                                                                    <button class="btn btn-warning">Change Requested by
+                                                                    <button class="btn btn-inverse-warning">Change Requested by
                                                                         You</button>
                                                                     @break
 
                                                                     @case(3)
-                                                                    <button class="btn btn-danger">Rejected</button>
+                                                                    <button class="btn btn-inverse-danger">Rejected</button>
                                                                     @break
 
                                                                     @case(4)
-                                                                    <button class="btn btn-info">Forwarded to Finance
+                                                                    <button class="btn btn-inverse-info">Forwarded to Finance
                                                                         Manager</button>
                                                                     @break
 
                                                                     @case(5)
-                                                                    <button class="btn btn-warning">Finance Requested
+                                                                    <button class="btn btn-inverse-warning">Finance Requested
                                                                         Change</button>
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
+                                                                    <button class="btn btn-inverse-success">Final
                                                                         Approved</button>
                                                                     @break
 
                                                                     @case(7)
-                                                                    <button class="btn btn-secondary">Post-Funding
+                                                                    <button class="btn btn-inverse-info">Post-Funding
                                                                         Submitted by Associate</button>
                                                                     @break
 
                                                                     @case(8)
-                                                                    <button class="btn btn-warning">PF Edit Requested by
+                                                                    <button class="btn btn-inverse-warning">PF Edit Requested by
                                                                         You</button>
                                                                     @break
 
                                                                     @case(9)
-                                                                    <button class="btn btn-info">PF Forwarded to Finance
+                                                                    <button class="btn btn-inverse-info">PF Forwarded to Finance
                                                                         Manager</button>
                                                                     @break
 
                                                                     @default
-                                                                    <button class="btn btn-light">Status
+                                                                    <button class="btn btn-inverse-dark">Status
                                                                         Unknown</button>
                                                                     @endswitch
                                                                 </td>
@@ -817,8 +817,8 @@
 
     <!-- Modalsss -->
 
-<!--  Farmer Detail Modal -->
-<div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--  Farmer Detail Modal -->
+    <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
                 <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
@@ -961,102 +961,138 @@
     </div>
 
     <!-- Land Detail Modal -->
-    <div class="modal fade" id="landdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
-            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
-                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Land Details</h5>
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
                     <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Rows for Land Details -->
+                    <!-- Row 1 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Ownership:</strong> <span id="l_ownership"></span>
+                            <strong>Farmer Name:</strong> <span id="f_name"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Well Irrigation:</strong> <span id="l_well_irrigation"></span>
+                            <strong>Father/Spouse:</strong> <span id="f_spouse"></span>
                         </div>
                     </div>
 
+                    <!-- Row 2 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Area Irrigated:</strong> <span id="l_area_irrigated"></span>
+                            <strong>Mobile:</strong> <span id="f_mobile"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Irrigated Lands:</strong> <span id="l_irrigated_lands"></span>
+                            <strong>Gender:</strong> <span id="f_gender"></span>
                         </div>
                     </div>
 
+                    <!-- Row 3 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Patta No:</strong> <span id="l_patta"></span>
+                            <strong>Id_Card:</strong> <span id="f_card"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Total Area:</strong> <span id="l_tarea"></span>
+                            <strong>Members:</strong> <span id="f_member"></span>
                         </div>
                     </div>
 
+                    <!-- Row 4 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Revenue Village:</strong> <span id="l_revenue"></span>
+                            <strong>Id_Number:</strong> <span id="f_number"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>S.F No:</strong> <span id="l_sf"></span>
+                            <strong>Hamlet:</strong> <span id="f_hamlet"></span>
                         </div>
                     </div>
 
+                    <!-- Row 5 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Soil Type:</strong> <span id="l_soil"></span>
+                            <strong>Panchayat:</strong> <span id="f_panchayat"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Land to Benefit:</strong> <span id="l_benefit"></span>
+                            <strong>Block:</strong> <span id="f_block"></span>
                         </div>
                     </div>
 
+                    <!-- Row 6 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Field Inspection:</strong> <span id="l_field"></span>
+                            <strong>Type of Household:</strong> <span id="f_household_type"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Site Approval:</strong> <span id="l_site"></span>
+                            <strong>Special Category:</strong> <span id="f_special_category"></span>
                         </div>
                     </div>
 
+                    <!-- Row 7 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Date of Inspection:</strong> <span id="l_doi"></span>
+                            <strong>Caste:</strong> <span id="f_caste"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Date of Approval:</strong> <span id="l_doa"></span>
+                            <strong>Occupation:</strong> <span id="f_occupation"></span>
                         </div>
                     </div>
 
+                    <!-- Row 8 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Type of Work:</strong> <span id="l_type"></span>
+                            <strong>Type of House:</strong> <span id="f_house_type"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Area Benefits:</strong> <span id="l_area"></span>
+                            <strong>Drinking Water Source:</strong> <span id="f_drinking_water"></span>
                         </div>
                     </div>
 
+                    <!-- Row 9 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Other Works:</strong> <span id="l_oth"></span>
+                            <strong>Potability:</strong> <span id="f_potability"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Pradan Contribution:</strong> <span id="l_pradan"></span>
+                            <strong>Domestic Water Source:</strong> <span id="f_domestic_water"></span>
                         </div>
                     </div>
 
+                    <!-- Row 10 -->
                     <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
                         <div class="col-md-6 mb-3">
-                            <strong>Farmer Contribution:</strong> <span id="l_farmer"></span>
+                            <strong>Toilet Availability:</strong> <span id="f_toilet_availability"></span>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <strong>Total Amount:</strong> <span id="l_total"></span>
+                            <strong>Toilet Condition:</strong> <span id="f_toilet_condition"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 11 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>House Owner:</strong> <span id="f_house_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Household Education:</strong> <span id="f_household_education"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 12 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Latitude:</strong> <span id="f_latitude"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Longitude:</strong> <span id="f_longitude"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 13 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>MCode:</strong> <span id="f_mcode"></span>
                         </div>
                     </div>
                 </div>
