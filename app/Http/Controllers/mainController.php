@@ -622,9 +622,21 @@ $fileUpload->save();
 
     }
     public function fetch_appl_post(){
-        $form1 = Form::Where('form_type','land')->where('user_id',session('user_id'))->where('status',6)->get();
-        $form2 = Form::Where('form_type','pond')->where('user_id',session('user_id'))->where('status',6)->get();
-        $form3 = Form::Where('form_type','plant')->where('user_id',session('user_id'))->where('status',6)->get();
+        $form1 = Form::where('form_type', 'land')
+        ->where('user_id', session('user_id'))
+        ->whereIn('status', [6, 7, 8, 9, 11])
+        ->get();
+
+$form2 = Form::where('form_type', 'pond')
+        ->where('user_id', session('user_id'))
+        ->whereIn('status', [6, 7, 8, 9, 11])
+        ->get();
+
+$form3 = Form::where('form_type', 'plant')
+        ->where('user_id', session('user_id'))
+        ->whereIn('status', [6, 7, 8, 9, 11])
+        ->get();
+
         if($form1||$form2||$form3){
             return view('assoc/post_appl',compact('form1','form2','form3'));
         }
@@ -812,8 +824,86 @@ public function submit_pf_plant(Request $request)
 }
 
    
+public function getLandPostFund($id)
+{
+    $landForm = LandForm::where('form_id', $id)->first();
+    return response()->json($landForm);
+}
 
-        
+public function updateLandPostFund(Request $request)
+{
+    $request->validate([
+        'form_id' => 'required',
+        'area_pf' => 'required|string|max:255',
+    ]);
+
+    // Update LandForm
+    LandForm::where('form_id', $request->form_id)
+        ->update(['area_pf' => $request->area_pf]);
+
+    // Also update status to 7 in Form model
+    Form::where('id', $request->form_id)
+        ->update(['status' => 7]);
+
+    return response()->json(['success' => true]);
+}
+public function editPondPostFund($id)
+{
+    $pond = PondForm::where('form_id', $id)->first();
+    return response()->json($pond);
+}
+public function updatePondPostFund(Request $request)
+{
+    $request->validate([
+        'form_id' => 'required|',
+        'len_pf' => 'required|numeric',
+        'bre_pf' => 'required|numeric',
+        'dep_pf' => 'required|numeric',
+        'area_pf' => 'required|string|max:255',
+    ]);
+
+    $vol_pf = $request->len_pf * $request->bre_pf * $request->dep_pf;
+
+    // Update pond form
+    PondForm::where('form_id', $request->form_id)->update([
+        'len_pf' => $request->len_pf,
+        'bre_pf' => $request->bre_pf,
+        'dep_pf' => $request->dep_pf,
+        'vol_pf' => $vol_pf,
+        'area_pf' => $request->area_pf,
+    ]);
+
+    // Update status to 7 in Form model
+    Form::where('id', $request->form_id)->update(['status' => 7]);
+
+    return response()->json(['success' => true]);
+}
+
+        // GET plant post funding details
+public function getPlantPostFund($id)
+{
+    $plant = PlantForm::where('form_id', $id)->first();
+    return response()->json($plant);
+}
+
+// POST update plant post funding
+public function updatePlantPostFund(Request $request)
+{
+    $plant = PlantForm::where('form_id', $request->form_id)->first();
+
+    $plant->nos = $request->nos;
+    $plant->price = $request->price;
+    $plant->other_exp = $request->other_exp;
+    $plant->total_nos = $request->total_nos;
+    $plant->total_price = $request->total_price;
+    $plant->save();
+
+    // update status in main forms table
+    Form::where('id', $request->form_id)->update(['status' => 7]);
+
+    return response()->json(['success' => true]);
+}
+
     
 
     

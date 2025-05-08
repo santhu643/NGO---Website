@@ -61,6 +61,15 @@ Route::post('/submit/pf_land',[mainController::class,'submit_pf_land']);
 Route::post('/submit/pf_pond',[mainController::class,'submit_pf_pond']);
 Route::post('/submit/pf_plant',[mainController::class,'submit_pf_plant']);
 
+Route::get('/get-land-pf-details/{id}', [mainController::class, 'getLandPostFund']);
+Route::post('/update-land-pf', [mainController::class, 'updateLandPostFund'])->name('update.land.pf');
+Route::get('/edit-pf-pond/{id}', [mainController::class, 'editPondPostFund']);
+Route::post('/update-pf-pond', [mainController::class, 'updatePondPostFund']);
+Route::get('/getPlantPostFund/{id}', [mainController::class, 'getPlantPostFund']);
+Route::post('/updatePlantPostFund', [mainController::class, 'updatePlantPostFund']);
+
+
+
 
 
 
@@ -80,7 +89,9 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
-Route::get('/coor/appl',[coorController::class,'fetch_appl_coor1'])->name('coor1');
+Route::get('/dash',function(){return view('coor/coordash');})->name('dash');
+
+Route::get('/cappl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
 
 
 Route::post('/coor/rem',[coorController::class,'coor_rem']);
@@ -108,7 +119,18 @@ Route::get('/cform3',function(){
 })->name('cform3');
 
 Route::get('/coordinator/approve-pf/{id}', [coorController::class, 'approvePF']);
-Route::post('/coordinator/request-edit-pf/{id}', [coorController::class, 'requestEditPF']);
+Route::get('/coor/view-pf-land/{id}', [coorController::class, 'viewPFLand']);
+Route::get('/coor/view-pf-pond/{id}', [coorController::class, 'viewPFPond']);
+Route::get('/coor/view-pf-plant/{id}', [coorController::class, 'viewPFPlant']);
+Route::post('/coor/pf-edit-request', [coorController::class, 'pfEditRequest']);
+Route::get('/coor/view-reason/{id}', [coorController::class, 'viewReason']);
+
+Route::post('/submit/coor/pf_land',[coorController::class,'submit_pf_land']);
+Route::post('/submit/coor/pf_pond',[coorController::class,'submit_pf_pond']);
+Route::post('/submit/coor/pf_plant',[coorController::class,'submit_pf_plant']);
+
+
+
 
 
 
@@ -142,7 +164,16 @@ Route::get('/tform3',function(){
     return view('tl/tform3');
 })->name('tform3');
 
-Route::get('/tl/appl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
+Route::get('/tappl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
+Route::get('/mem',[tlController::class,'fetch_tl_mem'])->name('tl_mem');
+Route::delete('/tl/delete-user/{id}', [tlController::class, 'deleteUser']);
+Route::post('/tl/store-user', [tlController::class, 'storeUser'])->name('tl.store_user');
+Route::get('/tl/get_user/{id}', [tlController::class, 'get_user']);
+Route::post('/tl/update_user', [tlController::class, 'update_user']);
+
+
+
+
 
 
 //end routes for tl
@@ -155,6 +186,8 @@ Route::get('/tl/appl',[tlController::class,'fetch_appl_tl1'])->name('tl1');
 //routes for fm
 
 Route::get('/fm',[fmController::class,'fetch_appl_fm'])->name('fm');
+Route::get('/finance_pf',[fmController::class,'fetch_appl_pf'])->name('pf_fm');
+
 Route::post('/fm/rem',[fmController::class,'fm_rem']);
 Route::get('/getfm-remarks/{id}', [fmController::class, 'getRemarks']);
 Route::post('/fin-approve',[fmController::class,'fm_app']);

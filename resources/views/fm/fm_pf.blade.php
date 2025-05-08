@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
@@ -132,49 +134,20 @@
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <!-- Coordinator Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl') }}">
+                        <a class="nav-link" href="{{route('fm')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Team Leader</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl1') }}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Applications</span>
+                            <span class="menu-title">Finance manager</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl_mem') }}">
+                        <a class="nav-link" href="{{route('pf_fm')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Manage Members</span>
+                            <span class="menu-title">Post Funding</span>
                         </a>
-                    </li>
-
-                    <!-- Forms Collapsible Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
-                            aria-controls="formsMenu">
-                            <i class="icon-layout menu-icon"></i>
-                            <span class="menu-title">Forms</span>
-                            <i class="menu-arrow"></i>
-                        </a>
-                        <div class="collapse" id="formsMenu">
-                            <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform1') }}">Land Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform2') }}">Pond Form</a>
-                                </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('tform3') }}">Plant Form</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                 </ul>
             </nav>
-
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -184,14 +157,9 @@
                             <div class="card">
                                 <ul class="nav nav-tabs mb-3"
                                     style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#coor_dash" role="tab"
-                                            aria-selected="true">
-                                            <i class="fas fa-seedling"></i><b>&nbsp;Dashboard</b>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link " data-bs-toggle="tab" href="#landform" role="tab"
+
+                                    <li class="nav-item " role="presentation">
+                                        <a class="nav-link active " data-bs-toggle="tab" href="#landform" role="tab"
                                             aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
@@ -212,17 +180,10 @@
                                 </ul>
                                 <div class="tab-content tabcontent-border">
 
-                                    <div class="tab-pane p-20 active show" id="coor_dash" role="tabpanel">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Dashboard</h4>
-                                                <div class="table-responsive">
-                                                    DashBoard
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane p-20" id="landform" role="tabpanel">
+
+                                    <div class="tab-pane p-20 active" id="landform" role="tabpanel">
+                                    <button class="btn btn-primary mb-3" onclick="downloadLandTable()">Download Excel</button>
+
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
@@ -231,85 +192,43 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Land Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents</th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @php $s = 1; @endphp
-
-                                                            @foreach($form1 as $f)
                                                             <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                    
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
+                                                                <td>#TN0123</td>
+                                                                <td>123456789012</td>
+                                                                <td>15000</td>
+                                                                <td>Ravi Kumar</td>
+                                                                <td>State Bank of India</td>
+                                                                <td>Green Hamlet</td>
+                                                                <td>Kaveripattinam</td>
+                                                                <td>Krishnagiri</td>
+                                                                <td>987654321012</td>
+                                                                <td>SBIN0001234</td>
+                                                                <td>Land Development</td>
+                                                                <td>Post Funding</td>
+                                                                <td>MGNREGA</td>
                                                             </tr>
 
-                                                            @endforeach
+
                                                         </tbody>
+
                                                     </table>
                                                 </div>
                                             </div>
@@ -325,84 +244,24 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Pond Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents</th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            @php $s = 1; @endphp
-
-                                                            @foreach($form2 as $f)
-                                                            <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="pond_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                    
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
-
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -418,89 +277,33 @@
                                                         class="table table-bordered table-hover table-striped">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>S.No</th>
-                                                                <th>Application Number</th>
-                                                                <th>Associate</th>
-                                                                <th>Farmer Details</th>
-                                                                <th>Land Details</th>
-                                                                <th>Bank Details</th>
-                                                                <th>Documents</th>
-                                                                <th>Action</th>
-                                                                <th>Status</th>
+                                                                <th>External Ref No</th>
+                                                                <th>Debit Account No</th>
+                                                                <th>Amount</th>
+                                                                <th>Bene name</th>
+                                                                <th>Bank Name</th>
+                                                                <th>Address1</th>
+                                                                <th>Address2 </th>
+                                                                <th>Address3</th>
+                                                                <th>Account no</th>
+                                                                <th>IFSC Code</th>
+                                                                <th>Purpose 1</th>
+                                                                <th>Purpose 2</th>
+                                                                <th>Purpose 3</th>
+
+
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
-                                                            @php $s = 1; @endphp
-                                                            @foreach($form3 as $f)
-                                                            <tr>
-                                                                <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
-
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="plant_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-primary"
-                                                                        id="doc_view" value="{{$f->id}}">View</button>
-                                                                </td>
-                                                                <td>
-                                                                    @if(in_array($f->status, [5]))
-                                                                    <button class="btn btn-warning edit-btn"
-                                                                        value="{{ $f->id }}">Edit</button>
-                                                                    @elseif($f->status == 6)
-                                                                    <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
-                                                                    @else
-                                                                    <span class="text-muted">No actions</span>
-                                                                    @endif
-                                                                    
-                                                                </td>
-
-
-                                                                <td>
-                                                                    @switch($f->status)
-                                                                    @case(4)
-                                                                    <button class="btn btn-info">Submitted to
-                                                                        Finance</button>
-                                                                    @break
-
-                                                                    @case(5)
-                                                                    <button value="{{ $f->id }}"
-                                                                        class="btn btn-warning showrem">
-                                                                        Change Requested by Finance
-                                                                    </button>
-                                                                    @break
-
-                                                                    @case(6)
-                                                                    <button class="btn btn-success">Pf Details</button>
-                                                                    @break
-
-                                                                    @default
-                                                                    <button class="btn btn-light">Status
-                                                                        Unknown</button>
-                                                                    @endswitch
-                                                                </td>
-
-
-
-                                                            </tr>
-
-                                                            @endforeach
-                                                        </tbody>
+                                                        <tbody></tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -785,26 +588,25 @@
             </div>
         </div>
     </div>
-
-         <!-- Post Funding Land -->
-         <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Post Funding Land -->
+    <div class="modal fade" id="mcode_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="pf_land_form">
+            <form id="mcode_form">
                 @csrf
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Pre Funding Approval</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
-                        <input type="text" id="pf_land_id" name="pf_land_id" >
+                        <input type="text" id="mcode_form_id" name="mcode_form_id" hidden>
                         <div class="mb-3">
-                            <label for="area_land" class="form-label">Area Benefiited</label>
-                            <input type="number"  class="form-control" id="area_land" name="area_land" required>
+                            <label for="area_land" class="form-label">Enter MCODE</label>
+                            <input type="number" class="form-control" id="mcode" name="mcode" required>
                         </div>
-                       
+
                     </div>
 
                     <div class="modal-footer">
@@ -815,104 +617,6 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="pf_pond_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_pond_form">
-            @csrf
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" id="pf_pond_id" name="pf_pond_id" >
-
-                    <div class="mb-3">
-                        <label for="length" class="form-label">Length (m)</label>
-                        <input type="number" step="any" class="form-control" id="length" name="length" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="breadth" class="form-label">Breadth (m)</label>
-                        <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="depth" class="form-label">Depth (m)</label>
-                        <input type="number" step="any" class="form-control" id="depth" name="depth" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="volume" class="form-label">Volume (m³)</label>
-                        <input type="number" class="form-control" id="volume" name="volume" readonly>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
-                        <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_plant_form">
-            @csrf
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" id="pf_plant_id" name="pf_plant_id">
-
-                    <div class="mb-3">
-                        <label for="nos" class="form-label">No. of Plants</label>
-                        <input type="number" class="form-control" id="nos" name="nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price per Plant</label>
-                        <input type="number" step="any" class="form-control" id="price" name="price" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="other_expenses" class="form-label">Other Expenses</label>
-                        <input type="number" step="any" class="form-control" id="other_expenses" name="other_expenses" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_nos" class="form-label">Total Plants</label>
-                        <input type="number" class="form-control" id="total_nos" name="total_nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_price" class="form-label">Total Price</label>
-                        <input type="number" step="any" class="form-control" id="total_price" name="total_price" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
 
     <script>
     $.ajaxSetup({
@@ -1190,32 +894,32 @@
 
     });
 
-    $(document).on("click", ".coor_appr1", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $.ajax({
-            type: "POST",
-            url: `/coor_appr1/${form_id}`,
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.status == 200) {
-                    alert("Forwarded to finance manager");
-                } else {
-                    alert("something went wrong");
+    /*  $(document).on("click", ".coor_appr1", function(e) {
+         e.preventDefault();
+         var form_id = $(this).val();
+         console.log(form_id);
+         $.ajax({
+             type: "POST",
+             url: `/coor_appr1/${form_id}`,
+             data: {
+                 _token: $('meta[name="csrf-token"]').attr('content')
+             },
+             success: function(response) {
+                 if (response.status == 200) {
+                     alert("Forwarded to finance manager");
+                 } else {
+                     alert("something went wrong");
 
-                }
-            }
-
-
-        })
-    });
+                 }
+             }
 
 
+         })
+     }); */
 
-    $(document).on("click", ".coor_update", function(e) {
+
+
+    $(document).on("click", ".fin_update", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         $("#rem_form_id").val(form_id);
@@ -1228,7 +932,7 @@
         console.log(form);
         $.ajax({
             type: "POST",
-            url: "/coor/rem",
+            url: "/fm/rem",
             data: form,
             processData: false,
             contentType: false,
@@ -1252,7 +956,7 @@
         // Fetch the remarks using AJAX
         $.ajax({
             type: "GET",
-            url: "/get-remarks/" + formId,
+            url: "/getfm-remarks/" + formId,
             success: function(response) {
                 if (response.success == 200) {
                     $('#view_remark_text').text(response.remarks); // Set the remarks
@@ -1318,81 +1022,98 @@
         });
     });
 
-    $(document).on("click","#pf_land",function(e){
+    $(document).on("click", ".fin_approve", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
-        $("#pf_land_id").val(form_id);
-        $("#pf_land_modal").modal('show');
+        $.ajax({
+            url: `/fin-approve`,
+            type: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id
+            },
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("form accepted");
 
-    })
-    $(document).on("click","#pf_pond",function(e){
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $("#pf_pond_id").val(form_id);
-        $("#pf_pond_modal").modal('show');
+                } else {
+                    alert('form not accepted');
+                }
+            },
 
-    })
-    $(document).on("click","#pf_plant",function(e){
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-        $("#pf_plant_id").val(form_id);
-        $("#pf_plant_modal").modal('show');
-
+        })
     });
-    $(document).on("submit","#pf_land_form",function(e){
+
+    $(document).on("click", ".fin_approve_modal", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#mcode_form_id").val(form_id);
+        $("#mcode_modal").modal("show");
+    });
+
+    $(document).on("submit", "#mcode_form", function(e) {
         e.preventDefault();
         var form = new FormData(this);
         console.log(form);
         $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_land",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
+            url: `/fin-approve`,
+            type: "POST",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("mcode submitted forwarded to post funding");
+                    $("#mcode_modal").modal("hide");
+                    $('#mcode_form')[0].reset();
+
+
+
+                } else {
+                    alert('form not accepted');
                 }
-            }
+            },
+
         })
+
     });
-    $(document).on("submit","#pf_pond_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_pond",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });    
-    $(document).on("submit","#pf_plant_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/coor/pf_plant",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });
+    function downloadLandTable() {
+        const table = document.getElementById("land_table");
+        const ws_data = [];
+
+        // Extract headers
+        const headers = [];
+        table.querySelectorAll("thead th").forEach(th => {
+            headers.push({ v: th.innerText.trim(), t: 's', s: {
+                font: { bold: true, color: { rgb: "000000" } }, // bold black text
+                fill: { fgColor: { rgb: "FFFF00" } },           // yellow background
+                alignment: { horizontal: "center", vertical: "center" }
+            }});
+        });
+        ws_data.push(headers);
+
+        // Extract rows
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const rowData = [];
+            row.querySelectorAll("td").forEach(cell => {
+                let cellText = cell.innerText.trim();
+                rowData.push({ v: cellText, t: 's' }); // Treat as text
+            });
+            ws_data.push(rowData);
+        });
+
+        // Create worksheet and apply data
+        const ws = XLSX.utils.aoa_to_sheet([]);
+        XLSX.utils.sheet_add_aoa(ws, ws_data, { origin: "A1" });
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Land Form");
+
+        XLSX.writeFile(wb, "Land_Form_Data.xlsx");
+    }
+
     </script>
 
 

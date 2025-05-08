@@ -141,7 +141,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('coor1') }}">
+                        <a class="nav-link" href="{{ route('cappl') }}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Applications</span>
                         </a>
@@ -265,9 +265,13 @@
                                                                     @if(in_array($f->status, [5]))
                                                                     <button class="btn btn-warning edit-btn"
                                                                         value="{{ $f->id }}">Edit</button>
+                                                                    @elseif($f->status == 6)
+                                                                    <button type="button" class="btn btn-primary"
+                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
+                                                                    
                                                                 </td>
 
 
@@ -286,8 +290,7 @@
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
+                                                                    <button class="btn btn-success">Pf Details</button>
                                                                     @break
 
                                                                     @default
@@ -351,13 +354,17 @@
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
-                                                               <td>
+                                                                <td>
                                                                     @if(in_array($f->status, [5]))
                                                                     <button class="btn btn-warning edit-btn"
                                                                         value="{{ $f->id }}">Edit</button>
+                                                                    @elseif($f->status == 6)
+                                                                    <button type="button" class="btn btn-primary"
+                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
+                                                                    
                                                                 </td>
 
 
@@ -376,8 +383,7 @@
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
+                                                                    <button class="btn btn-success">Pf Details</button>
                                                                     @break
 
                                                                     @default
@@ -440,13 +446,17 @@
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
-                                                               <td>
+                                                                <td>
                                                                     @if(in_array($f->status, [5]))
                                                                     <button class="btn btn-warning edit-btn"
                                                                         value="{{ $f->id }}">Edit</button>
+                                                                    @elseif($f->status == 6)
+                                                                    <button type="button" class="btn btn-primary"
+                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
                                                                     @else
                                                                     <span class="text-muted">No actions</span>
                                                                     @endif
+                                                                    
                                                                 </td>
 
 
@@ -465,8 +475,7 @@
                                                                     @break
 
                                                                     @case(6)
-                                                                    <button class="btn btn-success">Final
-                                                                        Approved</button>
+                                                                    <button class="btn btn-success">Pf Details</button>
                                                                     @break
 
                                                                     @default
@@ -770,6 +779,133 @@
             </div>
         </div>
     </div>
+
+         <!-- Post Funding Land -->
+         <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="pf_land_form">
+                @csrf
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" id="pf_land_id" name="pf_land_id" >
+                        <div class="mb-3">
+                            <label for="area_land" class="form-label">Area Benefiited</label>
+                            <input type="number"  class="form-control" id="area_land" name="area_land" required>
+                        </div>
+                       
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal fade" id="pf_pond_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="pf_pond_form">
+            @csrf
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" id="pf_pond_id" name="pf_pond_id" >
+
+                    <div class="mb-3">
+                        <label for="length" class="form-label">Length (m)</label>
+                        <input type="number" step="any" class="form-control" id="length" name="length" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="breadth" class="form-label">Breadth (m)</label>
+                        <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="depth" class="form-label">Depth (m)</label>
+                        <input type="number" step="any" class="form-control" id="depth" name="depth" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="volume" class="form-label">Volume (m³)</label>
+                        <input type="number" class="form-control" id="volume" name="volume" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
+                        <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form id="pf_plant_form">
+            @csrf
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <input type="text" id="pf_plant_id" name="pf_plant_id">
+
+                    <div class="mb-3">
+                        <label for="nos" class="form-label">No. of Plants</label>
+                        <input type="number" class="form-control" id="nos" name="nos" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price per Plant</label>
+                        <input type="number" step="any" class="form-control" id="price" name="price" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="other_expenses" class="form-label">Other Expenses</label>
+                        <input type="number" step="any" class="form-control" id="other_expenses" name="other_expenses" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="total_nos" class="form-label">Total Plants</label>
+                        <input type="number" class="form-control" id="total_nos" name="total_nos" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="total_price" class="form-label">Total Price</label>
+                        <input type="number" step="any" class="form-control" id="total_price" name="total_price" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
     <script>
@@ -1174,6 +1310,82 @@
                 alert('Something went wrong.');
             }
         });
+    });
+
+    $(document).on("click","#pf_land",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_land_id").val(form_id);
+        $("#pf_land_modal").modal('show');
+
+    })
+    $(document).on("click","#pf_pond",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_pond_id").val(form_id);
+        $("#pf_pond_modal").modal('show');
+
+    })
+    $(document).on("click","#pf_plant",function(e){
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#pf_plant_id").val(form_id);
+        $("#pf_plant_modal").modal('show');
+
+    });
+    $(document).on("submit","#pf_land_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/coor/pf_land",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
+    });
+    $(document).on("submit","#pf_pond_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/coor/pf_pond",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
+    });    
+    $(document).on("submit","#pf_plant_form",function(e){
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type:"POST",
+            url:"/submit/coor/pf_plant",
+            data:form,
+            processData:false,
+            contentType:false,
+            success:function(response){
+                if(response.status==200){
+                    alert("postfunding submitted");
+                }
+            }
+        })
     });
     </script>
 

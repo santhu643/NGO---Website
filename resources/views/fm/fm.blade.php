@@ -138,6 +138,12 @@
                             <span class="menu-title">Finance manager</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('pf_fm')}}">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Post Funding</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- partial -->

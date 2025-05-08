@@ -47,17 +47,173 @@
 
         /* Added spacing */
     }
+
+    #land_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
+
+    #land_table td,
+    #land_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
+
+    #land_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
+
+    #pond_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
+
+    #pond_table td,
+    #pond_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
+
+    #pond_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
+
+    #plant_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
+
+    #plant_table td,
+    #plant_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
+
+    #plant_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        margin-left: 0.5rem;
+        padding: 5px 10px;
+    }
+
+    /* General Table Styling */
+    .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        border-radius: 0.25rem;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.2s;
+    }
+
+    .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: #4b49ac;
+        box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
+    }
+
+    /* Pagination Buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 6px 12px;
+        margin: 0 2px;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #4b49ac;
+        color: #fff !important;
+        border-color: #4b49ac;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #134E13;
+        color: white !important;
+        border-color: #fff;
+    }
+
+    /* Table Info Text */
+    .dataTables_wrapper .dataTables_info {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    /* Search Label */
+    .dataTables_wrapper .dataTables_filter label {
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    /* Hide the default 'Search:' label text */
+    .dataTables_wrapper .dataTables_filter label {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0;
+        /* Hides text but keeps layout */
+    }
+
+    /* Search input styling */
+    .dataTables_wrapper .dataTables_filter input {
+        margin-top: 5px;
+        margin-right: 3px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 8px 12px 8px 35px;
+        /* left space for icon */
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.2s;
+        width: 250px;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 16px 16px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: #134E13;
+        box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
+        outline: none;
+    }
+
+    /* Responsive Wrapping Fix */
+    @media (max-width: 768px) {
+
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_paginate {
+            text-align: center;
+            float: none !important;
+        }
+    }
     </style>
 </head>
 
 <body>
     <div class="container-scroller">
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
+                        src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img
+                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -88,7 +244,7 @@
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav">
+                <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('vol')}}">
                             <i class="icon-grid menu-icon"></i>
@@ -108,7 +264,8 @@
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="{{route('form2')}}">Pond Form</a>
                                 </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plantation Form</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('form3')}}">Plantation Form</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -119,7 +276,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{route('post_appl')}}">
+                        <a class="nav-link" href="{{route('post_appl')}}">
                             <i class="ti-wallet menu-icon"></i>
                             <span class="menu-title">Post Funding</span>
                         </a>
@@ -150,7 +307,7 @@
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" data-bs-toggle="tab" href="#plantform" role="tab"
                                             aria-selected="false">
-                                            <i class="fas fa-tools"></i><b>&nbsp;Plantation Form</b>
+                                            <i class="fas fa-tree"></i><b>&nbsp;Plantation Form</b>
                                         </a>
                                     </li>
 
@@ -162,7 +319,7 @@
                                                 <h4 class="card-title">Land Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="land_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -179,40 +336,60 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form1 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="farmer_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="land_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="land_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}"
+                                                                        class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
 
                                                                 <td>
-                                                                <button type="button" class="btn btn-primary"
-                                                                id="pf_land" value="{{$f->id}}">Post Fund</button>
-                                                                    
+                                                                    @if($f->status == 6)
+                                                                    <button type="button"
+                                                                        class="btn btn-primary pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Post Fund
+                                                                    </button>
+                                                                    @elseif($f->status == 8)
+                                                                    <button type="button"
+                                                                        class="btn btn-warning edit_pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Edit Post Fund
+                                                                    </button>
+                                                                    @else
+                                                                    <button type="button"
+                                                                        class="btn btn-inverse-warning btn-fw showrem"
+                                                                        disabled>
+                                                                        Waiting for Approval
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
 
 
 
                                                                 <td>
-                                                                    <button>Waiting for Post Fund Details</button>
-                                                                   
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Waiting
+                                                                        for Post Fund Details</button>
+
                                                                 </td>
-
-
-
                                                             </tr>
 
                                                             @endforeach
@@ -229,7 +406,7 @@
                                                 <h4 class="card-title">Pond Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="pond_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
@@ -246,37 +423,55 @@
                                                             @php $s = 1; @endphp
 
                                                             @foreach($form2 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td>#TN-00{{$f->id}}</td>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="farmer_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="pond_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="pond_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}"
+                                                                        class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
-
-
                                                                 <td>
-                                                                <button type="button" class="btn btn-primary"
-                                                                id="pf_pond" value="{{$f->id}}">Post Fund</button>
-                                                                    
+                                                                    @if($f->status == 6)
+                                                                    <button type="button"
+                                                                        class="btn btn-primary pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Post Fund
+                                                                    </button>
+                                                                    @elseif($f->status == 8)
+                                                                    <button type="button"
+                                                                        class="btn btn-warning edit_pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Edit Post Fund
+                                                                    </button>
+                                                                    @else
+                                                                    <button type="button"
+                                                                        class="btn btn-inverse-warning btn-fw showrem"
+                                                                        disabled>
+                                                                        Waiting for Approval
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
-
-
-
                                                                 <td>
-                                                                    <button>Waiting for Post Fund Details</button>
-                                                                   
+
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Waiting
+                                                                        for Post Fund Details</button>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -293,13 +488,13 @@
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="plant_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
                                                                 <th>Farmer Details</th>
-                                                                <th>Land Details</th>
+                                                                <th>Plantation Details</th>
                                                                 <th>Bank Details</th>
                                                                 <th>Documents</th>
                                                                 <th>Action</th>
@@ -309,40 +504,56 @@
                                                         <tbody>
                                                             @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
+                                                            @php
+                                                            $account = $f->bank_details->first();
+                                                            @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
-                                                                <td>#TN0{{$f->id}}</td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="farmer_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td>#TN-00{{$f->id}}</td>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="farmer_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="plant_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button type="button" class="btn btn-primary"
+                                                                        id="land_detail" value="{{$f->id}}"><i
+                                                                            class="fas fa-eye"></i>View</button>
                                                                 </td>
-                                                                <td><button type="button" class="btn btn-success"
-                                                                        id="bank_detail"
-                                                                        value="{{$f->id}}">View</button>
+                                                                <td><button id="bank_detail" value="{{ $f->id }}"
+                                                                        class="btn btn-link p-0"
+                                                                        style="color: black; font-weight: bold; text-decoration: underline;">
+                                                                        <b>{{ str_repeat('X', strlen($account->account_number) - 4) . substr($account->account_number, -4) }}</b>
+                                                                    </button>
                                                                 </td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="doc_view" value="{{$f->id}}">View</button>
                                                                 </td>
 
                                                                 <td>
-                                                                <button type="button" class="btn btn-primary"
-                                                                id="pf_plant" value="{{$f->id}}">Post Fund</button>
-                                                                    
+                                                                    @if($f->status == 6)
+                                                                    <button type="button"
+                                                                        class="btn btn-primary pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Post Fund
+                                                                    </button>
+                                                                    @elseif($f->status == 8)
+                                                                    <button type="button"
+                                                                        class="btn btn-warning edit_pf_land"
+                                                                        value="{{ $f->id }}">
+                                                                        Edit Post Fund
+                                                                    </button>
+                                                                    @else
+                                                                    <button type="button"
+                                                                        class="btn btn-inverse-warning btn-fw showrem"
+                                                                        disabled>
+                                                                        Waiting for Approval
+                                                                    </button>
+                                                                    @endif
                                                                 </td>
-
-
-
                                                                 <td>
-                                                                    <button>Waiting for Post Fund Details</button>
-                                                                   
+                                                                    <button value="{{ $f->id }}"
+                                                                        class="btn btn-inverse-warning btn-fw showrem">Waiting
+                                                                        for Post Fund Details</button>
                                                                 </td>
-
-
-
                                                             </tr>
 
                                                             @endforeach
@@ -376,41 +587,143 @@
 
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Farmer Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Farmer Name : <span id="f_name"></span><br><br>
-                    Father/Spouse : <span id="f_spouse"></span>
-                    Mobile : <span id="f_mobile"></span><br><br>
-                    Gender : <span id="f_gender"></span><br><br>
-                    Id_Card : <span id="f_card"></span><br><br>
-                    Members : <span id="f_member"></span><br><br>
-                    Id_Number : <span id="f_number"></span><br><br>
-                    hamlet : <span id="f_hamlet"></span><br><br>
-                    Panchayat : <span id="f_panchayat"></span><br><br>
-                    Block : <span id="f_block"></span><br><br>
-                    Type of Household : <span id="f_household_type"></span><br><br>
-                    Special Category : <span id="f_special_category"></span><br><br>
-                    Caste : <span id="f_caste"></span><br><br>
-                    Occupation : <span id="f_occupation"></span><br><br>
-                    Type of House : <span id="f_house_type"></span><br><br>
-                    Drinking Water Source : <span id="f_drinking_water"></span><br><br>
-                    Potability : <span id="f_potability"></span><br><br>
-                    Domestic Water Source : <span id="f_domestic_water"></span><br><br>
-                    Toilet Availability : <span id="f_toilet_availability"></span><br><br>
-                    Toilet Condition : <span id="f_toilet_condition"></span><br><br>
-                    House Owner : <span id="f_house_owner"></span><br><br>
-                    Household Education : <span id="f_household_education"></span><br><br>
-                    Latitude : <span id="f_latitude"></span><br><br>
-                    Longitude : <span id="f_longitude"></span><br><br>
-                    MCode : <span id="f_mcode"></span>
+                    <!-- Row 1 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Name:</strong> <span id="f_name"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Father/Spouse:</strong> <span id="f_spouse"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Mobile:</strong> <span id="f_mobile"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Gender:</strong> <span id="f_gender"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Card:</strong> <span id="f_card"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Members:</strong> <span id="f_member"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Id_Number:</strong> <span id="f_number"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Hamlet:</strong> <span id="f_hamlet"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Panchayat:</strong> <span id="f_panchayat"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Block:</strong> <span id="f_block"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 6 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Household:</strong> <span id="f_household_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Special Category:</strong> <span id="f_special_category"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 7 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Caste:</strong> <span id="f_caste"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Occupation:</strong> <span id="f_occupation"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 8 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of House:</strong> <span id="f_house_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Drinking Water Source:</strong> <span id="f_drinking_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 9 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Potability:</strong> <span id="f_potability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Domestic Water Source:</strong> <span id="f_domestic_water"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 10 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Availability:</strong> <span id="f_toilet_availability"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Toilet Condition:</strong> <span id="f_toilet_condition"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 11 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>House Owner:</strong> <span id="f_house_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Household Education:</strong> <span id="f_household_education"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 12 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Latitude:</strong> <span id="f_latitude"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Longitude:</strong> <span id="f_longitude"></span>
+                        </div>
+                    </div>
+
+                    <!-- Row 13 -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>MCode:</strong> <span id="f_mcode"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -418,117 +731,230 @@
 
     <!-- Land Detail Modal -->
     <div class="modal fade" id="landdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Land Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Land Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Ownership : <span id="l_ownership"></span><br><br>
-                    Well Irrigation : <span id="l_well_irrigation"></span><br><br>
-                    Area Irrigated : <span id="l_area_irrigated"></span><br><br>
-                    Irrigated Lands : <span id="l_irrigated_lands"></span><br><br>
-                    Patta_no : <span id="l_patta"></span><br><br>
-                    Total_Area : <span id="l_tarea"> </span><br><br>
-                    Revenue_village : <span id="l_revenue"></span><br><br>
-                    S.F No : <span id="l_sf"></span><br><br>
-                    Soil Type : <span id="l_soil"></span><br><br>
-                    Land_to_Benefit : <span id="l_benefit"></span><br><br>
-                    Field_inspection : <span id="l_field"></span><br><br>
-                    Site_approval : <span id="l_site"></span><br><br>
-                    Date_of_Inspection : <span id="l_doi"></span><br><br>
-                    Date_of_Approval : <span id="l_doa"></span><br><br>
-                    Type_of_Work : <span id="l_type"></span><br><br>
-                    Area_Benefites : <span id="l_area"></span><br><br>
-                    Other_Works : <span id="l_oth"></span><br><br>
-                    Pradan Contribution : <span id="l_pradan"></span><br><br>
-                    Farmer Contribution : <span id="l_farmer"></span><br><br>
-                    Total_amount : <span id="l_total"></span>
+                    <!-- Rows for Land Details -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Ownership:</strong> <span id="l_ownership"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Well Irrigation:</strong> <span id="l_well_irrigation"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Irrigated:</strong> <span id="l_area_irrigated"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Irrigated Lands:</strong> <span id="l_irrigated_lands"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Patta No:</strong> <span id="l_patta"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Area:</strong> <span id="l_tarea"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Revenue Village:</strong> <span id="l_revenue"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>S.F No:</strong> <span id="l_sf"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Soil Type:</strong> <span id="l_soil"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Land to Benefit:</strong> <span id="l_benefit"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Field Inspection:</strong> <span id="l_field"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Site Approval:</strong> <span id="l_site"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Inspection:</strong> <span id="l_doi"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Approval:</strong> <span id="l_doa"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Work:</strong> <span id="l_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Benefits:</strong> <span id="l_area"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Other Works:</strong> <span id="l_oth"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Pradan Contribution:</strong> <span id="l_pradan"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Contribution:</strong> <span id="l_farmer"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Amount:</strong> <span id="l_total"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Land Detail Modal -->
-    <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Plantation Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Ownership : <span id="plant_ownership"></span><br><br>
-                    Well Irrigation : <span id="plant_well_irrigation"></span><br><br>
-                    Area Irrigated : <span id="plant_area_irrigated"></span><br><br>
-                    Irrigated Lands : <span id="plant_irrigated_lands"></span><br><br>
-                    Patta No : <span id="plant_patta"></span><br><br>
-                    Total Area : <span id="plant_total_area"></span><br><br>
-                    Revenue Village : <span id="plant_revenue"></span><br><br>
-                    Crop Season : <span id="plant_crop_season"></span><br><br>
-                    Livestock : <span id="plant_livestock"></span><br><br>
-                    Plantation Type : <span id="plant_type"></span><br><br>
-                    SF No : <span id="plant_sf_no"></span><br><br>
-                    Soil Type : <span id="plant_soil_type"></span><br><br>
-                    Land to Benefit : <span id="plant_land_benefit"></span><br><br>
-                    Field Inspection : <span id="plant_field_inspection"></span><br><br>
-                    Site Approval : <span id="plant_site_approval"></span><br><br>
-                    Date of Inspection : <span id="plant_date_of_inspection"></span><br><br>
-                    Date of Approval : <span id="plant_date_of_approval"></span><br><br>
-                    Type of Work : <span id="plant_type_of_work"></span><br><br>
-                    Area Benefit : <span id="plant_area_benefit"></span><br><br>
-                    Other Works : <span id="plant_other_works"></span><br><br>
-                    Pradan Contribution : <span id="plant_pradan_contribution"></span><br><br>
-                    Farmer Contribution : <span id="plant_farmer_contribution"></span><br><br>
-                    Total Amount : <span id="plant_total_amount"></span><br><br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- Pond Detail Modal -->
     <div class="modal fade" id="ponddet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pond Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Pond Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Land_Owner : <span id="p_owner"></span><br><br>
-                    Patta No : <span id="p_patta"></span><br><br>
-                    Total Area : <span id="p_tarea"></span><br><br>
-                    Irrigated Lands : <span id="p_irrigated_lands"></span><br><br>
-                    Revenue : <span id="p_revenue"></span><br><br>
-                    Livestock : <span id="p_livestock"></span><br><br>
-                    Crop Season : <span id="p_crop_season"></span><br><br>
-                    Well Irrigation : <span id="p_well_irrigation"></span><br><br>
-                    SF No : <span id="p_sf"></span><br><br>
-                    Soil Type : <span id="p_soil"></span><br><br>
-                    Land TO Serve : <span id="p_land"></span><br><br>
-                    Field Inspection : <span id="p_field"></span><br><br>
-                    Site Approval : <span id="p_site"></span><br><br>
-                    Type of Work : <span id="p_type_of_work"></span><br><br>
-                    Date of Inspection : <span id="p_doi"></span><br><br>
-                    Date of Approval : <span id="p_doa"></span><br><br>
-                    Length : <span id="p_len"></span><br><br>
-                    Depth : <span id="p_dep"></span><br><br>
-                    Breadth : <span id="p_breadth"></span><br><br>
-                    Volume : <span id="p_vol"></span><br><br>
-                    Pradan Contribution : <span id="p_pcont"></span><br><br>
-                    Farmer Contribution : <span id="p_fcont"></span><br><br>
-                    Total : <span id="total"></span>
+                    <!-- Rows for Pond Details -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Land Owner:</strong> <span id="p_owner"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Patta No:</strong> <span id="p_patta"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Area:</strong> <span id="p_tarea"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Irrigated Lands:</strong> <span id="p_irrigated_lands"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Revenue:</strong> <span id="p_revenue"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Livestock:</strong> <span id="p_livestock"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Crop Season:</strong> <span id="p_crop_season"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Well Irrigation:</strong> <span id="p_well_irrigation"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>SF No:</strong> <span id="p_sf"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Soil Type:</strong> <span id="p_soil"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Land to Serve:</strong> <span id="p_land"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Field Inspection:</strong> <span id="p_field"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Site Approval:</strong> <span id="p_site"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Work:</strong> <span id="p_type_of_work"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Inspection:</strong> <span id="p_doi"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Approval:</strong> <span id="p_doa"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Length:</strong> <span id="p_len"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Depth:</strong> <span id="p_dep"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Breadth:</strong> <span id="p_breadth"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Volume:</strong> <span id="p_vol"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Pradan Contribution:</strong> <span id="p_pcont"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Contribution:</strong> <span id="p_fcont"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Total:</strong> <span id="total"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -536,31 +962,46 @@
 
     <!-- Bank Detail Modal -->
     <div class="modal fade" id="bankdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bank Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 600px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="background-color: #134E13; border-bottom: 2px solid #dee2e6;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Bank Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Holder_Name : <span id="b_hname"></span><br><br>
-                    Account_Number : <span id="b_no"></span><br><br>
-                    Bank Name : <span id="b_name"></span><br><br>
-                    Branch : <span id="b_branch"></span><br><br>
-                    IFSC Code : <span id="b_ifsc"></span><br><br>
-
-
-
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Holder Name:</strong> <span id="b_hname"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Account Number:</strong> <span id="b_no"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Bank Name:</strong> <span id="b_name"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>Branch:</strong> <span id="b_branch"></span>
+                        </div>
+                    </div>
+                    <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-12">
+                            <strong>IFSC Code:</strong> <span id="b_ifsc"></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-   
 
     <div class="modal fade" id="view_rem_modal" tabindex="-1" aria-labelledby="remarksLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -611,8 +1052,8 @@
         </div>
     </div>
 
-     <!-- Post Funding Land -->
-     <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Post Funding Land -->
+    <div class="modal fade" id="pf_land_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form id="pf_land_form">
                 @csrf
@@ -624,12 +1065,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <input type="text" id="pf_land_id" name="pf_land_id" >
+                        <input type="text" id="pf_land_id" name="pf_land_id">
                         <div class="mb-3">
                             <label for="area_land" class="form-label">Area Benefiited</label>
-                            <input type="number"  class="form-control" id="area_land" name="area_land" required>
+                            <input type="number" class="form-control" id="area_land" name="area_land" required>
                         </div>
-                       
+
                     </div>
 
                     <div class="modal-footer">
@@ -642,107 +1083,223 @@
     </div>
 
     <div class="modal fade" id="pf_pond_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_pond_form">
+        <div class="modal-dialog">
+            <form id="pf_pond_form">
+                @csrf
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" id="pf_pond_id" name="pf_pond_id">
+
+                        <div class="mb-3">
+                            <label for="length" class="form-label">Length (m)</label>
+                            <input type="number" step="any" class="form-control" id="length" name="length" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="breadth" class="form-label">Breadth (m)</label>
+                            <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="depth" class="form-label">Depth (m)</label>
+                            <input type="number" step="any" class="form-control" id="depth" name="depth" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="volume" class="form-label">Volume (m³)</label>
+                            <input type="number" class="form-control" id="volume" name="volume" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
+                            <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="pf_plant_form">
+                @csrf
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" id="pf_plant_id" name="pf_plant_id">
+
+                        <div class="mb-3">
+                            <label for="nos" class="form-label">No. of Plants</label>
+                            <input type="number" class="form-control" id="nos" name="nos" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price per Plant</label>
+                            <input type="number" step="any" class="form-control" id="price" name="price" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="other_expenses" class="form-label">Other Expenses</label>
+                            <input type="number" step="any" class="form-control" id="other_expenses"
+                                name="other_expenses" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="total_nos" class="form-label">Total Plants</label>
+                            <input type="number" class="form-control" id="total_nos" name="total_nos" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="total_price" class="form-label">Total Price</label>
+                            <input type="number" step="any" class="form-control" id="total_price" name="total_price"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit PF Modal -->
+<div class="modal fade" id="editPFModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form id="editPFForm">
+      @csrf
+      <input type="hidden" name="form_id" id="edit_form_id">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Post Funding - Land</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Area PF</label>
+            <input type="text" class="form-control" id="area_pf" name="area_pf" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editPondPFModal" tabindex="-1" role="dialog" aria-labelledby="pondPFModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form id="editPondPFForm">
+      @csrf
+      <input type="hidden" name="form_id" id="edit_pond_form_id">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title" id="pondPFModalLabel">Edit Pond Post Funding</h5>
+          <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Length</label>
+                <input type="number" step="0.01" name="len_pf" id="len_pf" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Breadth</label>
+                <input type="number" step="0.01" name="bre_pf" id="bre_pf" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Depth</label>
+                <input type="number" step="0.01" name="dep_pf" id="dep_pf" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Volume</label>
+                <input type="number" step="0.01" name="vol_pf" id="vol_pf" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label>Area Benefited</label>
+                <input type="text" name="area_pf" id="area_pf1" class="form-control" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Edit Post Fund - Plant Form Modal -->
+<div class="modal fade" id="editPlantPFModal" tabindex="-1" role="dialog" aria-labelledby="editPlantPFModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="editPlantPFForm">
             @csrf
-
+            <input type="hidden" name="form_id" id="plant_form_id">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title">Edit Plant Post Funding</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
                 </div>
-
                 <div class="modal-body">
-                    <input type="text" id="pf_pond_id" name="pf_pond_id" >
-
-                    <div class="mb-3">
-                        <label for="length" class="form-label">Length (m)</label>
-                        <input type="number" step="any" class="form-control" id="length" name="length" required>
+                    <div class="form-group">
+                        <label>No. of Plants</label>
+                        <input type="text" class="form-control" name="nos" id="plant_nos" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="breadth" class="form-label">Breadth (m)</label>
-                        <input type="number" step="any" class="form-control" id="breadth" name="breadth" required>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" name="price" id="plant_price" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="depth" class="form-label">Depth (m)</label>
-                        <input type="number" step="any" class="form-control" id="depth" name="depth" required>
+                    <div class="form-group">
+                        <label>Other Expenses</label>
+                        <input type="text" class="form-control" name="other_exp" id="plant_other_exp" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="volume" class="form-label">Volume (m³)</label>
-                        <input type="number" class="form-control" id="volume" name="volume" readonly>
+                    <div class="form-group">
+                        <label>Total Nos</label>
+                        <input type="text" class="form-control" name="total_nos" id="plant_total_nos" required>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="area_benefited" class="form-label">Area Benefited (sq.m)</label>
-                        <input type="text" class="form-control" id="area_benefited" name="area_benefited" required>
+                    <div class="form-group">
+                        <label>Total Price</label>
+                        <input type="text" class="form-control" name="total_price" id="plant_total_price" required>
                     </div>
                 </div>
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<div class="modal fade" id="pf_plant_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form id="pf_plant_form">
-            @csrf
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Post Funding Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-                    <input type="text" id="pf_plant_id" name="pf_plant_id">
-
-                    <div class="mb-3">
-                        <label for="nos" class="form-label">No. of Plants</label>
-                        <input type="number" class="form-control" id="nos" name="nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price per Plant</label>
-                        <input type="number" step="any" class="form-control" id="price" name="price" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="other_expenses" class="form-label">Other Expenses</label>
-                        <input type="number" step="any" class="form-control" id="other_expenses" name="other_expenses" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_nos" class="form-label">Total Plants</label>
-                        <input type="number" class="form-control" id="total_nos" name="total_nos" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="total_price" class="form-label">Total Price</label>
-                        <input type="number" step="any" class="form-control" id="total_price" name="total_price" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
 
-<script>
+    <script>
     // Dynamically calculate volume
-    document.addEventListener('input', function () {
+    document.addEventListener('input', function() {
         const length = parseFloat(document.getElementById('length').value) || 0;
         const breadth = parseFloat(document.getElementById('breadth').value) || 0;
         const depth = parseFloat(document.getElementById('depth').value) || 0;
@@ -750,7 +1307,7 @@
         const volume = length * breadth * depth;
         document.getElementById('volume').value = volume.toFixed(2);
     });
-</script>
+    </script>
 
 
 
@@ -764,9 +1321,18 @@
         }
     });
     $(document).ready(function() {
-        $('#land_table').DataTable();
-        $('#pond_table').DataTable();
-        $('#plant_table').DataTable();
+        $('#land_table').DataTable({
+            lengthChange: false
+        });
+        $('#pond_table').DataTable({
+            lengthChange: false
+        });
+        $('#plant_table').DataTable({
+            lengthChange: false
+        });
+        $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
+        $('#pond_table_filter input[type="search"]').attr('placeholder', 'Search...');
+        $('#plant_table_filter input[type="search"]').attr('placeholder', 'Search...');
 
     });
 
@@ -1140,7 +1706,7 @@
         });
     });
 
-    $(document).on("click","#pf_land",function(e){
+    $(document).on("click", ".pf_land", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
@@ -1148,7 +1714,7 @@
         $("#pf_land_modal").modal('show');
 
     })
-    $(document).on("click","#pf_pond",function(e){
+    $(document).on("click", ".pf_pond", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
@@ -1156,7 +1722,7 @@
         $("#pf_pond_modal").modal('show');
 
     })
-    $(document).on("click","#pf_plant",function(e){
+    $(document).on("click", ".pf_plant", function(e) {
         e.preventDefault();
         var form_id = $(this).val();
         console.log(form_id);
@@ -1164,57 +1730,158 @@
         $("#pf_plant_modal").modal('show');
 
     });
-    $(document).on("submit","#pf_land_form",function(e){
+    $(document).on("submit", "#pf_land_form", function(e) {
         e.preventDefault();
         var form = new FormData(this);
         console.log(form);
         $.ajax({
-            type:"POST",
-            url:"/submit/pf_land",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
+            type: "POST",
+            url: "/submit/pf_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
                     alert("postfunding submitted");
                 }
             }
         })
     });
-    $(document).on("submit","#pf_pond_form",function(e){
+    $(document).on("submit", "#pf_pond_form", function(e) {
         e.preventDefault();
         var form = new FormData(this);
         console.log(form);
         $.ajax({
-            type:"POST",
-            url:"/submit/pf_pond",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
-                    alert("postfunding submitted");
-                }
-            }
-        })
-    });    
-    $(document).on("submit","#pf_plant_form",function(e){
-        e.preventDefault();
-        var form = new FormData(this);
-        console.log(form);
-        $.ajax({
-            type:"POST",
-            url:"/submit/pf_plant",
-            data:form,
-            processData:false,
-            contentType:false,
-            success:function(response){
-                if(response.status==200){
+            type: "POST",
+            url: "/submit/pf_pond",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
                     alert("postfunding submitted");
                 }
             }
         })
     });
+    $(document).on("submit", "#pf_plant_form", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type: "POST",
+            url: "/submit/pf_plant",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("postfunding submitted");
+                }
+            }
+        })
+    });
+
+    $(document).on('click', '.edit_pf_land', function () {
+    var formId = $(this).val();
+    $.ajax({
+        url: '/get-land-pf-details/' + formId,
+        type: 'GET',
+        success: function (data) {
+            $('#edit_form_id').val(formId);
+            $('#area_pf').val(data.area_pf);
+            $('#editPFModal').modal('show');
+        }
+    });
+});
+$('#editPFForm').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: "{{ route('update.land.pf') }}",
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function (response) {
+            if (response.success) {
+                $('#editPFModal').modal('hide');
+                alert('Post Funding details updated successfully');
+                location.reload(); // Optional: refresh the table
+            }
+        }
+    });
+});
+
+// Show modal and load data
+$(document).on('click', '.edit_pf_pond', function () {
+    var formId = $(this).val();
+    $.get('/edit-pf-pond/' + formId, function (data) {
+        $('#edit_pond_form_id').val(data.form_id);
+        $('#len_pf').val(data.len_pf);
+        $('#bre_pf').val(data.bre_pf);
+        $('#dep_pf').val(data.dep_pf);
+        $('#vol_pf').val(data.vol_pf);
+        $('#area_pf1').val(data.area_pf);
+        $('#editPondPFModal').modal('show');
+    });
+});
+
+// Auto calculate volume
+$('#len_pf, #bre_pf, #dep_pf').on('input', function () {
+    const len = parseFloat($('#len_pf').val()) || 0;
+    const bre = parseFloat($('#bre_pf').val()) || 0;
+    const dep = parseFloat($('#dep_pf').val()) || 0;
+    $('#vol_pf').val((len * bre * dep).toFixed(2));
+});
+
+// Submit form
+$('#editPondPFForm').submit(function (e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/update-pf-pond',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function (response) {
+            if (response.success) {
+                alert('Post Funding updated successfully!');
+                $('#editPondPFModal').modal('hide');
+                location.reload(); // Or update the row dynamically
+            }
+        }
+    });
+});
+$(document).on('click', '.edit_pf_plant', function () {
+    var form_id = $(this).val();
+    $('#plant_form_id').val(form_id);
+
+    $.ajax({
+        url: '/getPlantPostFund/' + form_id,
+        type: 'GET',
+        success: function (data) {
+            $('#plant_nos').val(data.nos);
+            $('#plant_price').val(data.price);
+            $('#plant_other_exp').val(data.other_exp);
+            $('#plant_total_nos').val(data.total_nos);
+            $('#plant_total_price').val(data.total_price);
+            $('#editPlantPFModal').modal('show');
+        }
+    });
+});
+$('#editPlantPFForm').submit(function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: '/updatePlantPostFund',
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function (response) {
+            if (response.success) {
+                $('#editPlantPFModal').modal('hide');
+                location.reload();
+            }
+        }
+    });
+});
+
+
     </script>
 
 
