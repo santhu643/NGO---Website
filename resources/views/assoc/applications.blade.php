@@ -386,7 +386,6 @@
                                                                 <td>
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
-<<<<<<< HEAD
                                                                     <!-- Button to open modal -->
                                                                     <button class="btn btn-warning edit-btn" 
                                                                         value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
@@ -414,11 +413,6 @@
                                                                         </div>
                                                                         </div> -->
                                                                 &nbsp;&nbsp;
-=======
-                                                                    <button class="btn btn-warning edit-btn" value="{{ $f->id }}" title="Edit">
-                                                                        <i class="fas fa-edit"></i>
-                                                                    </button>
->>>>>>> b2dd36a423e476c9f93df831f17b50a2ba43bd62
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
