@@ -904,7 +904,174 @@ public function updatePlantPostFund(Request $request)
     return response()->json(['success' => true]);
 }
 
-    
+public function getBankDetails($form_id)
+{
+    $bank = BankDetail::where('form_id', $form_id)->first();
+
+    if ($bank) {
+        return response()->json([
+            'success' => true,
+            'data' => $bank
+        ]);
+    } else {
+        return response()->json([
+            'success' => false,
+            'message' => 'Bank details not found.'
+        ]);
+    }
+}
+public function updateBankDetails(Request $request)
+{
+    $request->validate([
+        'form_id' => 'required|integer',
+        'holder_name' => 'required|string',
+        'account_number' => 'required|string',
+        'bank_name' => 'required|string',
+        'branch' => 'required|string',
+        'ifsc_code' => 'required|string'
+    ]);
+
+    $bank = BankDetail::where('form_id', $request->form_id)->first();
+
+    if ($bank) {
+        $bank->update([
+            'account_holder_name' => $request->holder_name,
+            'account_number' => $request->account_number,
+            'bank_name' => $request->bank_name,
+            'branch' => $request->branch,
+            'ifsc_code' => $request->ifsc_code
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Bank details updated successfully']);
+    }
+
+    return response()->json(['success' => false, 'message' => 'Bank details not found']);
+}
+public function getFarmerDetails($id)
+{
+    $form = Form::findOrFail($id);
+    return response()->json($form);
+}
+public function updateFarmerDetails(Request $request)
+{
+    $form = Form::findOrFail($request->form_id);
+
+    $form->update([
+        'farmer_name' => $request->farmer_name,
+        'father_spouse' => $request->father_spouse,
+        'mobile_number' => $request->mobile_number,
+        'gender' => $request->gender,
+        'identity_card_type' => $request->identity_card_type,
+        'household_members' => $request->household_members,
+        'identity_card_number' => $request->identity_card_number,
+        'hamlet' => $request->hamlet,
+        'panchayat' => $request->panchayat,
+        'block' => $request->block,
+        'type_of_households' => $request->type_of_households,
+        'special_catog' => $request->special_catog,
+        'caste' => $request->caste,
+        'hh_occupation' => $request->hh_occupation,
+        'type_of_house' => $request->type_of_house,
+        'drinking_water' => $request->drinking_water,
+        'potability' => $request->potability,
+        'domestic_water' => $request->domestic_water,
+        'toilet_availability' => $request->toilet_availability,
+        'toilet_cond' => $request->toilet_cond,
+        'house_owner' => $request->house_owner,
+        'household_education' => $request->household_education,
+        'lat' => $request->lat,
+        'lon' => $request->lon,
+        'mcode' => $request->mcode,
+    ]);
+
+    return response()->json(['message' => 'Form updated successfully']);
+}
+public function getPondDetails($id)
+{
+    $pond = PondForm::where('form_id', $id)->first();
+    return response()->json($pond);
+}
+public function updatePond(Request $request)
+{
+   
+
+    $pond = PondForm::findOrFail($request->pond_id);
+
+    $pond->update([
+        'land_owner' => $request->p_owner,
+        'patta_no' => $request->p_patta,
+        'total_area' => $request->p_tarea,
+        'irrigated_lands' => $request->p_irrigated_lands,
+        'revenue' => $request->p_revenue,
+        'livestocks' => $request->p_livestock,
+        'crop_season' => $request->p_crop_season,
+        'well_irrigation' => $request->p_well_irrigation,
+        'sf_no' => $request->p_sf,
+        'soil_type' => $request->p_soil,
+        'land_to_serve' => $request->p_land,
+        'field_insp' => $request->p_field,
+        'site_appr' => $request->p_site,
+        'type_of_work' => $request->p_type_of_work,
+        'date_of_insp' => $request->p_doi,
+        'date_of_appr' => $request->p_doa,
+        'length' => $request->p_len,
+        'depth' => $request->p_dep,
+        'breadth' => $request->p_breadth,
+        'volume' => $request->p_vol,
+        'pradan_cont' => $request->p_pcont,
+        'farmer_cont' => $request->p_fcont,
+        'total' => $request->total,
+    ]);
+
+    return response()->json(['success' => true]);
+}
+public function getPlantForm(Request $request)
+{
+    $formId = $request->form_id;
+    $plant = PlantForm::where('form_id', $formId)->first();
+
+    if ($plant) {
+        return response()->json(['success' => true, 'data' => $plant]);
+    } else {
+        return response()->json(['success' => false]);
+    }
+}
+public function updatePlantForm(Request $request)
+{
+    $plant = PlantForm::find($request->plant_id);
+
+    if ($plant) {
+        $plant->update([
+            'ownership' => $request->pl_ownership,
+            'well_irrigation' => $request->pl_well_irrigation,
+            'area_irrigated' => $request->pl_area_irrigated,
+            'irrigated_lands' => $request->pl_irrigated_lands,
+            'patta' => $request->pl_patta,
+            'total_area' => $request->pl_total_area,
+            'revenue' => $request->pl_revenue,
+            'crop_season' => $request->pl_crop_season,
+            'livestocks' => $request->pl_livestock,
+            'plantation' => $request->pl_type,
+            'sf_no' => $request->pl_sf_no,
+            'soil_type' => $request->pl_soil_type,
+            'land_benefit' => $request->pl_land_benefit,
+            'field_insp' => $request->pl_field_inspection,
+            'site_app' => $request->pl_site_approval,
+            'date_of_ins' => $request->pl_date_of_inspection,
+            'date_of_app' => $request->pl_date_of_approval,
+            'type_of_work' => $request->pl_type_of_work,
+            'area_benefit' => $request->pl_area_benefit,
+            'other_works' => $request->pl_other_works,
+            'pradan_cont' => $request->pl_pradan_contribution,
+            'farmer_cont' => $request->pl_farmer_contribution,
+            'total_amount' => $request->pl_total_amount
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Updated successfully']);
+    }
+
+    return response()->json(['success' => false, 'message' => 'Plant form not found']);
+}
 
     
 }
