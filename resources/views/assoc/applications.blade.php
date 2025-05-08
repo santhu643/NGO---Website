@@ -32,6 +32,26 @@
 
 
     <style>
+.edit-dropdown {
+    z-index: 1000;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px 0;
+    min-width: 180px;
+}
+.dropdown-item {
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+}
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+
         /*        
 .list-group-item {
     padding: 10px 20px;
@@ -384,8 +404,19 @@
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
                                                                     <!-- Button to open modal -->
-                                                                    <button class="btn btn-warning edit-btn" 
-                                                                        value="{{ $f->id }}">Edit</button>&nbsp;&nbsp;
+                                                                    <!-- Edit Button -->
+<!-- Wrapper to position dropdown relative to this container -->
+<div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
+    <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
+
+    <!-- Positioned absolutely inside relative parent -->
+    <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
+        <button class="dropdown-item detail-btn" id="farmer-{{ $f->id }}">Farmer Details</button>
+        <button class="dropdown-item detail-btn" id="land-{{ $f->id }}">Land Details</button>
+        <button class="dropdown-item detail-btn" id="bank-{{ $f->id }}">Bank Details</button>
+    </div>
+</div>
+&nbsp;&nbsp;
                                                                          <!-- Modal -->
                                                                          <!-- <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
@@ -1776,6 +1807,32 @@
             });
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                // Hide all other dropdowns
+                document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
+
+                const id = this.value;
+                const dropdown = document.getElementById('edit-dropdown-' + id);
+                dropdown.style.display = 'block';
+            });
+        });
+
+        document.addEventListener('click', function () {
+            document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
+        });
+
+        document.querySelectorAll('.detail-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                const clickedId = this.id;
+                alert('Clicked: ' + clickedId); // Or your logic
+            });
+        });
+    });
+
         /* $(document).on("click", ".editFarmerBtn", function() {
             var form_id = $(this).data("form-id");  // Retrieve the form_id from the data-form-id attribute
             console.log(form_id);  // Print the form_id in the console
@@ -1833,7 +1890,7 @@
         
 
 
-    </script>
+  
 
 
     </script>
