@@ -34,176 +34,177 @@
 
 
     <style>
-        .step {
-            display: none;
-        }
+    .step {
+        display: none;
+    }
 
-        .step.active {
-            display: block;
-        }
+    .step.active {
+        display: block;
+    }
 
-        .step3-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+    .step3-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
 
-            /* Added spacing */
-        }
-        #land_table tbody tr {
-            height: 80px;
-            /* Adjust as needed */
-            vertical-align: middle;
-        }
+        /* Added spacing */
+    }
 
-        #land_table td,
-        #land_table th {
-            padding: 1rem !important;
-            font-size: 15px;
-        }
+    #land_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
 
-        #land_table .btn {
-            padding: 10px 20px !important;
-            font-size: 16px !important;
-            /* border-radius: 0.25rem !important; */
-        }
+    #land_table td,
+    #land_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
 
-        #pond_table tbody tr {
-            height: 80px;
-            /* Adjust as needed */
-            vertical-align: middle;
-        }
+    #land_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
 
-        #pond_table td,
-        #pond_table th {
-            padding: 1rem !important;
-            font-size: 15px;
-        }
+    #pond_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
 
-        #pond_table .btn {
-            padding: 10px 20px !important;
-            font-size: 16px !important;
-            /* border-radius: 0.25rem !important; */
-        }
+    #pond_table td,
+    #pond_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
 
-        #plant_table tbody tr {
-            height: 80px;
-            /* Adjust as needed */
-            vertical-align: middle;
-        }
+    #pond_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
 
-        #plant_table td,
-        #plant_table th {
-            padding: 1rem !important;
-            font-size: 15px;
-        }
+    #plant_table tbody tr {
+        height: 80px;
+        /* Adjust as needed */
+        vertical-align: middle;
+    }
 
-        #plant_table .btn {
-            padding: 10px 20px !important;
-            font-size: 16px !important;
-            /* border-radius: 0.25rem !important; */
-        }
+    #plant_table td,
+    #plant_table th {
+        padding: 1rem !important;
+        font-size: 15px;
+    }
 
-        .dataTables_wrapper .dataTables_filter input {
-            margin-left: 0.5rem;
-            padding: 5px 10px;
-        }
+    #plant_table .btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        /* border-radius: 0.25rem !important; */
+    }
 
-        /* General Table Styling */
-        .dataTables_wrapper .dataTables_filter input {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
-            border-radius: 0.25rem;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
+    .dataTables_wrapper .dataTables_filter input {
+        margin-left: 0.5rem;
+        padding: 5px 10px;
+    }
 
-        .dataTables_wrapper .dataTables_filter input:focus {
-            border-color: #4b49ac;
-            box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
-        }
+    /* General Table Styling */
+    .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        border-radius: 0.25rem;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.2s;
+    }
 
-        /* Pagination Buttons */
-        .dataTables_wrapper .dataTables_paginate .paginate_button {
-            padding: 6px 12px;
-            margin: 0 2px;
-            border-radius: 0.25rem;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            font-size: 14px;
-            color: #333;
-            transition: all 0.3s ease;
-        }
+    .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: #4b49ac;
+        box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
+    }
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            background-color: #4b49ac;
-            color: #fff !important;
-            border-color: #4b49ac;
-        }
+    /* Pagination Buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 6px 12px;
+        margin: 0 2px;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
 
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            background-color: #134E13;
-            color: white !important;
-            border-color: #fff;
-        }
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #4b49ac;
+        color: #fff !important;
+        border-color: #4b49ac;
+    }
 
-        /* Table Info Text */
-        .dataTables_wrapper .dataTables_info {
-            font-size: 14px;
-            margin-top: 10px;
-        }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #134E13;
+        color: white !important;
+        border-color: #fff;
+    }
 
-        /* Search Label */
-        .dataTables_wrapper .dataTables_filter label {
-            font-weight: 600;
-            font-size: 14px;
-        }
+    /* Table Info Text */
+    .dataTables_wrapper .dataTables_info {
+        font-size: 14px;
+        margin-top: 10px;
+    }
 
-        /* Hide the default 'Search:' label text */
-        .dataTables_wrapper .dataTables_filter label {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0;
-            /* Hides text but keeps layout */
-        }
+    /* Search Label */
+    .dataTables_wrapper .dataTables_filter label {
+        font-weight: 600;
+        font-size: 14px;
+    }
 
-        /* Search input styling */
-        .dataTables_wrapper .dataTables_filter input {
-            margin-top: 5px;
-            margin-right: 3px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            padding: 8px 12px 8px 35px;
-            /* left space for icon */
-            border-radius: 25px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.2s;
-            width: 250px;
-            background-color: #fff;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: 10px center;
-            background-size: 16px 16px;
-        }
+    /* Hide the default 'Search:' label text */
+    .dataTables_wrapper .dataTables_filter label {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0;
+        /* Hides text but keeps layout */
+    }
 
-        .dataTables_wrapper .dataTables_filter input:focus {
-            border-color: #134E13;
-            box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
-            outline: none;
-        }
+    /* Search input styling */
+    .dataTables_wrapper .dataTables_filter input {
+        margin-top: 5px;
+        margin-right: 3px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 8px 12px 8px 35px;
+        /* left space for icon */
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+        transition: all 0.2s;
+        width: 250px;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: 16px 16px;
+    }
 
-        /* Responsive Wrapping Fix */
-        @media (max-width: 768px) {
+    .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: #134E13;
+        box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
+        outline: none;
+    }
 
-            .dataTables_wrapper .dataTables_filter,
-            .dataTables_wrapper .dataTables_paginate {
-                text-align: center;
-                float: none !important;
-            }
+    /* Responsive Wrapping Fix */
+    @media (max-width: 768px) {
+
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_paginate {
+            text-align: center;
+            float: none !important;
         }
+    }
     </style>
 </head>
 
@@ -211,10 +212,10 @@
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
-                        alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
-                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
+                        src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{route('vol')}}"><img
+                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -300,7 +301,8 @@
 
 
                                     <div class="tab-pane p-20 active" id="landform" role="tabpanel">
-                                        <button class="btn btn-primary mb-3" onclick="downloadLandTable()">Download Excel</button>
+                                        <button class="btn btn-primary mb-3" onclick="downloadLandTable()">Download
+                                            Excel</button>
 
                                         <div class="card">
                                             <div class="card-body">
@@ -310,42 +312,66 @@
                                                         class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>External Ref No</th>
-                                                                <th>Debit Account No</th>
-                                                                <th>Amount</th>
-                                                                <th>Bene name</th>
+                                                                <th>S No</th>
+                                                                <th>District</th>
+                                                                <th>Block</th>
+                                                                <th>Panchayat</th>
+                                                                <th>Hamlet</th>
+                                                                <th>Code Number</th>
+                                                                <th>Father name</th>
+                                                                <th>Father/Spouse</th>
+                                                                <th>Gender</th>
+                                                                <th>Category</th>
+                                                                <th>ID Number</th>
+                                                                <th>Mobile Number</th>
+                                                                <th>Patta Number</th>
+                                                                <th>Latitude</th>
+                                                                <th>Longitude</th>
+                                                                <th>PRADAN Cont</th>
+                                                                <th>People Cont</th>
+                                                                <th>Total Cont</th>
+                                                                <th>Account Number</th>
+                                                                <th>IFSC</th>
                                                                 <th>Bank Name</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2 </th>
-                                                                <th>Address3</th>
-                                                                <th>Account no</th>
-                                                                <th>IFSC Code</th>
-                                                                <th>Purpose 1</th>
-                                                                <th>Purpose 2</th>
-                                                                <th>Purpose 3</th>
-
-
+                                                                <th>Branch</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>#TN0123</td>
-                                                                <td>123456789012</td>
-                                                                <td>15000</td>
-                                                                <td>Ravi Kumar</td>
-                                                                <td>State Bank of India</td>
-                                                                <td>Green Hamlet</td>
-                                                                <td>Kaveripattinam</td>
-                                                                <td>Krishnagiri</td>
-                                                                <td>987654321012</td>
-                                                                <td>SBIN0001234</td>
-                                                                <td>Land Development</td>
-                                                                <td>Post Funding</td>
-                                                                <td>MGNREGA</td>
+                                                            @php $i = 1; @endphp
+                                                            @foreach($form1 as $form)
+                                                            <tr class="text-center">
+                                                                <td>{{ $i++ }}</td>
+                                                                <td>{{ $form->district ?? 'NA' }}</td>
+                                                                <td>{{ $form->block ?? 'NA' }}</td>
+                                                                <td>{{ $form->panchayat ?? 'NA' }}</td>
+                                                                <td>{{ $form->hamlet ?? 'NA' }}</td>
+                                                                <td>{{ $form->mcode ?? 'NA' }}</td>
+                                                                <td>{{ $form->farmer_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->father_spouse ?? 'NA' }}</td>
+                                                                <td>{{ $form->gender ?? 'NA' }}</td>
+                                                                <td>{{ $form->caste ?? 'NA' }}</td>
+                                                                <td>{{ $form->identity_card_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->mobile_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->landForm->patta ?? 'NA' }}</td>
+                                                                <td>{{ $form->lat ?? 'NA' }}</td>
+                                                                <td>{{ $form->lon ?? 'NA' }}</td>
+                                                                <td>{{ $form->landForm->pradan_cont ?? 0 }}</td>
+                                                                <td>{{ $form->landForm->farmer_cont ?? 0 }}</td>
+                                                                <td>
+                                                                    {{ 
+                    ($form->landForm->pradan_cont ?? 0) 
+                    + 
+                    ($form->landForm->farmer_cont ?? 0) 
+                }}
+                                                                </td>
+                                                                <td>{{ $form->bankDetail->account_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->ifsc_code ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->bank_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->branch ?? 'NA' }}</td>
                                                             </tr>
-
-
+                                                            @endforeach
                                                         </tbody>
+
 
                                                     </table>
                                                 </div>
@@ -354,32 +380,77 @@
                                     </div>
 
                                     <div class="tab-pane p-20" id="pondform" role="tabpanel">
+                                        <button class="btn btn-primary mb-3" onclick="downloadPondTable()">Download
+                                            Excel</button>
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Pond Form</h4>
                                                 <div class="table-responsive">
-                                                    <table id="pond_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                     <table id="pond_table"
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>External Ref No</th>
-                                                                <th>Debit Account No</th>
-                                                                <th>Amount</th>
-                                                                <th>Bene name</th>
+                                                                <th>S No</th>
+                                                                <th>District</th>
+                                                                <th>Block</th>
+                                                                <th>Panchayat</th>
+                                                                <th>Hamlet</th>
+                                                                <th>Code Number</th>
+                                                                <th>Father name</th>
+                                                                <th>Father/Spouse</th>
+                                                                <th>Gender</th>
+                                                                <th>Category</th>
+                                                                <th>ID Number</th>
+                                                                <th>Mobile Number</th>
+                                                                <th>Patta Number</th>
+                                                                <th>Latitude</th>
+                                                                <th>Longitude</th>
+                                                                <th>PRADAN Cont</th>
+                                                                <th>People Cont</th>
+                                                                <th>Total Cont</th>
+                                                                <th>Account Number</th>
+                                                                <th>IFSC</th>
                                                                 <th>Bank Name</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2 </th>
-                                                                <th>Address3</th>
-                                                                <th>Account no</th>
-                                                                <th>IFSC Code</th>
-                                                                <th>Purpose 1</th>
-                                                                <th>Purpose 2</th>
-                                                                <th>Purpose 3</th>
-
-
+                                                                <th>Branch</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody></tbody>
+                                                        <tbody>
+                                                            @php $i = 1; @endphp
+                                                            @foreach($form2 as $form)
+                                                            <tr class="text-center">
+                                                                <td>{{ $i++ }}</td>
+                                                                <td>{{ $form->district ?? 'NA' }}</td>
+                                                                <td>{{ $form->block ?? 'NA' }}</td>
+                                                                <td>{{ $form->panchayat ?? 'NA' }}</td>
+                                                                <td>{{ $form->hamlet ?? 'NA' }}</td>
+                                                                <td>{{ $form->mcode ?? 'NA' }}</td>
+                                                                <td>{{ $form->farmer_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->father_spouse ?? 'NA' }}</td>
+                                                                <td>{{ $form->gender ?? 'NA' }}</td>
+                                                                <td>{{ $form->caste ?? 'NA' }}</td>
+                                                                <td>{{ $form->identity_card_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->mobile_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->pondForm->patta ?? 'NA' }}</td>
+                                                                <td>{{ $form->lat ?? 'NA' }}</td>
+                                                                <td>{{ $form->lon ?? 'NA' }}</td>
+                                                                <td>{{ $form->pondForm->pradan_cont ?? 0 }}</td>
+                                                                <td>{{ $form->pondForm->farmer_cont ?? 0 }}</td>
+                                                                <td>
+                                                                    {{ 
+                    ($form->pondForm->pradan_cont ?? 0) 
+                    + 
+                    ($form->pondForm->farmer_cont ?? 0) 
+                }}
+                                                                </td>
+                                                                <td>{{ $form->bankDetail->account_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->ifsc_code ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->bank_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->branch ?? 'NA' }}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+
+
                                                     </table>
                                                 </div>
                                             </div>
@@ -387,32 +458,77 @@
                                     </div>
 
                                     <div class="tab-pane p-20" id="plantform" role="tabpanel">
+                                        <button class="btn btn-primary mb-3" onclick="downloadPlantTable()">Download
+                                            Excel</button>
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Plantation Form</h4>
                                                 <div class="table-responsive">
                                                     <table id="plant_table"
-                                                        class="table table-bordered table-hover table-striped">
+                                                        class="table table-bordered table-hover table-striped text-center">
                                                         <thead class="text-center table-dark">
                                                             <tr>
-                                                                <th>External Ref No</th>
-                                                                <th>Debit Account No</th>
-                                                                <th>Amount</th>
-                                                                <th>Bene name</th>
+                                                                <th>S No</th>
+                                                                <th>District</th>
+                                                                <th>Block</th>
+                                                                <th>Panchayat</th>
+                                                                <th>Hamlet</th>
+                                                                <th>Code Number</th>
+                                                                <th>Father name</th>
+                                                                <th>Father/Spouse</th>
+                                                                <th>Gender</th>
+                                                                <th>Category</th>
+                                                                <th>ID Number</th>
+                                                                <th>Mobile Number</th>
+                                                                <th>Patta Number</th>
+                                                                <th>Latitude</th>
+                                                                <th>Longitude</th>
+                                                                <th>PRADAN Cont</th>
+                                                                <th>People Cont</th>
+                                                                <th>Total Cont</th>
+                                                                <th>Account Number</th>
+                                                                <th>IFSC</th>
                                                                 <th>Bank Name</th>
-                                                                <th>Address1</th>
-                                                                <th>Address2 </th>
-                                                                <th>Address3</th>
-                                                                <th>Account no</th>
-                                                                <th>IFSC Code</th>
-                                                                <th>Purpose 1</th>
-                                                                <th>Purpose 2</th>
-                                                                <th>Purpose 3</th>
-
-
+                                                                <th>Branch</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody></tbody>
+                                                        <tbody>
+                                                            @php $i = 1; @endphp
+                                                            @foreach($form3 as $form)
+                                                            <tr class="text-center">
+                                                                <td>{{ $i++ }}</td>
+                                                                <td>{{ $form->district ?? 'NA' }}</td>
+                                                                <td>{{ $form->block ?? 'NA' }}</td>
+                                                                <td>{{ $form->panchayat ?? 'NA' }}</td>
+                                                                <td>{{ $form->hamlet ?? 'NA' }}</td>
+                                                                <td>{{ $form->mcode ?? 'NA' }}</td>
+                                                                <td>{{ $form->farmer_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->father_spouse ?? 'NA' }}</td>
+                                                                <td>{{ $form->gender ?? 'NA' }}</td>
+                                                                <td>{{ $form->caste ?? 'NA' }}</td>
+                                                                <td>{{ $form->identity_card_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->mobile_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->plantForm->patta ?? 'NA' }}</td>
+                                                                <td>{{ $form->lat ?? 'NA' }}</td>
+                                                                <td>{{ $form->lon ?? 'NA' }}</td>
+                                                                <td>{{ $form->plantForm->pradan_cont ?? 0 }}</td>
+                                                                <td>{{ $form->plantForm->farmer_cont ?? 0 }}</td>
+                                                                <td>
+                                                                    {{ 
+                    ($form->plantForm->pradan_cont ?? 0) 
+                    + 
+                    ($form->plantForm->farmer_cont ?? 0) 
+                }}
+                                                                </td>
+                                                                <td>{{ $form->bankDetail->account_number ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->ifsc_code ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->bank_name ?? 'NA' }}</td>
+                                                                <td>{{ $form->bankDetail->branch ?? 'NA' }}</td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+
+
                                                     </table>
                                                 </div>
                                             </div>
@@ -450,7 +566,8 @@
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
                 <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
-                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Row 1 -->
@@ -593,7 +710,8 @@
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
                 <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Farmer Details</h5>
-                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Row 1 -->
@@ -736,7 +854,8 @@
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
                 <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Pond Details</h5>
-                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Rows for Pond Details -->
@@ -858,7 +977,8 @@
             <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
                 <div class="modal-header" style="background-color: #134E13; border-bottom: 2px solid #dee2e6;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Bank Details</h5>
-                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row border p-3 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
@@ -893,7 +1013,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Land Detail Modal -->
     <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -1042,531 +1162,641 @@
     </div>
 
     <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function() {
+        $('#land_table').DataTable({
+            lengthChange: false
         });
-        $(document).ready(function() {
-            $('#land_table').DataTable({
-                lengthChange: false
-            });
-            $('#pond_table').DataTable({
-                lengthChange: false
-            });
-            $('#plant_table').DataTable({
-                lengthChange: false
-            });
-            $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
-            $('#pond_table_filter input[type="search"]').attr('placeholder', 'Search...');
-            $('#plant_table_filter input[type="search"]').attr('placeholder', 'Search...');
+        $('#pond_table').DataTable({
+            lengthChange: false
+        });
+        $('#plant_table').DataTable({
+            lengthChange: false
+        });
+        $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
+        $('#pond_table_filter input[type="search"]').attr('placeholder', 'Search...');
+        $('#plant_table_filter input[type="search"]').attr('placeholder', 'Search...');
 
+    });
+
+    $(document).ready(function() {
+        $('#length, #breadth, #depth').on('input', function() {
+            let length = parseFloat($('#length').val()) || 0;
+            let breadth = parseFloat($('#breadth').val()) || 0;
+            let depth = parseFloat($('#depth').val()) || 0;
+            let volume = length * breadth * depth;
+            $('#volume').val(volume.toFixed(2));
         });
 
-        $(document).ready(function() {
-            $('#length, #breadth, #depth').on('input', function() {
-                let length = parseFloat($('#length').val()) || 0;
-                let breadth = parseFloat($('#breadth').val()) || 0;
-                let depth = parseFloat($('#depth').val()) || 0;
-                let volume = length * breadth * depth;
-                $('#volume').val(volume.toFixed(2));
-            });
 
-
-        });
+    });
     </script>
 
     <script>
-        function nextStep(current, next) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + next).style.display = 'block';
+    function nextStep(current, next) {
+        document.getElementById('step' + current).style.display = 'none';
+        document.getElementById('step' + next).style.display = 'block';
+    }
+
+    function prevStep(current, prev) {
+        document.getElementById('step' + current).style.display = 'none';
+        document.getElementById('step' + prev).style.display = 'block';
+    }
+
+
+
+    function updateIdentityTitle() {
+        const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+        const fileUploadLabel = document.getElementById("fileUploadLabel");
+        if (selectedIdentity) {
+            fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
         }
+    }
 
-        function prevStep(current, prev) {
-            document.getElementById('step' + current).style.display = 'none';
-            document.getElementById('step' + prev).style.display = 'block';
-        }
+    function nextStep(current, next) {
+        document.getElementById("step" + current).style.display = "none";
+        document.getElementById("step" + next).style.display = "block";
+    }
 
+    function prevStep(current, previous) {
+        document.getElementById("step" + current).style.display = "none";
+        document.getElementById("step" + previous).style.display = "block";
+    };
 
-
-        function updateIdentityTitle() {
-            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
-            const fileUploadLabel = document.getElementById("fileUploadLabel");
-            if (selectedIdentity) {
-                fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
+    $(document).on("submit", "#landform", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        $.ajax({
+            type: "POST",
+            url: "/form_land",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form Submitted Successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
+                } else {
+                    alert("something went wrong");
+                }
             }
-        }
+        })
 
-        function nextStep(current, next) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + next).style.display = "block";
-        }
+    })
 
-        function prevStep(current, previous) {
-            document.getElementById("step" + current).style.display = "none";
-            document.getElementById("step" + previous).style.display = "block";
-        };
 
-        $(document).on("submit", "#landform", function(e) {
-            e.preventDefault();
-            var form = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "/form_land",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        Swal.fire({
-                            title: "Success!",
-                            text: "Form Submitted Successfully",
-                            icon: "success",
-                            confirmButtonText: "OK"
-                        });
-                    } else {
-                        alert("something went wrong");
-                    }
+    $(document).on("click", "#farmer_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_farmer_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    console.log(response.data);
+                    $("#f_name").text(response.data.farmer_name);
+                    $("#f_spouse").text(response.data.father_spouse);
+                    $("#f_mobile").text(response.data.mobile_number);
+                    $("#f_gender").text(response.data.gender);
+                    $("#f_card").text(response.data.identity_card_type);
+                    $("#f_member").text(response.data.household_members);
+                    $("#f_number").text(response.data.identity_card_number);
+                    $("#f_hamlet").text(response.data.hamlet);
+                    $("#f_panchayat").text(response.data.panchayat);
+                    $("#f_block").text(response.data.block);
+                    $("#f_household_type").text(response.data.type_of_households);
+                    $("#f_special_category").text(response.data.special_catog);
+                    $("#f_caste").text(response.data.caste);
+                    $("#f_occupation").text(response.data.hh_occupation);
+                    $("#f_house_type").text(response.data.type_of_house);
+                    $("#f_drinking_water").text(response.data.drinking_water);
+                    $("#f_potability").text(response.data.potability);
+                    $("#f_domestic_water").text(response.data.domestic_water);
+                    $("#f_toilet_availability").text(response.data.toilet_availability);
+                    $("#f_toilet_condition").text(response.data.toilet_cond);
+                    $("#f_house_owner").text(response.data.house_owner);
+                    $("#f_household_education").text(response.data.household_education);
+                    $("#f_latitude").text(response.data.lat);
+                    $("#f_longitude").text(response.data.lon);
+                    $("#f_mcode").text(response.data.mcode);
+
+                    $("#farmerdet_modal").modal("show");
                 }
-            })
+
+            }
+
+        })
+    });
+
+    $(document).on("click", "#land_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_land_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+                    $("#l_ownership").text(response.data.ownership);
+                    $("#l_well_irrigation").text(response.data.well_irrigation); // Newly added
+                    $("#l_area_irrigated").text(response.data.area_irrigated); // Newly added
+                    $("#l_irrigated_lands").text(response.data.irrigated_lands); // Newly added
+                    $("#l_patta").text(response.data.patta);
+                    $("#l_tarea").text(response.data.total_area);
+                    $("#l_revenue").text(response.data.revenue);
+                    $("#l_sf").text(response.data.sf_no);
+                    $("#l_soil").text(response.data.soil_type);
+                    $("#l_benefit").text(response.data.land_benefit);
+                    $("#l_field").text(response.data.field_insp);
+                    $("#l_site").text(response.data.site_app);
+                    $("#l_doi").text(response.data.date_of_ins);
+                    $("#l_doa").text(response.data.date_of_app);
+                    $("#l_type").text(response.data.type_of_work);
+                    $("#l_area").text(response.data.area_benefit);
+                    $("#l_oth").text(response.data.other_works);
+                    $("#l_pradan").text(response.data.pradan_cont);
+                    $("#l_farmer").text(response.data.farmer_cont);
+                    $("#l_total").text(response.data.total_amount);
+
+                    $("#landdet_modal").modal("show");
+
+                }
+            }
+
+        })
+    });
+
+    $(document).on("click", "#bank_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: `/fetch_bank_det/${form_id}`,
+            success: function(response) {
+                if (response.status == 200) {
+
+
+                    $("#b_hname").text(response.data.account_holder_name);
+                    $("#b_no").text(response.data.account_number);
+                    $("#b_name").text(response.data.bank_name);
+                    $("#b_branch").text(response.data.branch);
+                    $("#b_ifsc").text(response.data.ifsc_code);
+                    $("#bankdet_modal").modal("show");
+
+
+                }
+            }
 
         })
 
 
-        $(document).on("click", "#farmer_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_farmer_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        console.log(response.data);
-                        $("#f_name").text(response.data.farmer_name);
-                        $("#f_spouse").text(response.data.father_spouse);
-                        $("#f_mobile").text(response.data.mobile_number);
-                        $("#f_gender").text(response.data.gender);
-                        $("#f_card").text(response.data.identity_card_type);
-                        $("#f_member").text(response.data.household_members);
-                        $("#f_number").text(response.data.identity_card_number);
-                        $("#f_hamlet").text(response.data.hamlet);
-                        $("#f_panchayat").text(response.data.panchayat);
-                        $("#f_block").text(response.data.block);
-                        $("#f_household_type").text(response.data.type_of_households);
-                        $("#f_special_category").text(response.data.special_catog);
-                        $("#f_caste").text(response.data.caste);
-                        $("#f_occupation").text(response.data.hh_occupation);
-                        $("#f_house_type").text(response.data.type_of_house);
-                        $("#f_drinking_water").text(response.data.drinking_water);
-                        $("#f_potability").text(response.data.potability);
-                        $("#f_domestic_water").text(response.data.domestic_water);
-                        $("#f_toilet_availability").text(response.data.toilet_availability);
-                        $("#f_toilet_condition").text(response.data.toilet_cond);
-                        $("#f_house_owner").text(response.data.house_owner);
-                        $("#f_household_education").text(response.data.household_education);
-                        $("#f_latitude").text(response.data.lat);
-                        $("#f_longitude").text(response.data.lon);
-                        $("#f_mcode").text(response.data.mcode);
+    });
 
-                        $("#farmerdet_modal").modal("show");
-                    }
+    $(document).on("click", "#pond_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log("deiiii")
+        $.ajax({
+            type: "GET",
+            url: `/fetch_pond_det/${form_id}`,
+            success: function(response) {
+                console.log(response);
+                if (response.status == 200) {
+                    $("#p_owner").text(response.data.land_owner);
+                    $("#p_patta").text(response.data.patta);
+                    $("#p_tarea").text(response.data.total_area);
+                    $("#p_irrigated_lands").text(response.data.irrigated_lands); // Newly added
+                    $("#p_revenue").text(response.data.revenue);
+                    $("#p_livestock").text(response.data.livestocks); // Newly added
+                    $("#p_crop_season").text(response.data.crop_season); // Newly added
+                    $("#p_well_irrigation").text(response.data.well_irrigation); // Newly added
+                    $("#p_sf").text(response.data.sf_no);
+                    $("#p_soil").text(response.data.soil_type);
+                    $("#p_land").text(response.data.land_serve);
+                    $("#p_field").text(response.data.field_insp);
+                    $("#p_site").text(response.data.site_appr);
+                    $("#p_type_of_work").text(response.data.type_of_work); // Newly added
+                    $("#p_doi").text(response.data.date_of_insp);
+                    $("#p_doa").text(response.data.date_of_appr);
+                    $("#p_len").text(response.data.length);
+                    $("#p_dep").text(response.data.depth);
+                    $("#p_breadth").text(response.data.breadth); // Newly added
+                    $("#p_vol").text(response.data.volume);
+                    $("#p_pcont").text(response.data.pradan_cont);
+                    $("#p_fcont").text(response.data.farmer_cont);
+                    $("#total").text(response.data.total);
+
+                    $("#ponddet_modal").modal("show");
+
 
                 }
+            }
 
-            })
-        });
-
-        $(document).on("click", "#land_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_land_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
-                        $("#l_ownership").text(response.data.ownership);
-                        $("#l_well_irrigation").text(response.data.well_irrigation); // Newly added
-                        $("#l_area_irrigated").text(response.data.area_irrigated); // Newly added
-                        $("#l_irrigated_lands").text(response.data.irrigated_lands); // Newly added
-                        $("#l_patta").text(response.data.patta);
-                        $("#l_tarea").text(response.data.total_area);
-                        $("#l_revenue").text(response.data.revenue);
-                        $("#l_sf").text(response.data.sf_no);
-                        $("#l_soil").text(response.data.soil_type);
-                        $("#l_benefit").text(response.data.land_benefit);
-                        $("#l_field").text(response.data.field_insp);
-                        $("#l_site").text(response.data.site_app);
-                        $("#l_doi").text(response.data.date_of_ins);
-                        $("#l_doa").text(response.data.date_of_app);
-                        $("#l_type").text(response.data.type_of_work);
-                        $("#l_area").text(response.data.area_benefit);
-                        $("#l_oth").text(response.data.other_works);
-                        $("#l_pradan").text(response.data.pradan_cont);
-                        $("#l_farmer").text(response.data.farmer_cont);
-                        $("#l_total").text(response.data.total_amount);
-
-                        $("#landdet_modal").modal("show");
-
-                    }
-                }
-
-            })
-        });
-
-        $(document).on("click", "#bank_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: `/fetch_bank_det/${form_id}`,
-                success: function(response) {
-                    if (response.status == 200) {
+        })
 
 
-                        $("#b_hname").text(response.data.account_holder_name);
-                        $("#b_no").text(response.data.account_number);
-                        $("#b_name").text(response.data.bank_name);
-                        $("#b_branch").text(response.data.branch);
-                        $("#b_ifsc").text(response.data.ifsc_code);
-                        $("#bankdet_modal").modal("show");
+    });
 
 
-                    }
-                }
+    $(document).on("click", "#plant_detail", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log("deiiii")
+        $.ajax({
+            type: "GET",
+            url: `/fetch_plant_det/${form_id}`,
+            success: function(response) {
+                console.log(response);
+                $("#plant_ownership").text(response.data.ownership);
+                $("#plant_well_irrigation").text(response.data.well_irrigation);
+                $("#plant_area_irrigated").text(response.data.area_irrigated);
+                $("#plant_irrigated_lands").text(response.data.irrigated_lands);
+                $("#plant_patta").text(response.data.patta);
+                $("#plant_total_area").text(response.data.total_area);
+                $("#plant_revenue").text(response.data.revenue);
+                $("#plant_crop_season").text(response.data.crop_season);
+                $("#plant_livestock").text(response.data.livestocks);
+                $("#plant_type").text(response.data.plantation);
+                $("#plant_sf_no").text(response.data.sf_no);
+                $("#plant_soil_type").text(response.data.soil_type);
+                $("#plant_land_benefit").text(response.data.land_benefit);
+                $("#plant_field_inspection").text(response.data.field_insp);
+                $("#plant_site_approval").text(response.data.site_app);
+                $("#plant_date_of_inspection").text(response.data.date_of_ins);
+                $("#plant_date_of_approval").text(response.data.date_of_app);
+                $("#plant_type_of_work").text(response.data.type_of_work);
+                $("#plant_area_benefit").text(response.data.area_benefit);
+                $("#plant_other_works").text(response.data.other_works);
+                $("#plant_pradan_contribution").text(response.data.pradan_cont);
+                $("#plant_farmer_contribution").text(response.data.farmer_cont);
+                $("#plant_total_amount").text(response.data.total_amount);
 
-            })
+                $("#plantdet_modal").modal("show");
+            }
 
-
-        });
-
-        $(document).on("click", "#pond_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            console.log("deiiii")
-            $.ajax({
-                type: "GET",
-                url: `/fetch_pond_det/${form_id}`,
-                success: function(response) {
-                    console.log(response);
-                    if (response.status == 200) {
-                        $("#p_owner").text(response.data.land_owner);
-                        $("#p_patta").text(response.data.patta);
-                        $("#p_tarea").text(response.data.total_area);
-                        $("#p_irrigated_lands").text(response.data.irrigated_lands); // Newly added
-                        $("#p_revenue").text(response.data.revenue);
-                        $("#p_livestock").text(response.data.livestocks); // Newly added
-                        $("#p_crop_season").text(response.data.crop_season); // Newly added
-                        $("#p_well_irrigation").text(response.data.well_irrigation); // Newly added
-                        $("#p_sf").text(response.data.sf_no);
-                        $("#p_soil").text(response.data.soil_type);
-                        $("#p_land").text(response.data.land_serve);
-                        $("#p_field").text(response.data.field_insp);
-                        $("#p_site").text(response.data.site_appr);
-                        $("#p_type_of_work").text(response.data.type_of_work); // Newly added
-                        $("#p_doi").text(response.data.date_of_insp);
-                        $("#p_doa").text(response.data.date_of_appr);
-                        $("#p_len").text(response.data.length);
-                        $("#p_dep").text(response.data.depth);
-                        $("#p_breadth").text(response.data.breadth); // Newly added
-                        $("#p_vol").text(response.data.volume);
-                        $("#p_pcont").text(response.data.pradan_cont);
-                        $("#p_fcont").text(response.data.farmer_cont);
-                        $("#total").text(response.data.total);
-
-                        $("#ponddet_modal").modal("show");
+        })
 
 
-                    }
-                }
+    });
 
-            })
+    /*  $(document).on("click", ".coor_appr1", function(e) {
+         e.preventDefault();
+         var form_id = $(this).val();
+         console.log(form_id);
+         $.ajax({
+             type: "POST",
+             url: `/coor_appr1/${form_id}`,
+             data: {
+                 _token: $('meta[name="csrf-token"]').attr('content')
+             },
+             success: function(response) {
+                 if (response.status == 200) {
+                     alert("Forwarded to finance manager");
+                 } else {
+                     alert("something went wrong");
 
-
-        });
-
-
-        $(document).on("click", "#plant_detail", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            console.log("deiiii")
-            $.ajax({
-                type: "GET",
-                url: `/fetch_plant_det/${form_id}`,
-                success: function(response) {
-                    console.log(response);
-                    $("#plant_ownership").text(response.data.ownership);
-                    $("#plant_well_irrigation").text(response.data.well_irrigation);
-                    $("#plant_area_irrigated").text(response.data.area_irrigated);
-                    $("#plant_irrigated_lands").text(response.data.irrigated_lands);
-                    $("#plant_patta").text(response.data.patta);
-                    $("#plant_total_area").text(response.data.total_area);
-                    $("#plant_revenue").text(response.data.revenue);
-                    $("#plant_crop_season").text(response.data.crop_season);
-                    $("#plant_livestock").text(response.data.livestocks);
-                    $("#plant_type").text(response.data.plantation);
-                    $("#plant_sf_no").text(response.data.sf_no);
-                    $("#plant_soil_type").text(response.data.soil_type);
-                    $("#plant_land_benefit").text(response.data.land_benefit);
-                    $("#plant_field_inspection").text(response.data.field_insp);
-                    $("#plant_site_approval").text(response.data.site_app);
-                    $("#plant_date_of_inspection").text(response.data.date_of_ins);
-                    $("#plant_date_of_approval").text(response.data.date_of_app);
-                    $("#plant_type_of_work").text(response.data.type_of_work);
-                    $("#plant_area_benefit").text(response.data.area_benefit);
-                    $("#plant_other_works").text(response.data.other_works);
-                    $("#plant_pradan_contribution").text(response.data.pradan_cont);
-                    $("#plant_farmer_contribution").text(response.data.farmer_cont);
-                    $("#plant_total_amount").text(response.data.total_amount);
-
-                    $("#plantdet_modal").modal("show");
-                }
-
-            })
-
-
-        });
-
-        /*  $(document).on("click", ".coor_appr1", function(e) {
-             e.preventDefault();
-             var form_id = $(this).val();
-             console.log(form_id);
-             $.ajax({
-                 type: "POST",
-                 url: `/coor_appr1/${form_id}`,
-                 data: {
-                     _token: $('meta[name="csrf-token"]').attr('content')
-                 },
-                 success: function(response) {
-                     if (response.status == 200) {
-                         alert("Forwarded to finance manager");
-                     } else {
-                         alert("something went wrong");
-
-                     }
                  }
+             }
 
 
-             })
-         }); */
+         })
+     }); */
 
 
 
-        $(document).on("click", ".fin_update", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            $("#rem_form_id").val(form_id);
-            $("#rem_modal").modal("show");
+    $(document).on("click", ".fin_update", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        $("#rem_form_id").val(form_id);
+        $("#rem_modal").modal("show");
+    });
+
+    $(document).on("submit", "#remarks_form", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            type: "POST",
+            url: "/fm/rem",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("Request for change updated");
+                    $('#rem_modal').modal('hide');
+                } else {
+                    alert("Something went wrong");
+                }
+            }
         });
 
-        $(document).on("submit", "#remarks_form", function(e) {
-            e.preventDefault();
-            var form = new FormData(this);
-            console.log(form);
-            $.ajax({
-                type: "POST",
-                url: "/fm/rem",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        alert("Request for change updated");
-                        $('#rem_modal').modal('hide');
-                    } else {
-                        alert("Something went wrong");
-                    }
+    })
+
+    $(document).on("click", ".showrem", function(e) {
+        e.preventDefault();
+
+        var formId = $(this).val(); // get form ID from button value
+
+        // Fetch the remarks using AJAX
+        $.ajax({
+            type: "GET",
+            url: "/getfm-remarks/" + formId,
+            success: function(response) {
+                if (response.success == 200) {
+                    $('#view_remark_text').text(response.remarks); // Set the remarks
+                    $('#view_rem_modal').modal('show'); // Show modal
+                } else {
+                    alert("Remarks not found.");
                 }
-            });
-
-        })
-
-        $(document).on("click", ".showrem", function(e) {
-            e.preventDefault();
-
-            var formId = $(this).val(); // get form ID from button value
-
-            // Fetch the remarks using AJAX
-            $.ajax({
-                type: "GET",
-                url: "/getfm-remarks/" + formId,
-                success: function(response) {
-                    if (response.success == 200) {
-                        $('#view_remark_text').text(response.remarks); // Set the remarks
-                        $('#view_rem_modal').modal('show'); // Show modal
-                    } else {
-                        alert("Remarks not found.");
-                    }
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                    alert("Server error.");
-                }
-            });
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert("Server error.");
+            }
         });
+    });
 
-        $(document).on("click", "#doc_view", function(e) {
-            e.preventDefault();
-            let formId = $(this).val();
+    $(document).on("click", "#doc_view", function(e) {
+        e.preventDefault();
+        let formId = $(this).val();
 
-            // Clear previous buttons
-            $('#document-buttons').html('');
+        // Clear previous buttons
+        $('#document-buttons').html('');
 
-            // List of document labels
-            let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
+        // List of document labels
+        let labels = ['Patta', 'FMB', 'Passbook', 'Identity', 'Photo'];
 
-            labels.forEach(function(label) {
-                let button = `
+        labels.forEach(function(label) {
+            let button = `
             <button class="btn btn-outline-primary m-2 doc-file-btn" 
                     value="${formId}">
                 ${label}
             </button>`;
-                $('#document-buttons').append(button);
-            });
-
-            // Open the modal
-            $('#documentModal').modal('show');
+            $('#document-buttons').append(button);
         });
 
-        $(document).on("click", ".doc-file-btn", function() {
-            let form_id = $(this).val();
-            let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
+        // Open the modal
+        $('#documentModal').modal('show');
+    });
 
-            $.ajax({
-                url: "/get-document",
-                type: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    form_id: form_id,
-                    type: type
-                },
-                success: function(response) {
-                    if (response.file_url) {
-                        $('#docPreview').attr('src', response.file_url);
-                        $('#docDownload').attr('href', response.file_url);
-                        $('#fileViewerModal').modal('show');
-                    } else {
-                        alert('File not found.');
+    $(document).on("click", ".doc-file-btn", function() {
+        let form_id = $(this).val();
+        let type = $(this).text().trim().toLowerCase(); // 'patta', 'identity', etc.
+
+        $.ajax({
+            url: "/get-document",
+            type: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id,
+                type: type
+            },
+            success: function(response) {
+                if (response.file_url) {
+                    $('#docPreview').attr('src', response.file_url);
+                    $('#docDownload').attr('href', response.file_url);
+                    $('#fileViewerModal').modal('show');
+                } else {
+                    alert('File not found.');
+                }
+            },
+            error: function() {
+                alert('Something went wrong.');
+            }
+        });
+    });
+
+    $(document).on("click", ".fin_approve", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $.ajax({
+            url: `/fin-approve`,
+            type: "POST",
+            data: {
+                _token: '{{ csrf_token() }}',
+                form_id: form_id
+            },
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("form accepted");
+
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
+    });
+
+    $(document).on("click", ".fin_approve_modal", function(e) {
+        e.preventDefault();
+        var form_id = $(this).val();
+        console.log(form_id);
+        $("#mcode_form_id").val(form_id);
+        $("#mcode_modal").modal("show");
+    });
+
+    $(document).on("submit", "#mcode_form", function(e) {
+        e.preventDefault();
+        var form = new FormData(this);
+        console.log(form);
+        $.ajax({
+            url: `/fin-approve`,
+            type: "POST",
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status == 200) {
+                    alert("mcode submitted forwarded to post funding");
+                    $("#mcode_modal").modal("hide");
+                    $('#mcode_form')[0].reset();
+
+
+
+                } else {
+                    alert('form not accepted');
+                }
+            },
+
+        })
+
+    });
+
+    function downloadLandTable() {
+        const table = document.getElementById("land_table");
+        const ws_data = [];
+
+        // Extract headers
+        const headers = [];
+        table.querySelectorAll("thead th").forEach(th => {
+            headers.push({
+                v: th.innerText.trim(),
+                t: 's',
+                s: {
+                    font: {
+                        bold: true,
+                        color: {
+                            rgb: "000000"
+                        }
+                    }, // bold black text
+                    fill: {
+                        fgColor: {
+                            rgb: "FFFF00"
+                        }
+                    }, // yellow background
+                    alignment: {
+                        horizontal: "center",
+                        vertical: "center"
                     }
-                },
-                error: function() {
-                    alert('Something went wrong.');
                 }
             });
         });
+        ws_data.push(headers);
 
-        $(document).on("click", ".fin_approve", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            console.log(form_id);
-            $.ajax({
-                url: `/fin-approve`,
-                type: "POST",
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    form_id: form_id
-                },
-                success: function(response) {
-                    if (response.status == 200) {
-                        alert("form accepted");
-
-                    } else {
-                        alert('form not accepted');
-                    }
-                },
-
-            })
+        // Extract rows
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const rowData = [];
+            row.querySelectorAll("td").forEach(cell => {
+                let cellText = cell.innerText.trim();
+                rowData.push({
+                    v: cellText,
+                    t: 's'
+                }); // Treat as text
+            });
+            ws_data.push(rowData);
         });
 
-        $(document).on("click", ".fin_approve_modal", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            console.log(form_id);
-            $("#mcode_form_id").val(form_id);
-            $("#mcode_modal").modal("show");
+        // Create worksheet and apply data
+        const ws = XLSX.utils.aoa_to_sheet([]);
+        XLSX.utils.sheet_add_aoa(ws, ws_data, {
+            origin: "A1"
         });
 
-        $(document).on("submit", "#mcode_form", function(e) {
-            e.preventDefault();
-            var form = new FormData(this);
-            console.log(form);
-            $.ajax({
-                url: `/fin-approve`,
-                type: "POST",
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    if (response.status == 200) {
-                        alert("mcode submitted forwarded to post funding");
-                        $("#mcode_modal").modal("hide");
-                        $('#mcode_form')[0].reset();
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Land Form");
 
+        XLSX.writeFile(wb, "Land_Form_Data.xlsx");
+    }
+     function downloadPondTable() {
+        const table = document.getElementById("pond_table");
+        const ws_data = [];
 
-
-                    } else {
-                        alert('form not accepted');
-                    }
-                },
-
-            })
-
-        });
-
-        function downloadLandTable() {
-            const table = document.getElementById("land_table");
-            const ws_data = [];
-
-            // Extract headers
-            const headers = [];
-            table.querySelectorAll("thead th").forEach(th => {
-                headers.push({
-                    v: th.innerText.trim(),
-                    t: 's',
-                    s: {
-                        font: {
-                            bold: true,
-                            color: {
-                                rgb: "000000"
-                            }
-                        }, // bold black text
-                        fill: {
-                            fgColor: {
-                                rgb: "FFFF00"
-                            }
-                        }, // yellow background
-                        alignment: {
-                            horizontal: "center",
-                            vertical: "center"
+        // Extract headers
+        const headers = [];
+        table.querySelectorAll("thead th").forEach(th => {
+            headers.push({
+                v: th.innerText.trim(),
+                t: 's',
+                s: {
+                    font: {
+                        bold: true,
+                        color: {
+                            rgb: "000000"
                         }
+                    }, // bold black text
+                    fill: {
+                        fgColor: {
+                            rgb: "FFFF00"
+                        }
+                    }, // yellow background
+                    alignment: {
+                        horizontal: "center",
+                        vertical: "center"
                     }
-                });
+                }
             });
-            ws_data.push(headers);
+        });
+        ws_data.push(headers);
 
-            // Extract rows
-            table.querySelectorAll("tbody tr").forEach(row => {
-                const rowData = [];
-                row.querySelectorAll("td").forEach(cell => {
-                    let cellText = cell.innerText.trim();
-                    rowData.push({
-                        v: cellText,
-                        t: 's'
-                    }); // Treat as text
-                });
-                ws_data.push(rowData);
+        // Extract rows
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const rowData = [];
+            row.querySelectorAll("td").forEach(cell => {
+                let cellText = cell.innerText.trim();
+                rowData.push({
+                    v: cellText,
+                    t: 's'
+                }); // Treat as text
             });
+            ws_data.push(rowData);
+        });
 
-            // Create worksheet and apply data
-            const ws = XLSX.utils.aoa_to_sheet([]);
-            XLSX.utils.sheet_add_aoa(ws, ws_data, {
-                origin: "A1"
+        // Create worksheet and apply data
+        const ws = XLSX.utils.aoa_to_sheet([]);
+        XLSX.utils.sheet_add_aoa(ws, ws_data, {
+            origin: "A1"
+        });
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Land Form");
+
+        XLSX.writeFile(wb, "Pond_Form_Data.xlsx");
+    }
+    function downloadPlantTable() {
+        const table = document.getElementById("plant_table");
+        const ws_data = [];
+
+        // Extract headers
+        const headers = [];
+        table.querySelectorAll("thead th").forEach(th => {
+            headers.push({
+                v: th.innerText.trim(),
+                t: 's',
+                s: {
+                    font: {
+                        bold: true,
+                        color: {
+                            rgb: "000000"
+                        }
+                    }, // bold black text
+                    fill: {
+                        fgColor: {
+                            rgb: "FFFF00"
+                        }
+                    }, // yellow background
+                    alignment: {
+                        horizontal: "center",
+                        vertical: "center"
+                    }
+                }
             });
+        });
+        ws_data.push(headers);
 
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Land Form");
+        // Extract rows
+        table.querySelectorAll("tbody tr").forEach(row => {
+            const rowData = [];
+            row.querySelectorAll("td").forEach(cell => {
+                let cellText = cell.innerText.trim();
+                rowData.push({
+                    v: cellText,
+                    t: 's'
+                }); // Treat as text
+            });
+            ws_data.push(rowData);
+        });
 
-            XLSX.writeFile(wb, "Land_Form_Data.xlsx");
-        }
+        // Create worksheet and apply data
+        const ws = XLSX.utils.aoa_to_sheet([]);
+        XLSX.utils.sheet_add_aoa(ws, ws_data, {
+            origin: "A1"
+        });
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Land Form");
+
+        XLSX.writeFile(wb, "Plant_Form_Data.xlsx");
+    }
     </script>
 
 
