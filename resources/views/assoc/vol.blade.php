@@ -130,9 +130,8 @@
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card card-light-blue p-3">
-                                <div class="row g-1"> <!-- Tight spacing with Bootstrap's gap utility -->
+                                <div class="row g-1">
 
-                                    <!-- Profile Picture Card (6 columns) -->
                                     <div class="col-md-4 d-flex align-items-center">
                                         <div class="card shadow card-tale text-center rounded-circle">
                                             <div class="card-body d-flex flex-column align-items-center justify-content-center">
@@ -141,7 +140,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- User Info Card (6 columns) -->
                                     <div class="col-md-8">
                                         <div class="card shadow card-light-danger h-100 w-100">
                                             <div class="card-body">
@@ -195,7 +193,7 @@
                                 <div class="col-md-6 stretch-card transparent">
                                     <div class="card card-light-danger">
                                         <div class="card-body">
-                                            <p class="mb-4"></p>
+                                            <p class="mb-4">OHHHH</p>
                                             <p class="fs-30 mb-2">32</p>
                                             <p></p>
                                         </div>
