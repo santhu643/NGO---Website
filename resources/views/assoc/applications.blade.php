@@ -378,7 +378,7 @@
 
                                                             @foreach($form1 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
@@ -518,7 +518,7 @@
 
                                                             @foreach($form2 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
 
                                                             <tr>
@@ -661,7 +661,7 @@
                                                             @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>

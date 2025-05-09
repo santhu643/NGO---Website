@@ -117,7 +117,7 @@ class mainController extends Controller
         ]);
         
         $form = new Form();
-        $form->user_id = '1';
+        $form->user_id = $req->user_id;
         $form->form_type = 'land';
         $form->farmer_name = $req->farmerName;
         $form->mobile_number = $req->mobileNumber;

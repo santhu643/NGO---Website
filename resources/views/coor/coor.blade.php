@@ -348,7 +348,7 @@
 
                                                             @foreach($form1 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
@@ -373,7 +373,7 @@
 
                                                                     @if($f->status == 7)
                                                                     <button type="button"
-                                                                        class="btn btn-info btn-view-pf"
+                                                                        class="btn btn-info btn-view-pf-land"
                                                                         value="{{ $f->id }}">
                                                                         View PF Details
                                                                     </button>
@@ -509,7 +509,7 @@
 
                                                             @foreach($form2 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
@@ -530,7 +530,7 @@
                                                                     </button>
                                                                     @if($f->status == 7)
                                                                     <button type="button"
-                                                                        class="btn btn-info btn-view-pf-plant"
+                                                                        class="btn btn-info btn-view-pf-pond"
                                                                         value="{{ $f->id }}">
                                                                         View PF Details
                                                                     </button>
@@ -663,7 +663,7 @@
                                                             @php $s = 1; @endphp
                                                             @foreach($form3 as $f)
                                                             @php
-                                                            $account = $f->bank_details->first();
+                                                            $account = $f->bankDetail->first();
                                                             @endphp
                                                             <tr>
                                                                 <td>{{$s++}}</td>
@@ -1437,7 +1437,112 @@
         </div>
     </div>
 
+   <!-- Land Detail Modal -->
+    <div class="modal fade" id="landdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Land Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Rows for Land Details -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Ownership:</strong> <span id="l_ownership"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Well Irrigation:</strong> <span id="l_well_irrigation"></span>
+                        </div>
+                    </div>
 
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Irrigated:</strong> <span id="l_area_irrigated"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Irrigated Lands:</strong> <span id="l_irrigated_lands"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Patta No:</strong> <span id="l_patta"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Area:</strong> <span id="l_tarea"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Revenue Village:</strong> <span id="l_revenue"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>S.F No:</strong> <span id="l_sf"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Soil Type:</strong> <span id="l_soil"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Land to Benefit:</strong> <span id="l_benefit"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Field Inspection:</strong> <span id="l_field"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Site Approval:</strong> <span id="l_site"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Inspection:</strong> <span id="l_doi"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Approval:</strong> <span id="l_doa"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Work:</strong> <span id="l_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Benefits:</strong> <span id="l_area"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Other Works:</strong> <span id="l_oth"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Pradan Contribution:</strong> <span id="l_pradan"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Contribution:</strong> <span id="l_farmer"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Amount:</strong> <span id="l_total"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         $.ajaxSetup({
@@ -1879,27 +1984,6 @@
         });
 
 
-        $(document).on("click", ".btn-view-pf", function(e) {
-            e.preventDefault();
-
-            var formId = $(this).val();
-
-            $.ajax({
-                type: "GET",
-                url: "/get-pf_pond/" + formId,
-                success: function(response) {
-                    if (response.success == 200) {
-                        $('#view_rem_modal').modal('show');
-                    } else {
-                        alert("Remarks not found.");
-                    }
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                    alert("Server error.");
-                }
-            });
-        });
         $(document).on('click', '.btn-view-pf-land', function() {
             let formId = $(this).val();
 
