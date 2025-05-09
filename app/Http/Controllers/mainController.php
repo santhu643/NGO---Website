@@ -1073,5 +1073,26 @@ public function updatePlantForm(Request $request)
     return response()->json(['success' => false, 'message' => 'Plant form not found']);
 }
 
+
+public function editLandForm($id)
+{
+    $land = \App\Models\LandForm::where('form_id', $id)->first();
+    return response()->json($land);
+}
+public function updateLandForm(Request $request)
+{
+    $land = \App\Models\LandForm::where('form_id', $request->ed_land_id)->first();
+    if (!$land) return response()->json(['error' => 'Form not found.'], 404);
+
+    $land->update($request->only([
+        'ownership', 'well_irrigation', 'area_irrigated', 'irrigated_lands', 'patta', 'total_area', 'revenue',
+        'crop_season', 'livestocks', 'sf_no', 'soil_type', 'land_benefit', 'field_insp', 'site_app',
+        'date_of_ins', 'date_of_app', 'type_of_work', 'area_benefit', 'other_works',
+        'pradan_cont', 'farmer_cont', 'total_amount', 'area_pf'
+    ]));
+
+    return response()->json(['success' => 'Land form updated successfully']);
+}
+
     
 }

@@ -75,6 +75,10 @@ Route::get('/get-pond-details/{id}', [MainController::class, 'getPondDetails']);
 Route::post('/postfunding/pond/update', [MainController::class, 'updatePond'])->name('postfunding.pond.update');
 Route::get('/get-plant-form', [MainController::class, 'getPlantForm']);
 Route::post('/update-plant-form', [MainController::class, 'updatePlantForm']);
+Route::get('/landform/edit/{id}', [MainController::class, 'editLandForm']);
+Route::post('/landform/update', [MainController::class, 'updateLandForm']);
+
+
 
 
 
