@@ -32,24 +32,26 @@
 
 
     <style>
-.edit-dropdown {
-    z-index: 1000;
-    background: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 5px 0;
-    min-width: 180px;
-}
-.dropdown-item {
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    padding: 8px 16px;
-}
-.dropdown-item:hover {
-    background-color: #f1f1f1;
-}
+        .edit-dropdown {
+            z-index: 1000;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 5px 0;
+            min-width: 180px;
+        }
+
+        .dropdown-item {
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            padding: 8px 16px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
 
 
         /*        
@@ -405,20 +407,20 @@
                                                                     @if(in_array($f->status, [1, 2, 5]))
                                                                     <!-- Button to open modal -->
                                                                     <!-- Edit Button -->
-<!-- Wrapper to position dropdown relative to this container -->
-<div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
-    <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
+                                                                    <!-- Wrapper to position dropdown relative to this container -->
+                                                                    <div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
+                                                                        <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
 
-    <!-- Positioned absolutely inside relative parent -->
-    <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
-        <button class="dropdown-item detail-btn ed_farmer"  value="{{ $f->id }}" >Farmer Details</button>
-        <button class="dropdown-item detail-btn ed_land" value="{{ $f->id }}" >Land Details</button>
-        <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}" >Bank Details</button>
-    </div>
-</div>
-&nbsp;
-                                                                         <!-- Modal -->
-                                                                         <!-- <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                                                                        <!-- Positioned absolutely inside relative parent -->
+                                                                        <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
+                                                                            <button class="dropdown-item detail-btn ed_farmer" value="{{ $f->id }}">Farmer Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_land" value="{{ $f->id }}">Land Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}">Bank Details</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    &nbsp;
+                                                                    <!-- Modal -->
+                                                                    <!-- <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
                                                                             <div class="modal-content">
                                                                             <div class="modal-header">
@@ -440,7 +442,7 @@
                                                                             </div>
                                                                         </div>
                                                                         </div> -->
-                                                                &nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
@@ -546,18 +548,18 @@
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
                                                                     <!-- Wrapper to position dropdown relative to this container -->
-<div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
-    <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
+                                                                    <div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
+                                                                        <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
 
-    <!-- Positioned absolutely inside relative parent -->
-    <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
-    <button class="dropdown-item detail-btn ed_farmer"  value="{{ $f->id }}" >Farmer Details</button>
-        <button class="dropdown-item detail-btn ed_pond" value="{{ $f->id }}" >Pond Details</button>
-        <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}" >Bank Details</button>
-    </div>
-</div>
-&nbsp;
-                                                                         <!-- Modal
+                                                                        <!-- Positioned absolutely inside relative parent -->
+                                                                        <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
+                                                                            <button class="dropdown-item detail-btn ed_farmer" value="{{ $f->id }}">Farmer Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_pond" value="{{ $f->id }}">Pond Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}">Bank Details</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    &nbsp;
+                                                                    <!-- Modal
                                                                          <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
                                                                             <div class="modal-content">
@@ -582,7 +584,7 @@
                                                                         </div> -->
                                                                     @endif
 
-                                                                    
+
 
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
@@ -687,17 +689,17 @@
                                                                     {{-- Show Edit if status is 1 (Submitted), 2 (Change Requested by TL/Coor), or 5 (Finance Change Request) --}}
                                                                     @if(in_array($f->status, [1, 2, 5]))
                                                                     <!-- Wrapper to position dropdown relative to this container -->
-<div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
-    <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
+                                                                    <div class="edit-dropdown-wrapper" style="position: relative; display: inline-block;">
+                                                                        <button class="btn btn-warning edit-btn" value="{{ $f->id }}">Edit</button>
 
-    <!-- Positioned absolutely inside relative parent -->
-    <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
-    <button class="dropdown-item detail-btn ed_farmer"  value="{{ $f->id }}" >Farmer Details</button>
-        <button class="dropdown-item detail-btn ed_plant" value="{{ $f->id }}" >Plant Details</button>
-        <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}" >Bank Details</button>
-    </div>
-</div>
-&nbsp;
+                                                                        <!-- Positioned absolutely inside relative parent -->
+                                                                        <div class="edit-dropdown" id="edit-dropdown-{{ $f->id }}" style="display: none; position: absolute; top: 100%; left: 0;">
+                                                                            <button class="dropdown-item detail-btn ed_farmer" value="{{ $f->id }}">Farmer Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_plant" value="{{ $f->id }}">Plant Details</button>
+                                                                            <button class="dropdown-item detail-btn ed_bank" value="{{ $f->id }}">Bank Details</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    &nbsp;
                                                                     @endif
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
@@ -773,7 +775,7 @@
     </div>
 
     <!--------------------------------------------------------------- Modals ---------------------------------------------------------------->
-    
+
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
@@ -1060,7 +1062,7 @@
                         </div>
                     </div>
 
-                
+
 
                 </div>
                 <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
@@ -1182,50 +1184,50 @@
 
     <!-- Edit Land Form Modal -->
     <div class="modal fade" id="editlanddet_modal" tabindex="-1" aria-labelledby="editLandModalLabel" aria-hidden="true">
-     <div class="modal-dialog modal-xl">
-        <div class="modal-content" style="border-radius: 8px;">
-        <div class="modal-header bg-success text-white">
-            <h5 class="modal-title" id="editLandModalLabel">Edit Land Form</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff;"></button>
-        </div>
-        <form id="editlandEditForm">
-            @csrf
-            <div class="modal-body">
-            <input type="textx" name="land_id" id="ed_land_id">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content" style="border-radius: 8px;">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="editLandModalLabel">Edit Land Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #fff;"></button>
+                </div>
+                <form id="editlandEditForm">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="textx" name="land_id" id="ed_land_id">
 
-            <div class="row g-3">
-                <div class="col-md-6"><label>Ownership</label><input type="text" class="form-control" name="ownership" id="ownership"></div>
-                <div class="col-md-6"><label>Well Irrigation</label><input type="text" class="form-control" name="well_irrigation" id="well_irrigation"></div>
-                <div class="col-md-6"><label>Area Irrigated</label><input type="text" class="form-control" name="area_irrigated" id="area_irrigated"></div>
-                <div class="col-md-6"><label>Irrigated Lands</label><input type="text" class="form-control" name="irrigated_lands" id="irrigated_lands"></div>
-                <div class="col-md-6"><label>Patta</label><input type="text" class="form-control" name="patta" id="patta"></div>
-                <div class="col-md-6"><label>Total Area</label><input type="text" class="form-control" name="total_area" id="total_area"></div>
-                <div class="col-md-6"><label>Revenue</label><input type="text" class="form-control" name="revenue" id="revenue"></div>
-                <div class="col-md-6"><label>Crop Season</label><input type="text" class="form-control" name="crop_season" id="crop_season"></div>
-                <div class="col-md-6"><label>Livestocks</label><input type="text" class="form-control" name="livestocks" id="livestocks"></div>
-                <div class="col-md-6"><label>SF Number</label><input type="text" class="form-control" name="sf_no" id="sf_no"></div>
-                <div class="col-md-6"><label>Soil Type</label><input type="text" class="form-control" name="soil_type" id="soil_type"></div>
-                <div class="col-md-6"><label>Land Benefit</label><input type="text" class="form-control" name="land_benefit" id="land_benefit"></div>
-                <div class="col-md-6"><label>Field Inspection</label><input type="text" class="form-control" name="field_insp" id="field_insp"></div>
-                <div class="col-md-6"><label>Site Approved</label><input type="text" class="form-control" name="site_app" id="site_app"></div>
-                <div class="col-md-6"><label>Date of Inspection</label><input type="date" class="form-control" name="date_of_ins" id="date_of_ins"></div>
-                <div class="col-md-6"><label>Date of Approval</label><input type="date" class="form-control" name="date_of_app" id="date_of_app"></div>
-                <div class="col-md-6"><label>Type of Work</label><input type="text" class="form-control" name="type_of_work" id="type_of_work"></div>
-                <div class="col-md-6"><label>Area Benefited</label><input type="text" class="form-control" name="area_benefit" id="area_benefit"></div>
-                <div class="col-md-6"><label>Other Works</label><input type="text" class="form-control" name="other_works" id="other_works"></div>
-                <div class="col-md-6"><label>Pradan Contribution</label><input type="text" class="form-control" name="pradan_cont" id="pradan_cont"></div>
-                <div class="col-md-6"><label>Farmer Contribution</label><input type="text" class="form-control" name="farmer_cont" id="farmer_cont"></div>
-                <div class="col-md-6"><label>Total Estimate Amount</label><input type="text" class="form-control" name="total_amount" id="total_amount"></div>
-                <div class="col-md-6"><label>Area PF</label><input type="text" class="form-control" name="area_pf" id="area_pf"></div>
+                        <div class="row g-3">
+                            <div class="col-md-6"><label>Ownership</label><input type="text" class="form-control" name="ownership" id="ownership"></div>
+                            <div class="col-md-6"><label>Well Irrigation</label><input type="text" class="form-control" name="well_irrigation" id="well_irrigation"></div>
+                            <div class="col-md-6"><label>Area Irrigated</label><input type="text" class="form-control" name="area_irrigated" id="area_irrigated"></div>
+                            <div class="col-md-6"><label>Irrigated Lands</label><input type="text" class="form-control" name="irrigated_lands" id="irrigated_lands"></div>
+                            <div class="col-md-6"><label>Patta</label><input type="text" class="form-control" name="patta" id="patta"></div>
+                            <div class="col-md-6"><label>Total Area</label><input type="text" class="form-control" name="total_area" id="total_area"></div>
+                            <div class="col-md-6"><label>Revenue</label><input type="text" class="form-control" name="revenue" id="revenue"></div>
+                            <div class="col-md-6"><label>Crop Season</label><input type="text" class="form-control" name="crop_season" id="crop_season"></div>
+                            <div class="col-md-6"><label>Livestocks</label><input type="text" class="form-control" name="livestocks" id="livestocks"></div>
+                            <div class="col-md-6"><label>SF Number</label><input type="text" class="form-control" name="sf_no" id="sf_no"></div>
+                            <div class="col-md-6"><label>Soil Type</label><input type="text" class="form-control" name="soil_type" id="soil_type"></div>
+                            <div class="col-md-6"><label>Land Benefit</label><input type="text" class="form-control" name="land_benefit" id="land_benefit"></div>
+                            <div class="col-md-6"><label>Field Inspection</label><input type="text" class="form-control" name="field_insp" id="field_insp"></div>
+                            <div class="col-md-6"><label>Site Approved</label><input type="text" class="form-control" name="site_app" id="site_app"></div>
+                            <div class="col-md-6"><label>Date of Inspection</label><input type="date" class="form-control" name="date_of_ins" id="date_of_ins"></div>
+                            <div class="col-md-6"><label>Date of Approval</label><input type="date" class="form-control" name="date_of_app" id="date_of_app"></div>
+                            <div class="col-md-6"><label>Type of Work</label><input type="text" class="form-control" name="type_of_work" id="type_of_work"></div>
+                            <div class="col-md-6"><label>Area Benefited</label><input type="text" class="form-control" name="area_benefit" id="area_benefit"></div>
+                            <div class="col-md-6"><label>Other Works</label><input type="text" class="form-control" name="other_works" id="other_works"></div>
+                            <div class="col-md-6"><label>Pradan Contribution</label><input type="text" class="form-control" name="pradan_cont" id="pradan_cont"></div>
+                            <div class="col-md-6"><label>Farmer Contribution</label><input type="text" class="form-control" name="farmer_cont" id="farmer_cont"></div>
+                            <div class="col-md-6"><label>Total Estimate Amount</label><input type="text" class="form-control" name="total_amount" id="total_amount"></div>
+                            <div class="col-md-6"><label>Area PF</label><input type="text" class="form-control" name="area_pf" id="area_pf"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
             </div>
-            </div>
-            <div class="modal-footer">
-            <button type="submit" class="btn btn-success">Update</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </div>
-        </form>
         </div>
-     </div>
     </div>
 
 
@@ -1357,7 +1359,7 @@
     <div class="modal fade" id="editponddet_modal_2" tabindex="-1" aria-labelledby="editPondLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
             <form id="pondEditForm2">
-            @csrf
+                @csrf
 
                 <div class="modal-content" style="border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);">
                     <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color: #134E13;">
@@ -1562,7 +1564,7 @@
                 <form id="editbankDetailForm">
                     <div class="modal-body">
                         <div class="mb-3">
-                        <input type="hidden" id="edit_form_id" name="form_id">
+                            <input type="hidden" id="edit_form_id" name="form_id">
 
                             <label for="edit_holder_name" class="form-label"><strong>Holder Name:</strong></label>
                             <input type="text" class="form-control" id="edit_holder_name" name="holder_name" required>
@@ -1595,43 +1597,110 @@
 
 
     <!-- Plant Detail Modal -->
+    <!-- Plantation Detail Modal -->
     <div class="modal fade" id="plantdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Plantation Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
+            <div class="modal-content" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                <div class="modal-header" style="border-bottom: 2px solid #dee2e6; background-color:#134E13;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Plantation Details</h5>
+                    <button type="button" class="btn-close" style="background-color: #fff;" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <!-- Grouped Row Blocks -->
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Ownership:</strong> <span id="plant_ownership"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Well Irrigation:</strong> <span id="plant_well_irrigation"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Irrigated:</strong> <span id="plant_area_irrigated"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Irrigated Lands:</strong> <span id="plant_irrigated_lands"></span>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        Ownership : <span id="plant_ownership"></span><br><br>
-                        Well Irrigation : <span id="plant_well_irrigation"></span><br><br>
-                        Area Irrigated : <span id="plant_area_irrigated"></span><br><br>
-                        Irrigated Lands : <span id="plant_irrigated_lands"></span><br><br>
-                        Patta No : <span id="plant_patta"></span><br><br>
-                        Total Area : <span id="plant_total_area"></span><br><br>
-                        Revenue Village : <span id="plant_revenue"></span><br><br>
-                        Crop Season : <span id="plant_crop_season"></span><br><br>
-                        Livestock : <span id="plant_livestock"></span><br><br>
-                        Plantation Type : <span id="plant_type"></span><br><br>
-                        SF No : <span id="plant_sf_no"></span><br><br>
-                        Soil Type : <span id="plant_soil_type"></span><br><br>
-                        Land to Benefit : <span id="plant_land_benefit"></span><br><br>
-                        Field Inspection : <span id="plant_field_inspection"></span><br><br>
-                        Site Approval : <span id="plant_site_approval"></span><br><br>
-                        Date of Inspection : <span id="plant_date_of_inspection"></span><br><br>
-                        Date of Approval : <span id="plant_date_of_approval"></span><br><br>
-                        Type of Work : <span id="plant_type_of_work"></span><br><br>
-                        Area Benefit : <span id="plant_area_benefit"></span><br><br>
-                        Other Works : <span id="plant_other_works"></span><br><br>
-                        Pradan Contribution : <span id="plant_pradan_contribution"></span><br><br>
-                        Farmer Contribution : <span id="plant_farmer_contribution"></span><br><br>
-                        Total Amount : <span id="plant_total_amount"></span><br><br>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Patta No:</strong> <span id="plant_patta"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Area:</strong> <span id="plant_total_area"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Revenue Village:</strong> <span id="plant_revenue"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Crop Season:</strong> <span id="plant_crop_season"></span>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Livestock:</strong> <span id="plant_livestock"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Plantation Type:</strong> <span id="plant_type"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>SF No:</strong> <span id="plant_sf_no"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Soil Type:</strong> <span id="plant_soil_type"></span>
+                        </div>
                     </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Land to Benefit:</strong> <span id="plant_land_benefit"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Field Inspection:</strong> <span id="plant_field_inspection"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Site Approval:</strong> <span id="plant_site_approval"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Inspection:</strong> <span id="plant_date_of_inspection"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Date of Approval:</strong> <span id="plant_date_of_approval"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Type of Work:</strong> <span id="plant_type_of_work"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Area Benefit:</strong> <span id="plant_area_benefit"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Other Works:</strong> <span id="plant_other_works"></span>
+                        </div>
+                    </div>
+
+                    <div class="row border p-2 mb-3" style="border-radius: 8px; border: 1px solid #ddd; margin:2px;">
+                        <div class="col-md-6 mb-3">
+                            <strong>Pradan Contribution:</strong> <span id="plant_pradan_contribution"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Farmer Contribution:</strong> <span id="plant_farmer_contribution"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <strong>Total Amount:</strong> <span id="plant_total_amount"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer" style="border-top: 2px solid #dee2e6;">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
+        </div>
     </div>
 
     <!-- Editable Plant Detail Modal -->
@@ -2351,362 +2420,360 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.edit-btn').forEach(button => {
-            button.addEventListener('click', function (e) {
-                e.stopPropagation();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
 
-                // Hide all other dropdowns
-                document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
+                    // Hide all other dropdowns
+                    document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
 
-                const id = this.value;
-                const dropdown = document.getElementById('edit-dropdown-' + id);
-                dropdown.style.display = 'block';
-            });
-        });
-
-        document.addEventListener('click', function () {
-            document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
-        });
-
-        document.querySelectorAll('.detail-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const clickedId = this.id;
-            });
-        });
-    });
-
-       
-    $(document).on("click", ".ed_bank", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        $.ajax({
-            url: '/get-bank-details/' + form_id,  // endpoint in MainController
-            type: 'GET',
-            success: function(response) {
-                if (response.success) {
-                    let bank = response.data;
-                    $('#edit_form_id').val(form_id); // hidden field to use during update
-
-                    $('#edit_holder_name').val(bank.account_holder_name);
-                    $('#edit_account_number').val(bank.account_number);
-                    $('#edit_bank_name').val(bank.bank_name);
-                    $('#edit_branch').val(bank.branch);
-                    $('#edit_ifsc').val(bank.ifsc_code);
-                    $('#edit_bankdet_modal').modal('show');
-                } else {
-                    alert("Bank details not found.");
-                }
-            },
-            error: function(xhr) {
-                alert("Error fetching bank details.");
-            }
-        });
-    });
-
-    $(document).on("click", ".ed_farmer", function (e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-
-        $.ajax({
-            url: '/get-farmer-details/' + form_id,
-            type: 'GET',
-            success: function (response) {
-                // Populate modal fields
-                $('#input_f_name').val(response.farmer_name);
-                $('#input_f_spouse').val(response.father_spouse);
-                $('#input_f_mobile').val(response.mobile_number);
-                $('#input_f_gender').val(response.gender);
-                $('#input_f_card').val(response.identity_card_type);
-                $('#input_f_member').val(response.household_members);
-                $('#input_f_number').val(response.identity_card_number);
-                $('#input_f_hamlet').val(response.hamlet);
-                $('#input_f_panchayat').val(response.panchayat);
-                $('#input_f_block').val(response.block);
-                $('#input_f_household_type').val(response.type_of_households);
-                $('#input_f_special_category').val(response.special_catog);
-                $('#input_f_caste').val(response.caste);
-                $('#input_f_occupation').val(response.hh_occupation);
-                $('#input_f_house_type').val(response.type_of_house);
-                $('#input_f_drinking_water').val(response.drinking_water);
-                $('#input_f_potability').val(response.potability);
-                $('#input_f_domestic_water').val(response.domestic_water);
-                $('#input_f_toilet_availability').val(response.toilet_availability);
-                $('#input_f_toilet_condition').val(response.toilet_cond);
-                $('#input_f_house_owner').val(response.house_owner);
-                $('#input_f_household_education').val(response.household_education);
-                $('#input_f_latitude').val(response.lat);
-                $('#input_f_longitude').val(response.lon);
-                $('#input_f_mcode').val(response.mcode);
-
-                $('#edit_farmerdet_modal').modal('show');
-                $('#edit_farmerdet_modal').data('form-id', form_id); // Store ID for update
-            }
-        });
-    });
-
-    $(document).on("click", ".ed_pond", function (e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log(form_id);
-
-        $.ajax({
-            url: '/get-pond-details/' + form_id,
-            method: 'GET',
-            success: function (res) {
-                console.log(res);
-                $('#p2_pond_id').val(res.id);
-                $('#p2_owner').val(res.land_owner);
-                $('#p2_patta').val(res.patta);
-                $('#p2_tarea').val(res.total_area);
-                $('#p2_irrigated_lands').val(res.irrigated_lands);
-                $('#p2_revenue').val(res.revenue);
-                $('#p2_livestock').val(res.livestocks);
-                $('#p2_crop_season').val(res.crop_season);
-                $('#p2_well_irrigation').val(res.well_irrigation);
-                $('#p2_sf').val(res.sf_no);
-                $('#p2_soil').val(res.soil_type);
-                $('#p2_land').val(res.land_serve);
-                $('#p2_field').val(res.field_insp);
-                $('#p2_site').val(res.site_appr);
-                $('#p2_doi').val(res.date_of_insp);
-                $('#p2_doa').val(res.date_of_appr);
-                $('#p2_len').val(res.length);
-                $('#p2_dep').val(res.depth);
-                $('#p2_breadth').val(res.breadth);
-                $('#p2_vol').val(res.volume);
-                $('#p2_pcont').val(res.pradan_cont);
-                $('#p2_fcont').val(res.farmer_cont);
-                $('#p2_total').val(res.total);
-
-                $('#editponddet_modal_2').modal('show');
-            }
-        });
-    });
-
-
-    $(document).on("click", ".ed_plant", function(e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-        console.log("Editing plant form ID:", form_id);
-
-        $.ajax({
-            url: "/get-plant-form", // route to your controller
-            type: "GET",
-            data: { form_id: form_id },
-            success: function(response) {
-                if (response.success) {
-                    let d = response.data;
-
-                    $("#pl_plant_id").val(d.id); // primary key
-                    $("#pl_ownership").val(d.ownership);
-                    $("#pl_well_irrigation").val(d.well_irrigation);
-                    $("#pl_area_irrigated").val(d.area_irrigated);
-                    $("#pl_irrigated_lands").val(d.irrigated_lands);
-                    $("#pl_patta").val(d.patta);
-                    $("#pl_total_area").val(d.total_area);
-                    $("#pl_revenue").val(d.revenue);
-                    $("#pl_crop_season").val(d.crop_season);
-                    $("#pl_livestock").val(d.livestocks);
-                    $("#pl_type").val(d.plantation);
-                    $("#pl_sf_no").val(d.sf_no);
-                    $("#pl_soil_type").val(d.soil_type);
-                    $("#pl_land_benefit").val(d.land_benefit);
-                    $("#pl_field_inspection").val(d.field_insp);
-                    $("#pl_site_approval").val(d.site_app);
-                    $("#pl_date_of_inspection").val(d.date_of_ins);
-                    $("#pl_date_of_approval").val(d.date_of_app);
-                    $("#pl_type_of_work").val(d.type_of_work);
-                    $("#pl_area_benefit").val(d.area_benefit);
-                    $("#pl_other_works").val(d.other_works);
-                    $("#pl_pradan_contribution").val(d.pradan_cont);
-                    $("#pl_farmer_contribution").val(d.farmer_cont);
-                    $("#pl_total_amount").val(d.total_amount);
-
-                    $("#editplantdet_modal").modal("show");
-                } else {
-                    alert("Data not found.");
-                }
-            },
-            error: function(err) {
-                alert("Error loading data.");
-            }
-        });
-    });
-
-    $(document).on("click", ".ed_land", function (e) {
-        e.preventDefault();
-        var form_id = $(this).val();
-
-        $.ajax({
-            url: "/landform/edit/" + form_id,
-            type: "GET",
-            success: function (res) {
-                $.each(res, function (key, value) {
-                    $("#" + key).val(value);
+                    const id = this.value;
+                    const dropdown = document.getElementById('edit-dropdown-' + id);
+                    dropdown.style.display = 'block';
                 });
-                $("#ed_land_id").val(form_id);
-                $("#editlanddet_modal").modal("show");
-            }
+            });
+
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.edit-dropdown').forEach(d => d.style.display = 'none');
+            });
+
+            document.querySelectorAll('.detail-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const clickedId = this.id;
+                });
+            });
         });
-    });
 
 
-
-    $('#editbankDetailForm').on('submit', function(e) {
-        e.preventDefault();
-
-        var formData = {
-            form_id: $('#edit_form_id').val(),
-            holder_name: $('#edit_holder_name').val(),
-            account_number: $('#edit_account_number').val(),
-            bank_name: $('#edit_bank_name').val(),
-            branch: $('#edit_branch').val(),
-            ifsc_code: $('#edit_ifsc').val(),
-            _token: $('meta[name="csrf-token"]').attr('content') // if CSRF is required
-        };
-
-        $.ajax({
-            url: '/update-bank-details',
-            type: 'POST',
-            data: formData,
-            success: function(response) {
-                if (response.success) {
-                    alert(response.message);
-                    $('#edit_bankdet_modal').modal('hide');
-                    // Optionally refresh table or data
-                } else {
-                    alert("Update failed: " + response.message);
-                }
-            },
-            error: function(xhr) {
-                alert("An error occurred during update.");
-            }
-        });
-    });
-
-    $('#edit_farmerdet_modal .btn-success').on('click', function () {
-        var form_id = $('#edit_farmerdet_modal').data('form-id');
-
-        $.ajax({
-            url: '/update-farmer-details',
-            method: 'POST',
-            data: {
-                _token: $('meta[name="csrf-token"]').attr('content'),
-                form_id: form_id,
-                farmer_name: $('#input_f_name').val(),
-                father_spouse: $('#input_f_spouse').val(),
-                mobile_number: $('#input_f_mobile').val(),
-                gender: $('#input_f_gender').val(),
-                identity_card_type: $('#input_f_card').val(),
-                household_members: $('#input_f_member').val(),
-                identity_card_number: $('#input_f_number').val(),
-                hamlet: $('#input_f_hamlet').val(),
-                panchayat: $('#input_f_panchayat').val(),
-                block: $('#input_f_block').val(),
-                type_of_households: $('#input_f_household_type').val(),
-                special_catog: $('#input_f_special_category').val(),
-                caste: $('#input_f_caste').val(),
-                hh_occupation: $('#input_f_occupation').val(),
-                type_of_house: $('#input_f_house_type').val(),
-                drinking_water: $('#input_f_drinking_water').val(),
-                potability: $('#input_f_potability').val(),
-                domestic_water: $('#input_f_domestic_water').val(),
-                toilet_availability: $('#input_f_toilet_availability').val(),
-                toilet_cond: $('#input_f_toilet_condition').val(),
-                house_owner: $('#input_f_house_owner').val(),
-                household_education: $('#input_f_household_education').val(),
-                lat: $('#input_f_latitude').val(),
-                lon: $('#input_f_longitude').val(),
-                mcode: $('#input_f_mcode').val(),
-            },
-            success: function (response) {
-                alert(response.message);
-                $('#edit_farmerdet_modal').modal('hide');
-                // Optionally reload table or page
-            }
-        });
-    });
-
-
-    $(document).ready(function() {
-        $('#pondEditForm2').submit(function(e) {
+        $(document).on("click", ".ed_bank", function(e) {
             e.preventDefault();
-
-            let formData = new FormData(this);
-
+            var form_id = $(this).val();
             $.ajax({
-                url: '/postfunding/pond/update', // Laravel route
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
+                url: '/get-bank-details/' + form_id, // endpoint in MainController
+                type: 'GET',
                 success: function(response) {
-                    // Show success message or reload table
-                    alert('Pond details updated successfully!');
-                    $('#editponddet_modal_2').modal('hide');
-                    // Optionally reload table or page
-                    location.reload();
+                    if (response.success) {
+                        let bank = response.data;
+                        $('#edit_form_id').val(form_id); // hidden field to use during update
+
+                        $('#edit_holder_name').val(bank.account_holder_name);
+                        $('#edit_account_number').val(bank.account_number);
+                        $('#edit_bank_name').val(bank.bank_name);
+                        $('#edit_branch').val(bank.branch);
+                        $('#edit_ifsc').val(bank.ifsc_code);
+                        $('#edit_bankdet_modal').modal('show');
+                    } else {
+                        alert("Bank details not found.");
+                    }
                 },
                 error: function(xhr) {
-                    // Show error
-                    alert('Error updating pond details.');
-                    console.error(xhr.responseText);
+                    alert("Error fetching bank details.");
                 }
             });
         });
-    });
 
+        $(document).on("click", ".ed_farmer", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            console.log(form_id);
 
-    $("#plantEditForm").on("submit", function(e) {
-        e.preventDefault();
+            $.ajax({
+                url: '/get-farmer-details/' + form_id,
+                type: 'GET',
+                success: function(response) {
+                    // Populate modal fields
+                    $('#input_f_name').val(response.farmer_name);
+                    $('#input_f_spouse').val(response.father_spouse);
+                    $('#input_f_mobile').val(response.mobile_number);
+                    $('#input_f_gender').val(response.gender);
+                    $('#input_f_card').val(response.identity_card_type);
+                    $('#input_f_member').val(response.household_members);
+                    $('#input_f_number').val(response.identity_card_number);
+                    $('#input_f_hamlet').val(response.hamlet);
+                    $('#input_f_panchayat').val(response.panchayat);
+                    $('#input_f_block').val(response.block);
+                    $('#input_f_household_type').val(response.type_of_households);
+                    $('#input_f_special_category').val(response.special_catog);
+                    $('#input_f_caste').val(response.caste);
+                    $('#input_f_occupation').val(response.hh_occupation);
+                    $('#input_f_house_type').val(response.type_of_house);
+                    $('#input_f_drinking_water').val(response.drinking_water);
+                    $('#input_f_potability').val(response.potability);
+                    $('#input_f_domestic_water').val(response.domestic_water);
+                    $('#input_f_toilet_availability').val(response.toilet_availability);
+                    $('#input_f_toilet_condition').val(response.toilet_cond);
+                    $('#input_f_house_owner').val(response.house_owner);
+                    $('#input_f_household_education').val(response.household_education);
+                    $('#input_f_latitude').val(response.lat);
+                    $('#input_f_longitude').val(response.lon);
+                    $('#input_f_mcode').val(response.mcode);
 
-        $.ajax({
-            url: "/update-plant-form",
-            method: "POST",
-            data: $(this).serialize(),
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                if (response.success) {
-                    alert("Plantation form updated successfully.");
-                    $("#editplantdet_modal").modal("hide");
-                    location.reload(); // or update table dynamically
-                } else {
-                    alert("Failed to update.");
+                    $('#edit_farmerdet_modal').modal('show');
+                    $('#edit_farmerdet_modal').data('form-id', form_id); // Store ID for update
                 }
-            },
-            error: function() {
-                alert("Error during update.");
-            }
+            });
         });
-    });
 
+        $(document).on("click", ".ed_pond", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            console.log(form_id);
 
+            $.ajax({
+                url: '/get-pond-details/' + form_id,
+                method: 'GET',
+                success: function(res) {
+                    console.log(res);
+                    $('#p2_pond_id').val(res.id);
+                    $('#p2_owner').val(res.land_owner);
+                    $('#p2_patta').val(res.patta);
+                    $('#p2_tarea').val(res.total_area);
+                    $('#p2_irrigated_lands').val(res.irrigated_lands);
+                    $('#p2_revenue').val(res.revenue);
+                    $('#p2_livestock').val(res.livestocks);
+                    $('#p2_crop_season').val(res.crop_season);
+                    $('#p2_well_irrigation').val(res.well_irrigation);
+                    $('#p2_sf').val(res.sf_no);
+                    $('#p2_soil').val(res.soil_type);
+                    $('#p2_land').val(res.land_serve);
+                    $('#p2_field').val(res.field_insp);
+                    $('#p2_site').val(res.site_appr);
+                    $('#p2_doi').val(res.date_of_insp);
+                    $('#p2_doa').val(res.date_of_appr);
+                    $('#p2_len').val(res.length);
+                    $('#p2_dep').val(res.depth);
+                    $('#p2_breadth').val(res.breadth);
+                    $('#p2_vol').val(res.volume);
+                    $('#p2_pcont').val(res.pradan_cont);
+                    $('#p2_fcont').val(res.farmer_cont);
+                    $('#p2_total').val(res.total);
 
-    $("#editlandEditForm").submit(function (e) {
-        e.preventDefault();
-
-        $.ajax({
-            url: "/landform/update",
-            type: "POST",
-            data: $(this).serialize(),
-            success: function (res) {
-                alert(res.success);
-                $("#editlanddet_modal").modal("hide");
-                location.reload(); // or refresh the table
-            },
-            error: function (xhr) {
-                alert("Update failed. Please try again.");
-            }
+                    $('#editponddet_modal_2').modal('show');
+                }
+            });
         });
-    });
-
-    
 
 
+        $(document).on("click", ".ed_plant", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            console.log("Editing plant form ID:", form_id);
+
+            $.ajax({
+                url: "/get-plant-form", // route to your controller
+                type: "GET",
+                data: {
+                    form_id: form_id
+                },
+                success: function(response) {
+                    if (response.success) {
+                        let d = response.data;
+
+                        $("#pl_plant_id").val(d.id); // primary key
+                        $("#pl_ownership").val(d.ownership);
+                        $("#pl_well_irrigation").val(d.well_irrigation);
+                        $("#pl_area_irrigated").val(d.area_irrigated);
+                        $("#pl_irrigated_lands").val(d.irrigated_lands);
+                        $("#pl_patta").val(d.patta);
+                        $("#pl_total_area").val(d.total_area);
+                        $("#pl_revenue").val(d.revenue);
+                        $("#pl_crop_season").val(d.crop_season);
+                        $("#pl_livestock").val(d.livestocks);
+                        $("#pl_type").val(d.plantation);
+                        $("#pl_sf_no").val(d.sf_no);
+                        $("#pl_soil_type").val(d.soil_type);
+                        $("#pl_land_benefit").val(d.land_benefit);
+                        $("#pl_field_inspection").val(d.field_insp);
+                        $("#pl_site_approval").val(d.site_app);
+                        $("#pl_date_of_inspection").val(d.date_of_ins);
+                        $("#pl_date_of_approval").val(d.date_of_app);
+                        $("#pl_type_of_work").val(d.type_of_work);
+                        $("#pl_area_benefit").val(d.area_benefit);
+                        $("#pl_other_works").val(d.other_works);
+                        $("#pl_pradan_contribution").val(d.pradan_cont);
+                        $("#pl_farmer_contribution").val(d.farmer_cont);
+                        $("#pl_total_amount").val(d.total_amount);
+
+                        $("#editplantdet_modal").modal("show");
+                    } else {
+                        alert("Data not found.");
+                    }
+                },
+                error: function(err) {
+                    alert("Error loading data.");
+                }
+            });
+        });
+
+        $(document).on("click", ".ed_land", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+
+            $.ajax({
+                url: "/landform/edit/" + form_id,
+                type: "GET",
+                success: function(res) {
+                    $.each(res, function(key, value) {
+                        $("#" + key).val(value);
+                    });
+                    $("#ed_land_id").val(form_id);
+                    $("#editlanddet_modal").modal("show");
+                }
+            });
+        });
+
+
+
+        $('#editbankDetailForm').on('submit', function(e) {
+            e.preventDefault();
+
+            var formData = {
+                form_id: $('#edit_form_id').val(),
+                holder_name: $('#edit_holder_name').val(),
+                account_number: $('#edit_account_number').val(),
+                bank_name: $('#edit_bank_name').val(),
+                branch: $('#edit_branch').val(),
+                ifsc_code: $('#edit_ifsc').val(),
+                _token: $('meta[name="csrf-token"]').attr('content') // if CSRF is required
+            };
+
+            $.ajax({
+                url: '/update-bank-details',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.message);
+                        $('#edit_bankdet_modal').modal('hide');
+                        // Optionally refresh table or data
+                    } else {
+                        alert("Update failed: " + response.message);
+                    }
+                },
+                error: function(xhr) {
+                    alert("An error occurred during update.");
+                }
+            });
+        });
+
+        $('#edit_farmerdet_modal .btn-success').on('click', function() {
+            var form_id = $('#edit_farmerdet_modal').data('form-id');
+
+            $.ajax({
+                url: '/update-farmer-details',
+                method: 'POST',
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    form_id: form_id,
+                    farmer_name: $('#input_f_name').val(),
+                    father_spouse: $('#input_f_spouse').val(),
+                    mobile_number: $('#input_f_mobile').val(),
+                    gender: $('#input_f_gender').val(),
+                    identity_card_type: $('#input_f_card').val(),
+                    household_members: $('#input_f_member').val(),
+                    identity_card_number: $('#input_f_number').val(),
+                    hamlet: $('#input_f_hamlet').val(),
+                    panchayat: $('#input_f_panchayat').val(),
+                    block: $('#input_f_block').val(),
+                    type_of_households: $('#input_f_household_type').val(),
+                    special_catog: $('#input_f_special_category').val(),
+                    caste: $('#input_f_caste').val(),
+                    hh_occupation: $('#input_f_occupation').val(),
+                    type_of_house: $('#input_f_house_type').val(),
+                    drinking_water: $('#input_f_drinking_water').val(),
+                    potability: $('#input_f_potability').val(),
+                    domestic_water: $('#input_f_domestic_water').val(),
+                    toilet_availability: $('#input_f_toilet_availability').val(),
+                    toilet_cond: $('#input_f_toilet_condition').val(),
+                    house_owner: $('#input_f_house_owner').val(),
+                    household_education: $('#input_f_household_education').val(),
+                    lat: $('#input_f_latitude').val(),
+                    lon: $('#input_f_longitude').val(),
+                    mcode: $('#input_f_mcode').val(),
+                },
+                success: function(response) {
+                    alert(response.message);
+                    $('#edit_farmerdet_modal').modal('hide');
+                    // Optionally reload table or page
+                }
+            });
+        });
+
+
+        $(document).ready(function() {
+            $('#pondEditForm2').submit(function(e) {
+                e.preventDefault();
+
+                let formData = new FormData(this);
+
+                $.ajax({
+                    url: '/postfunding/pond/update', // Laravel route
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Show success message or reload table
+                        alert('Pond details updated successfully!');
+                        $('#editponddet_modal_2').modal('hide');
+                        // Optionally reload table or page
+                        location.reload();
+                    },
+                    error: function(xhr) {
+                        // Show error
+                        alert('Error updating pond details.');
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+
+
+        $("#plantEditForm").on("submit", function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/update-plant-form",
+                method: "POST",
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if (response.success) {
+                        alert("Plantation form updated successfully.");
+                        $("#editplantdet_modal").modal("hide");
+                        location.reload(); // or update table dynamically
+                    } else {
+                        alert("Failed to update.");
+                    }
+                },
+                error: function() {
+                    alert("Error during update.");
+                }
+            });
+        });
+
+
+
+        $("#editlandEditForm").submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "/landform/update",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(res) {
+                    alert(res.success);
+                    $("#editlanddet_modal").modal("hide");
+                    location.reload(); // or refresh the table
+                },
+                error: function(xhr) {
+                    alert("Update failed. Please try again.");
+                }
+            });
+        });
     </script>
 
 
@@ -2835,7 +2902,7 @@ $(document).on("click", ".edit-btn", function() {
 
 
 
-    
+
 
 </body>
 

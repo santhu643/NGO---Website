@@ -158,6 +158,8 @@ Route::post('/submit/coor/pf_plant',[coorController::class,'submit_pf_plant']);
 
 //routes for tl
 
+Route::get('/ldash',function(){return view('tl/tldash');})->name('ldash');
+
 Route::get('/tl',[tlController::class,'fetch_appl_tl'])->name('tl');
 
 Route::post('/tform_land',[tlController::class,"land_form"]);

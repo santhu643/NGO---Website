@@ -32,21 +32,177 @@
 
 
     <style>
-    .step {
-        display: none;
-    }
+        .step {
+            display: none;
+        }
 
-    .step.active {
-        display: block;
-    }
+        .step.active {
+            display: block;
+        }
 
-    .step3-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+        .step3-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
 
-        /* Added spacing */
-    }
+            /* Added spacing */
+        }
+
+        #land_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #land_table td,
+        #land_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #land_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #pond_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #pond_table td,
+        #pond_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #pond_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        #plant_table tbody tr {
+            height: 80px;
+            /* Adjust as needed */
+            vertical-align: middle;
+        }
+
+        #plant_table td,
+        #plant_table th {
+            padding: 1rem !important;
+            font-size: 15px;
+        }
+
+        #plant_table .btn {
+            padding: 10px 20px !important;
+            font-size: 16px !important;
+            /* border-radius: 0.25rem !important; */
+        }
+
+        .dataTables_wrapper .dataTables_filter input {
+            margin-left: 0.5rem;
+            padding: 5px 10px;
+        }
+
+        /* General Table Styling */
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            border-radius: 0.25rem;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #4b49ac;
+            box-shadow: 0 0 0 0.1rem rgba(75, 73, 172, 0.25);
+        }
+
+        /* Pagination Buttons */
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 6px 12px;
+            margin: 0 2px;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background-color: #4b49ac;
+            color: #fff !important;
+            border-color: #4b49ac;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background-color: #134E13;
+            color: white !important;
+            border-color: #fff;
+        }
+
+        /* Table Info Text */
+        .dataTables_wrapper .dataTables_info {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Search Label */
+        .dataTables_wrapper .dataTables_filter label {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Hide the default 'Search:' label text */
+        .dataTables_wrapper .dataTables_filter label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0;
+            /* Hides text but keeps layout */
+        }
+
+        /* Search input styling */
+        .dataTables_wrapper .dataTables_filter input {
+            margin-top: 5px;
+            margin-right: 3px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 8px 12px 8px 35px;
+            /* left space for icon */
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            width: 250px;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='gray' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 16px 16px;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus {
+            border-color: #134E13;
+            box-shadow: 0 0 0 2px rgba(75, 73, 172, 0.1);
+            outline: none;
+        }
+
+        /* Responsive Wrapping Fix */
+        @media (max-width: 768px) {
+
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_wrapper .dataTables_paginate {
+                text-align: center;
+                float: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -54,10 +210,10 @@
     <div class="container-scroller">
         <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                <a class="navbar-brand brand-logo me-5" href="{{route('vol')}}"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2" alt="logo" /></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img
-                        src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}" alt="logo" /></a>
+                <a class="navbar-brand brand-logo me-5" href="{{route('ldash')}}"><img src="{{ asset('assets/images/icons/Pradan-logo-title.png')}}" class="me-2"
+                        alt="logo" /></a>
+                <a class="navbar-brand brand-logo-mini" href="{{route('ldash')}}"><img src="{{asset('assets/images/icons/Pradan-logo-icon.png')}}"
+                        alt="logo" /></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -65,59 +221,16 @@
                 </button>
 
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
-                            data-bs-toggle="dropdown">
-                            <i class="icon-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                            aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                        <i class="ti-info-alt mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Just now </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">Settings</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> Private message </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="ti-user mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted"> 2 days ago </p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-                            <img src="assets/images/faces/face28.jpg" alt="profile" />
+                            <img src="assets/images/faces/face15.jpg" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
-                                <i class="ti-settings text-primary"></i> Settings </a>
-                            <a class="dropdown-item">
+                                <i class="ti-user text-primary"></i> Profile </a>
+                            <a class="dropdown-item" href="{{ route('login') }}">
                                 <i class="ti-power-off text-primary"></i> Logout </a>
                         </div>
                     </li>
@@ -132,24 +245,10 @@
             <!-- Sidebar -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <!-- Coordinator Link -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl') }}">
+                        <a class="nav-link active" href="{{route('ldash')}}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Team Leader</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl1') }}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Applications</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tl_mem') }}">
-                            <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Manage Members</span>
+                            <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
 
@@ -172,6 +271,27 @@
                             </ul>
                         </div>
                     </li>
+
+                    <!-- Coordinator Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl') }}">
+                            <i class="mdi mdi-check me-3"></i>
+                            <span class="menu-title">Approvals</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl1') }}">
+                            <i class="icon-columns menu-icon"></i>
+                            <span class="menu-title">Applications</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl_mem') }}">
+                            <i class="fas fa-users-cog me-3"></i>
+                            <span class="menu-title">Manage Members</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -184,23 +304,21 @@
                             <div class="card">
                                 <ul class="nav nav-tabs mb-3"
                                     style="border-radius: 10px 10px 10px 10px; overflow: hidden;" role="tablist">
-                                   
+
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link active " data-bs-toggle="tab" href="#landform" role="tab"
                                             aria-selected="true">
                                             <i class="fas fa-seedling"></i><b>&nbsp;Land Form</b>
                                         </a>
                                     </li>
-                                   
-
                                 </ul>
                                 <div class="tab-content tabcontent-border">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">Add Member</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">Add Member</button>
 
 
-                                    
+
                                     <div class="tab-pane p-20 active" id="landform" role="tabpanel">
-                                        
+
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title">Land Form</h4>
@@ -235,10 +353,10 @@
                                                                 <td>{{$f->mobile}}
                                                                 </td>
                                                                 <td>
-                                                                {{$f->date_of_joining}}
+                                                                    {{$f->date_of_joining}}
                                                                 </td>
                                                                 <td>
-                                                                {{$f->location}}
+                                                                    {{$f->location}}
                                                                 </td>
                                                                 <td><button class="btn btn-warning edit-btn" value="{{$f->id}}">Edit</button>&nbsp;&nbsp;<button class="btn btn-danger del" value="{{$f->id}}">Delete</button></td>
                                                             </tr>
@@ -251,9 +369,9 @@
                                         </div>
                                     </div>
 
-                                  
 
-                                   
+
+
                                 </div>
                             </div>
                         </div>
@@ -276,236 +394,242 @@
 
     <!-- Add Member Button -->
 
-<!-- Modal -->
-<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="addMemberForm" enctype="multipart/form-data">
-      @csrf
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addMemberModalLabel">Add Member</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        
-        <div class="modal-body">
-            <div class="mb-3">
-                <label>Name</label>
-                <input type="text" name="name" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <div class="form-group">
-            <label>Role</label>
-            <select name="role" class="form-control" required>
-              <option value="">Select Role</option>
-              <option value="vol">Associate</option>
-              <option value="coor">Coordinator</option>
-              <option value="tl">Team Leader</option>
-              <option value="fin">Finance Manager</option>
-            </select>
-          </div>
-            <div class="mb-3">
-                <label>Mobile</label>
-                <input type="text" name="mobile" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label>Date of Joining</label>
-                <input type="date" name="date_of_joining" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label>Location</label>
-                <input type="text" name="location" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label>Photo</label>
-                <input type="file" name="photo" class="form-control" accept="image/*" required>
-            </div>
-        </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addMemberForm" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addMemberModalLabel">Add Member</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
 
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Save</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- Edit User Modal -->
-<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="editUserForm">
-      @csrf
-      <input type="hidden" id="edit_id" name="id">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Edit User</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-2">
-            <label>Name</label>
-            <input type="text" id="edit_name" name="name" class="form-control" required>
-          </div>
-          <div class="mb-2">
-            <label>Email</label>
-            <input type="email" id="edit_email" name="email" class="form-control" required>
-          </div>
-          <div class="mb-2">
-            <label>Password</label>
-            <input type="text" id="edit_password" name="password" class="form-control" required>
-          </div>
-          <div class="mb-2">
-            <label>Role</label>
-            <select id="edit_role" name="role" class="form-control" required>
-              <option value="vol">Associate</option>
-              <option value="coor">Coordinator</option>
-              <option value="tl">Team Leader</option>
-              <option value="fm">Finance Manager</option>
-            </select>
-          </div>
-          <div class="mb-2">
-            <label>Mobile</label>
-            <input type="text" id="edit_mobile" name="mobile" class="form-control" required>
-          </div>
-          <div class="mb-2">
-            <label>Date of Joining</label>
-            <input type="text" id="edit_date_of_joining" name="date_of_joining" class="form-control" required>
-          </div>
-          <div class="mb-2">
-            <label>Location</label>
-            <input type="text" id="edit_location" name="location" class="form-control" required>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Update</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select name="role" class="form-control" required>
+                                <option value="">Select Role</option>
+                                <option value="vol">Associate</option>
+                                <option value="coor">Coordinator</option>
+                                <option value="tl">Team Leader</option>
+                                <option value="fin">Finance Manager</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Mobile</label>
+                            <input type="text" name="mobile" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Date of Joining</label>
+                            <input type="date" name="date_of_joining" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Location</label>
+                            <input type="text" name="location" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label>Photo</label>
+                            <input type="file" name="photo" class="form-control" accept="image/*" required>
+                        </div>
+                    </div>
 
-
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="editUserForm">
+                @csrf
+                <input type="hidden" id="edit_id" name="id">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-2">
+                            <label>Name</label>
+                            <input type="text" id="edit_name" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Email</label>
+                            <input type="email" id="edit_email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Password</label>
+                            <input type="text" id="edit_password" name="password" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Role</label>
+                            <select id="edit_role" name="role" class="form-control" required>
+                                <option value="vol">Associate</option>
+                                <option value="coor">Coordinator</option>
+                                <option value="tl">Team Leader</option>
+                                <option value="fm">Finance Manager</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label>Mobile</label>
+                            <input type="text" id="edit_mobile" name="mobile" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Date of Joining</label>
+                            <input type="text" id="edit_date_of_joining" name="date_of_joining" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label>Location</label>
+                            <input type="text" id="edit_location" name="location" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
-    
+
+
+
 
 
     <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).ready(function() {
-        $('#land_table').DataTable();
-        $('#pond_table').DataTable();
-        $('#plant_table').DataTable();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#land_table').DataTable({
+                lengthChange: false
+            });
+            $('#pond_table').DataTable({
+                lengthChange: false
+            });
+            $('#plant_table').DataTable({
+                lengthChange: false
+            });
+            $('#land_table_filter input[type="search"]').attr('placeholder', 'Search...');
+            $('#pond_table_filter input[type="search"]').attr('placeholder', 'Search...');
+            $('#plant_table_filter input[type="search"]').attr('placeholder', 'Search...');
 
-    });
+        });
 
-    $(document).ready(function () {
-        $('.del').on('click', function () {
+        $(document).ready(function() {
+            $('.del').on('click', function() {
+                var userId = $(this).val();
+
+                if (confirm("Are you sure you want to delete this user?")) {
+                    $.ajax({
+                        url: '/tl/delete-user/' + userId,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            alert(response.message);
+                            location.reload(); // refresh table
+                        },
+                        error: function() {
+                            alert('Failed to delete user.');
+                        }
+                    });
+                }
+            });
+        });
+        $('#addMemberForm').on('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '{{ route("tl.store_user") }}',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(res) {
+                    alert('Member added successfully.');
+                    $('#addMemberModal').modal('hide');
+                    location.reload();
+                },
+                error: function(err) {
+                    alert('Failed to add member.');
+                }
+            });
+        });
+
+        $('.edit-btn').click(function() {
             var userId = $(this).val();
 
-            if (confirm("Are you sure you want to delete this user?")) {
-                $.ajax({
-                    url: '/tl/delete-user/' + userId,
-                    type: 'DELETE',
-                    data: {
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function (response) {
-                        alert(response.message);
-                        location.reload(); // refresh table
-                    },
-                    error: function () {
-                        alert('Failed to delete user.');
-                    }
-                });
-            }
+            $.ajax({
+                url: '/tl/get_user/' + userId,
+                type: 'GET',
+                success: function(user) {
+                    console.log(user);
+                    // Fill modal inputs
+                    $('#edit_id').val(user.id);
+                    $('#edit_name').val(user.name);
+                    $('#edit_email').val(user.email);
+                    $('#edit_password').val(user.password);
+                    $('#edit_role').val(user.role);
+                    $('#edit_mobile').val(user.mobile);
+                    $('#edit_date_of_joining').val(user.date_of_joining);
+                    $('#edit_location').val(user.location);
+
+                    // Show modal
+                    $('#editUserModal').modal('show');
+                },
+                error: function() {
+                    alert('User data could not be fetched.');
+                }
+            });
         });
-    });
-    $('#addMemberForm').on('submit', function (e) {
-        e.preventDefault();
 
-        var formData = new FormData(this);
+        $('#editUserForm').on('submit', function(e) {
+            e.preventDefault();
 
-        $.ajax({
-            url: '{{ route("tl.store_user") }}',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (res) {
-                alert('Member added successfully.');
-                $('#addMemberModal').modal('hide');
-                location.reload();
-            },
-            error: function (err) {
-                alert('Failed to add member.');
-            }
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: '/tl/update_user',
+                type: 'POST',
+                data: formData,
+                success: function(res) {
+                    alert('User updated successfully');
+                    $('#editUserModal').modal('hide');
+                    location.reload(); // Refresh to reflect changes
+                },
+                error: function() {
+                    alert('Failed to update user');
+                }
+            });
         });
-    });
-
-    $('.edit-btn').click(function () {
-        var userId = $(this).val();
-
-        $.ajax({
-            url: '/tl/get_user/' + userId,
-            type: 'GET',
-            success: function (user) {
-                console.log(user);
-                // Fill modal inputs
-                $('#edit_id').val(user.id);
-                $('#edit_name').val(user.name);
-                $('#edit_email').val(user.email);
-                $('#edit_password').val(user.password);
-                $('#edit_role').val(user.role);
-                $('#edit_mobile').val(user.mobile);
-                $('#edit_date_of_joining').val(user.date_of_joining);
-                $('#edit_location').val(user.location);
-
-                // Show modal
-                $('#editUserModal').modal('show');
-            },
-            error: function () {
-                alert('User data could not be fetched.');
-            }
-        });
-    });
-
-$('#editUserForm').on('submit', function (e) {
-    e.preventDefault();
-
-    var formData = $(this).serialize();
-
-    $.ajax({
-        url: '/tl/update_user',
-        type: 'POST',
-        data: formData,
-        success: function (res) {
-            alert('User updated successfully');
-            $('#editUserModal').modal('hide');
-            location.reload(); // Refresh to reflect changes
-        },
-        error: function () {
-            alert('Failed to update user');
-        }
-    });
-});
+    </script>
 
 
 
-</script>
 
-
-
-  
     </script>
 
 
