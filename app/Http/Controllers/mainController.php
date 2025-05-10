@@ -21,6 +21,35 @@ use App\Models\PlantForm;
 
 class mainController extends Controller
 {
+
+    public function volDashboard()
+{
+    $userId = session()->get('user_id');
+
+    
+        $totalSubmitted = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [1, 7])
+        ->count();
+
+    $acceptedByTLorCoord = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [4,6,9])
+        ->count();
+
+    $changeupdate = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [2,5,8])
+        ->count();
+
+    $completed = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [11])
+        ->count();
+
+    return view('assoc.vol', compact('totalSubmitted', 'acceptedByTLorCoord', 'changeupdate', 'completed'));
+}
+
     public function login(Request $req){
         $req->validate([
             'email' => 'required',

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -22,6 +23,33 @@ class fmController extends Controller
         }
 
     }
+    public function finDashboard()
+{
+    $userId = session()->get('user_id');
+
+    $totalSubmitted = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [4])
+        ->count();
+
+    $acceptedByTLorCoord = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [5])
+        ->count();
+
+    $changeupdate = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [6])
+        ->count();
+
+    $completed = DB::table('forms')
+        ->where('user_id', $userId)
+        ->where('status', 9)
+        ->count();
+
+    return view('fm.fmdash', compact('totalSubmitted', 'acceptedByTLorCoord', 'changeupdate', 'completed'));
+}
+
 
     public function fetch_appl_pf(){
         $form1 = Form::Where('form_type','land')->where('status',9)->get();

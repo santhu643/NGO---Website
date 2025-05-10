@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -15,6 +17,32 @@ use App\Models\PlantForm;
 
 class coorController extends Controller
 {
+
+    public function coorDashboard()
+{
+    $userId = session()->get('user_id');
+
+    $totalSubmitted = DB::table('forms')
+        ->whereIn('status', [1])
+        ->count();
+
+    $approved = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [4])
+        ->count();
+
+    $changeupdate = DB::table('forms')
+        ->where('user_id', $userId)
+        ->whereIn('status', [2, 8])
+        ->count();
+
+    $completed = DB::table('forms')
+        ->where('user_id', $userId)
+        ->where('status', 11)
+        ->count();
+
+    return view('coor.coordash', compact('totalSubmitted', 'approved', 'changeupdate', 'completed'));
+}
     public function fetch_appl_coor(){
         $form1 = Form::Where('form_type','land')->where('user_id', '!=', session('user_id'))->get();
         $form2 = Form::Where('form_type','pond')->where('user_id', '!=', session('user_id'))->get();

@@ -30,9 +30,8 @@ Route::post('/get-document', [mainController::class, 'getDocument']);
 // routes for associates
 
 
-Route::get('/vol',function(){
-    return view('assoc/vol');
-})->name('vol');
+Route::get('/vol', [mainController::class, 'volDashboard'])->name('vol');
+
 
 Route::get('/form1',function(){
     return view('assoc/form1');
@@ -103,7 +102,7 @@ Route::get('/coor',function(){
 
 Route::get('/coor',[coorController::class,'fetch_appl_coor'])->name('coor');
 
-Route::get('/cdash',function(){return view('coor/coordash');})->name('cdash');
+Route::get('/cdash', [coorController::class, 'coorDashboard'])->name('cdash');
 
 Route::get('/cappl',[coorController::class,'fetch_appl_coor1'])->name('cappl');
 
@@ -158,7 +157,7 @@ Route::post('/submit/coor/pf_plant',[coorController::class,'submit_pf_plant']);
 
 //routes for tl
 
-Route::get('/ldash',function(){return view('tl/tldash');})->name('ldash');
+Route::get('/ldash', [tlController::class, 'tlDashboard'])->name('ldash');
 
 Route::get('/tl',[tlController::class,'fetch_appl_tl'])->name('tl');
 
@@ -201,7 +200,7 @@ Route::post('/tl/update_user', [tlController::class, 'update_user']);
 
 //routes for fm
 
-Route::get('/fdash',function(){return view('fm/fmdash');})->name('fdash');
+Route::get('/fdash', [fmController::class, 'finDashboard'])->name('fdash');
 Route::get('/fm',[fmController::class,'fetch_appl_fm'])->name('fm');
 Route::get('/finance_pf',[fmController::class,'fetch_appl_pf'])->name('pf_fm');
 

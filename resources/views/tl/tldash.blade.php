@@ -68,7 +68,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('dash')}}">
+                        <a class="nav-link active" href="{{route('ldash')}}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -174,8 +174,8 @@
                                 <div class="col-md-6 mb-4 stretch-card transparent">
                                     <div class="card card-tale">
                                         <div class="card-body">
-                                            <p class="mb-4">Applications Submitted</p>
-                                            <p class="fs-30 mb-2 ">4</p>
+                                            <p class="mb-4">Applications Arrived</p>
+                                            <p class="fs-30 mb-2 ">{{$totalSubmitted}}</p>
                                             <p></p>
                                         </div>
                                     </div>
@@ -183,8 +183,8 @@
                                 <div class="col-md-6 mb-4 stretch-card transparent">
                                     <div class="card card-dark-blue">
                                         <div class="card-body">
-                                            <p class="mb-4">Professionals Approved</p>
-                                            <p class="fs-30 mb-2">645</p>
+                                            <p class="mb-4">Applications Approved</p>
+                                            <p class="fs-30 mb-2">{{$approved}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -193,8 +193,8 @@
                                 <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                                     <div class="card card-light-blue">
                                         <div class="card-body">
-                                            <p class="mb-4">Team Lead Approved</p>
-                                            <p class="fs-30 mb-2">340</p>
+                                            <p class="mb-4">Requested For Change</p>
+                                            <p class="fs-30 mb-2">{{$changeupdate}}</p>
                                             <p>
                                             <p>
                                         </div>
@@ -203,8 +203,8 @@
                                 <div class="col-md-6 stretch-card transparent">
                                     <div class="card card-light-danger">
                                         <div class="card-body">
-                                            <p class="mb-4"></p>
-                                            <p class="fs-30 mb-2">32</p>
+                                            <p class="mb-4">Application Completed</p>
+                                            <p class="fs-30 mb-2">{{$completed}}</p>
                                             <p></p>
                                         </div>
                                     </div>
@@ -212,6 +212,7 @@
                             </div>
                         </div>
                     </div>
+
 
 
                 </div>
