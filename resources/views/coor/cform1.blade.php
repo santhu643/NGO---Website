@@ -92,7 +92,7 @@
 
                     <!-- Forms Collapsible Menu -->
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
+                        <a class="nav-link" data-bs-toggle="collapse" href="#formsMenu" aria-expanded="false"
                             aria-controls="formsMenu">
                             <i class="icon-layout menu-icon"></i>
                             <span class="menu-title">Forms</span>
@@ -104,7 +104,7 @@
                                 </li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ route('cform2') }}">Pond Form</a>
                                 </li>
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plantation Form</a>
+                                <li class="nav-item"> <a class="nav-link" href="{{ route('cform3') }}">Plant Form</a>
                                 </li>
                             </ul>
                         </div>
@@ -119,16 +119,21 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cappl') }}">
+                        <a class="nav-link active" href="{{ route('cappl') }}">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl_mem') }}">
+                            <i class="fas fa-users-cog me-3"></i>
+                            <span class="menu-title">Manage Members</span>
                         </a>
                     </li>
 
 
                 </ul>
             </nav>
-
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">

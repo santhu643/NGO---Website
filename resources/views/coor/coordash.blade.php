@@ -65,10 +65,10 @@
         <!-- Navbar End -->
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+         <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('cdash')}}">
+                        <a class="nav-link" href="{{route('cdash')}}">
                             <i class="icon-grid menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -103,9 +103,15 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cappl') }}">
+                        <a class="nav-link active" href="{{ route('cappl') }}">
                             <i class="icon-columns menu-icon"></i>
                             <span class="menu-title">Applications</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl_mem') }}">
+                            <i class="fas fa-users-cog me-3"></i>
+                            <span class="menu-title">Manage Members</span>
                         </a>
                     </li>
 

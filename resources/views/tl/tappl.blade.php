@@ -338,7 +338,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
@@ -357,7 +356,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
@@ -499,7 +497,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Pond Details</th>
                                                                 <th>Bank Details</th>
@@ -518,7 +515,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
@@ -654,7 +650,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Plantation Details</th>
                                                                 <th>Bank Details</th>
@@ -672,7 +667,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"

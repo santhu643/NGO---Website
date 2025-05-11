@@ -214,6 +214,7 @@ Route::get('/check-mcode', [fmController::class, 'check_mcode']);
 
 //end routes for fm
 
+Route::get('/user-details/{id}', [mainController::class, 'getUserDetails']);
 
 
 

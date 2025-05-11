@@ -328,7 +328,8 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
+                                                                 <td><button type="button" class="btn btn-primary view-user-btn"
+                                                                        value="{{$f->user_id}}"><i class="fas fa-eye"></i>View</button></td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
@@ -426,7 +427,8 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
+                                                                 <td><button type="button" class="btn btn-primary view-user-btn"
+                                                                        value="{{$f->user_id}}"><i class="fas fa-eye"></i>View</button></td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
@@ -521,7 +523,8 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
+                                                                 <td><button type="button" class="btn btn-primary view-user-btn"
+                                                                        value="{{$f->user_id}}"><i class="fas fa-eye"></i>View</button></td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
@@ -608,7 +611,22 @@
     </div>
 
     <!-- Modalsss -->
-
+     <div class="modal fade" id="userDetailModal" tabindex="-1" role="dialog" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Name:</strong> <span id="user-name"></span></p>
+        <p><strong>Mobile:</strong> <span id="user-mobile"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
     <!--  Farmer Detail Modal -->
     <div class="modal fade" id="farmerdet_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 90%; width: 1000px;">
@@ -1913,6 +1931,22 @@
                 }
             });
         });
+                $(document).on('click', '.view-user-btn', function () {
+    var userId = $(this).val();
+
+    $.ajax({
+        url: '/user-details/' + userId,
+        type: 'GET',
+        success: function (data) {
+            $('#user-name').text(data.name);
+            $('#user-mobile').text(data.mobile);
+            $('#userDetailModal').modal('show');
+        },
+        error: function () {
+            alert('Failed to fetch user details.');
+        }
+    });
+});
     </script>
 
 </body>

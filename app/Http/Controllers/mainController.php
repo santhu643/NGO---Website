@@ -1122,6 +1122,18 @@ public function updateLandForm(Request $request)
 
     return response()->json(['success' => 'Land form updated successfully']);
 }
+public function getUserDetails($id)
+{
+    $user = User::find($id);
 
+    if ($user) {
+        return response()->json([
+            'name' => $user->name,
+            'mobile' => $user->mobile,
+        ]);
+    } else {
+        return response()->json(['error' => 'User not found'], 404);
+    }
+}
     
 }

@@ -287,6 +287,12 @@
                             <span class="menu-title">Applications</span>
                         </a>
                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('tl_mem') }}">
+                            <i class="fas fa-users-cog me-3"></i>
+                            <span class="menu-title">Manage Members</span>
+                        </a>
+                    </li>
 
 
                 </ul>
@@ -334,7 +340,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Land Details</th>
                                                                 <th>Bank Details</th>
@@ -353,7 +358,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN-00{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
                                                                         value="{{$f->id}}"><i class="fas fa-eye"></i>View</button>
@@ -432,7 +436,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Pond Details</th>
                                                                 <th>Bank Details</th>
@@ -451,7 +454,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
@@ -526,7 +528,6 @@
                                                             <tr>
                                                                 <th>S.No</th>
                                                                 <th>Application Number</th>
-                                                                <th>Associate</th>
                                                                 <th>Farmer Details</th>
                                                                 <th>Plantation Details</th>
                                                                 <th>Bank Details</th>
@@ -544,7 +545,6 @@
                                                             <tr>
                                                                 <td>{{$s++}}</td>
                                                                 <td>#TN0{{$f->id}}</td>
-                                                                <td>{{$f->user_id}}</td>
 
                                                                 <td><button type="button" class="btn btn-primary"
                                                                         id="farmer_detail"
