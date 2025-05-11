@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PRADAN - Professional Assistance for Development Action</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/js/swal-config.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -243,7 +244,7 @@
         </nav>
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+           <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('fdash')}}">
@@ -260,7 +261,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pf_fm')}}">
                             <i class="ti-wallet menu-icon"></i>
-                            <span class="menu-title">Post Funding</span>
+                            <span class="menu-title">Download Excel</span>
                         </a>
                     </li>
                 </ul>
@@ -346,19 +347,15 @@
                                                                 </td>
                                                                 <td>
                                                                     @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
+                                                                        <button type="button" class="btn btn-info update-mcode-btn" value="{{ $f->id }}">
+                                                                            Update MCODE
+                                                                        </button>
+                                                                        &nbsp;
+                                                                        <button type="button" class="btn btn-success approve-pf-btn" value="{{ $f->id }}">
+                                                                            Approve PF
+                                                                        </button>
                                                                     @else
-                                                                    <span class="text-muted">No actions</span>
+                                                                        <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
@@ -449,19 +446,15 @@
                                                                 </td>
                                                                 <td>
                                                                     @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
+                                                                        <button type="button" class="btn btn-info update-mcode-btn" value="{{ $f->id }}">
+                                                                            Update MCODE
+                                                                        </button>
+                                                                        &nbsp;
+                                                                        <button type="button" class="btn btn-success approve-pf-btn" value="{{ $f->id }}">
+                                                                            Approve PF
+                                                                        </button>
                                                                     @else
-                                                                    <span class="text-muted">No actions</span>
+                                                                        <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
@@ -548,19 +541,15 @@
                                                                 </td>
                                                                 <td>
                                                                     @if($f->status == 4)
-                                                                    <button type="button"
-                                                                        class="btn btn-success fin_approve_modal"
-                                                                        value="{{ $f->id }}">
-                                                                        Approve
-                                                                    </button>&nbsp;&nbsp;
-
-                                                                    <button type="button"
-                                                                        class="btn btn-warning fin_update"
-                                                                        value="{{ $f->id }}">
-                                                                        Request Change
-                                                                    </button>
+                                                                        <button type="button" class="btn btn-info update-mcode-btn" value="{{ $f->id }}">
+                                                                            Update MCODE
+                                                                        </button>
+                                                                        &nbsp;
+                                                                        <button type="button" class="btn btn-success approve-pf-btn" value="{{ $f->id }}">
+                                                                            Approve PF
+                                                                        </button>
                                                                     @else
-                                                                    <span class="text-muted">No actions</span>
+                                                                        <span class="text-muted">No actions</span>
                                                                     @endif
                                                                 </td>
 
@@ -1261,14 +1250,14 @@
 
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Pre Funding Approval</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Update MCODE</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
-                        <input type="text" id="mcode_form_id" name="mcode_form_id" hidden>
+                        <input type="hidden" id="mcode_form_id" name="mcode_form_id">
                         <div class="mb-3">
-                            <label for="area_land" class="form-label">Enter MCODE</label>
+                            <label for="mcode" class="form-label">Enter MCODE</label>
                             <input type="number" class="form-control" id="mcode" name="mcode" required>
                         </div>
 
@@ -1696,63 +1685,148 @@
             });
         });
 
-        $(document).on("click", ".fin_approve", function(e) {
+        $(document).on("click", ".update-mcode-btn", function(e) {
             e.preventDefault();
             var form_id = $(this).val();
-            console.log(form_id);
+            $("#mcode_form_id").val(form_id);
+            
+            // Check if MCODE already exists
             $.ajax({
-                url: `/fin-approve`,
-                type: "POST",
+                url: "/check-mcode",
+                type: "GET",
                 data: {
-                    _token: '{{ csrf_token() }}',
                     form_id: form_id
                 },
                 success: function(response) {
-                    if (response.status == 200) {
-                        alert("form accepted");
-
+                    if (response.status == 200 && response.mcode) {
+                        // If MCODE exists, show it and disable input
+                        $("#mcode").val(response.mcode).prop('disabled', true);
+                        $("#mcode_form button[type='submit']").hide();
+                        $("#mcode_modal .modal-footer").append('<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>');
                     } else {
-                        alert('form not accepted');
+                        // If no MCODE, enable input for new entry
+                        $("#mcode").val('').prop('disabled', false);
+                        $("#mcode_form button[type='submit']").show();
                     }
+                    $("#mcode_modal").modal("show");
                 },
-
-            })
-        });
-
-        $(document).on("click", ".fin_approve_modal", function(e) {
-            e.preventDefault();
-            var form_id = $(this).val();
-            console.log(form_id);
-            $("#mcode_form_id").val(form_id);
-            $("#mcode_modal").modal("show");
+                error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to check MCODE status",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
+                }
+            });
         });
 
         $(document).on("submit", "#mcode_form", function(e) {
             e.preventDefault();
-            var form = new FormData(this);
-            console.log(form);
+            var form_id = $("#mcode_form_id").val();
+            var mcode = $("#mcode").val();
+            
             $.ajax({
-                url: `/fin-approve`,
+                url: "/update-mcode",
                 type: "POST",
-                data: form,
-                processData: false,
-                contentType: false,
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    form_id: form_id,
+                    mcode: mcode
+                },
                 success: function(response) {
                     if (response.status == 200) {
-                        alert("mcode submitted forwarded to post funding");
-                        $("#mcode_modal").modal("hide");
-                        $('#mcode_form')[0].reset();
-
-
-
+                        Swal.fire({
+                            title: "Success!",
+                            text: "MCODE updated successfully",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#mcode_modal").modal("hide");
+                                $('#mcode_form')[0].reset();
+                                // Disable the Update MCODE button after successful submission
+                                $(`.update-mcode-btn[value="${form_id}"]`).prop('disabled', true).css('opacity', '0.6');
+                            }
+                        });
                     } else {
-                        alert('form not accepted');
+                        Swal.fire({
+                            title: "Error!",
+                            text: response.message || "Error updating MCODE",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
+                error: function(xhr, status, error) {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong. Please try again.",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
+                    console.error("Error:", error);
+                }
+            });
+        });
 
-            })
-
-        })
+        $(document).on("click", ".approve-pf-btn", function(e) {
+            e.preventDefault();
+            var form_id = $(this).val();
+            var form_type = $(this).closest('table').attr('id').replace('_table', '');
+            
+            Swal.fire({
+                title: "Confirm Approval",
+                text: "Are you sure you want to approve PF?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, approve it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "/fin-approve",
+                        type: "POST",
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            form_id: form_id,
+                            form_type: form_type
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                Swal.fire({
+                                    title: "Success!",
+                                    text: "PF approved successfully",
+                                    icon: "success",
+                                    confirmButtonText: "OK"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: response.message || "Error approving PF",
+                                    icon: "error",
+                                    confirmButtonText: "OK"
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Something went wrong. Please try again.",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
+                            console.error("Error:", error);
+                        }
+                    });
+                }
+            });
+        });
     </script>
 
 
@@ -1772,6 +1846,74 @@
 
     <!-- <script src="{{ asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script> -->
+
+    <script>
+        $(document).ready(function() {
+            // MCODE Update button click
+            $('.update-mcode').on('click', function() {
+                const formId = $(this).data('form-id');
+                $('#mcode_form_id').val(formId);
+                $('#mcode_modal').modal('show');
+            });
+
+            // MCODE form submission
+            $('#mcode_form').on('submit', function(e) {
+                e.preventDefault();
+                const form = new FormData(this);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/update-mcode",
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        form_id: form.get('mcode_form_id'),
+                        mcode: form.get('mcode')
+                    },
+                    success: function(response) {
+                        if (response.status == 200) {
+                            alert("MCODE updated successfully!");
+                            $('#mcode_modal').modal('hide');
+                            $(`#mcode_btn_${form.get('mcode_form_id')}`).prop('disabled', true).css('opacity', '0.6');
+                        } else {
+                            alert(response.message || "Error updating MCODE");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert("An error occurred. Please try again.");
+                    }
+                });
+            });
+
+            // PF Approval button click
+            $('.approve-pf').on('click', function() {
+                const formId = $(this).data('form-id');
+                const formType = $(this).data('form-type');
+                
+                if (confirm("Are you sure you want to approve this PF?")) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/fin-approve",
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            form_id: formId,
+                            form_type: formType
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                alert("PF approved successfully!");
+                                location.reload();
+                            } else {
+                                alert(response.message || "Error approving PF");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            alert("An error occurred. Please try again.");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 

@@ -262,7 +262,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pf_fm')}}">
                             <i class="ti-wallet menu-icon"></i>
-                            <span class="menu-title">Post Funding</span>
+                            <span class="menu-title">Download Excel</span>
                         </a>
                     </li>
                 </ul>
@@ -1816,6 +1816,102 @@
 
     <!-- <script src="{{ asset('assets/js/jquery.cookie.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script> -->
+
+    <script>
+    $(document).ready(function() {
+        // MCODE Update button click
+        $('.update-mcode').on('click', function() {
+            const formId = $(this).data('form-id');
+            
+            // Check if MCODE exists
+            $.ajax({
+                type: "GET",
+                url: "/check-mcode",
+                data: {
+                    form_id: formId
+                },
+                success: function(response) {
+                    if (response.status == 200) {
+                        if (response.mcode) {
+                            // If MCODE exists, show it in disabled input
+                            $('#mcode').val(response.mcode).prop('disabled', true);
+                            $('#mcode_submit').hide();
+                        } else {
+                            // If no MCODE, enable input for new entry
+                            $('#mcode').val('').prop('disabled', false);
+                            $('#mcode_submit').show();
+                        }
+                        $('#mcode_modal').modal('show');
+                    } else {
+                        showError(response.message || "Error checking MCODE");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    handleFormError(error);
+                }
+            });
+        });
+
+        // MCODE form submission
+        $('#mcode_form').on('submit', function(e) {
+            e.preventDefault();
+            const form = new FormData(this);
+            
+            $.ajax({
+                type: "POST",
+                url: "/update-mcode",
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    form_id: form.get('mcode_form_id'),
+                    mcode: form.get('mcode')
+                },
+                success: function(response) {
+                    if (response.status == 200) {
+                        showSuccess("MCODE updated successfully!");
+                        $('#mcode_modal').modal('hide');
+                        $(`#mcode_btn_${form.get('mcode_form_id')}`).prop('disabled', true).css('opacity', '0.6');
+                    } else {
+                        showError(response.message || "Error updating MCODE");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    handleFormError(error);
+                }
+            });
+        });
+
+        // PF Approval button click
+        $('.approve-pf').on('click', function() {
+            const formId = $(this).data('form-id');
+            const formType = $(this).data('form-type');
+            
+            showConfirm("Are you sure you want to approve this PF?", function() {
+                $.ajax({
+                    type: "POST",
+                    url: "/fin-approve",
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        form_id: formId,
+                        form_type: formType
+                    },
+                    success: function(response) {
+                        if (response.status == 200) {
+                            showSuccess("PF approved successfully!");
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1500);
+                        } else {
+                            showError(response.message || "Error approving PF");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        handleFormError(error);
+                    }
+                });
+            });
+        });
+    });
+    </script>
 
 </body>
 

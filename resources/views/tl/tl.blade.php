@@ -1,4 +1,3 @@
-x`
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2114,6 +2113,70 @@ x`
                     $('#reason_text').text('Error fetching reason.');
                     $('#viewReasonModal').modal('show');
                 }
+            });
+        });
+
+        $(document).ready(function() {
+            // Approve form
+            $('.approve-form').on('click', function() {
+                const formId = $(this).data('form-id');
+                const formType = $(this).data('form-type');
+                
+                showConfirm("Are you sure you want to approve this form?", function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "/tl-approve",
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            form_id: formId,
+                            form_type: formType
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                showSuccess("Form approved successfully!");
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 1500);
+                            } else {
+                                showError(response.message || "Error approving form");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            handleFormError(error);
+                        }
+                    });
+                });
+            });
+
+            // Reject form
+            $('.reject-form').on('click', function() {
+                const formId = $(this).data('form-id');
+                const formType = $(this).data('form-type');
+                
+                showConfirm("Are you sure you want to reject this form?", function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "/tl-reject",
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            form_id: formId,
+                            form_type: formType
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                showSuccess("Form rejected successfully!");
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 1500);
+                            } else {
+                                showError(response.message || "Error rejecting form");
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            handleFormError(error);
+                        }
+                    });
+                });
             });
         });
     </script>

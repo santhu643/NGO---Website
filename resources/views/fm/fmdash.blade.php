@@ -65,7 +65,7 @@
         <!-- Navbar End -->
         <div class="container-fluid page-body-wrapper">
             <!-- Sidebar -->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+           <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('fdash')}}">
@@ -82,7 +82,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pf_fm')}}">
                             <i class="ti-wallet menu-icon"></i>
-                            <span class="menu-title">Post Funding</span>
+                            <span class="menu-title">Download Excel</span>
                         </a>
                     </li>
                 </ul>

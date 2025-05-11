@@ -103,18 +103,96 @@ public function getRemarks($id)
 
 public function fm_app(Request $req)
 {
-    $form = Form::find($req->mcode_form_id);
+    try {
+        $form = Form::find($req->form_id);
 
-    if ($form) {
+        if (!$form) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Form not found.'
+            ], 404);
+        }
+
+        // Validate MCODE
+        if (empty($req->mcode)) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'MCODE is required.'
+            ], 400);
+        }
 
         $form->mcode = $req->mcode;
-        $form->status = 6;
         $form->save();
 
-        return response()->json(['status' => 200, 'message' => 'Status updated to 6.']);
+        return response()->json([
+            'status' => 200,
+            'message' => 'MCODE updated successfully.'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 500,
+            'message' => 'An error occurred while updating MCODE.'
+        ], 500);
     }
+}
 
-    return response()->json(['status' => 500, 'message' => 'Form not found.'], 404);
+public function fin_approve(Request $req)
+{
+    try {
+        $form = Form::find($req->form_id);
+
+        if (!$form) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Form not found.'
+            ], 404);
+        }
+
+        // Validate form type
+        if (!in_array($req->form_type, ['land', 'pond', 'plant'])) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Invalid form type.'
+            ], 400);
+        }
+
+        $form->status = 7; // Status for PF approval
+        $form->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'PF approved successfully.'
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 500,
+            'message' => 'An error occurred while approving PF.'
+        ], 500);
+    }
+}
+
+public function check_mcode(Request $req)
+{
+    try {
+        $form = Form::find($req->form_id);
+
+        if (!$form) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Form not found.'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 200,
+            'mcode' => $form->mcode
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 500,
+            'message' => 'An error occurred while checking MCODE.'
+        ], 500);
+    }
 }
 
 }

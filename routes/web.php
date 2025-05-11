@@ -206,7 +206,10 @@ Route::get('/finance_pf',[fmController::class,'fetch_appl_pf'])->name('pf_fm');
 
 Route::post('/fm/rem',[fmController::class,'fm_rem']);
 Route::get('/getfm-remarks/{id}', [fmController::class, 'getRemarks']);
-Route::post('/fin-approve',[fmController::class,'fm_app']);
+Route::post('/fin-approve',[fmController::class,'fin_approve']);
+Route::post('/update-mcode',[fmController::class,'fm_app']);
+
+Route::get('/check-mcode', [fmController::class, 'check_mcode']);
 
 
 //end routes for fm
