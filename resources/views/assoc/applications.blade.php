@@ -447,9 +447,12 @@
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
-                                                                        <i class="fas fa-trash-alt"></i>
-                                                                    </button>
+                                                                    <button type="button" class="btn btn-danger delete-btn" 
+        data-id="{{ $f->id }}" 
+        data-type="land" 
+        title="Delete">
+    <i class="fas fa-trash-alt"></i>
+</button>
                                                                     @endif
                                                                 </td>
 
@@ -589,9 +592,12 @@
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
-                                                                        <i class="fas fa-trash-alt"></i>
-                                                                    </button>
+                                                                   <button type="button" class="btn btn-danger delete-btn" 
+        data-id="{{ $f->id }}" 
+        data-type="pond" 
+        title="Delete">
+    <i class="fas fa-trash-alt"></i>
+</button>
                                                                     @endif
                                                                 </td>
 
@@ -704,9 +710,12 @@
 
                                                                     {{-- Show Delete only if status is 1 (Submitted) --}}
                                                                     @if($f->status == 1)
-                                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $f->id }}" title="Delete">
-                                                                        <i class="fas fa-trash-alt"></i>
-                                                                    </button>
+                                                                    <button type="button" class="btn btn-danger delete-btn" 
+        data-id="{{ $f->id }}" 
+        data-type="plant" 
+        title="Delete">
+    <i class="fas fa-trash-alt"></i>
+</button>
                                                                     @endif
                                                                 </td>
 
@@ -2891,6 +2900,48 @@
                 }
             });
         });
+       $(document).on('click', '.delete-btn', function () {
+    let formId = $(this).data('id');
+    let formType = $(this).data('type');
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'This will permanently delete the form.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/form/delete",
+                type: "POST",
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    id: formId,
+                    type: formType
+                },
+                success: function (res) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: res.success,
+                        icon: "success"
+                    }).then(() => {
+                        location.reload();
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Delete failed. Please try again.",
+                        icon: "error"
+                    });
+                }
+            });
+        }
+    });
+});
+
     </script>
 
 

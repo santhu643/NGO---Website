@@ -1135,5 +1135,32 @@ public function getUserDetails($id)
         return response()->json(['error' => 'User not found'], 404);
     }
 }
-    
+    public function deleteForm(Request $request)
+{
+    $formId = $request->id;
+    $formType = $request->type;
+
+    // Delete from detail table based on type
+    switch ($formType) {
+        case 'land':
+            LandForm::where('form_id', $formId)->delete();
+            break;
+        case 'pond':
+            PondForm::where('form_id', $formId)->delete();
+            break;
+        case 'plant':
+            PlantForm::where('form_id', $formId)->delete();
+            break;
+        default:
+            return response()->json(['error' => 'Invalid form type.'], 400);
+    }
+
+    // Delete from shared tables
+    BankDetail::where('form_id', $formId)->delete();
+    FileUpload::where('form_id', $formId)->delete();
+    Form::where('id', $formId)->delete();
+
+    return response()->json(['success' => 'Form deleted successfully.']);
+}
+
 }

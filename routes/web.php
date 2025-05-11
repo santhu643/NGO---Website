@@ -25,6 +25,7 @@ Route::get('/fetch_plant_det/{form_id}',[mainController::class,"fetch_plant_det"
 Route::get('/fetch_bank_det/{form_id}',[mainController::class,"fetch_bank_det"]);
 
 Route::post('/get-document', [mainController::class, 'getDocument']);
+Route::post('/form/delete', [mainController::class, 'deleteForm']);
 
 
 // routes for associates
