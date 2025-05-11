@@ -257,6 +257,14 @@
                                                             <label for="drivingLicense" class="form-check-label">Driving
                                                                 License</label>
                                                         </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="other" name="identityCard"
+                                                                value="Other" class="form-check-input ms-2" required>
+                                                            <label for="other" class="form-check-label">Other</label>
+                                                        </div>
+                                                    </div>
+                                                    <div id="otherIdentityBox" style="display: none; margin-top: 10px;">
+                                                        <input type="text" id="otherIdentityInput" name="otherIdentityInput" placeholder="Enter other identity" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -988,6 +996,43 @@
             document.getElementById(`step${stepNumber}`).style.display = 'block';
             document.getElementById(`tab${stepNumber}`).classList.add('active');
         }
+
+        // Add event listeners for identity card radio buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const identityRadios = document.querySelectorAll('input[name="identityCard"]');
+            const otherIdentityBox = document.getElementById('otherIdentityBox');
+            const otherIdentityInput = document.getElementById('otherIdentityInput');
+
+            identityRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'Other') {
+                        otherIdentityBox.style.display = 'block';
+                        otherIdentityInput.required = true;
+                    } else {
+                        otherIdentityBox.style.display = 'none';
+                        otherIdentityInput.required = false;
+                    }
+                });
+            });
+
+            // Modify form submission to use custom value if "Other" is selected
+            document.getElementById('landform').addEventListener('submit', function(e) {
+                const otherRadio = document.querySelector('input[name="identityCard"][value="Other"]');
+                if (otherRadio.checked) {
+                    const customValue = otherIdentityInput.value.trim();
+                    if (customValue) {
+                        // Create a hidden input to store the custom value
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'identityCard';
+                        hiddenInput.value = customValue;
+                        this.appendChild(hiddenInput);
+                        // Remove the original radio value
+                        otherRadio.disabled = true;
+                    }
+                }
+            });
+        });
 
         function nextStep(current, next) {
             document.getElementById(`step${current}`).style.display = 'none';

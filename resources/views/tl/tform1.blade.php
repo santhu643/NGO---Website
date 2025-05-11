@@ -262,6 +262,14 @@
                                                             <label for="drivingLicense" class="form-check-label">Driving
                                                                 License</label>
                                                         </div>
+                                                        <div class="form-check">
+                                                            <input type="radio" id="other" name="identityCard"
+                                                                value="Other" class="form-check-input ms-2" required>
+                                                            <label for="other" class="form-check-label">Other</label>
+                                                        </div>
+                                                    </div>
+                                                    <div id="otherIdentityBox" style="display: none; margin-top: 10px;">
+                                                        <input type="text" id="otherIdentityInput" name="otherIdentityInput" placeholder="Enter other identity" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1116,6 +1124,21 @@
         document.addEventListener("DOMContentLoaded", function() {
             showStep(1);
         });
+
+        function updateIdentityTitle() {
+            const selectedIdentity = document.querySelector('input[name="identityCard"]:checked');
+            const fileUploadLabel = document.getElementById("fileUploadLabel");
+            const otherBox = document.getElementById("otherIdentityBox");
+            if (selectedIdentity) {
+                if (selectedIdentity.value === "Other") {
+                    otherBox.style.display = "block";
+                    fileUploadLabel.textContent = "Upload Other Identity Proof";
+                } else {
+                    otherBox.style.display = "none";
+                    fileUploadLabel.textContent = `Upload ${selectedIdentity.value} Proof`;
+                }
+            }
+        }
     </script>
 
 
