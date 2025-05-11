@@ -1110,7 +1110,7 @@ public function editLandForm($id)
 }
 public function updateLandForm(Request $request)
 {
-    $land = \App\Models\LandForm::where('form_id', $request->ed_land_id)->first();
+    $land = LandForm::where('form_id', $request->ed_land_id)->first();
     if (!$land) return response()->json(['error' => 'Form not found.'], 404);
 
     $land->update($request->only([

@@ -1193,7 +1193,7 @@
                 <form id="editlandEditForm">
                     @csrf
                     <div class="modal-body">
-                        <input type="textx" name="land_id" id="ed_land_id">
+                        <input type="hidden" name="ed_land_id" id="ed_land_id">
 
                         <div class="row g-3">
                             <div class="col-md-6"><label>Ownership</label><input type="text" class="form-control" name="ownership" id="ownership"></div>
