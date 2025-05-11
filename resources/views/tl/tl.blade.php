@@ -1654,7 +1654,12 @@
                             confirmButtonText: "OK"
                         });
                     } else {
-                        alert("something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             })
@@ -1867,10 +1872,19 @@
                 },
                 success: function(response) {
                     if (response.status == 200) {
-                        alert("Forwarded to finance manager");
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Forwarded to finance manager",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                     } else {
-                        alert("something went wrong");
-
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
 
@@ -1899,10 +1913,19 @@
                 contentType: false,
                 success: function(response) {
                     if (response.status == 200) {
-                        alert("Request for change updated");
-                        $('#rem_modal').modal('hide');
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Request for change updated",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                     } else {
-                        alert("Something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             });
@@ -1923,12 +1946,22 @@
                         $('#view_remark_text').text(response.remarks); // Set the remarks
                         $('#view_rem_modal').modal('show'); // Show modal
                     } else {
-                        alert("Remarks not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Remarks not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
-                    alert("Server error.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Server error",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -1974,11 +2007,21 @@
                         $('#docDownload').attr('href', response.file_url);
                         $('#fileViewerModal').modal('show');
                     } else {
-                        alert('File not found.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "File not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function() {
-                    alert('Something went wrong.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -1990,11 +2033,21 @@
                     url: '/coordinator/approve-pf/' + formId,
                     type: 'GET',
                     success: function(response) {
-                        alert('Post-Funding approved successfully!');
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Post-Funding approved successfully!",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                         location.reload();
                     },
                     error: function(xhr) {
-                        alert('Something went wrong!');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong!",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 });
             }
@@ -2020,12 +2073,22 @@
                     if (response.success == 200) {
                         $('#view_rem_modal').modal('show');
                     } else {
-                        alert("Remarks not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Remarks not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
-                    alert("Server error.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Server error",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2107,13 +2170,23 @@
                 url: '/coor/pf-edit-request',
                 data: formData,
                 success: function(response) {
-                    alert('Edit request submitted successfully!');
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Edit request submitted successfully!",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#pfEditModal').modal('hide');
                     $('#pf_edit_form')[0].reset();
                     location.reload(); // Optional: refresh the table
                 },
                 error: function() {
-                    alert('Something went wrong. Please try again.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong. Please try again.",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2210,7 +2283,12 @@
             $('#userDetailModal').modal('show');
         },
         error: function () {
-            alert('Failed to fetch user details.');
+            Swal.fire({
+                title: "Error!",
+                text: "Failed to fetch user details",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
         }
     });
 });

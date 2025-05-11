@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRADAN - Login</title>
     <meta name="csrf-token" content="{{csrf_token()}}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs/build/css/alertify.min.css" />
@@ -105,7 +106,12 @@
                 contentType:false,
                 success:function(response){
                     if(response.status==200){
-                        alert(response.role + " login");
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.role + " login",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                         if(response.role == "vol") window.location.href = "{{ route('vol') }}";
                         if(response.role == "coor") window.location.href = "{{ route('cdash') }}";
                         if(response.role == "tl") window.location.href = "{{ route('ldash') }}";

@@ -547,11 +547,21 @@
                             _token: '{{ csrf_token() }}'
                         },
                         success: function(response) {
-                            alert(response.message);
-                            location.reload(); // refresh table
+                            Swal.fire({
+                                title: "Success!",
+                                text: response.message,
+                                icon: "success",
+                                confirmButtonText: "OK"
+                            });
+                            location.reload();
                         },
                         error: function() {
-                            alert('Failed to delete user.');
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Failed to delete user",
+                                icon: "error",
+                                confirmButtonText: "OK"
+                            });
                         }
                     });
                 }
@@ -569,12 +579,22 @@
                 contentType: false,
                 processData: false,
                 success: function(res) {
-                    alert('Member added successfully.');
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Member added successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#addMemberModal').modal('hide');
                     location.reload();
                 },
-                error: function(err) {
-                    alert('Failed to add member.');
+                error: function() {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to add member",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -601,7 +621,12 @@
                     $('#editUserModal').modal('show');
                 },
                 error: function() {
-                    alert('User data could not be fetched.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "User data could not be fetched",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -616,12 +641,22 @@
                 type: 'POST',
                 data: formData,
                 success: function(res) {
-                    alert('User updated successfully');
+                    Swal.fire({
+                        title: "Success!",
+                        text: "User updated successfully",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#editUserModal').modal('hide');
                     location.reload(); // Refresh to reflect changes
                 },
                 error: function() {
-                    alert('Failed to update user');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Failed to update user",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });

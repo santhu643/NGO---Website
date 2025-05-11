@@ -1621,11 +1621,21 @@
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
-                    alert("Measurement submitted and forwarded to TL");
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Measurement submitted and forwarded to TL",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#measure_modal').modal('hide');
                     location.reload();
                 } else {
-                    alert("Something went wrong");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             }
         });
@@ -1645,12 +1655,22 @@
                     $('#view_remark_text').text(response.remarks); // Set the remarks
                     $('#view_rem_modal').modal('show'); // Show modal
                 } else {
-                    alert("Remarks not found.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Remarks not found",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
             error: function(xhr) {
                 console.log(xhr.responseText);
-                alert("Server error.");
+                Swal.fire({
+                    title: "Error!",
+                    text: "Server error",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
             }
         });
     });
@@ -1697,10 +1717,26 @@
                     $('#docDownload').attr('href', response.file_url);
                     $('#fileViewerModal').modal('show');
                 } else {
-                    alert('File not found.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "File not found",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
             error: function() {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
+            }
+        });
+    });
+
+    $(document).on("click", ".pf_land", function(e) {
                 alert('Something went wrong.');
             }
         });

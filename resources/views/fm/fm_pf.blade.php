@@ -1245,7 +1245,12 @@
                         confirmButtonText: "OK"
                     });
                 } else {
-                    alert("something went wrong");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             }
         })
@@ -1490,10 +1495,20 @@
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
-                    alert("Request for change updated");
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Request for change updated",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#rem_modal').modal('hide');
                 } else {
-                    alert("Something went wrong");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             }
         });
@@ -1514,12 +1529,22 @@
                     $('#view_remark_text').text(response.remarks); // Set the remarks
                     $('#view_rem_modal').modal('show'); // Show modal
                 } else {
-                    alert("Remarks not found.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Remarks not found",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
             error: function(xhr) {
                 console.log(xhr.responseText);
-                alert("Server error.");
+                Swal.fire({
+                    title: "Error!",
+                    text: "Server error",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
             }
         });
     });
@@ -1565,11 +1590,21 @@
                     $('#docDownload').attr('href', response.file_url);
                     $('#fileViewerModal').modal('show');
                 } else {
-                    alert('File not found.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "File not found",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
             error: function() {
-                alert('Something went wrong.');
+                Swal.fire({
+                    title: "Error!",
+                    text: "Something went wrong",
+                    icon: "error",
+                    confirmButtonText: "OK"
+                });
             }
         });
     });
@@ -1587,10 +1622,20 @@
             },
             success: function(response) {
                 if (response.status == 200) {
-                    alert("form accepted");
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Form accepted",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
 
                 } else {
-                    alert('form not accepted');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Form not accepted",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
 
@@ -1617,14 +1662,24 @@
             contentType: false,
             success: function(response) {
                 if (response.status == 200) {
-                    alert("mcode submitted forwarded to post funding");
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Mcode submitted forwarded to post funding",
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $("#mcode_modal").modal("hide");
                     $('#mcode_form')[0].reset();
 
 
 
                 } else {
-                    alert('form not accepted');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Form not accepted",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             },
 

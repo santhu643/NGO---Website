@@ -1374,7 +1374,12 @@
                             confirmButtonText: "OK"
                         });
                     } else {
-                        alert("something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             })
@@ -1619,10 +1624,20 @@
                 contentType: false,
                 success: function(response) {
                     if (response.status == 200) {
-                        alert("Request for change updated");
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Request for change updated",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                         $('#rem_modal').modal('hide');
                     } else {
-                        alert("Something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             });
@@ -1643,12 +1658,22 @@
                         $('#view_remark_text').text(response.remarks); // Set the remarks
                         $('#view_rem_modal').modal('show'); // Show modal
                     } else {
-                        alert("Remarks not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Remarks not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
-                    alert("Server error.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Server error",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -1694,11 +1719,21 @@
                         $('#docDownload').attr('href', response.file_url);
                         $('#fileViewerModal').modal('show');
                     } else {
-                        alert('File not found.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "File not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function() {
-                    alert('Something went wrong.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -1756,16 +1791,9 @@
                     if (response.status == 200) {
                         Swal.fire({
                             title: "Success!",
-                            text: "MCODE updated successfully",
+                            text: "MCODE updated successfully!",
                             icon: "success",
                             confirmButtonText: "OK"
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $("#mcode_modal").modal("hide");
-                                $('#mcode_form')[0].reset();
-                                // Disable the Update MCODE button after successful submission
-                                $(`.update-mcode-btn[value="${form_id}"]`).prop('disabled', true).css('opacity', '0.6');
-                            }
                         });
                     } else {
                         Swal.fire({
@@ -1779,7 +1807,7 @@
                 error: function(xhr, status, error) {
                     Swal.fire({
                         title: "Error!",
-                        text: "Something went wrong. Please try again.",
+                        text: "An error occurred. Please try again.",
                         icon: "error",
                         confirmButtonText: "OK"
                     });
@@ -1815,13 +1843,9 @@
                             if (response.status == 200) {
                                 Swal.fire({
                                     title: "Success!",
-                                    text: "PF approved successfully",
+                                    text: "PF approved successfully!",
                                     icon: "success",
                                     confirmButtonText: "OK"
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        location.reload();
-                                    }
                                 });
                             } else {
                                 Swal.fire({
@@ -1835,7 +1859,7 @@
                         error: function(xhr, status, error) {
                             Swal.fire({
                                 title: "Error!",
-                                text: "Something went wrong. Please try again.",
+                                text: "An error occurred. Please try again.",
                                 icon: "error",
                                 confirmButtonText: "OK"
                             });
@@ -1943,7 +1967,12 @@
             $('#userDetailModal').modal('show');
         },
         error: function () {
-            alert('Failed to fetch user details.');
+            Swal.fire({
+                title: "Error!",
+                text: "Failed to fetch user details",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
         }
     });
 });

@@ -2112,7 +2112,12 @@
                             confirmButtonText: "OK"
                         });
                     } else {
-                        alert("something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             })
@@ -2335,11 +2340,19 @@
                 contentType: false,
                 success: function(response) {
                     if (response.status == 200) {
-                        alert("Measurement submitted and forwarded to TL");
-                        $('#measure_modal').modal('hide');
-                        location.reload();
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Measurement submitted and forwarded to TL",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                     } else {
-                        alert("Something went wrong");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 }
             });
@@ -2359,12 +2372,22 @@
                         $('#view_remark_text').text(response.remarks); // Set the remarks
                         $('#view_rem_modal').modal('show'); // Show modal
                     } else {
-                        alert("Remarks not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Remarks not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
-                    alert("Server error.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Server error",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2411,11 +2434,21 @@
                         $('#docDownload').attr('href', response.file_url);
                         $('#fileViewerModal').modal('show');
                     } else {
-                        alert('File not found.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "File not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function() {
-                    alert('Something went wrong.');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Something went wrong",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2464,11 +2497,21 @@
                         $('#edit_ifsc').val(bank.ifsc_code);
                         $('#edit_bankdet_modal').modal('show');
                     } else {
-                        alert("Bank details not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Bank details not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
-                    alert("Error fetching bank details.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Error fetching bank details",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2597,11 +2640,21 @@
 
                         $("#editplantdet_modal").modal("show");
                     } else {
-                        alert("Data not found.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Data not found",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(err) {
-                    alert("Error loading data.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Error loading data",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2644,15 +2697,30 @@
                 data: formData,
                 success: function(response) {
                     if (response.success) {
-                        alert(response.message);
+                        Swal.fire({
+                            title: "Success!",
+                            text: response.message,
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        });
                         $('#edit_bankdet_modal').modal('hide');
                         // Optionally refresh table or data
                     } else {
-                        alert("Update failed: " + response.message);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Update failed: " + response.message,
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function(xhr) {
-                    alert("An error occurred during update.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "An error occurred during update",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2693,7 +2761,12 @@
                     mcode: $('#input_f_mcode').val(),
                 },
                 success: function(response) {
-                    alert(response.message);
+                    Swal.fire({
+                        title: "Success!",
+                        text: response.message,
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    });
                     $('#edit_farmerdet_modal').modal('hide');
                     // Optionally reload table or page
                 }
@@ -2715,14 +2788,27 @@
                     contentType: false,
                     success: function(response) {
                         // Show success message or reload table
-                        alert('Pond details updated successfully!');
-                        $('#editponddet_modal_2').modal('hide');
-                        // Optionally reload table or page
-                        location.reload();
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Pond details updated successfully!",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $('#editponddet_modal_2').modal('hide');
+                                location.reload();
+                            }
+                        });
+                        console.error(xhr.responseText);
                     },
                     error: function(xhr) {
                         // Show error
-                        alert('Error updating pond details.');
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Error updating pond details",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                         console.error(xhr.responseText);
                     }
                 });
@@ -2742,15 +2828,33 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        alert("Plantation form updated successfully.");
-                        $("#editplantdet_modal").modal("hide");
-                        location.reload(); // or update table dynamically
+                        Swal.fire({
+                            title: "Success!",
+                            text: "Plantation form updated successfully",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#editplantdet_modal").modal("hide");
+                                location.reload();
+                            }
+                        });
                     } else {
-                        alert("Failed to update.");
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to update",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
                     }
                 },
                 error: function() {
-                    alert("Error during update.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Error during update",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
@@ -2765,12 +2869,25 @@
                 type: "POST",
                 data: $(this).serialize(),
                 success: function(res) {
-                    alert(res.success);
-                    $("#editlanddet_modal").modal("hide");
-                    location.reload(); // or refresh the table
+                    Swal.fire({
+                        title: "Success!",
+                        text: res.success,
+                        icon: "success",
+                        confirmButtonText: "OK"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $("#editlanddet_modal").modal("hide");
+                            location.reload();
+                        }
+                    });
                 },
                 error: function(xhr) {
-                    alert("Update failed. Please try again.");
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Update failed. Please try again",
+                        icon: "error",
+                        confirmButtonText: "OK"
+                    });
                 }
             });
         });
