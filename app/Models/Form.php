@@ -19,12 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $farmer_name
  * @property string $age
  * @property string $district
- * @property string $mobile_number
+ * @property string $mobile
  * @property string $gender
  * @property string $taluk
  * @property string $firca
- * @property string|null $father_spouse
- * @property string|null $household_members
+ * @property string|null $spouse
+ * @property string|null $h_members
  * @property string $type_of_households
  * @property string $special_catog
  * @property string $caste
@@ -33,12 +33,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $drinking_water
  * @property string $potability
  * @property string $domestic_water
- * @property string $toilet_availability
+ * @property string $toilet_avail
  * @property string $toilet_cond
  * @property string $house_owner
  * @property string $household_education
- * @property string $identity_card_type
- * @property string $identity_card_number
+ * @property string $id_type
+ * @property string $id_number
  * @property string|null $hamlet
  * @property string|null $panchayat
  * @property string|null $lat
@@ -65,12 +65,12 @@ class Form extends Model
 		'farmer_name',
 		'age',
 		'district',
-		'mobile_number',
+		'mobile',
 		'gender',
 		'taluk',
 		'firca',
-		'father_spouse',
-		'household_members',
+		'spouse',
+		'h_members',
 		'type_of_households',
 		'special_catog',
 		'caste',
@@ -79,12 +79,12 @@ class Form extends Model
 		'drinking_water',
 		'potability',
 		'domestic_water',
-		'toilet_availability',
+		'toilet_avail',
 		'toilet_cond',
 		'house_owner',
 		'household_education',
-		'identity_card_type',
-		'identity_card_number',
+		'id_type',
+		'id_number',
 		'hamlet',
 		'panchayat',
 		'lat',
@@ -96,21 +96,8 @@ class Form extends Model
 		'remarks'
 	];
 
-	public function bankDetail() {
-    return $this->hasOne(BankDetail::class, 'form_id');
-}
-	public function landForm() {
-    return $this->hasOne(LandForm::class, 'form_id');
-}
-
-public function pondForm() {
-    return $this->hasOne(PondForm::class, 'form_id');
-}
-
-public function plantForm() {
-    return $this->hasOne(PlantForm::class, 'form_id');
-}
-
-
-
+	public function bank_details()
+	{
+		return $this->hasMany(BankDetail::class);
+	}
 }

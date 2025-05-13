@@ -23,24 +23,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $crop_season
  * @property string $livestocks
  * @property string $plantation
- * @property string $sf_no
+ * @property string $sf_number
  * @property string $soil_type
- * @property string $land_benefit
+ * @property string $land_to_benefit
  * @property string $field_insp
  * @property string $site_app
  * @property string $date_of_ins
  * @property string $date_of_app
- * @property string $type_of_work
- * @property string $area_benefit
- * @property string $other_works
- * @property string $pradan_cont
- * @property string $farmer_cont
- * @property string $total_amount
- * @property string $nos
- * @property string $price
- * @property string $other_exp
- * @property string $total_nos
- * @property string $total_price
+ * @property string $area_benefited_by_proposal
+ * @property string $any_other_works
+ * @property string $p_cont
+ * @property string $f_contribution
+ * @property string $total_est
+ * @property string|null $nos
+ * @property string|null $price
+ * @property string|null $other_exp
+ * @property string|null $total_nos
+ * @property string|null $total_price
  *
  * @package App\Models
  */
@@ -65,19 +64,18 @@ class PlantForm extends Model
 		'crop_season',
 		'livestocks',
 		'plantation',
-		'sf_no',
+		'sf_number',
 		'soil_type',
-		'land_benefit',
+		'land_to_benefit',
 		'field_insp',
 		'site_app',
 		'date_of_ins',
 		'date_of_app',
-		'type_of_work',
-		'area_benefit',
-		'other_works',
-		'pradan_cont',
-		'farmer_cont',
-		'total_amount',
+		'area_benefited_by_proposal',
+		'any_other_works',
+		'p_cont',
+		'f_contribution',
+		'total_est',
 		'nos',
 		'price',
 		'other_exp',
